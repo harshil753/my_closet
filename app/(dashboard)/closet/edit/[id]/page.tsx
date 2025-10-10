@@ -85,7 +85,7 @@ export default function EditClothingItemPage() {
       setError(null);
 
       const response = await fetch(
-        `/api/clothing-items/${itemId}?user_id=${user.id}`
+        `/api/clothing-items/${itemId}?user_id=${user?.id}`
       );
       const result = await response.json();
 
@@ -131,7 +131,7 @@ export default function EditClothingItemPage() {
       setError(null);
 
       const response = await fetch(
-        `/api/clothing-items/${itemId}?user_id=${user.id}`,
+        `/api/clothing-items/${itemId}?user_id=${user?.id}`,
         {
           method: 'PUT',
           headers: {

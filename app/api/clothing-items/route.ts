@@ -7,7 +7,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
   createSupabaseServerClient,
-  supabaseAdmin,
+  createSupabaseAdminClient,
 } from '@/lib/config/supabase';
 import { TierLimits } from '@/lib/utils/tierLimits';
 import { UsageTracker } from '@/lib/middleware/usage-tracking';
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
   try {
     // For now, use admin client to bypass RLS issues
     // TODO: Implement proper authentication
-    const supabase = supabaseAdmin;
+    const supabase = createSupabaseAdminClient();
 
     // Get user ID from query params for now (temporary solution)
     const { searchParams } = new URL(request.url);
@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       logger.error('Failed to fetch clothing items', error, {
-        userId: user.id,
+        userId: userId,
       });
       return NextResponse.json(
         { success: false, error: 'Failed to fetch clothing items' },

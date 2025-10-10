@@ -5,7 +5,9 @@
   "description": "AI-powered virtual try-on application for clothing",
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:webpack": "next dev",
     "build": "next build --turbopack",
+    "build:webpack": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",

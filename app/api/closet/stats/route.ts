@@ -4,7 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { supabaseAdmin } from '@/lib/config/supabase';
+import { createSupabaseAdminClient } from '@/lib/config/supabase';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
 
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   try {
     // For now, use admin client to bypass RLS issues
     // TODO: Implement proper authentication
-    const supabase = supabaseAdmin;
+    const supabase = createSupabaseAdminClient();
 
     // Get user ID from query params for now (temporary solution)
     const { searchParams } = new URL(request.url);

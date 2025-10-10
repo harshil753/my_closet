@@ -5,11 +5,11 @@
  */
 
 import { NextResponse } from 'next/server';
-import { createSupabaseClient } from '@/lib/config/supabase';
+import { createSupabaseServerClient } from '@/lib/config/supabase';
 
 export async function GET() {
   try {
-    const supabase = createSupabaseClient();
+    const supabase = await createSupabaseServerClient();
 
     // Get the current user
     const {

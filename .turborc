@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "*.py": {
+      "loaders": [
+        "raw-loader"
+      ],
+      "as": "*.js"
+    },
+    "*.sql": {
+      "loaders": [
+        "raw-loader"
+      ],
+      "as": "*.js"
+    }
+  },
+  "resolveAlias": {
+    "fs": false,
+    "net": false,
+    "tls": false,
+    "crypto": false,
+    "stream": false,
+    "util": false,
+    "buffer": false,
+    "process": false,
+    "path": false,
+    "os": false
+  },
+  "experimental": {
+    "memoryLimit": 4096,
+    "maxWorkers": 4
+  }
+}

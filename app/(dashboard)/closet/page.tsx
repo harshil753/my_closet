@@ -41,6 +41,7 @@ interface ClosetStats {
   categoryCounts: Record<string, number>;
   recentItems: ClothingItem[];
   favoriteItems: ClothingItem[];
+  shirtsTopsCount: number;
 }
 
 /**
@@ -56,7 +57,6 @@ export default function ClosetPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [showQuickActions, setShowQuickActions] = useState(false);
 
   // Load closet data on component mount
@@ -81,7 +81,7 @@ export default function ClosetPage() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`/api/closet/stats?user_id=${user.id}`);
+      const response = await fetch(`/api/closet/stats?user_id=${user?.id}`);
       const result = await response.json();
 
       if (result.success) {
@@ -190,16 +190,6 @@ export default function ClosetPage() {
             <p className="text-gray-600">
               Organize and manage your clothing collection
             </p>
-          </div>
-
-          <div className="mt-4 flex items-center space-x-3 sm:mt-0">
-            <Button
-              variant="outline"
-              onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
-            >
-              {viewMode === 'grid' ? 'List View' : 'Grid View'}
-            </Button>
-            <Button onClick={() => router.push('/upload')}>Add Items</Button>
           </div>
         </div>
       </div>

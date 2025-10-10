@@ -7,7 +7,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/lib/config/supabase';
-import { withTierEnforcement } from '@/lib/middleware/tierEnforcement';
 import { TierService } from '@/lib/services/tierService';
 import { ClothingCategory } from '@/lib/types/common';
 
@@ -185,7 +184,7 @@ export async function POST(request: NextRequest) {
  * GET /api/upload/clothing
  * Get user's clothing items with tier status
  */
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const supabase = await createSupabaseServerClient();
 

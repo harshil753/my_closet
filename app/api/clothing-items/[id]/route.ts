@@ -6,7 +6,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
   createSupabaseServerClient,
-  supabaseAdmin,
+  createSupabaseAdminClient,
 } from '@/lib/config/supabase';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
@@ -16,15 +16,15 @@ import { logger } from '@/lib/utils/logger';
  * Retrieve a specific clothing item
  */
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // For now, use admin client to bypass RLS issues
     // TODO: Implement proper authentication
-    const supabase = supabaseAdmin;
+    const supabase = createSupabaseAdminClient();
 
-    const itemId = params.id;
+    const { id: itemId } = await params;
 
     if (!itemId) {
       return NextResponse.json(
@@ -32,7 +32,6 @@ export async function GET(
         { status: 400 }
       );
     }
-
     console.log('Getting clothing item:', itemId);
 
     // Get the specific item
@@ -82,12 +81,12 @@ export async function GET(
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // For now, use admin client to bypass RLS issues
     // TODO: Implement proper authentication
-    const supabase = supabaseAdmin;
+    const supabase = createSupabaseAdminClient();
 
     // Get user ID from query params for now (temporary solution)
     const { searchParams } = new URL(request.url);
@@ -100,7 +99,7 @@ export async function PUT(
       );
     }
 
-    const itemId = params.id;
+    const { id: itemId } = await params;
 
     if (!itemId) {
       return NextResponse.json(
@@ -108,7 +107,6 @@ export async function PUT(
         { status: 400 }
       );
     }
-
     console.log('Updating clothing item:', itemId, 'for user:', userId);
 
     // Parse request body
@@ -216,8 +214,8 @@ export async function PUT(
  * Delete a specific clothing item
  */
 export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServerClient();
@@ -234,7 +232,7 @@ export async function DELETE(
       );
     }
 
-    const itemId = params.id;
+    const { id: itemId } = await params;
 
     if (!itemId) {
       return NextResponse.json(
