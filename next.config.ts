@@ -47,6 +47,15 @@ const nextConfig: NextConfig = {
       '@/services': path.resolve(__dirname, './lib/services'),
     };
 
+    // Ensure webpack resolves .tsx and .ts extensions
+    config.resolve.extensions = [
+      '.tsx',
+      '.ts',
+      '.jsx',
+      '.js',
+      ...(config.resolve.extensions || []),
+    ];
+
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
