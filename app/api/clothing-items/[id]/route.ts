@@ -4,7 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createSupabaseServerClient } from '@/lib/supabase/supabase-client';
+import { createSupabaseServerClient } from '@/lib/config/supabase';
 import { UsageTracker } from '@/lib/middleware/usage-tracking';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';

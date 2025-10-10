@@ -8,7 +8,7 @@
 
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 // import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -117,8 +117,27 @@ export function ClothingUploadForm({
     }
   };
 
-  // Note: onDrop function removed as it's not currently used
-  // Will be re-implemented when drag-and-drop functionality is added
+  /**
+   * Handle file drop/selection
+   */
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const file = acceptedFiles[0];
+      if (file) {
+        // Validate file
+        const validation = validateFile(file);
+        if (!validation.valid) {
+          setErrors({ image: validation.error || 'Invalid file' });
+          return;
+        }
+
+        // Update form data
+        setFormData((prev) => ({ ...prev, image: file }));
+        setErrors((prev) => ({ ...prev, image: '' }));
+      }
+    },
+    [maxFileSize, allowedTypes]
+  );
 
   /**
    * Handle file selection from input
@@ -138,11 +157,47 @@ export function ClothingUploadForm({
   };
 
   /**
+   * Handle drag events
+   */
+  const [isDragActive, setIsDragActive] = useState(false);
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragActive(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragActive(false);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragActive(false);
+
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length > 0) {
+      onDrop(files);
+    }
+  };
+
+  /**
    * Configure dropzone
    */
-  // Temporary fallback for useDropzone
-  const getRootProps = () => ({});
-  const isDragActive = false;
+  const getRootProps = () => ({
+    onDragEnter: handleDragEnter,
+    onDragLeave: handleDragLeave,
+    onDragOver: handleDragOver,
+    onDrop: handleDrop,
+  });
 
   /**
    * Validate uploaded file
@@ -228,6 +283,15 @@ export function ClothingUploadForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Check if user is authenticated
+    if (!user?.id) {
+      setUploadStatus((prev) => ({
+        ...prev,
+        error: 'Please sign in to upload clothing items',
+      }));
+      return;
+    }
+
     // Validate form
     if (!validateForm()) {
       return;
@@ -261,8 +325,33 @@ export function ClothingUploadForm({
       // Upload to API
       const response = await fetch('/api/upload/clothing', {
         method: 'POST',
+        headers: {
+          'x-user-id': user?.id || '',
+        },
         body: uploadData,
       });
+
+      // Check if response is ok
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(
+          'Upload failed:',
+          response.status,
+          response.statusText,
+          errorText
+        );
+        throw new Error(
+          `Upload failed: ${response.status} ${response.statusText} - ${errorText}`
+        );
+      }
+
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const responseText = await response.text();
+        console.error('Invalid response format:', contentType, responseText);
+        throw new Error(`Invalid response format: ${responseText}`);
+      }
 
       const result = await response.json();
 
@@ -396,6 +485,7 @@ export function ClothingUploadForm({
             {/* Dropzone */}
             <div
               {...getRootProps()}
+              onClick={() => fileInputRef.current?.click()}
               className={`cursor-pointer rounded-lg border-2 border-dashed p-6 text-center transition-colors ${
                 isDragActive
                   ? 'border-primary bg-primary/5'

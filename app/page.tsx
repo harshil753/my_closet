@@ -45,7 +45,7 @@ export default function HomePage() {
             <div className="flex justify-center gap-4">
               <Link href="/login">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Get Started
+                  Login To Get Started
                 </Button>
               </Link>
               <Link href="/register">

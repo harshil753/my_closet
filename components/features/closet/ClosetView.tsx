@@ -112,7 +112,9 @@ export function ClosetView({
       const result = await response.json();
 
       if (result.success) {
-        setItems(result.data);
+        // Ensure data is an array
+        const itemsData = Array.isArray(result.data) ? result.data : [];
+        setItems(itemsData);
       } else {
         throw new Error(result.error || 'Failed to load items');
       }
@@ -201,7 +203,13 @@ export function ClosetView({
    * Filter and sort items
    */
   const filteredAndSortedItems = useMemo(() => {
-    let filtered = items;
+    // Ensure items is an array
+    if (!Array.isArray(items)) {
+      console.warn('Items is not an array:', items);
+      return [];
+    }
+
+    let filtered = [...items]; // Create a copy to avoid mutating the original array
 
     // Apply category filter
     if (filters.category !== 'all') {
@@ -220,30 +228,32 @@ export function ClosetView({
     }
 
     // Apply sorting
-    filtered.sort((a, b) => {
-      let aValue: any, bValue: any;
+    if (Array.isArray(filtered)) {
+      filtered.sort((a, b) => {
+        let aValue: any, bValue: any;
 
-      switch (filters.sortBy) {
-        case 'name':
-          aValue = a.name.toLowerCase();
-          bValue = b.name.toLowerCase();
-          break;
-        case 'uploaded_at':
-          aValue = new Date(a.uploaded_at);
-          bValue = new Date(b.uploaded_at);
-          break;
-        case 'category':
-          aValue = a.category;
-          bValue = b.category;
-          break;
-        default:
-          return 0;
-      }
+        switch (filters.sortBy) {
+          case 'name':
+            aValue = a.name.toLowerCase();
+            bValue = b.name.toLowerCase();
+            break;
+          case 'uploaded_at':
+            aValue = new Date(a.uploaded_at);
+            bValue = new Date(b.uploaded_at);
+            break;
+          case 'category':
+            aValue = a.category;
+            bValue = b.category;
+            break;
+          default:
+            return 0;
+        }
 
-      if (aValue < bValue) return filters.sortOrder === 'asc' ? -1 : 1;
-      if (aValue > bValue) return filters.sortOrder === 'asc' ? 1 : -1;
-      return 0;
-    });
+        if (aValue < bValue) return filters.sortOrder === 'asc' ? -1 : 1;
+        if (aValue > bValue) return filters.sortOrder === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
 
     return filtered;
   }, [items, filters]);
