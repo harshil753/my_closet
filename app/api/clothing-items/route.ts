@@ -9,7 +9,7 @@ import {
   createSupabaseServerClient,
   createSupabaseAdminClient,
 } from '@/lib/config/supabase';
-import { TierLimits } from '@/lib/utils/tierLimits';
+import { TierLimitChecker } from '@/lib/utils/tierLimits';
 import { UsageTracker } from '@/lib/middleware/usage-tracking';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check tier limits before processing
-    await TierLimits.enforceClothingUpload(user.id);
+    await TierLimitChecker.enforceClothingUpload(user.id);
 
     // Parse form data
     const formData = await request.formData();
@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user has enough tier allowance for all files
-    const currentUsage = await TierLimits.checkClothingUpload(user.id);
+    const currentUsage = await TierLimitChecker.checkClothingUpload(user.id);
     if (currentUsage.remaining < files.length) {
       return NextResponse.json(
         {
