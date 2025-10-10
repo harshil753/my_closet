@@ -373,7 +373,16 @@ npm install dotenv
 
 ---
 
+Let me check if dotenv is already installed and then run the upload script:
 
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+node scripts/upload-images.js
+```
 
 ---
 
