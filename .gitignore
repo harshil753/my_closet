@@ -137,4 +137,4 @@ MANIFEST
 # Playwright
 test-results/
 playwright-report/
-playwright/.cache/
+playwright/.cache/.claude/settings.local.json
