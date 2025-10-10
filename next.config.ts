@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   // Turbopack configuration (simplified)
@@ -34,6 +35,18 @@ const nextConfig: NextConfig = {
 
   // Webpack configuration for Python services (fallback for non-Turbopack builds)
   webpack: (config, { isServer }) => {
+    // Add path aliases for webpack
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '.'),
+      '@/components': path.resolve(__dirname, './components'),
+      '@/lib': path.resolve(__dirname, './lib'),
+      '@/app': path.resolve(__dirname, './app'),
+      '@/types': path.resolve(__dirname, './lib/types'),
+      '@/utils': path.resolve(__dirname, './lib/utils'),
+      '@/services': path.resolve(__dirname, './lib/services'),
+    };
+
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
