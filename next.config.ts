@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   turbopack: {
     // Resolve fallbacks for client-side
     resolveAlias: {
+      '@': '.',
+      '@/components': './components',
+      '@/lib': './lib',
+      '@/app': './app',
+      '@/types': './lib/types',
+      '@/utils': './lib/utils',
+      '@/services': './lib/services',
       fs: 'false',
       net: 'false',
       tls: 'false',
