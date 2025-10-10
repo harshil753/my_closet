@@ -2974,3 +2974,1400 @@ The implementation follows the API schema specifications and integrates seamless
 
 ---
 
+_**User (2025-10-10 00:35Z)**_
+
+my vercel deployment failed with this error code 
+03:39:22.653 Running build in Washington, D.C., USA (East) – iad1
+03:39:22.653 Build machine configuration: 2 cores, 8 GB
+03:39:22.671 Cloning github.com/harshil753/my_closet (Branch: main, Commit: d22c9b6)
+03:39:22.879 Previous build caches not available
+03:39:23.781 Cloning completed: 1.110s
+03:39:24.079 Running "vercel build"
+03:39:24.560 Vercel CLI 48.2.9
+03:39:24.898 Installing dependencies...
+03:39:52.350 npm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead
+03:39:52.376 npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+03:39:52.604 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+03:39:52.894 npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+03:39:54.527 npm warn deprecated @supabase/auth-helpers-shared@0.7.0: This package is now deprecated - please use the @supabase/ssr package instead.
+03:39:54.777 npm warn deprecated @supabase/auth-helpers-react@0.5.0: This package is now deprecated - please use the @supabase/ssr package instead.
+03:39:55.298 npm warn deprecated @supabase/auth-helpers-nextjs@0.10.0: This package is now deprecated - please use the @supabase/ssr package instead.
+03:40:04.977 
+03:40:04.977 added 703 packages in 40s
+03:40:04.978 
+03:40:04.978 167 packages are looking for funding
+03:40:04.978   run `npm fund` for details
+03:40:05.312 Detected Next.js version: 15.5.4
+03:40:05.319 Running "npm run build"
+03:40:05.746 
+03:40:05.746 > my-closet-virtual-try-on@0.1.0 build
+03:40:05.746 > next build --turbopack
+03:40:05.747 
+03:40:06.654  ⚠ Invalid next.config.ts options detected: 
+03:40:06.655  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+03:40:06.655  ⚠     Unrecognized key(s) in object: 'api'
+03:40:06.655  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+03:40:06.656  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+03:40:06.663 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+03:40:06.664 This information is used to shape Next.js' roadmap and prioritize features.
+03:40:06.664 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+03:40:06.664 https://nextjs.org/telemetry
+03:40:06.664 
+03:40:06.719    ▲ Next.js 15.5.4 (Turbopack)
+03:40:06.720    - Experiments (use with caution):
+03:40:06.720      · serverComponentsExternalPackages
+03:40:06.720 
+03:40:06.787    Creating an optimized production build ...
+03:40:07.437  ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+03:40:07.438  ⚠ See instructions if you need to configure Turbopack:
+03:40:07.438   https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+03:40:07.438 
+03:40:14.191  ✓ Finished writing to disk in 11ms
+03:40:14.320 
+03:40:14.321 > Build error occurred
+03:40:14.331 Error: Turbopack build failed with 78 errors:
+03:40:14.331 ./app/api/ai/clothing-detection/route.ts:10:1
+03:40:14.331 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.331 [0m [90m  8 |[39m
+03:40:14.331  [90m  9 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.331 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mClothingDetectionService[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.332  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.332  [90m 11 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.332  [90m 12 |[39m
+03:40:14.332  [90m 13 |[39m [90m/**[39m[0m
+03:40:14.333 
+03:40:14.333 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.333 
+03:40:14.333 
+03:40:14.333 https://nextjs.org/docs/messages/module-not-found
+03:40:14.333 
+03:40:14.333 
+03:40:14.333 ./app/api/ai/clothing-detection/route.ts:10:1
+03:40:14.333 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.333 [0m [90m  8 |[39m
+03:40:14.334  [90m  9 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.334 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mClothingDetectionService[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.334  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.336  [90m 11 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.337  [90m 12 |[39m
+03:40:14.337  [90m 13 |[39m [90m/**[39m[0m
+03:40:14.337 
+03:40:14.337 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.337 
+03:40:14.337 
+03:40:14.337 https://nextjs.org/docs/messages/module-not-found
+03:40:14.337 
+03:40:14.337 
+03:40:14.337 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+03:40:14.337 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.338 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.338  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.338 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.338  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.338  [90m 18 |[39m
+03:40:14.339  [90m 19 |[39m [90m// Clothing item interface[39m
+03:40:14.339  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.339 
+03:40:14.339 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.339 
+03:40:14.339 
+03:40:14.339 https://nextjs.org/docs/messages/module-not-found
+03:40:14.354 
+03:40:14.354 
+03:40:14.354 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+03:40:14.355 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.355 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.355  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.355 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.355  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.356  [90m 18 |[39m
+03:40:14.356  [90m 19 |[39m [90m// Clothing item interface[39m
+03:40:14.356  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.356 
+03:40:14.356 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.356 
+03:40:14.357 
+03:40:14.357 https://nextjs.org/docs/messages/module-not-found
+03:40:14.357 
+03:40:14.357 
+03:40:14.358 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+03:40:14.358 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.359 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.359  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.359 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.359  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.360  [90m 18 |[39m
+03:40:14.363  [90m 19 |[39m [90m// Clothing item interface[39m
+03:40:14.363  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.363 
+03:40:14.363 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.363 
+03:40:14.363 
+03:40:14.364 https://nextjs.org/docs/messages/module-not-found
+03:40:14.364 
+03:40:14.364 
+03:40:14.364 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+03:40:14.364 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+03:40:14.364 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.365  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.365 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+03:40:14.365  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.365  [90m 18 |[39m
+03:40:14.365  [90m 19 |[39m [90m// Clothing item interface[39m
+03:40:14.365  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.365 
+03:40:14.366 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+03:40:14.366 
+03:40:14.366 
+03:40:14.366 https://nextjs.org/docs/messages/module-not-found
+03:40:14.366 
+03:40:14.367 
+03:40:14.367 ./app/(dashboard)/closet/page.tsx:18:1
+03:40:14.367 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.367 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.367  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+03:40:14.368 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.371  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.372  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.372  [90m 20 |[39m
+03:40:14.372  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.372 
+03:40:14.373 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.373 
+03:40:14.373 
+03:40:14.373 https://nextjs.org/docs/messages/module-not-found
+03:40:14.373 
+03:40:14.374 
+03:40:14.374 ./app/(dashboard)/closet/page.tsx:18:1
+03:40:14.374 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.374 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.374  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+03:40:14.375 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.375  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.375  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.375  [90m 20 |[39m
+03:40:14.376  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.376 
+03:40:14.376 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.376 
+03:40:14.376 
+03:40:14.376 https://nextjs.org/docs/messages/module-not-found
+03:40:14.377 
+03:40:14.377 
+03:40:14.377 ./app/(dashboard)/closet/page.tsx:18:1
+03:40:14.377 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.378 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.378  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+03:40:14.378 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.378  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.392  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.393  [90m 20 |[39m
+03:40:14.393  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.393 
+03:40:14.393 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.394 
+03:40:14.394 
+03:40:14.394 https://nextjs.org/docs/messages/module-not-found
+03:40:14.394 
+03:40:14.394 
+03:40:14.394 ./app/(dashboard)/closet/page.tsx:18:1
+03:40:14.394 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.395 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.395  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+03:40:14.395 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.395  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.397  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.397  [90m 20 |[39m
+03:40:14.397  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.397 
+03:40:14.397 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.398 
+03:40:14.398 
+03:40:14.398 https://nextjs.org/docs/messages/module-not-found
+03:40:14.398 
+03:40:14.398 
+03:40:14.398 ./app/(dashboard)/upload/page.tsx:18:1
+03:40:14.399 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.399 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.399  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+03:40:14.399 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.399  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.399  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.400  [90m 20 |[39m
+03:40:14.400  [90m 21 |[39m [90m// Upload tips data[39m[0m
+03:40:14.400 
+03:40:14.400 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.400 
+03:40:14.400 
+03:40:14.401 https://nextjs.org/docs/messages/module-not-found
+03:40:14.401 
+03:40:14.401 
+03:40:14.401 ./app/(dashboard)/upload/page.tsx:18:1
+03:40:14.408 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.408 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.408  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+03:40:14.408 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.408  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.409  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.409  [90m 20 |[39m
+03:40:14.409  [90m 21 |[39m [90m// Upload tips data[39m[0m
+03:40:14.409 
+03:40:14.409 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.409 
+03:40:14.410 
+03:40:14.410 https://nextjs.org/docs/messages/module-not-found
+03:40:14.410 
+03:40:14.410 
+03:40:14.410 ./app/(dashboard)/upload/page.tsx:18:1
+03:40:14.410 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.410 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.411  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+03:40:14.411 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.411  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.411  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.411  [90m 20 |[39m
+03:40:14.411  [90m 21 |[39m [90m// Upload tips data[39m[0m
+03:40:14.412 
+03:40:14.412 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.412 
+03:40:14.412 
+03:40:14.412 https://nextjs.org/docs/messages/module-not-found
+03:40:14.412 
+03:40:14.412 
+03:40:14.413 ./app/(dashboard)/upload/page.tsx:18:1
+03:40:14.413 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.413 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+03:40:14.413  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+03:40:14.414 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.414  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.415  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.415  [90m 20 |[39m
+03:40:14.415  [90m 21 |[39m [90m// Upload tips data[39m[0m
+03:40:14.415 
+03:40:14.415 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.415 
+03:40:14.416 
+03:40:14.416 https://nextjs.org/docs/messages/module-not-found
+03:40:14.416 
+03:40:14.416 
+03:40:14.416 ./components/features/closet/ClosetView.tsx:20:1
+03:40:14.416 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.416 [0m [90m 18 |[39m [36mimport[39m { [33mClothingItemDetailModal[39m } [36mfrom[39m [32m'./ClothingItemDetailModal'[39m[33m;[39m
+03:40:14.417  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.417 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.417  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.417  [90m 21 |[39m
+03:40:14.417  [90m 22 |[39m [90m// Clothing item interface[39m
+03:40:14.417  [90m 23 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.418 
+03:40:14.418 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.418 
+03:40:14.418 
+03:40:14.418 https://nextjs.org/docs/messages/module-not-found
+03:40:14.418 
+03:40:14.418 
+03:40:14.419 ./components/features/closet/ClosetView.tsx:20:1
+03:40:14.421 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.421 [0m [90m 18 |[39m [36mimport[39m { [33mClothingItemDetailModal[39m } [36mfrom[39m [32m'./ClothingItemDetailModal'[39m[33m;[39m
+03:40:14.422  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.422 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.422  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.422  [90m 21 |[39m
+03:40:14.422  [90m 22 |[39m [90m// Clothing item interface[39m
+03:40:14.423  [90m 23 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.423 
+03:40:14.423 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.423 
+03:40:14.423 
+03:40:14.423 https://nextjs.org/docs/messages/module-not-found
+03:40:14.423 
+03:40:14.424 
+03:40:14.424 ./components/features/closet/ClosetView.tsx:20:1
+03:40:14.424 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.424 [0m [90m 18 |[39m [36mimport[39m { [33mClothingItemDetailModal[39m } [36mfrom[39m [32m'./ClothingItemDetailModal'[39m[33m;[39m
+03:40:14.424  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.424 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.424  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.425  [90m 21 |[39m
+03:40:14.425  [90m 22 |[39m [90m// Clothing item interface[39m
+03:40:14.425  [90m 23 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.425 
+03:40:14.425 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.425 
+03:40:14.425 
+03:40:14.426 https://nextjs.org/docs/messages/module-not-found
+03:40:14.426 
+03:40:14.426 
+03:40:14.426 ./components/features/closet/ClosetView.tsx:20:1
+03:40:14.426 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.426 [0m [90m 18 |[39m [36mimport[39m { [33mClothingItemDetailModal[39m } [36mfrom[39m [32m'./ClothingItemDetailModal'[39m[33m;[39m
+03:40:14.427  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.427 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.427  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.434  [90m 21 |[39m
+03:40:14.434  [90m 22 |[39m [90m// Clothing item interface[39m
+03:40:14.434  [90m 23 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+03:40:14.434 
+03:40:14.434 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.434 
+03:40:14.434 
+03:40:14.434 https://nextjs.org/docs/messages/module-not-found
+03:40:14.434 
+03:40:14.434 
+03:40:14.434 ./components/forms/ClothingUploadForm.tsx:20:1
+03:40:14.434 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.434 [0m [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.434  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.434 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.434  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.434  [90m 21 |[39m
+03:40:14.434  [90m 22 |[39m [90m// Form data interface[39m
+03:40:14.435  [90m 23 |[39m [36minterface[39m [33mClothingUploadData[39m {[0m
+03:40:14.435 
+03:40:14.435 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.435 
+03:40:14.435 
+03:40:14.435 https://nextjs.org/docs/messages/module-not-found
+03:40:14.435 
+03:40:14.435 
+03:40:14.435 ./components/forms/ClothingUploadForm.tsx:20:1
+03:40:14.435 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.435 [0m [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.435  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.435 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.437  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.437  [90m 21 |[39m
+03:40:14.437  [90m 22 |[39m [90m// Form data interface[39m
+03:40:14.437  [90m 23 |[39m [36minterface[39m [33mClothingUploadData[39m {[0m
+03:40:14.437 
+03:40:14.437 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.437 
+03:40:14.437 
+03:40:14.437 https://nextjs.org/docs/messages/module-not-found
+03:40:14.437 
+03:40:14.437 
+03:40:14.437 ./components/forms/ClothingUploadForm.tsx:20:1
+03:40:14.437 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.437 [0m [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.437  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.437 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.437  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.437  [90m 21 |[39m
+03:40:14.438  [90m 22 |[39m [90m// Form data interface[39m
+03:40:14.438  [90m 23 |[39m [36minterface[39m [33mClothingUploadData[39m {[0m
+03:40:14.438 
+03:40:14.438 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.438 
+03:40:14.438 
+03:40:14.438 https://nextjs.org/docs/messages/module-not-found
+03:40:14.438 
+03:40:14.438 
+03:40:14.438 ./components/forms/ClothingUploadForm.tsx:20:1
+03:40:14.438 Module not found: Can't resolve '@/lib/auth/auth-context'
+03:40:14.438 [0m [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.438  [90m 19 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.439 [31m[1m>[22m[39m[90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+03:40:14.439  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.439  [90m 21 |[39m
+03:40:14.439  [90m 22 |[39m [90m// Form data interface[39m
+03:40:14.439  [90m 23 |[39m [36minterface[39m [33mClothingUploadData[39m {[0m
+03:40:14.439 
+03:40:14.439 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+03:40:14.439 
+03:40:14.439 
+03:40:14.439 https://nextjs.org/docs/messages/module-not-found
+03:40:14.439 
+03:40:14.439 
+03:40:14.439 ./app/api/upload/clothing/route.ts:10:1
+03:40:14.439 Module not found: Can't resolve '@/lib/middleware/tierEnforcement'
+03:40:14.439 [0m [90m  8 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.439  [90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.439 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.439  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.440  [90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.440  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.440  [90m 13 |[39m[0m
+03:40:14.440 
+03:40:14.440 Import map: aliased to relative './lib/middleware/tierEnforcement' inside of [project]/
+03:40:14.440 
+03:40:14.440 
+03:40:14.440 https://nextjs.org/docs/messages/module-not-found
+03:40:14.440 
+03:40:14.440 
+03:40:14.440 ./app/api/upload/clothing/route.ts:10:1
+03:40:14.443 Module not found: Can't resolve '@/lib/middleware/tierEnforcement'
+03:40:14.443 [0m [90m  8 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.443  [90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.443 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.445  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.445  [90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.445  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.445  [90m 13 |[39m[0m
+03:40:14.445 
+03:40:14.445 Import map: aliased to relative './lib/middleware/tierEnforcement' inside of [project]/
+03:40:14.445 
+03:40:14.445 
+03:40:14.445 https://nextjs.org/docs/messages/module-not-found
+03:40:14.445 
+03:40:14.445 
+03:40:14.445 ./app/api/clothing-items/[id]/route.ts:8:1
+03:40:14.445 Module not found: Can't resolve '@/lib/middleware/usage-tracking'
+03:40:14.445 [0m [90m  6 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.445  [90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.445 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.445  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.445  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.446  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.446  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m[0m
+03:40:14.446 
+03:40:14.446 Import map: aliased to relative './lib/middleware/usage-tracking' inside of [project]/
+03:40:14.446 
+03:40:14.446 
+03:40:14.446 https://nextjs.org/docs/messages/module-not-found
+03:40:14.446 
+03:40:14.446 
+03:40:14.446 ./app/api/clothing-items/[id]/route.ts:8:1
+03:40:14.446 Module not found: Can't resolve '@/lib/middleware/usage-tracking'
+03:40:14.446 [0m [90m  6 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.446  [90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.446 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.446  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.446  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.446  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.446  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m[0m
+03:40:14.446 
+03:40:14.446 Import map: aliased to relative './lib/middleware/usage-tracking' inside of [project]/
+03:40:14.446 
+03:40:14.447 
+03:40:14.447 https://nextjs.org/docs/messages/module-not-found
+03:40:14.447 
+03:40:14.447 
+03:40:14.447 ./app/api/clothing-items/route.ts:10:1
+03:40:14.447 Module not found: Can't resolve '@/lib/middleware/usage-tracking'
+03:40:14.447 [0m [90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.447  [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.447 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.447  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.447  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.447  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.447  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m[0m
+03:40:14.447 
+03:40:14.447 Import map: aliased to relative './lib/middleware/usage-tracking' inside of [project]/
+03:40:14.447 
+03:40:14.447 
+03:40:14.447 https://nextjs.org/docs/messages/module-not-found
+03:40:14.447 
+03:40:14.447 
+03:40:14.447 ./app/api/clothing-items/route.ts:10:1
+03:40:14.448 Module not found: Can't resolve '@/lib/middleware/usage-tracking'
+03:40:14.448 [0m [90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.448  [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.448 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.448  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.448  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.448  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.448  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m[0m
+03:40:14.448 
+03:40:14.448 Import map: aliased to relative './lib/middleware/usage-tracking' inside of [project]/
+03:40:14.448 
+03:40:14.448 
+03:40:14.448 https://nextjs.org/docs/messages/module-not-found
+03:40:14.448 
+03:40:14.448 
+03:40:14.448 ./app/api/upload/clothing/route.ts:11:1
+03:40:14.448 Module not found: Can't resolve '@/lib/services/tierService'
+03:40:14.448 [0m [90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.448  [90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.449 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.449  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.449  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.449  [90m 13 |[39m
+03:40:14.449  [90m 14 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.449 
+03:40:14.449 Import map: aliased to relative './lib/services/tierService' inside of [project]/
+03:40:14.449 
+03:40:14.449 
+03:40:14.449 https://nextjs.org/docs/messages/module-not-found
+03:40:14.449 
+03:40:14.449 
+03:40:14.449 ./app/api/upload/clothing/route.ts:11:1
+03:40:14.449 Module not found: Can't resolve '@/lib/services/tierService'
+03:40:14.449 [0m [90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.449  [90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.449 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.449  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.450  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.450  [90m 13 |[39m
+03:40:14.450  [90m 14 |[39m [90m// Clothing item interface[39m[0m
+03:40:14.450 
+03:40:14.450 Import map: aliased to relative './lib/services/tierService' inside of [project]/
+03:40:14.450 
+03:40:14.450 
+03:40:14.450 https://nextjs.org/docs/messages/module-not-found
+03:40:14.450 
+03:40:14.450 
+03:40:14.450 ./app/api/upload/clothing/route.ts:9:1
+03:40:14.450 Module not found: Can't resolve '@/lib/supabase/client'
+03:40:14.450 [0m [90m  7 |[39m
+03:40:14.450  [90m  8 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.450 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.450  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.450  [90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.451  [90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.451  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m[0m
+03:40:14.451 
+03:40:14.451 Import map: aliased to relative './lib/supabase/client' inside of [project]/
+03:40:14.451 
+03:40:14.451 
+03:40:14.451 https://nextjs.org/docs/messages/module-not-found
+03:40:14.451 
+03:40:14.451 
+03:40:14.451 ./app/api/upload/clothing/route.ts:9:1
+03:40:14.451 Module not found: Can't resolve '@/lib/supabase/client'
+03:40:14.451 [0m [90m  7 |[39m
+03:40:14.451  [90m  8 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.451 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { createClient } [36mfrom[39m [32m'@/lib/supabase/client'[39m[33m;[39m
+03:40:14.451  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.451  [90m 10 |[39m [36mimport[39m { withTierEnforcement } [36mfrom[39m [32m'@/lib/middleware/tierEnforcement'[39m[33m;[39m
+03:40:14.451  [90m 11 |[39m [36mimport[39m { [33mTierService[39m } [36mfrom[39m [32m'@/lib/services/tierService'[39m[33m;[39m
+03:40:14.451  [90m 12 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m[0m
+03:40:14.451 
+03:40:14.451 Import map: aliased to relative './lib/supabase/client' inside of [project]/
+03:40:14.451 
+03:40:14.451 
+03:40:14.451 https://nextjs.org/docs/messages/module-not-found
+03:40:14.451 
+03:40:14.451 
+03:40:14.451 ./app/api/clothing-items/[id]/route.ts:7:1
+03:40:14.451 Module not found: Can't resolve '@/lib/supabase/supabase-client'
+03:40:14.452 [0m [90m  5 |[39m
+03:40:14.452  [90m  6 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.452 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.452  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.452  [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.452  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.452  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m[0m
+03:40:14.452 
+03:40:14.452 Import map: aliased to relative './lib/supabase/supabase-client' inside of [project]/
+03:40:14.452 
+03:40:14.452 
+03:40:14.452 https://nextjs.org/docs/messages/module-not-found
+03:40:14.453 
+03:40:14.453 
+03:40:14.453 ./app/api/clothing-items/[id]/route.ts:7:1
+03:40:14.453 Module not found: Can't resolve '@/lib/supabase/supabase-client'
+03:40:14.453 [0m [90m  5 |[39m
+03:40:14.453  [90m  6 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.453 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.453  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.453  [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.453  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.453  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m[0m
+03:40:14.453 
+03:40:14.453 Import map: aliased to relative './lib/supabase/supabase-client' inside of [project]/
+03:40:14.453 
+03:40:14.453 
+03:40:14.453 https://nextjs.org/docs/messages/module-not-found
+03:40:14.453 
+03:40:14.453 
+03:40:14.454 ./app/api/clothing-items/route.ts:8:1
+03:40:14.454 Module not found: Can't resolve '@/lib/supabase/supabase-client'
+03:40:14.454 [0m [90m  6 |[39m
+03:40:14.454  [90m  7 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.454 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.454  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.454  [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.454  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.454  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m[0m
+03:40:14.454 
+03:40:14.454 Import map: aliased to relative './lib/supabase/supabase-client' inside of [project]/
+03:40:14.454 
+03:40:14.454 
+03:40:14.454 https://nextjs.org/docs/messages/module-not-found
+03:40:14.454 
+03:40:14.454 
+03:40:14.454 ./app/api/clothing-items/route.ts:8:1
+03:40:14.454 Module not found: Can't resolve '@/lib/supabase/supabase-client'
+03:40:14.454 [0m [90m  6 |[39m
+03:40:14.454  [90m  7 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.455 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.455  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.455  [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.455  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.455  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m[0m
+03:40:14.455 
+03:40:14.455 Import map: aliased to relative './lib/supabase/supabase-client' inside of [project]/
+03:40:14.455 
+03:40:14.455 
+03:40:14.455 https://nextjs.org/docs/messages/module-not-found
+03:40:14.455 
+03:40:14.455 
+03:40:14.455 ./components/layout/LoadingSpinner.tsx:7:1
+03:40:14.455 Module not found: Can't resolve '@/lib/utils'
+03:40:14.455 [0m [90m  5 |[39m
+03:40:14.455  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.455 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.455  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.456  [90m  8 |[39m [36mimport[39m { [33mLoader2[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+03:40:14.456  [90m  9 |[39m
+03:40:14.456  [90m 10 |[39m [90m/**[39m[0m
+03:40:14.456 
+03:40:14.456 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.456 
+03:40:14.456 
+03:40:14.456 https://nextjs.org/docs/messages/module-not-found
+03:40:14.456 
+03:40:14.456 
+03:40:14.456 ./components/layout/LoadingSpinner.tsx:7:1
+03:40:14.456 Module not found: Can't resolve '@/lib/utils'
+03:40:14.456 [0m [90m  5 |[39m
+03:40:14.456  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.456 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.456  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.456  [90m  8 |[39m [36mimport[39m { [33mLoader2[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+03:40:14.456  [90m  9 |[39m
+03:40:14.457  [90m 10 |[39m [90m/**[39m[0m
+03:40:14.457 
+03:40:14.457 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.457 
+03:40:14.457 
+03:40:14.457 https://nextjs.org/docs/messages/module-not-found
+03:40:14.457 
+03:40:14.457 
+03:40:14.457 ./components/layout/LoadingSpinner.tsx:7:1
+03:40:14.457 Module not found: Can't resolve '@/lib/utils'
+03:40:14.457 [0m [90m  5 |[39m
+03:40:14.457  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.457 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.457  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.457  [90m  8 |[39m [36mimport[39m { [33mLoader2[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+03:40:14.457  [90m  9 |[39m
+03:40:14.457  [90m 10 |[39m [90m/**[39m[0m
+03:40:14.457 
+03:40:14.457 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.457 
+03:40:14.458 
+03:40:14.458 https://nextjs.org/docs/messages/module-not-found
+03:40:14.458 
+03:40:14.458 
+03:40:14.458 ./components/layout/LoadingSpinner.tsx:7:1
+03:40:14.458 Module not found: Can't resolve '@/lib/utils'
+03:40:14.458 [0m [90m  5 |[39m
+03:40:14.458  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.458 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.458  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.458  [90m  8 |[39m [36mimport[39m { [33mLoader2[39m } [36mfrom[39m [32m'lucide-react'[39m[33m;[39m
+03:40:14.458  [90m  9 |[39m
+03:40:14.458  [90m 10 |[39m [90m/**[39m[0m
+03:40:14.458 
+03:40:14.458 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.458 
+03:40:14.458 
+03:40:14.458 https://nextjs.org/docs/messages/module-not-found
+03:40:14.459 
+03:40:14.459 
+03:40:14.459 ./components/ui/alert.tsx:8:1
+03:40:14.459 Module not found: Can't resolve '@/lib/utils'
+03:40:14.459 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.459  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.459 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.459  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.459  [90m  9 |[39m
+03:40:14.459  [90m 10 |[39m [36mconst[39m alertVariants [33m=[39m cva(
+03:40:14.459  [90m 11 |[39m   [32m'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+svg]:absolute [&>svg+svg]:left-4 [&>svg+svg]:top-4 [&>svg+svg]:text-foreground [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground'[39m[33m,[39m[0m
+03:40:14.459 
+03:40:14.459 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.459 
+03:40:14.460 
+03:40:14.460 https://nextjs.org/docs/messages/module-not-found
+03:40:14.460 
+03:40:14.460 
+03:40:14.460 ./components/ui/alert.tsx:8:1
+03:40:14.460 Module not found: Can't resolve '@/lib/utils'
+03:40:14.460 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.460  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.460 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.460  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.460  [90m  9 |[39m
+03:40:14.460  [90m 10 |[39m [36mconst[39m alertVariants [33m=[39m cva(
+03:40:14.460  [90m 11 |[39m   [32m'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+svg]:absolute [&>svg+svg]:left-4 [&>svg+svg]:top-4 [&>svg+svg]:text-foreground [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground'[39m[33m,[39m[0m
+03:40:14.460 
+03:40:14.460 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.460 
+03:40:14.461 
+03:40:14.461 https://nextjs.org/docs/messages/module-not-found
+03:40:14.461 
+03:40:14.461 
+03:40:14.461 ./components/ui/alert.tsx:8:1
+03:40:14.461 Module not found: Can't resolve '@/lib/utils'
+03:40:14.461 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.461  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.461 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.461  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.461  [90m  9 |[39m
+03:40:14.461  [90m 10 |[39m [36mconst[39m alertVariants [33m=[39m cva(
+03:40:14.461  [90m 11 |[39m   [32m'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+svg]:absolute [&>svg+svg]:left-4 [&>svg+svg]:top-4 [&>svg+svg]:text-foreground [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground'[39m[33m,[39m[0m
+03:40:14.462 
+03:40:14.462 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.462 
+03:40:14.462 
+03:40:14.462 https://nextjs.org/docs/messages/module-not-found
+03:40:14.463 
+03:40:14.463 
+03:40:14.463 ./components/ui/alert.tsx:8:1
+03:40:14.463 Module not found: Can't resolve '@/lib/utils'
+03:40:14.463 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.463  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.463 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.463  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.463  [90m  9 |[39m
+03:40:14.463  [90m 10 |[39m [36mconst[39m alertVariants [33m=[39m cva(
+03:40:14.463  [90m 11 |[39m   [32m'relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+svg]:absolute [&>svg+svg]:left-4 [&>svg+svg]:top-4 [&>svg+svg]:text-foreground [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground'[39m[33m,[39m[0m
+03:40:14.463 
+03:40:14.463 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.463 
+03:40:14.463 
+03:40:14.463 https://nextjs.org/docs/messages/module-not-found
+03:40:14.463 
+03:40:14.464 
+03:40:14.464 ./components/ui/badge.tsx:8:1
+03:40:14.464 Module not found: Can't resolve '@/lib/utils'
+03:40:14.464 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.464  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.464 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.464  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.464  [90m  9 |[39m
+03:40:14.464  [90m 10 |[39m [36mconst[39m badgeVariants [33m=[39m cva(
+03:40:14.464  [90m 11 |[39m   [32m'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'[39m[33m,[39m[0m
+03:40:14.464 
+03:40:14.464 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.464 
+03:40:14.464 
+03:40:14.464 https://nextjs.org/docs/messages/module-not-found
+03:40:14.464 
+03:40:14.465 
+03:40:14.465 ./components/ui/badge.tsx:8:1
+03:40:14.465 Module not found: Can't resolve '@/lib/utils'
+03:40:14.465 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.465  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.465 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.465  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.465  [90m  9 |[39m
+03:40:14.465  [90m 10 |[39m [36mconst[39m badgeVariants [33m=[39m cva(
+03:40:14.465  [90m 11 |[39m   [32m'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'[39m[33m,[39m[0m
+03:40:14.465 
+03:40:14.465 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.465 
+03:40:14.465 
+03:40:14.465 https://nextjs.org/docs/messages/module-not-found
+03:40:14.465 
+03:40:14.465 
+03:40:14.465 ./components/ui/badge.tsx:8:1
+03:40:14.465 Module not found: Can't resolve '@/lib/utils'
+03:40:14.465 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.465  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.465 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.465  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.465  [90m  9 |[39m
+03:40:14.465  [90m 10 |[39m [36mconst[39m badgeVariants [33m=[39m cva(
+03:40:14.465  [90m 11 |[39m   [32m'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'[39m[33m,[39m[0m
+03:40:14.465 
+03:40:14.465 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.465 
+03:40:14.465 
+03:40:14.465 https://nextjs.org/docs/messages/module-not-found
+03:40:14.465 
+03:40:14.465 
+03:40:14.465 ./components/ui/badge.tsx:8:1
+03:40:14.465 Module not found: Can't resolve '@/lib/utils'
+03:40:14.466 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.466  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.466 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.466  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.466  [90m  9 |[39m
+03:40:14.466  [90m 10 |[39m [36mconst[39m badgeVariants [33m=[39m cva(
+03:40:14.466  [90m 11 |[39m   [32m'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2'[39m[33m,[39m[0m
+03:40:14.466 
+03:40:14.466 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.466 
+03:40:14.466 
+03:40:14.466 https://nextjs.org/docs/messages/module-not-found
+03:40:14.466 
+03:40:14.466 
+03:40:14.466 ./components/ui/button.tsx:8:1
+03:40:14.466 Module not found: Can't resolve '@/lib/utils'
+03:40:14.466 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.466  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.466 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.466  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.466  [90m  9 |[39m
+03:40:14.466  [90m 10 |[39m [36mconst[39m buttonVariants [33m=[39m cva(
+03:40:14.466  [90m 11 |[39m   [32m'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'[39m[33m,[39m[0m
+03:40:14.466 
+03:40:14.466 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.466 
+03:40:14.466 
+03:40:14.466 https://nextjs.org/docs/messages/module-not-found
+03:40:14.466 
+03:40:14.466 
+03:40:14.466 ./components/ui/button.tsx:8:1
+03:40:14.466 Module not found: Can't resolve '@/lib/utils'
+03:40:14.466 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.466  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.466 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.466  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.466  [90m  9 |[39m
+03:40:14.467  [90m 10 |[39m [36mconst[39m buttonVariants [33m=[39m cva(
+03:40:14.467  [90m 11 |[39m   [32m'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'[39m[33m,[39m[0m
+03:40:14.467 
+03:40:14.467 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.467 
+03:40:14.467 
+03:40:14.467 https://nextjs.org/docs/messages/module-not-found
+03:40:14.467 
+03:40:14.467 
+03:40:14.467 ./components/ui/button.tsx:8:1
+03:40:14.467 Module not found: Can't resolve '@/lib/utils'
+03:40:14.467 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.467  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.467 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.467  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.467  [90m  9 |[39m
+03:40:14.467  [90m 10 |[39m [36mconst[39m buttonVariants [33m=[39m cva(
+03:40:14.467  [90m 11 |[39m   [32m'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'[39m[33m,[39m[0m
+03:40:14.467 
+03:40:14.467 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.467 
+03:40:14.467 
+03:40:14.467 https://nextjs.org/docs/messages/module-not-found
+03:40:14.467 
+03:40:14.467 
+03:40:14.467 ./components/ui/button.tsx:8:1
+03:40:14.468 Module not found: Can't resolve '@/lib/utils'
+03:40:14.468 [0m [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.468  [90m  7 |[39m [36mimport[39m { cva[33m,[39m type [33mVariantProps[39m } [36mfrom[39m [32m'class-variance-authority'[39m[33m;[39m
+03:40:14.468 [31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.468  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.468  [90m  9 |[39m
+03:40:14.468  [90m 10 |[39m [36mconst[39m buttonVariants [33m=[39m cva(
+03:40:14.468  [90m 11 |[39m   [32m'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50'[39m[33m,[39m[0m
+03:40:14.468 
+03:40:14.468 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.468 
+03:40:14.468 
+03:40:14.468 https://nextjs.org/docs/messages/module-not-found
+03:40:14.468 
+03:40:14.468 
+03:40:14.468 ./components/ui/card.tsx:7:1
+03:40:14.468 Module not found: Can't resolve '@/lib/utils'
+03:40:14.468 [0m [90m  5 |[39m
+03:40:14.468  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.468 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.468  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.468  [90m  8 |[39m
+03:40:14.470  [90m  9 |[39m [36mconst[39m [33mCard[39m [33m=[39m [33mReact[39m[33m.[39mforwardRef[33m<[39m
+03:40:14.470  [90m 10 |[39m   [33mHTMLDivElement[39m[33m,[39m[0m
+03:40:14.470 
+03:40:14.471 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.471 
+03:40:14.471 
+03:40:14.471 https://nextjs.org/docs/messages/module-not-found
+03:40:14.471 
+03:40:14.471 
+03:40:14.471 ./components/ui/card.tsx:7:1
+03:40:14.471 Module not found: Can't resolve '@/lib/utils'
+03:40:14.471 [0m [90m  5 |[39m
+03:40:14.472  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.472 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.472  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.472  [90m  8 |[39m
+03:40:14.472  [90m  9 |[39m [36mconst[39m [33mCard[39m [33m=[39m [33mReact[39m[33m.[39mforwardRef[33m<[39m
+03:40:14.472  [90m 10 |[39m   [33mHTMLDivElement[39m[33m,[39m[0m
+03:40:14.472 
+03:40:14.473 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.473 
+03:40:14.473 
+03:40:14.473 https://nextjs.org/docs/messages/module-not-found
+03:40:14.473 
+03:40:14.473 
+03:40:14.473 ./components/ui/card.tsx:7:1
+03:40:14.474 Module not found: Can't resolve '@/lib/utils'
+03:40:14.474 [0m [90m  5 |[39m
+03:40:14.474  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.474 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.474  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.482  [90m  8 |[39m
+03:40:14.482  [90m  9 |[39m [36mconst[39m [33mCard[39m [33m=[39m [33mReact[39m[33m.[39mforwardRef[33m<[39m
+03:40:14.482  [90m 10 |[39m   [33mHTMLDivElement[39m[33m,[39m[0m
+03:40:14.483 
+03:40:14.483 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.483 
+03:40:14.483 
+03:40:14.483 https://nextjs.org/docs/messages/module-not-found
+03:40:14.483 
+03:40:14.483 
+03:40:14.483 ./components/ui/card.tsx:7:1
+03:40:14.483 Module not found: Can't resolve '@/lib/utils'
+03:40:14.483 [0m [90m  5 |[39m
+03:40:14.483  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.483 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.483  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.483  [90m  8 |[39m
+03:40:14.483  [90m  9 |[39m [36mconst[39m [33mCard[39m [33m=[39m [33mReact[39m[33m.[39mforwardRef[33m<[39m
+03:40:14.483  [90m 10 |[39m   [33mHTMLDivElement[39m[33m,[39m[0m
+03:40:14.484 
+03:40:14.484 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.484 
+03:40:14.484 
+03:40:14.484 https://nextjs.org/docs/messages/module-not-found
+03:40:14.484 
+03:40:14.484 
+03:40:14.484 ./components/ui/input.tsx:7:1
+03:40:14.484 Module not found: Can't resolve '@/lib/utils'
+03:40:14.484 [0m [90m  5 |[39m
+03:40:14.484  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.484 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.484  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.484  [90m  8 |[39m
+03:40:14.484  [90m  9 |[39m [36mexport[39m [36minterface[39m [33mInputProps[39m
+03:40:14.484  [90m 10 |[39m   [36mextends[39m [33mReact[39m[33m.[39m[33mInputHTMLAttributes[39m[33m<[39m[33mHTMLInputElement[39m[33m>[39m {}[0m
+03:40:14.484 
+03:40:14.487 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.487 
+03:40:14.487 
+03:40:14.487 https://nextjs.org/docs/messages/module-not-found
+03:40:14.487 
+03:40:14.488 
+03:40:14.488 ./components/ui/input.tsx:7:1
+03:40:14.488 Module not found: Can't resolve '@/lib/utils'
+03:40:14.488 [0m [90m  5 |[39m
+03:40:14.488  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.488 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.488  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.488  [90m  8 |[39m
+03:40:14.488  [90m  9 |[39m [36mexport[39m [36minterface[39m [33mInputProps[39m
+03:40:14.488  [90m 10 |[39m   [36mextends[39m [33mReact[39m[33m.[39m[33mInputHTMLAttributes[39m[33m<[39m[33mHTMLInputElement[39m[33m>[39m {}[0m
+03:40:14.488 
+03:40:14.488 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.488 
+03:40:14.488 
+03:40:14.489 https://nextjs.org/docs/messages/module-not-found
+03:40:14.489 
+03:40:14.489 
+03:40:14.489 ./components/ui/input.tsx:7:1
+03:40:14.489 Module not found: Can't resolve '@/lib/utils'
+03:40:14.489 [0m [90m  5 |[39m
+03:40:14.489  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.489 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.489  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.489  [90m  8 |[39m
+03:40:14.489  [90m  9 |[39m [36mexport[39m [36minterface[39m [33mInputProps[39m
+03:40:14.489  [90m 10 |[39m   [36mextends[39m [33mReact[39m[33m.[39m[33mInputHTMLAttributes[39m[33m<[39m[33mHTMLInputElement[39m[33m>[39m {}[0m
+03:40:14.489 
+03:40:14.489 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.489 
+03:40:14.490 
+03:40:14.490 https://nextjs.org/docs/messages/module-not-found
+03:40:14.490 
+03:40:14.490 
+03:40:14.490 ./components/ui/input.tsx:7:1
+03:40:14.490 Module not found: Can't resolve '@/lib/utils'
+03:40:14.490 [0m [90m  5 |[39m
+03:40:14.490  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.490 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.490  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.490  [90m  8 |[39m
+03:40:14.490  [90m  9 |[39m [36mexport[39m [36minterface[39m [33mInputProps[39m
+03:40:14.490  [90m 10 |[39m   [36mextends[39m [33mReact[39m[33m.[39m[33mInputHTMLAttributes[39m[33m<[39m[33mHTMLInputElement[39m[33m>[39m {}[0m
+03:40:14.490 
+03:40:14.490 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.490 
+03:40:14.491 
+03:40:14.491 https://nextjs.org/docs/messages/module-not-found
+03:40:14.491 
+03:40:14.491 
+03:40:14.491 ./components/ui/modal.tsx:7:1
+03:40:14.491 Module not found: Can't resolve '@/lib/utils'
+03:40:14.491 [0m [90m  5 |[39m
+03:40:14.491  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.491 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.491  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.491  [90m  8 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'./button'[39m[33m;[39m
+03:40:14.491  [90m  9 |[39m
+03:40:14.491  [90m 10 |[39m [36minterface[39m [33mModalProps[39m [36mextends[39m [33mReact[39m[33m.[39m[33mHTMLAttributes[39m[33m<[39m[33mHTMLDivElement[39m[33m>[39m {[0m
+03:40:14.492 
+03:40:14.492 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.492 
+03:40:14.492 
+03:40:14.492 https://nextjs.org/docs/messages/module-not-found
+03:40:14.492 
+03:40:14.492 
+03:40:14.492 ./components/ui/modal.tsx:7:1
+03:40:14.492 Module not found: Can't resolve '@/lib/utils'
+03:40:14.492 [0m [90m  5 |[39m
+03:40:14.492  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.493 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.493  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.493  [90m  8 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'./button'[39m[33m;[39m
+03:40:14.493  [90m  9 |[39m
+03:40:14.493  [90m 10 |[39m [36minterface[39m [33mModalProps[39m [36mextends[39m [33mReact[39m[33m.[39m[33mHTMLAttributes[39m[33m<[39m[33mHTMLDivElement[39m[33m>[39m {[0m
+03:40:14.493 
+03:40:14.493 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.493 
+03:40:14.493 
+03:40:14.493 https://nextjs.org/docs/messages/module-not-found
+03:40:14.494 
+03:40:14.495 
+03:40:14.495 ./components/ui/modal.tsx:7:1
+03:40:14.495 Module not found: Can't resolve '@/lib/utils'
+03:40:14.495 [0m [90m  5 |[39m
+03:40:14.495  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.495 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.495  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.495  [90m  8 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'./button'[39m[33m;[39m
+03:40:14.495  [90m  9 |[39m
+03:40:14.495  [90m 10 |[39m [36minterface[39m [33mModalProps[39m [36mextends[39m [33mReact[39m[33m.[39m[33mHTMLAttributes[39m[33m<[39m[33mHTMLDivElement[39m[33m>[39m {[0m
+03:40:14.496 
+03:40:14.496 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.496 
+03:40:14.496 
+03:40:14.496 https://nextjs.org/docs/messages/module-not-found
+03:40:14.496 
+03:40:14.496 
+03:40:14.497 ./components/ui/modal.tsx:7:1
+03:40:14.497 Module not found: Can't resolve '@/lib/utils'
+03:40:14.497 [0m [90m  5 |[39m
+03:40:14.497  [90m  6 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.497 [31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils'[39m[33m;[39m
+03:40:14.497  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.497  [90m  8 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'./button'[39m[33m;[39m
+03:40:14.497  [90m  9 |[39m
+03:40:14.497  [90m 10 |[39m [36minterface[39m [33mModalProps[39m [36mextends[39m [33mReact[39m[33m.[39m[33mHTMLAttributes[39m[33m<[39m[33mHTMLDivElement[39m[33m>[39m {[0m
+03:40:14.497 
+03:40:14.497 Import map: aliased to relative './lib/utils' inside of [project]/
+03:40:14.497 
+03:40:14.497 
+03:40:14.497 https://nextjs.org/docs/messages/module-not-found
+03:40:14.497 
+03:40:14.497 
+03:40:14.498 ./app/api/clothing-items/[id]/route.ts:9:1
+03:40:14.498 Module not found: Can't resolve '@/lib/utils/errors'
+03:40:14.498 [0m [90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.498  [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.498 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.498  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.498  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.498  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.498  [90m 12 |[39m[0m
+03:40:14.498 
+03:40:14.498 Import map: aliased to relative './lib/utils/errors' inside of [project]/
+03:40:14.498 
+03:40:14.498 
+03:40:14.498 https://nextjs.org/docs/messages/module-not-found
+03:40:14.498 
+03:40:14.498 
+03:40:14.498 ./app/api/clothing-items/[id]/route.ts:9:1
+03:40:14.498 Module not found: Can't resolve '@/lib/utils/errors'
+03:40:14.498 [0m [90m  7 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.498  [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.498 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.498  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.498  [90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.498  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.499  [90m 12 |[39m[0m
+03:40:14.499 
+03:40:14.499 Import map: aliased to relative './lib/utils/errors' inside of [project]/
+03:40:14.499 
+03:40:14.499 
+03:40:14.499 https://nextjs.org/docs/messages/module-not-found
+03:40:14.499 
+03:40:14.499 
+03:40:14.499 ./app/api/clothing-items/route.ts:11:1
+03:40:14.499 Module not found: Can't resolve '@/lib/utils/errors'
+03:40:14.499 [0m [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.499  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.499 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.499  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.499  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.499  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.499  [90m 14 |[39m [36mimport[39m { [33mApiResponse[39m[33m,[39m [33mPaginationParams[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m[0m
+03:40:14.499 
+03:40:14.499 Import map: aliased to relative './lib/utils/errors' inside of [project]/
+03:40:14.499 
+03:40:14.499 
+03:40:14.499 https://nextjs.org/docs/messages/module-not-found
+03:40:14.499 
+03:40:14.499 
+03:40:14.499 ./app/api/clothing-items/route.ts:11:1
+03:40:14.499 Module not found: Can't resolve '@/lib/utils/errors'
+03:40:14.500 [0m [90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.500  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.500 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.500  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.500  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.500  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.500  [90m 14 |[39m [36mimport[39m { [33mApiResponse[39m[33m,[39m [33mPaginationParams[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m[0m
+03:40:14.500 
+03:40:14.500 Import map: aliased to relative './lib/utils/errors' inside of [project]/
+03:40:14.500 
+03:40:14.500 
+03:40:14.500 https://nextjs.org/docs/messages/module-not-found
+03:40:14.500 
+03:40:14.500 
+03:40:14.500 ./app/api/clothing-items/[id]/route.ts:10:1
+03:40:14.500 Module not found: Can't resolve '@/lib/utils/logger'
+03:40:14.500 [0m [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.500  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.500 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.500  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.500  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.500  [90m 12 |[39m
+03:40:14.500  [90m 13 |[39m [90m/**[39m[0m
+03:40:14.500 
+03:40:14.500 Import map: aliased to relative './lib/utils/logger' inside of [project]/
+03:40:14.500 
+03:40:14.500 
+03:40:14.500 https://nextjs.org/docs/messages/module-not-found
+03:40:14.501 
+03:40:14.501 
+03:40:14.501 ./app/api/clothing-items/[id]/route.ts:10:1
+03:40:14.501 Module not found: Can't resolve '@/lib/utils/logger'
+03:40:14.501 [0m [90m  8 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.501  [90m  9 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.501 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.501  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.501  [90m 11 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.501  [90m 12 |[39m
+03:40:14.501  [90m 13 |[39m [90m/**[39m[0m
+03:40:14.501 
+03:40:14.501 Import map: aliased to relative './lib/utils/logger' inside of [project]/
+03:40:14.501 
+03:40:14.501 
+03:40:14.501 https://nextjs.org/docs/messages/module-not-found
+03:40:14.501 
+03:40:14.501 
+03:40:14.501 ./app/api/clothing-items/route.ts:12:1
+03:40:14.501 Module not found: Can't resolve '@/lib/utils/logger'
+03:40:14.501 [0m [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.501  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.501 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.501  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.501  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.502  [90m 14 |[39m [36mimport[39m { [33mApiResponse[39m[33m,[39m [33mPaginationParams[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.502  [90m 15 |[39m[0m
+03:40:14.502 
+03:40:14.502 Import map: aliased to relative './lib/utils/logger' inside of [project]/
+03:40:14.502 
+03:40:14.502 
+03:40:14.502 https://nextjs.org/docs/messages/module-not-found
+03:40:14.502 
+03:40:14.502 
+03:40:14.502 ./app/api/clothing-items/route.ts:12:1
+03:40:14.502 Module not found: Can't resolve '@/lib/utils/logger'
+03:40:14.505 [0m [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.505  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.505 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m
+03:40:14.505  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.505  [90m 13 |[39m [36mimport[39m { [33mClothingItem[39m[33m,[39m [33mCreateClothingItemInput[39m[33m,[39m [33mUpdateClothingItemInput[39m } [36mfrom[39m [32m'@/lib/types/clothing'[39m[33m;[39m
+03:40:14.505  [90m 14 |[39m [36mimport[39m { [33mApiResponse[39m[33m,[39m [33mPaginationParams[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+03:40:14.505  [90m 15 |[39m[0m
+03:40:14.505 
+03:40:14.505 Import map: aliased to relative './lib/utils/logger' inside of [project]/
+03:40:14.506 
+03:40:14.506 
+03:40:14.506 https://nextjs.org/docs/messages/module-not-found
+03:40:14.506 
+03:40:14.506 
+03:40:14.506 ./app/api/clothing-items/route.ts:9:1
+03:40:14.506 Module not found: Can't resolve '@/lib/utils/tierLimits'
+03:40:14.506 [0m [90m  7 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.506  [90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.506 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.506  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.506  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.506  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.506  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m[0m
+03:40:14.506 
+03:40:14.506 Import map: aliased to relative './lib/utils/tierLimits' inside of [project]/
+03:40:14.506 
+03:40:14.506 
+03:40:14.506 https://nextjs.org/docs/messages/module-not-found
+03:40:14.506 
+03:40:14.506 
+03:40:14.506 ./app/api/clothing-items/route.ts:9:1
+03:40:14.506 Module not found: Can't resolve '@/lib/utils/tierLimits'
+03:40:14.506 [0m [90m  7 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+03:40:14.506  [90m  8 |[39m [36mimport[39m { createSupabaseServerClient } [36mfrom[39m [32m'@/lib/supabase/supabase-client'[39m[33m;[39m
+03:40:14.506 [31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { [33mTierLimits[39m } [36mfrom[39m [32m'@/lib/utils/tierLimits'[39m[33m;[39m
+03:40:14.506  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.506  [90m 10 |[39m [36mimport[39m { [33mUsageTracker[39m } [36mfrom[39m [32m'@/lib/middleware/usage-tracking'[39m[33m;[39m
+03:40:14.506  [90m 11 |[39m [36mimport[39m { [33mErrorHandler[39m } [36mfrom[39m [32m'@/lib/utils/errors'[39m[33m;[39m
+03:40:14.506  [90m 12 |[39m [36mimport[39m { logger } [36mfrom[39m [32m'@/lib/utils/logger'[39m[33m;[39m[0m
+03:40:14.507 
+03:40:14.507 Import map: aliased to relative './lib/utils/tierLimits' inside of [project]/
+03:40:14.507 
+03:40:14.507 
+03:40:14.507 https://nextjs.org/docs/messages/module-not-found
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 ./components/forms/ClothingUploadForm.tsx:12:1
+03:40:14.508 Module not found: Can't resolve 'react-dropzone'
+03:40:14.508 [0m [90m 10 |[39m
+03:40:14.508  [90m 11 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState[33m,[39m useCallback[33m,[39m useRef } [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.508 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useDropzone } [36mfrom[39m [32m'react-dropzone'[39m[33m;[39m
+03:40:14.508  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.508  [90m 13 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+03:40:14.508  [90m 14 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[33m;[39m
+03:40:14.508  [90m 15 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m[0m
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 https://nextjs.org/docs/messages/module-not-found
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 ./components/forms/ClothingUploadForm.tsx:12:1
+03:40:14.508 Module not found: Can't resolve 'react-dropzone'
+03:40:14.508 [0m [90m 10 |[39m
+03:40:14.508  [90m 11 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState[33m,[39m useCallback[33m,[39m useRef } [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.508 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useDropzone } [36mfrom[39m [32m'react-dropzone'[39m[33m;[39m
+03:40:14.508  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.508  [90m 13 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+03:40:14.508  [90m 14 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[33m;[39m
+03:40:14.508  [90m 15 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m[0m
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 https://nextjs.org/docs/messages/module-not-found
+03:40:14.508 
+03:40:14.508 
+03:40:14.508 ./components/forms/ClothingUploadForm.tsx:12:1
+03:40:14.509 Module not found: Can't resolve 'react-dropzone'
+03:40:14.509 [0m [90m 10 |[39m
+03:40:14.509  [90m 11 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState[33m,[39m useCallback[33m,[39m useRef } [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.509 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useDropzone } [36mfrom[39m [32m'react-dropzone'[39m[33m;[39m
+03:40:14.509  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.509  [90m 13 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+03:40:14.509  [90m 14 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[33m;[39m
+03:40:14.509  [90m 15 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m[0m
+03:40:14.511 
+03:40:14.511 
+03:40:14.518 
+03:40:14.518 https://nextjs.org/docs/messages/module-not-found
+03:40:14.518 
+03:40:14.518 
+03:40:14.518 ./components/forms/ClothingUploadForm.tsx:12:1
+03:40:14.519 Module not found: Can't resolve 'react-dropzone'
+03:40:14.519 [0m [90m 10 |[39m
+03:40:14.519  [90m 11 |[39m [36mimport[39m [33mReact[39m[33m,[39m { useState[33m,[39m useCallback[33m,[39m useRef } [36mfrom[39m [32m'react'[39m[33m;[39m
+03:40:14.519 [31m[1m>[22m[39m[90m 12 |[39m [36mimport[39m { useDropzone } [36mfrom[39m [32m'react-dropzone'[39m[33m;[39m
+03:40:14.519  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+03:40:14.519  [90m 13 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+03:40:14.519  [90m 14 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/input'[39m[33m;[39m
+03:40:14.520  [90m 15 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m[0m
+03:40:14.520 
+03:40:14.520 
+03:40:14.520 
+03:40:14.520 https://nextjs.org/docs/messages/module-not-found
+03:40:14.520 
+03:40:14.520 
+03:40:14.521     at <unknown> (./app/api/ai/clothing-detection/route.ts:10:1)
+03:40:14.521     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.521     at <unknown> (./app/api/ai/clothing-detection/route.ts:10:1)
+03:40:14.521     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.521     at <unknown> (./components/features/closet/ClothingItemDetailModal.tsx:17:1)
+03:40:14.521     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.522     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.522     at <unknown> (./app/(dashboard)/closet/page.tsx:18:1)
+03:40:14.522     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.522     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.522     at <unknown> (./app/(dashboard)/upload/page.tsx:18:1)
+03:40:14.522     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.522     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.523     at <unknown> (./components/features/closet/ClosetView.tsx:20:1)
+03:40:14.523     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.523     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.523     at <unknown> (./components/forms/ClothingUploadForm.tsx:20:1)
+03:40:14.523     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.523     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.523     at <unknown> (./app/api/upload/clothing/route.ts:10:1)
+03:40:14.524     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.524     at <unknown> (./app/api/upload/clothing/route.ts:10:1)
+03:40:14.524     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.524     at <unknown> (./app/api/clothing-items/[id]/route.ts:8:1)
+03:40:14.524     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.524     at <unknown> (./app/api/clothing-items/[id]/route.ts:8:1)
+03:40:14.524     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.524     at <unknown> (./app/api/clothing-items/route.ts:10:1)
+03:40:14.525     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.525     at <unknown> (./app/api/clothing-items/route.ts:10:1)
+03:40:14.525     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.525     at <unknown> (./app/api/upload/clothing/route.ts:11:1)
+03:40:14.525     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.525     at <unknown> (./app/api/upload/clothing/route.ts:11:1)
+03:40:14.525     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.525     at <unknown> (./app/api/upload/clothing/route.ts:9:1)
+03:40:14.526     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.526     at <unknown> (./app/api/upload/clothing/route.ts:9:1)
+03:40:14.526     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.526     at <unknown> (./app/api/clothing-items/[id]/route.ts:7:1)
+03:40:14.526     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.526     at <unknown> (./app/api/clothing-items/[id]/route.ts:7:1)
+03:40:14.526     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.527     at <unknown> (./app/api/clothing-items/route.ts:8:1)
+03:40:14.527     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.527     at <unknown> (./app/api/clothing-items/route.ts:8:1)
+03:40:14.527     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.527     at <unknown> (./components/layout/LoadingSpinner.tsx:7:1)
+03:40:14.527     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.527     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.528     at <unknown> (./components/ui/alert.tsx:8:1)
+03:40:14.528     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.528     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.528     at <unknown> (./components/ui/badge.tsx:8:1)
+03:40:14.528     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.528     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.528     at <unknown> (./components/ui/button.tsx:8:1)
+03:40:14.529     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.529     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.529     at <unknown> (./components/ui/card.tsx:7:1)
+03:40:14.529     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.529     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.529     at <unknown> (./components/ui/input.tsx:7:1)
+03:40:14.529     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.529     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.530     at <unknown> (./components/ui/modal.tsx:7:1)
+03:40:14.530     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.530     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.530     at <unknown> (./app/api/clothing-items/[id]/route.ts:9:1)
+03:40:14.530     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.530     at <unknown> (./app/api/clothing-items/[id]/route.ts:9:1)
+03:40:14.531     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.531     at <unknown> (./app/api/clothing-items/route.ts:11:1)
+03:40:14.531     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.531     at <unknown> (./app/api/clothing-items/route.ts:11:1)
+03:40:14.531     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.531     at <unknown> (./app/api/clothing-items/[id]/route.ts:10:1)
+03:40:14.531     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.532     at <unknown> (./app/api/clothing-items/[id]/route.ts:10:1)
+03:40:14.532     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.532     at <unknown> (./app/api/clothing-items/route.ts:12:1)
+03:40:14.536     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.536     at <unknown> (./app/api/clothing-items/route.ts:12:1)
+03:40:14.537     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.537     at <unknown> (./app/api/clothing-items/route.ts:9:1)
+03:40:14.537     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.537     at <unknown> (./app/api/clothing-items/route.ts:9:1)
+03:40:14.537     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.537     at <unknown> (./components/forms/ClothingUploadForm.tsx:12:1)
+03:40:14.538     ... collapsed 6 duplicate lines matching above 2 lines 3 times...
+03:40:14.538     at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+03:40:14.538 Error: Command "npm run build" exited with 1
+
+---
+
+_**Assistant (default)**_
+
+
+
+---
+

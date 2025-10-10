@@ -1,22 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable experimental features for better performance
-  experimental: {
-    serverComponentsExternalPackages: ['pillow'],
-  },
+  // Server external packages (moved from experimental)
+  serverExternalPackages: ['pillow'],
   
   // Image optimization settings
   images: {
     domains: ['localhost', 'supabase.co'],
     formats: ['image/webp', 'image/avif'],
-  },
-  
-  // API route configuration
-  api: {
-    bodyParser: {
-      sizeLimit: '50mb',
-    },
   },
   
   // Environment variables
