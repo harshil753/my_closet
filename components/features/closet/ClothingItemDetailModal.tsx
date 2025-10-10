@@ -184,7 +184,7 @@ export function ClothingItemDetailModal({
   
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={className}>
-      <ModalHeader>
+      <ModalHeader title="Clothing Item Details">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-semibold">{item.name}</h2>

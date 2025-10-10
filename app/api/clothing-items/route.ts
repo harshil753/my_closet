@@ -10,8 +10,6 @@ import { TierLimits } from '@/lib/utils/tierLimits';
 import { UsageTracker } from '@/lib/middleware/usage-tracking';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
-import { ClothingItem, CreateClothingItemInput, UpdateClothingItemInput } from '@/lib/types/clothing';
-import { ApiResponse, PaginationParams } from '@/lib/types/common';
 
 /**
  * GET /api/clothing-items
@@ -19,10 +17,13 @@ import { ApiResponse, PaginationParams } from '@/lib/types/common';
  */
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -73,7 +74,9 @@ export async function GET(request: NextRequest) {
     const { data: items, error, count } = await query;
 
     if (error) {
-      logger.error('Failed to fetch clothing items', error, { userId: user.id });
+      logger.error('Failed to fetch clothing items', error, {
+        userId: user.id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to fetch clothing items' },
         { status: 500 }
@@ -92,7 +95,7 @@ export async function GET(request: NextRequest) {
       data: {
         items: items || [],
         total: count || 0,
-        has_more: (offset + limit) < (count || 0),
+        has_more: offset + limit < (count || 0),
         pagination: {
           limit,
           offset,
@@ -100,7 +103,6 @@ export async function GET(request: NextRequest) {
         },
       },
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
@@ -113,10 +115,13 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -131,7 +136,9 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData();
     const files = formData.getAll('images') as File[];
     const category = formData.get('category') as string;
-    const metadata = formData.get('metadata') ? JSON.parse(formData.get('metadata') as string) : {};
+    const metadata = formData.get('metadata')
+      ? JSON.parse(formData.get('metadata') as string)
+      : {};
 
     // Validate input
     if (!files || files.length === 0) {
@@ -141,9 +148,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!category || !['shirts_tops', 'pants_bottoms', 'shoes'].includes(category)) {
+    if (
+      !category ||
+      !['shirts_tops', 'pants_bottoms', 'shoes'].includes(category)
+    ) {
       return NextResponse.json(
-        { success: false, error: 'Invalid category. Must be one of: shirts_tops, pants_bottoms, shoes' },
+        {
+          success: false,
+          error:
+            'Invalid category. Must be one of: shirts_tops, pants_bottoms, shoes',
+        },
         { status: 400 }
       );
     }
@@ -152,8 +166,8 @@ export async function POST(request: NextRequest) {
     const currentUsage = await TierLimits.checkClothingUpload(user.id);
     if (currentUsage.remaining < files.length) {
       return NextResponse.json(
-        { 
-          success: false, 
+        {
+          success: false,
           error: `Insufficient tier allowance. You can upload ${currentUsage.remaining} more items.`,
           upgradeRequired: currentUsage.upgradeRequired,
         },
@@ -161,13 +175,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const createdItems: ClothingItem[] = [];
+    const createdItems: any[] = [];
     const errors: string[] = [];
 
     // Process each file
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      
+
       try {
         // Validate file
         if (!file.type.startsWith('image/')) {
@@ -175,7 +189,8 @@ export async function POST(request: NextRequest) {
           continue;
         }
 
-        if (file.size > 50 * 1024 * 1024) { // 50MB limit
+        if (file.size > 50 * 1024 * 1024) {
+          // 50MB limit
           errors.push(`File ${file.name} exceeds 50MB limit`);
           continue;
         }
@@ -186,7 +201,7 @@ export async function POST(request: NextRequest) {
         const filePath = `clothing/${user.id}/${fileName}`;
 
         // Upload to Supabase Storage
-        const { data: uploadData, error: uploadError } = await supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from('clothing-images')
           .upload(filePath, file, {
             contentType: file.type,
@@ -194,15 +209,18 @@ export async function POST(request: NextRequest) {
           });
 
         if (uploadError) {
-          logger.error('Failed to upload file', uploadError, { userId: user.id, fileName });
+          logger.error('Failed to upload file', uploadError, {
+            userId: user.id,
+            fileName,
+          });
           errors.push(`Failed to upload ${file.name}`);
           continue;
         }
 
         // Get public URL
-        const { data: { publicUrl } } = supabase.storage
-          .from('clothing-images')
-          .getPublicUrl(filePath);
+        const {
+          data: { publicUrl },
+        } = supabase.storage.from('clothing-images').getPublicUrl(filePath);
 
         // Create thumbnail (simplified - in production, you'd use image processing)
         const thumbnailUrl = publicUrl; // For now, use same URL
@@ -227,7 +245,10 @@ export async function POST(request: NextRequest) {
           .single();
 
         if (dbError) {
-          logger.error('Failed to create clothing item record', dbError, { userId: user.id, fileName });
+          logger.error('Failed to create clothing item record', dbError, {
+            userId: user.id,
+            fileName,
+          });
           errors.push(`Failed to save ${file.name}`);
           continue;
         }
@@ -241,9 +262,11 @@ export async function POST(request: NextRequest) {
           fileSize: file.size,
           category,
         });
-
       } catch (fileError) {
-        logger.error('Error processing file', fileError as Error, { userId: user.id, fileName: file.name });
+        logger.error('Error processing file', fileError as Error, {
+          userId: user.id,
+          fileName: file.name,
+        });
         errors.push(`Error processing ${file.name}`);
       }
     }
@@ -268,7 +291,6 @@ export async function POST(request: NextRequest) {
         },
       },
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
@@ -281,10 +303,13 @@ export async function POST(request: NextRequest) {
  */
 export async function PUT(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -317,7 +342,9 @@ export async function PUT(request: NextRequest) {
       .in('id', item_ids);
 
     if (checkError) {
-      logger.error('Failed to check clothing items ownership', checkError, { userId: user.id });
+      logger.error('Failed to check clothing items ownership', checkError, {
+        userId: user.id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to validate items' },
         { status: 500 }
@@ -326,7 +353,10 @@ export async function PUT(request: NextRequest) {
 
     if (existingItems.length !== item_ids.length) {
       return NextResponse.json(
-        { success: false, error: 'Some items do not exist or do not belong to you' },
+        {
+          success: false,
+          error: 'Some items do not exist or do not belong to you',
+        },
         { status: 403 }
       );
     }
@@ -343,7 +373,9 @@ export async function PUT(request: NextRequest) {
       .select();
 
     if (updateError) {
-      logger.error('Failed to update clothing items', updateError, { userId: user.id });
+      logger.error('Failed to update clothing items', updateError, {
+        userId: user.id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to update items' },
         { status: 500 }
@@ -363,7 +395,6 @@ export async function PUT(request: NextRequest) {
         count: updatedItems.length,
       },
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
@@ -376,10 +407,13 @@ export async function PUT(request: NextRequest) {
  */
 export async function DELETE(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -405,7 +439,9 @@ export async function DELETE(request: NextRequest) {
       .in('id', itemIds);
 
     if (fetchError) {
-      logger.error('Failed to fetch items for deletion', fetchError, { userId: user.id });
+      logger.error('Failed to fetch items for deletion', fetchError, {
+        userId: user.id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to fetch items' },
         { status: 500 }
@@ -414,7 +450,10 @@ export async function DELETE(request: NextRequest) {
 
     if (itemsToDelete.length !== itemIds.length) {
       return NextResponse.json(
-        { success: false, error: 'Some items do not exist or do not belong to you' },
+        {
+          success: false,
+          error: 'Some items do not exist or do not belong to you',
+        },
         { status: 403 }
       );
     }
@@ -427,7 +466,9 @@ export async function DELETE(request: NextRequest) {
       .in('id', itemIds);
 
     if (deleteError) {
-      logger.error('Failed to delete clothing items', deleteError, { userId: user.id });
+      logger.error('Failed to delete clothing items', deleteError, {
+        userId: user.id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to delete items' },
         { status: 500 }
@@ -438,13 +479,19 @@ export async function DELETE(request: NextRequest) {
     itemsToDelete.forEach(async (item) => {
       try {
         // Extract file path from URL
-        const imagePath = item.image_url.split('/storage/v1/object/public/clothing-images/')[1];
-        const thumbnailPath = item.thumbnail_url.split('/storage/v1/object/public/clothing-images/')[1];
+        const imagePath = item.image_url.split(
+          '/storage/v1/object/public/clothing-images/'
+        )[1];
+        const thumbnailPath = item.thumbnail_url.split(
+          '/storage/v1/object/public/clothing-images/'
+        )[1];
 
         // Delete files from storage
         await supabase.storage.from('clothing-images').remove([imagePath]);
         if (thumbnailPath !== imagePath) {
-          await supabase.storage.from('clothing-images').remove([thumbnailPath]);
+          await supabase.storage
+            .from('clothing-images')
+            .remove([thumbnailPath]);
         }
       } catch (cleanupError) {
         logger.error('Failed to cleanup storage files', cleanupError as Error, {
@@ -473,7 +520,6 @@ export async function DELETE(request: NextRequest) {
         itemIds,
       },
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });

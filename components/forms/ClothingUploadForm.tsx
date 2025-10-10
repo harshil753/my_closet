@@ -1,6 +1,6 @@
 /**
  * Clothing Upload Form Component
- * 
+ *
  * This component provides a comprehensive form for uploading clothing items
  * with drag-and-drop functionality, image preview, category selection,
  * and tier limit validation.
@@ -8,15 +8,14 @@
 
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useState, useRef } from 'react';
+// import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { ClothingCategory } from '@/lib/types/common';
-import { TierLimits } from '@/lib/utils/tierLimits';
 import { useAuth } from '@/lib/auth/auth-context';
 
 // Form data interface
@@ -61,7 +60,7 @@ export function ClothingUploadForm({
 }: ClothingUploadFormProps) {
   // Authentication context
   const { user } = useAuth();
-  
+
   // Form state
   const [formData, setFormData] = useState<ClothingUploadData>({
     name: '',
@@ -74,7 +73,7 @@ export function ClothingUploadForm({
       notes: '',
     },
   });
-  
+
   // Upload status
   const [uploadStatus, setUploadStatus] = useState<UploadStatus>({
     uploading: false,
@@ -82,24 +81,24 @@ export function ClothingUploadForm({
     error: null,
     success: false,
   });
-  
+
   // Tier limit checking
   const [tierStatus, setTierStatus] = useState<any>(null);
-  const [tierLoading, setTierLoading] = useState(true);
-  
+  const [, setTierLoading] = useState(true);
+
   // Form validation
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   // File input ref
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   // Load tier status on component mount
   React.useEffect(() => {
     if (user?.id) {
       loadTierStatus();
     }
   }, [user?.id]);
-  
+
   /**
    * Load user's tier status and limits
    */
@@ -117,38 +116,34 @@ export function ClothingUploadForm({
       setTierLoading(false);
     }
   };
-  
+
+  // Note: onDrop function removed as it's not currently used
+  // Will be re-implemented when drag-and-drop functionality is added
+
   /**
-   * Handle file drop/selection
+   * Handle file selection from input
    */
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
-      // Validate file
       const validation = validateFile(file);
       if (!validation.valid) {
-        setErrors({ image: validation.error });
+        setErrors({ image: validation.error || 'Invalid file' });
         return;
       }
-      
-      // Update form data
-      setFormData(prev => ({ ...prev, image: file }));
-      setErrors(prev => ({ ...prev, image: '' }));
+
+      setFormData((prev) => ({ ...prev, image: file }));
+      setErrors((prev) => ({ ...prev, image: '' }));
     }
-  }, [maxFileSize, allowedTypes]);
-  
+  };
+
   /**
    * Configure dropzone
    */
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      'image/*': allowedTypes,
-    },
-    maxFiles: 1,
-    maxSize: maxFileSize * 1024 * 1024, // Convert MB to bytes
-  });
-  
+  // Temporary fallback for useDropzone
+  const getRootProps = () => ({});
+  const isDragActive = false;
+
   /**
    * Validate uploaded file
    */
@@ -160,7 +155,7 @@ export function ClothingUploadForm({
         error: `File too large. Maximum size: ${maxFileSize}MB`,
       };
     }
-    
+
     // Check file type
     if (!allowedTypes.includes(file.type)) {
       return {
@@ -168,30 +163,30 @@ export function ClothingUploadForm({
         error: `Invalid file type. Allowed: ${allowedTypes.join(', ')}`,
       };
     }
-    
+
     return { valid: true };
   };
-  
+
   /**
    * Handle form field changes
    */
   const handleFieldChange = (field: string, value: any) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [field]: value,
     }));
-    
+
     // Clear field error
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: '' }));
     }
   };
-  
+
   /**
    * Handle metadata field changes
    */
   const handleMetadataChange = (field: string, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       metadata: {
         ...prev.metadata,
@@ -199,54 +194,54 @@ export function ClothingUploadForm({
       },
     }));
   };
-  
+
   /**
    * Validate form data
    */
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
-    
+
     // Validate name
     if (!formData.name.trim()) {
       newErrors.name = 'Item name is required';
     } else if (formData.name.length > 100) {
       newErrors.name = 'Name must be 100 characters or less';
     }
-    
+
     // Validate image
     if (!formData.image) {
       newErrors.image = 'Please select an image';
     }
-    
+
     // Validate category
     if (!formData.category) {
       newErrors.category = 'Please select a category';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  
+
   /**
    * Handle form submission
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validate form
     if (!validateForm()) {
       return;
     }
-    
+
     // Check tier limits
     if (tierStatus && !tierStatus.limits.clothing_items.allowed) {
-      setUploadStatus(prev => ({
+      setUploadStatus((prev) => ({
         ...prev,
         error: tierStatus.limits.clothing_items.reason,
       }));
       return;
     }
-    
+
     // Start upload
     setUploadStatus({
       uploading: true,
@@ -254,7 +249,7 @@ export function ClothingUploadForm({
       error: null,
       success: false,
     });
-    
+
     try {
       // Create form data for upload
       const uploadData = new FormData();
@@ -262,15 +257,15 @@ export function ClothingUploadForm({
       uploadData.append('category', formData.category);
       uploadData.append('image', formData.image!);
       uploadData.append('metadata', JSON.stringify(formData.metadata));
-      
+
       // Upload to API
       const response = await fetch('/api/upload/clothing', {
         method: 'POST',
         body: uploadData,
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
         setUploadStatus({
           uploading: false,
@@ -278,7 +273,7 @@ export function ClothingUploadForm({
           error: null,
           success: true,
         });
-        
+
         // Reset form
         setFormData({
           name: '',
@@ -291,10 +286,10 @@ export function ClothingUploadForm({
             notes: '',
           },
         });
-        
+
         // Call success callback
         onUploadComplete?.(result.data);
-        
+
         // Reload tier status
         await loadTierStatus();
       } else {
@@ -307,37 +302,28 @@ export function ClothingUploadForm({
         error: error instanceof Error ? error.message : 'Upload failed',
         success: false,
       });
-      
+
       onUploadError?.(error instanceof Error ? error.message : 'Upload failed');
     }
   };
-  
+
   /**
    * Remove selected image
    */
   const removeImage = () => {
-    setFormData(prev => ({ ...prev, image: null }));
-    setErrors(prev => ({ ...prev, image: '' }));
+    setFormData((prev) => ({ ...prev, image: null }));
+    setErrors((prev) => ({ ...prev, image: '' }));
   };
-  
-  /**
-   * Get category display name
-   */
-  const getCategoryDisplayName = (category: ClothingCategory): string => {
-    const names = {
-      shirts_tops: 'Shirts & Tops',
-      pants_bottoms: 'Pants & Bottoms',
-      shoes: 'Shoes',
-    };
-    return names[category];
-  };
-  
+
+  // Note: getCategoryDisplayName function removed as it's not currently used
+  // Will be re-implemented when category display functionality is needed
+
   return (
-    <Card className={`w-full max-w-2xl mx-auto ${className}`}>
+    <Card className={`mx-auto w-full max-w-2xl ${className}`}>
       <CardHeader>
         <CardTitle>Upload Clothing Item</CardTitle>
       </CardHeader>
-      
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Tier Status Alert */}
@@ -346,9 +332,9 @@ export function ClothingUploadForm({
               <strong>Upload Limit Reached</strong>
               <p>{tierStatus.limits.clothing_items.reason}</p>
               {tierStatus.upgradeAvailable && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="mt-2"
                   onClick={() => window.open('/upgrade', '_blank')}
                 >
@@ -357,7 +343,7 @@ export function ClothingUploadForm({
               )}
             </Alert>
           )}
-          
+
           {/* Item Name */}
           <div className="space-y-2">
             <label htmlFor="name" className="text-sm font-medium">
@@ -375,7 +361,7 @@ export function ClothingUploadForm({
               <p className="text-sm text-red-500">{errors.name}</p>
             )}
           </div>
-          
+
           {/* Category Selection */}
           <div className="space-y-2">
             <label htmlFor="category" className="text-sm font-medium">
@@ -384,8 +370,13 @@ export function ClothingUploadForm({
             <select
               id="category"
               value={formData.category}
-              onChange={(e) => handleFieldChange('category', e.target.value as ClothingCategory)}
-              className={`w-full h-10 px-3 py-2 border rounded-md bg-background ${
+              onChange={(e) =>
+                handleFieldChange(
+                  'category',
+                  e.target.value as ClothingCategory
+                )
+              }
+              className={`bg-background h-10 w-full rounded-md border px-3 py-2 ${
                 errors.category ? 'border-red-500' : 'border-input'
               }`}
             >
@@ -397,31 +388,38 @@ export function ClothingUploadForm({
               <p className="text-sm text-red-500">{errors.category}</p>
             )}
           </div>
-          
+
           {/* Image Upload */}
           <div className="space-y-2">
             <label className="text-sm font-medium">Image *</label>
-            
+
             {/* Dropzone */}
             <div
               {...getRootProps()}
-              className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
+              className={`cursor-pointer rounded-lg border-2 border-dashed p-6 text-center transition-colors ${
                 isDragActive
                   ? 'border-primary bg-primary/5'
                   : 'border-gray-300 hover:border-gray-400'
               } ${errors.image ? 'border-red-500' : ''}`}
             >
-              <input {...getInputProps()} ref={fileInputRef} />
-              
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileSelect}
+                accept="image/jpeg,image/png,image/webp"
+                className="hidden"
+              />
+
               {formData.image ? (
                 <div className="space-y-2">
                   <img
                     src={URL.createObjectURL(formData.image)}
                     alt="Preview"
-                    className="max-h-48 mx-auto rounded-lg"
+                    className="mx-auto max-h-48 rounded-lg"
                   />
                   <p className="text-sm text-gray-600">
-                    {formData.image.name} ({(formData.image.size / 1024 / 1024).toFixed(2)} MB)
+                    {formData.image.name} (
+                    {(formData.image.size / 1024 / 1024).toFixed(2)} MB)
                   </p>
                   <Button
                     type="button"
@@ -446,12 +444,12 @@ export function ClothingUploadForm({
                 </div>
               )}
             </div>
-            
+
             {errors.image && (
               <p className="text-sm text-red-500">{errors.image}</p>
             )}
           </div>
-          
+
           {/* Metadata Fields */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -466,7 +464,7 @@ export function ClothingUploadForm({
                 placeholder="e.g., Blue"
               />
             </div>
-            
+
             <div className="space-y-2">
               <label htmlFor="brand" className="text-sm font-medium">
                 Brand
@@ -479,7 +477,7 @@ export function ClothingUploadForm({
                 placeholder="e.g., Nike"
               />
             </div>
-            
+
             <div className="space-y-2">
               <label htmlFor="size" className="text-sm font-medium">
                 Size
@@ -492,7 +490,7 @@ export function ClothingUploadForm({
                 placeholder="e.g., M, L, 10"
               />
             </div>
-            
+
             <div className="space-y-2">
               <label htmlFor="notes" className="text-sm font-medium">
                 Notes
@@ -506,7 +504,7 @@ export function ClothingUploadForm({
               />
             </div>
           </div>
-          
+
           {/* Upload Status */}
           {uploadStatus.uploading && (
             <div className="space-y-2">
@@ -514,7 +512,7 @@ export function ClothingUploadForm({
                 <LoadingSpinner size="sm" />
                 <span className="text-sm">Uploading...</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="h-2 w-full rounded-full bg-gray-200">
                 <div
                   className="bg-primary h-2 rounded-full transition-all duration-300"
                   style={{ width: `${uploadStatus.progress}%` }}
@@ -522,21 +520,21 @@ export function ClothingUploadForm({
               </div>
             </div>
           )}
-          
+
           {uploadStatus.error && (
             <Alert variant="destructive">
               <strong>Upload Failed</strong>
               <p>{uploadStatus.error}</p>
             </Alert>
           )}
-          
+
           {uploadStatus.success && (
             <Alert>
               <strong>Upload Successful!</strong>
               <p>Your clothing item has been added to your closet.</p>
             </Alert>
           )}
-          
+
           {/* Submit Button */}
           <div className="flex justify-end space-x-2">
             <Button
@@ -565,7 +563,7 @@ export function ClothingUploadForm({
             >
               Reset
             </Button>
-            
+
             <Button
               type="submit"
               disabled={

@@ -6,7 +6,7 @@
 'use client';
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 /**
@@ -30,7 +30,10 @@ interface ErrorBoundaryProps {
 /**
  * Error boundary component
  */
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
@@ -39,16 +42,16 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return {
       hasError: true,
-      error
+      error,
     };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
+
     this.setState({
       error,
-      errorInfo
+      errorInfo,
     });
 
     // Call custom error handler if provided
@@ -58,7 +61,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   handleRetry = () => {
-    this.setState({ hasError: false, error: undefined, errorInfo: undefined });
+    this.setState({ hasError: false });
   };
 
   render() {
@@ -69,10 +72,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       }
 
       // Default error UI
-      return <ErrorFallback 
-        error={this.state.error} 
-        onRetry={this.handleRetry}
-      />;
+      return (
+        <ErrorFallback
+          error={this.state.error || new Error('Unknown error')}
+          onRetry={this.handleRetry}
+        />
+      );
     }
 
     return this.props.children;
@@ -82,16 +87,16 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 /**
  * Error fallback component
  */
-function ErrorFallback({ 
-  error, 
-  onRetry 
-}: { 
-  error?: Error; 
-  onRetry: () => void; 
+function ErrorFallback({
+  error,
+  onRetry,
+}: {
+  error?: Error;
+  onRetry: () => void;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <AlertTriangle className="mx-auto h-12 w-12 text-red-500" />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
@@ -105,7 +110,7 @@ function ErrorFallback({
         <div className="mt-8 space-y-4">
           <Button
             onClick={onRetry}
-            className="w-full flex items-center justify-center space-x-2"
+            className="flex w-full items-center justify-center space-x-2"
           >
             <RefreshCw className="h-4 w-4" />
             <span>Try Again</span>
@@ -113,8 +118,8 @@ function ErrorFallback({
 
           <Button
             variant="outline"
-            onClick={() => window.location.href = '/'}
-            className="w-full flex items-center justify-center space-x-2"
+            onClick={() => (window.location.href = '/')}
+            className="flex w-full items-center justify-center space-x-2"
           >
             <Home className="h-4 w-4" />
             <span>Go Home</span>
@@ -123,11 +128,11 @@ function ErrorFallback({
 
         {/* Error details in development */}
         {process.env.NODE_ENV === 'development' && error && (
-          <details className="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <details className="mt-8 rounded-lg border border-red-200 bg-red-50 p-4">
             <summary className="cursor-pointer text-sm font-medium text-red-800">
               Error Details (Development)
             </summary>
-            <pre className="mt-2 text-xs text-red-700 whitespace-pre-wrap overflow-auto">
+            <pre className="mt-2 overflow-auto text-xs whitespace-pre-wrap text-red-700">
               {error.toString()}
             </pre>
           </details>
@@ -144,12 +149,12 @@ export function PageErrorBoundary({ children }: { children: ReactNode }) {
   return (
     <ErrorBoundary
       fallback={
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="flex min-h-screen items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            <h1 className="mb-4 text-2xl font-bold text-gray-900">
               Page Error
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="mb-6 text-gray-600">
               This page encountered an error. Please try refreshing.
             </p>
             <Button onClick={() => window.location.reload()}>
@@ -167,18 +172,18 @@ export function PageErrorBoundary({ children }: { children: ReactNode }) {
 /**
  * Component-level error boundary
  */
-export function ComponentErrorBoundary({ 
-  children, 
-  fallback 
-}: { 
-  children: ReactNode; 
-  fallback?: ReactNode; 
+export function ComponentErrorBoundary({
+  children,
+  fallback,
+}: {
+  children: ReactNode;
+  fallback?: ReactNode;
 }) {
   return (
     <ErrorBoundary
       fallback={
         fallback || (
-          <div className="p-4 border border-red-200 rounded-lg bg-red-50">
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4">
             <div className="flex items-center space-x-2">
               <AlertTriangle className="h-5 w-5 text-red-500" />
               <span className="text-sm text-red-700">

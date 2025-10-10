@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/Button';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 
 /**
@@ -37,27 +36,29 @@ export function PageHeader({
   breadcrumbs,
   actions,
   className = '',
-  size = 'md'
+  size = 'md',
 }: PageHeaderProps) {
   const sizeClasses = {
     sm: 'py-4',
     md: 'py-6',
-    lg: 'py-8'
+    lg: 'py-8',
   };
 
   const titleSizes = {
     sm: 'text-2xl',
     md: 'text-3xl',
-    lg: 'text-4xl'
+    lg: 'text-4xl',
   };
 
   return (
-    <div className={cn(
-      'border-b border-gray-200 bg-white',
-      sizeClasses[size],
-      className
-    )}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      className={cn(
+        'border-b border-gray-200 bg-white',
+        sizeClasses[size],
+        className
+      )}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         {breadcrumbs && breadcrumbs.length > 0 && (
           <div className="mb-4">
@@ -67,30 +68,25 @@ export function PageHeader({
 
         {/* Header Content */}
         <div className="flex items-center justify-between">
-          <div className="flex-1 min-w-0">
-            <h1 className={cn(
-              'font-bold text-gray-900',
-              titleSizes[size]
-            )}>
+          <div className="min-w-0 flex-1">
+            <h1 className={cn('font-bold text-gray-900', titleSizes[size])}>
               {title}
             </h1>
-            
+
             {description && (
-              <p className={cn(
-                'mt-2 text-gray-600',
-                size === 'sm' ? 'text-sm' : 'text-base'
-              )}>
+              <p
+                className={cn(
+                  'mt-2 text-gray-600',
+                  size === 'sm' ? 'text-sm' : 'text-base'
+                )}
+              >
                 {description}
               </p>
             )}
           </div>
 
           {/* Actions */}
-          {actions && (
-            <div className="ml-4 flex-shrink-0">
-              {actions}
-            </div>
-          )}
+          {actions && <div className="ml-4 flex-shrink-0">{actions}</div>}
         </div>
       </div>
     </div>
@@ -104,7 +100,7 @@ export function SectionHeader({
   title,
   description,
   actions,
-  className = ''
+  className = '',
 }: {
   title: string;
   description?: string;
@@ -115,21 +111,13 @@ export function SectionHeader({
     <div className={cn('mb-6', className)}>
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">
-            {title}
-          </h2>
+          <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
           {description && (
-            <p className="mt-1 text-sm text-gray-600">
-              {description}
-            </p>
+            <p className="mt-1 text-sm text-gray-600">{description}</p>
           )}
         </div>
-        
-        {actions && (
-          <div className="ml-4">
-            {actions}
-          </div>
-        )}
+
+        {actions && <div className="ml-4">{actions}</div>}
       </div>
     </div>
   );
@@ -142,7 +130,7 @@ export function CardHeader({
   title,
   description,
   actions,
-  className = ''
+  className = '',
 }: {
   title: string;
   description?: string;
@@ -150,24 +138,16 @@ export function CardHeader({
   className?: string;
 }) {
   return (
-    <div className={cn('px-6 py-4 border-b border-gray-200', className)}>
+    <div className={cn('border-b border-gray-200 px-6 py-4', className)}>
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-medium text-gray-900">
-            {title}
-          </h3>
+          <h3 className="text-lg font-medium text-gray-900">{title}</h3>
           {description && (
-            <p className="mt-1 text-sm text-gray-600">
-              {description}
-            </p>
+            <p className="mt-1 text-sm text-gray-600">{description}</p>
           )}
         </div>
-        
-        {actions && (
-          <div className="ml-4">
-            {actions}
-          </div>
-        )}
+
+        {actions && <div className="ml-4">{actions}</div>}
       </div>
     </div>
   );

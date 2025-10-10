@@ -150,7 +150,7 @@ export function ClothingDetectionModal({
   
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={className}>
-      <ModalHeader>
+      <ModalHeader title="Clothing Detection">
         <h2 className="text-xl font-semibold">AI Clothing Detection</h2>
         <p className="text-sm text-gray-600">
           Our AI has analyzed your image and provided suggestions

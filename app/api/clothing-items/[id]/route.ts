@@ -8,21 +8,24 @@ import { createSupabaseServerClient } from '@/lib/supabase/supabase-client';
 import { UsageTracker } from '@/lib/middleware/usage-tracking';
 import { ErrorHandler } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
-import { ClothingItem, UpdateClothingItemInput } from '@/lib/types/clothing';
+import { UpdateClothingItemInput } from '@/lib/types/clothing';
 
 /**
  * GET /api/clothing-items/[id]
  * Get specific clothing item details
  */
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -30,10 +33,11 @@ export async function GET(
       );
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Validate UUID format
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid item ID format' },
@@ -57,7 +61,10 @@ export async function GET(
         );
       }
 
-      logger.error('Failed to fetch clothing item', error, { userId: user.id, itemId: id });
+      logger.error('Failed to fetch clothing item', error, {
+        userId: user.id,
+        itemId: id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to fetch clothing item' },
         { status: 500 }
@@ -74,7 +81,6 @@ export async function GET(
       success: true,
       data: item,
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
@@ -86,14 +92,17 @@ export async function GET(
  * Update specific clothing item
  */
 export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -101,10 +110,11 @@ export async function PUT(
       );
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Validate UUID format
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid item ID format' },
@@ -112,18 +122,28 @@ export async function PUT(
       );
     }
 
-    const body = await request.json();
+    const body = await _request.json();
     const updates: UpdateClothingItemInput = body;
 
     // Validate updates
-    if (updates.category && !['shirts_tops', 'pants_bottoms', 'shoes'].includes(updates.category)) {
+    if (
+      updates.category &&
+      !['shirts_tops', 'pants_bottoms', 'shoes'].includes(updates.category)
+    ) {
       return NextResponse.json(
-        { success: false, error: 'Invalid category. Must be one of: shirts_tops, pants_bottoms, shoes' },
+        {
+          success: false,
+          error:
+            'Invalid category. Must be one of: shirts_tops, pants_bottoms, shoes',
+        },
         { status: 400 }
       );
     }
 
-    if (updates.name && (updates.name.length < 1 || updates.name.length > 100)) {
+    if (
+      updates.name &&
+      (updates.name.length < 1 || updates.name.length > 100)
+    ) {
       return NextResponse.json(
         { success: false, error: 'Name must be between 1 and 100 characters' },
         { status: 400 }
@@ -146,7 +166,10 @@ export async function PUT(
         );
       }
 
-      logger.error('Failed to check clothing item ownership', checkError, { userId: user.id, itemId: id });
+      logger.error('Failed to check clothing item ownership', checkError, {
+        userId: user.id,
+        itemId: id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to validate item' },
         { status: 500 }
@@ -166,7 +189,10 @@ export async function PUT(
       .single();
 
     if (updateError) {
-      logger.error('Failed to update clothing item', updateError, { userId: user.id, itemId: id });
+      logger.error('Failed to update clothing item', updateError, {
+        userId: user.id,
+        itemId: id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to update clothing item' },
         { status: 500 }
@@ -185,7 +211,6 @@ export async function PUT(
       success: true,
       data: updatedItem,
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
@@ -197,14 +222,17 @@ export async function PUT(
  * Delete specific clothing item
  */
 export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const supabase = createSupabaseServerClient();
-    
+    const supabase = await createSupabaseServerClient();
+
     // Get authenticated user
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
     if (authError || !user) {
       return NextResponse.json(
         { success: false, error: 'Authentication required' },
@@ -212,10 +240,11 @@ export async function DELETE(
       );
     }
 
-    const { id } = params;
+    const { id } = await params;
 
     // Validate UUID format
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(id)) {
       return NextResponse.json(
         { success: false, error: 'Invalid item ID format' },
@@ -239,7 +268,10 @@ export async function DELETE(
         );
       }
 
-      logger.error('Failed to fetch clothing item for deletion', fetchError, { userId: user.id, itemId: id });
+      logger.error('Failed to fetch clothing item for deletion', fetchError, {
+        userId: user.id,
+        itemId: id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to fetch item' },
         { status: 500 }
@@ -254,7 +286,10 @@ export async function DELETE(
       .eq('user_id', user.id);
 
     if (deleteError) {
-      logger.error('Failed to delete clothing item', deleteError, { userId: user.id, itemId: id });
+      logger.error('Failed to delete clothing item', deleteError, {
+        userId: user.id,
+        itemId: id,
+      });
       return NextResponse.json(
         { success: false, error: 'Failed to delete clothing item' },
         { status: 500 }
@@ -264,12 +299,16 @@ export async function DELETE(
     // Clean up storage files (async)
     try {
       // Extract file paths from URLs
-      const imagePath = itemToDelete.image_url.split('/storage/v1/object/public/clothing-images/')[1];
-      const thumbnailPath = itemToDelete.thumbnail_url.split('/storage/v1/object/public/clothing-images/')[1];
+      const imagePath = itemToDelete.image_url.split(
+        '/storage/v1/object/public/clothing-images/'
+      )[1];
+      const thumbnailPath = itemToDelete.thumbnail_url.split(
+        '/storage/v1/object/public/clothing-images/'
+      )[1];
 
       // Delete files from storage
       await supabase.storage.from('clothing-images').remove([imagePath]);
-      
+
       // Only delete thumbnail if it's different from main image
       if (thumbnailPath !== imagePath) {
         await supabase.storage.from('clothing-images').remove([thumbnailPath]);
@@ -306,7 +345,6 @@ export async function DELETE(
         itemName: itemToDelete.name,
       },
     });
-
   } catch (error) {
     const { statusCode, response } = ErrorHandler.handleApiError(error);
     return NextResponse.json(response, { status: statusCode });
