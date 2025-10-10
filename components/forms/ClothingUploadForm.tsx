@@ -93,7 +93,17 @@ export function ClothingUploadForm({
   });
 
   // Tier limit checking
-  const [tierStatus, setTierStatus] = useState<any>(null);
+  const [tierStatus, setTierStatus] = useState<{
+    tier: string;
+    limits: {
+      clothing_items: {
+        allowed: boolean;
+        reason?: string;
+        percentage: number;
+      };
+    };
+    upgradeAvailable?: boolean;
+  } | null>(null);
   const [, setTierLoading] = useState(true);
 
   // Form validation
@@ -130,6 +140,29 @@ export function ClothingUploadForm({
   /**
    * Handle file drop/selection
    */
+  /**
+   * Validate uploaded file
+   */
+  const validateFile = (file: File): { valid: boolean; error?: string } => {
+    // Check file size
+    if (file.size > maxFileSize * 1024 * 1024) {
+      return {
+        valid: false,
+        error: `File too large. Maximum size: ${maxFileSize}MB`,
+      };
+    }
+
+    // Check file type
+    if (!allowedTypes.includes(file.type)) {
+      return {
+        valid: false,
+        error: `Invalid file type. Allowed: ${allowedTypes.join(', ')}`,
+      };
+    }
+
+    return { valid: true };
+  };
+
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       const file = acceptedFiles[0];
@@ -146,7 +179,7 @@ export function ClothingUploadForm({
         setErrors((prev) => ({ ...prev, image: '' }));
       }
     },
-    [maxFileSize, allowedTypes, validateFile]
+    [maxFileSize, allowedTypes]
   );
 
   /**
@@ -208,29 +241,6 @@ export function ClothingUploadForm({
     onDragOver: handleDragOver,
     onDrop: handleDrop,
   });
-
-  /**
-   * Validate uploaded file
-   */
-  const validateFile = (file: File): { valid: boolean; error?: string } => {
-    // Check file size
-    if (file.size > maxFileSize * 1024 * 1024) {
-      return {
-        valid: false,
-        error: `File too large. Maximum size: ${maxFileSize}MB`,
-      };
-    }
-
-    // Check file type
-    if (!allowedTypes.includes(file.type)) {
-      return {
-        valid: false,
-        error: `Invalid file type. Allowed: ${allowedTypes.join(', ')}`,
-      };
-    }
-
-    return { valid: true };
-  };
 
   /**
    * Handle form field changes

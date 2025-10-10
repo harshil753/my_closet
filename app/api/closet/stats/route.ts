@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     // Get recent items (last 5)
     const recentItems =
       items
-        ?        .sort(
+        ?.sort(
           (a: { uploaded_at: string }, b: { uploaded_at: string }) =>
             new Date(b.uploaded_at).getTime() -
             new Date(a.uploaded_at).getTime()

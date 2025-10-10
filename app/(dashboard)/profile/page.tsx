@@ -127,7 +127,7 @@ export default function ProfilePage() {
         newPassword: '',
         confirmPassword: '',
       });
-    } catch (err) {
+    } catch {
       setPasswordError('Failed to change password. Please try again.');
     }
   };

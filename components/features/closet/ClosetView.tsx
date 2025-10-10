@@ -110,7 +110,7 @@ export function ClosetView({
   /**
    * Load clothing items from API
    */
-  const loadItems = async () => {
+  const loadItems = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -137,7 +137,7 @@ export function ClosetView({
     } finally {
       setLoading(false);
     }
-  };
+  }, [user?.id]);
 
   /**
    * Handle item selection for multi-select mode

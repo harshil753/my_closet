@@ -76,7 +76,7 @@ export default function ClosetPage() {
   /**
    * Load closet statistics and data
    */
-  const loadClosetData = async () => {
+  const loadClosetData = React.useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -96,7 +96,7 @@ export default function ClosetPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user?.id]);
 
   /**
    * Handle item selection for multi-select mode

@@ -4,7 +4,7 @@
  * Creates a user profile record in the database after successful Supabase Auth registration
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/lib/config/supabase';
 
 export async function POST() {

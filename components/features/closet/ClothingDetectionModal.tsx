@@ -85,7 +85,7 @@ export function ClothingDetectionModal({
   /**
    * Load AI detection results
    */
-  const loadDetectionResults = async () => {
+  const loadDetectionResults = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -113,7 +113,7 @@ export function ClothingDetectionModal({
     } finally {
       setLoading(false);
     }
-  };
+  }, [imageUrl, category]);
 
   /**
    * Handle confirmation of detection results

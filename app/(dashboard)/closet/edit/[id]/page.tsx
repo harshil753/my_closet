@@ -63,24 +63,10 @@ export default function EditClothingItemPage() {
     notes: '',
   });
 
-  // Load item data on component mount
-  useEffect(() => {
-    if (user?.id && itemId) {
-      loadItem();
-    }
-  }, [user?.id, itemId, loadItem]);
-
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!authLoading && !user) {
-      router.push('/login');
-    }
-  }, [user, authLoading, router]);
-
   /**
    * Load clothing item data
    */
-  const loadItem = async () => {
+  const loadItem = React.useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
@@ -109,7 +95,21 @@ export default function EditClothingItemPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [itemId, user?.id]);
+
+  // Load item data on component mount
+  useEffect(() => {
+    if (user?.id && itemId) {
+      loadItem();
+    }
+  }, [user?.id, itemId, loadItem]);
+
+  // Redirect if not authenticated
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, authLoading, router]);
 
   /**
    * Handle form input changes
@@ -194,8 +194,8 @@ export default function EditClothingItemPage() {
         <Alert variant="destructive">
           <strong>Item Not Found</strong>
           <p>
-            The clothing item you're trying to edit doesn't exist or you don't
-            have permission to edit it.
+            The clothing item you&apos;re trying to edit doesn&apos;t exist or
+            you don&apos;t have permission to edit it.
           </p>
           <Button onClick={() => router.push('/closet')} className="mt-2">
             Back to Closet

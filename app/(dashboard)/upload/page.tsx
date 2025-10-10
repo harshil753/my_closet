@@ -233,7 +233,7 @@ export default function UploadPage() {
                     <Alert variant="destructive">
                       <strong>Storage Almost Full</strong>
                       <p className="mt-1 text-sm">
-                        You're using{' '}
+                        You&apos;re using{' '}
                         {tierStatus.limits.clothing_items.percentage}% of your
                         storage.
                         {tierStatus.tier === 'free' &&
