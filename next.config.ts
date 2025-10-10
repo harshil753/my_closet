@@ -39,12 +39,6 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '.'),
-      '@/components': path.resolve(__dirname, './components'),
-      '@/lib': path.resolve(__dirname, './lib'),
-      '@/app': path.resolve(__dirname, './app'),
-      '@/types': path.resolve(__dirname, './lib/types'),
-      '@/utils': path.resolve(__dirname, './lib/utils'),
-      '@/services': path.resolve(__dirname, './lib/services'),
     };
 
     // Ensure webpack resolves .tsx and .ts extensions
