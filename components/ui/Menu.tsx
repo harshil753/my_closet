@@ -37,7 +37,7 @@ export function Menu({ children, className }: MenuProps) {
           return React.cloneElement(child, {
             isOpen,
             setIsOpen,
-          } as any);
+          } as { isOpen: boolean; setIsOpen: (open: boolean) => void });
         }
         return child;
       })}
@@ -45,7 +45,12 @@ export function Menu({ children, className }: MenuProps) {
   );
 }
 
-export function MenuItem({ children, icon, onClick, className }: MenuItemProps) {
+export function MenuItem({
+  children,
+  icon,
+  onClick,
+  className,
+}: MenuItemProps) {
   return (
     <button
       onClick={onClick}

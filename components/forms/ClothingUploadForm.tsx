@@ -9,6 +9,7 @@
 'use client';
 
 import React, { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 // import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -41,7 +42,16 @@ interface UploadStatus {
 
 // Component props
 interface ClothingUploadFormProps {
-  onUploadComplete?: (item: any) => void;
+  onUploadComplete?: (item: {
+    id: string;
+    name: string;
+    category: string;
+    image_url: string;
+    thumbnail_url: string;
+    metadata: Record<string, unknown>;
+    is_active: boolean;
+    uploaded_at: string;
+  }) => void;
   onUploadError?: (error: string) => void;
   maxFileSize?: number; // in MB
   allowedTypes?: string[];
@@ -136,7 +146,7 @@ export function ClothingUploadForm({
         setErrors((prev) => ({ ...prev, image: '' }));
       }
     },
-    [maxFileSize, allowedTypes]
+    [maxFileSize, allowedTypes, validateFile]
   );
 
   /**
@@ -225,7 +235,10 @@ export function ClothingUploadForm({
   /**
    * Handle form field changes
    */
-  const handleFieldChange = (field: string, value: any) => {
+  const handleFieldChange = (
+    field: string,
+    value: string | ClothingCategory
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -502,11 +515,15 @@ export function ClothingUploadForm({
 
               {formData.image ? (
                 <div className="space-y-2">
-                  <img
-                    src={URL.createObjectURL(formData.image)}
-                    alt="Preview"
-                    className="mx-auto max-h-48 rounded-lg"
-                  />
+                  <div className="relative mx-auto max-h-48 w-full overflow-hidden rounded-lg">
+                    <Image
+                      src={URL.createObjectURL(formData.image)}
+                      alt="Preview"
+                      width={200}
+                      height={200}
+                      className="mx-auto rounded-lg"
+                    />
+                  </div>
                   <p className="text-sm text-gray-600">
                     {formData.image.name} (
                     {(formData.image.size / 1024 / 1024).toFixed(2)} MB)

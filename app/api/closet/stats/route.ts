@@ -50,15 +50,15 @@ export async function GET(request: NextRequest) {
 
     // Calculate category counts
     const categoryCounts: Record<string, number> = {};
-    items?.forEach((item: any) => {
+    items?.forEach((item: { category: string }) => {
       categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
     });
 
     // Get recent items (last 5)
     const recentItems =
       items
-        ?.sort(
-          (a: any, b: any) =>
+        ?        .sort(
+          (a: { uploaded_at: string }, b: { uploaded_at: string }) =>
             new Date(b.uploaded_at).getTime() -
             new Date(a.uploaded_at).getTime()
         )

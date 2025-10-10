@@ -9,6 +9,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -254,10 +255,11 @@ export function ClothingItemCard({
         {/* Image */}
         <div className="relative aspect-square bg-gray-100">
           {!imageError ? (
-            <img
+            <Image
               src={item.thumbnail_url || item.image_url}
               alt={item.name}
-              className={`h-full w-full object-cover transition-opacity duration-200 ${
+              fill
+              className={`object-cover transition-opacity duration-200 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               onLoad={handleImageLoad}
@@ -381,10 +383,11 @@ export function ClothingItemCard({
           {/* Image */}
           <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
             {!imageError ? (
-              <img
+              <Image
                 src={item.thumbnail_url || item.image_url}
                 alt={item.name}
-                className={`h-full w-full object-cover transition-opacity duration-200 ${
+                fill
+                className={`object-cover transition-opacity duration-200 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}
                 onLoad={handleImageLoad}

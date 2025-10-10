@@ -216,7 +216,7 @@ print(json.dumps(result_dict))
 
           python.on('close', (code) => {
             // Clean up temp file
-            unlink(tempFile).catch(() => {});
+            unlink(tempFile).catch(() => undefined);
 
             if (code !== 0) {
               reject(new Error(`Python process failed: ${error}`));

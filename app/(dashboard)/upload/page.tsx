@@ -60,7 +60,11 @@ export default function UploadPage() {
   const router = useRouter();
 
   // State management
-  const [tierStatus, setTierStatus] = useState<any>(null);
+  const [tierStatus, setTierStatus] = useState<{
+    tier: string;
+    usage: { clothing_items_used: number };
+    limits: { clothing_items: { limit: number; percentage: number } };
+  } | null>(null);
   const [tierLoading, setTierLoading] = useState(true);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [showTips, setShowTips] = useState(false);

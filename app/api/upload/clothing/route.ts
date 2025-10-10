@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
  * GET /api/upload/clothing
  * Get user's clothing items with tier status
  */
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createSupabaseServerClient();
 

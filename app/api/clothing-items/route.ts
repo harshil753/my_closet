@@ -180,7 +180,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const createdItems: any[] = [];
+    const createdItems: Array<{
+      id: string;
+      user_id: string;
+      name: string;
+      category: string;
+      image_url: string;
+      thumbnail_url: string;
+      metadata: Record<string, unknown>;
+      is_active: boolean;
+      uploaded_at: string;
+      updated_at: string;
+    }> = [];
     const errors: string[] = [];
 
     // Process each file

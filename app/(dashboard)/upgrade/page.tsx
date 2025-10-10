@@ -98,7 +98,8 @@ export default function UpgradePage() {
           Unlock premium features and take your style game to the next level
         </p>
         <div className="inline-flex items-center rounded-full bg-yellow-100 px-4 py-2 text-sm font-medium text-yellow-800">
-          🚧 Coming Soon - We're working hard to bring you amazing features!
+          🚧 Coming Soon - We&apos;re working hard to bring you amazing
+          features!
         </div>
       </div>
 
@@ -190,7 +191,7 @@ export default function UpgradePage() {
           <div className="text-center">
             <div className="mb-4 text-4xl">🚀</div>
             <h3 className="mb-2 text-xl font-bold text-gray-900">
-              We're Building Something Amazing
+              We&apos;re Building Something Amazing
             </h3>
             <p className="mb-6 text-gray-600">
               Our team is working hard to bring you the most advanced virtual

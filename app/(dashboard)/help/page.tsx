@@ -179,8 +179,8 @@ export default function HelpPage() {
             <div>
               <h3 className="mb-2 font-medium">Contact Support</h3>
               <p className="mb-4 text-sm text-gray-600">
-                Can't find what you're looking for? Our support team is here to
-                help.
+                Can&apos;t find what you&apos;re looking for? Our support team
+                is here to help.
               </p>
               <Button>Contact Support</Button>
             </div>

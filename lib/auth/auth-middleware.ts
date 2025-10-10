@@ -20,10 +20,12 @@ export interface AuthMiddlewareResult {
 /**
  * Extract user from request headers
  */
-export async function getAuthUser(request: NextRequest): Promise<AuthMiddlewareResult> {
+export async function getAuthUser(
+  request: NextRequest
+): Promise<AuthMiddlewareResult> {
   try {
     const supabase = await createSupabaseServerClient();
-    
+
     // Get the authorization header
     const authHeader = request.headers.get('authorization');
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -35,9 +37,12 @@ export async function getAuthUser(request: NextRequest): Promise<AuthMiddlewareR
     }
 
     const token = authHeader.substring(7);
-    
+
     // Verify the token and get user
-    const { data: { user }, error } = await supabase.auth.getUser(token);
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser(token);
 
     if (error || !user) {
       return {
@@ -63,10 +68,12 @@ export async function getAuthUser(request: NextRequest): Promise<AuthMiddlewareR
 /**
  * Middleware to require authentication
  */
-export function requireAuth(handler: (request: NextRequest, user: User) => Promise<NextResponse>) {
+export function requireAuth(
+  handler: (request: NextRequest, user: User) => Promise<NextResponse>
+) {
   return async (request: NextRequest): Promise<NextResponse> => {
     const authResult = await getAuthUser(request);
-    
+
     if (!authResult.isAuthenticated || !authResult.user) {
       return NextResponse.json(
         {
@@ -88,10 +95,12 @@ export function requireAuth(handler: (request: NextRequest, user: User) => Promi
  * Middleware to require specific user tier
  */
 export function requireTier(requiredTier: 'free' | 'premium') {
-  return function(handler: (request: NextRequest, user: User) => Promise<NextResponse>) {
+  return function (
+    handler: (request: NextRequest, user: User) => Promise<NextResponse>
+  ) {
     return async (request: NextRequest): Promise<NextResponse> => {
       const authResult = await getAuthUser(request);
-      
+
       if (!authResult.isAuthenticated || !authResult.user) {
         return NextResponse.json(
           {
@@ -142,7 +151,7 @@ export function requireTier(requiredTier: 'free' | 'premium') {
         }
 
         return handler(request, authResult.user);
-      } catch (error) {
+      } catch {
         return NextResponse.json(
           {
             error: {
@@ -163,10 +172,12 @@ export function requireTier(requiredTier: 'free' | 'premium') {
 export function checkRateLimit(limit: number, windowMs: number) {
   const requests = new Map<string, { count: number; resetTime: number }>();
 
-  return function(handler: (request: NextRequest, user: User) => Promise<NextResponse>) {
+  return function (
+    handler: (request: NextRequest, user: User) => Promise<NextResponse>
+  ) {
     return async (request: NextRequest): Promise<NextResponse> => {
       const authResult = await getAuthUser(request);
-      
+
       if (!authResult.isAuthenticated || !authResult.user) {
         return NextResponse.json(
           {
@@ -213,11 +224,15 @@ export function checkRateLimit(limit: number, windowMs: number) {
 /**
  * Middleware to check tier limits for specific operations
  */
-export function checkTierLimits(limitType: 'clothing_items' | 'try_ons_per_month') {
-  return function(handler: (request: NextRequest, user: User) => Promise<NextResponse>) {
+export function checkTierLimits(
+  limitType: 'clothing_items' | 'try_ons_per_month'
+) {
+  return function (
+    handler: (request: NextRequest, user: User) => Promise<NextResponse>
+  ) {
     return async (request: NextRequest): Promise<NextResponse> => {
       const authResult = await getAuthUser(request);
-      
+
       if (!authResult.isAuthenticated || !authResult.user) {
         return NextResponse.json(
           {
@@ -231,8 +246,11 @@ export function checkTierLimits(limitType: 'clothing_items' | 'try_ons_per_month
       }
 
       try {
-        const limitResult = await databaseService.checkTierLimits(authResult.user.id, limitType);
-        
+        const limitResult = await databaseService.checkTierLimits(
+          authResult.user.id,
+          limitType
+        );
+
         if (!limitResult.success) {
           return NextResponse.json(
             {
@@ -254,9 +272,10 @@ export function checkTierLimits(limitType: 'clothing_items' | 'try_ons_per_month
                 message: 'Tier limit exceeded',
                 details: {
                   limitType,
-                  suggestion: limitType === 'clothing_items' 
-                    ? 'Delete some clothing items or upgrade to premium'
-                    : 'Upgrade to premium for more try-ons this month',
+                  suggestion:
+                    limitType === 'clothing_items'
+                      ? 'Delete some clothing items or upgrade to premium'
+                      : 'Upgrade to premium for more try-ons this month',
                 },
               },
             },
@@ -265,7 +284,7 @@ export function checkTierLimits(limitType: 'clothing_items' | 'try_ons_per_month
         }
 
         return handler(request, authResult.user);
-      } catch (error) {
+      } catch {
         return NextResponse.json(
           {
             error: {
@@ -283,13 +302,21 @@ export function checkTierLimits(limitType: 'clothing_items' | 'try_ons_per_month
 /**
  * Middleware to validate request body
  */
-export function validateRequestBody<T>(validator: (body: any) => { valid: boolean; data?: T; error?: string }) {
-  return function(handler: (request: NextRequest, user: User, body: T) => Promise<NextResponse>) {
+export function validateRequestBody<T>(
+  validator: (body: unknown) => { valid: boolean; data?: T; error?: string }
+) {
+  return function (
+    handler: (
+      request: NextRequest,
+      user: User,
+      body: T
+    ) => Promise<NextResponse>
+  ) {
     return async (request: NextRequest, user: User): Promise<NextResponse> => {
       try {
         const body = await request.json();
         const validation = validator(body);
-        
+
         if (!validation.valid) {
           return NextResponse.json(
             {
@@ -304,7 +331,7 @@ export function validateRequestBody<T>(validator: (body: any) => { valid: boolea
         }
 
         return handler(request, user, validation.data!);
-      } catch (error) {
+      } catch {
         return NextResponse.json(
           {
             error: {
@@ -322,15 +349,23 @@ export function validateRequestBody<T>(validator: (body: any) => { valid: boolea
 /**
  * Middleware to handle CORS
  */
-export function handleCORS(handler: (request: NextRequest, user: User) => Promise<NextResponse>) {
+export function handleCORS(
+  handler: (request: NextRequest, user: User) => Promise<NextResponse>
+) {
   return async (request: NextRequest, user: User): Promise<NextResponse> => {
     const response = await handler(request, user);
-    
+
     // Add CORS headers
     response.headers.set('Access-Control-Allow-Origin', '*');
-    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    
+    response.headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, DELETE, OPTIONS'
+    );
+    response.headers.set(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Authorization'
+    );
+
     return response;
   };
 }
@@ -343,10 +378,20 @@ export function createAPIMiddleware(options: {
   requireTier?: 'free' | 'premium';
   checkTierLimits?: 'clothing_items' | 'try_ons_per_month';
   rateLimit?: { limit: number; windowMs: number };
-  validateBody?: <T>(body: any) => { valid: boolean; data?: T; error?: string };
+  validateBody?: <T>(body: unknown) => {
+    valid: boolean;
+    data?: T;
+    error?: string;
+  };
   handleCORS?: boolean;
 }) {
-  return function(handler: (request: NextRequest, user: User, body?: any) => Promise<NextResponse>) {
+  return function (
+    handler: (
+      request: NextRequest,
+      user: User,
+      body?: unknown
+    ) => Promise<NextResponse>
+  ) {
     let middleware = handler;
 
     // Apply CORS if requested
@@ -366,7 +411,10 @@ export function createAPIMiddleware(options: {
 
     // Apply rate limiting if requested
     if (options.rateLimit) {
-      middleware = checkRateLimit(options.rateLimit.limit, options.rateLimit.windowMs)(middleware);
+      middleware = checkRateLimit(
+        options.rateLimit.limit,
+        options.rateLimit.windowMs
+      )(middleware);
     }
 
     // Apply tier requirement if requested

@@ -9,6 +9,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -67,7 +68,7 @@ export default function EditClothingItemPage() {
     if (user?.id && itemId) {
       loadItem();
     }
-  }, [user?.id, itemId]);
+  }, [user?.id, itemId, loadItem]);
 
   // Redirect if not authenticated
   useEffect(() => {
@@ -238,10 +239,11 @@ export default function EditClothingItemPage() {
           <CardContent>
             <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
               {item.image_url ? (
-                <img
+                <Image
                   src={item.image_url}
                   alt={item.name}
-                  className="h-full w-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center text-gray-500">

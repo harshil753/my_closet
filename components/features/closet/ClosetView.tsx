@@ -99,7 +99,7 @@ export function ClosetView({
       console.log('Loading items for user:', user.id);
       loadItems();
     }
-  }, [user?.id]);
+  }, [user?.id, loadItems]);
 
   // Force refresh when component mounts
   useEffect(() => {
@@ -195,7 +195,10 @@ export function ClosetView({
   /**
    * Handle filter changes
    */
-  const handleFilterChange = (key: keyof FilterOptions, value: any) => {
+  const handleFilterChange = (
+    key: keyof FilterOptions,
+    value: string | ClothingCategory
+  ) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
     setCurrentPage(1); // Reset to first page when filters change
   };
@@ -244,7 +247,7 @@ export function ClosetView({
     // Apply sorting
     if (Array.isArray(filtered)) {
       filtered.sort((a, b) => {
-        let aValue: any, bValue: any;
+        let aValue: string | Date, bValue: string | Date;
 
         switch (filters.sortBy) {
           case 'name':
@@ -518,8 +521,8 @@ export function ClosetView({
         isOpen={showDetailModal}
         onClose={() => setShowDetailModal(false)}
         item={selectedItem}
-        onEdit={onItemEdit || (() => {})}
-        onDelete={onItemDelete || (() => {})}
+        onEdit={onItemEdit || (() => undefined)}
+        onDelete={onItemDelete || (() => undefined)}
         onAddToTryOn={(item) => {
           // Handle add to try-on logic
           console.log('Add to try-on:', item);

@@ -64,7 +64,7 @@ export default function ClosetPage() {
     if (user?.id) {
       loadClosetData();
     }
-  }, [user?.id]);
+  }, [user?.id, loadClosetData]);
 
   // Redirect if not authenticated
   useEffect(() => {

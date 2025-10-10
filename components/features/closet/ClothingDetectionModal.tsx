@@ -1,6 +1,6 @@
 /**
  * Clothing Detection Modal Component
- * 
+ *
  * This component provides AI-powered clothing detection and validation
  * for uploaded images. It shows detection results, suggestions, and
  * allows users to confirm or correct the AI's analysis.
@@ -9,7 +9,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Modal, ModalHeader, ModalContent, ModalFooter } from '@/components/ui/modal';
+import {
+  Modal,
+  ModalHeader,
+  ModalContent,
+  ModalFooter,
+} from '@/components/ui/modal';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
@@ -64,18 +69,19 @@ export function ClothingDetectionModal({
   className = '',
 }: ClothingDetectionModalProps) {
   // State management
-  const [detectionResult, setDetectionResult] = useState<DetectionResult | null>(null);
+  const [detectionResult, setDetectionResult] =
+    useState<DetectionResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
-  
+
   // Load detection results when modal opens
   useEffect(() => {
     if (isOpen && imageUrl) {
       loadDetectionResults();
     }
-  }, [isOpen, imageUrl]);
-  
+  }, [isOpen, imageUrl, loadDetectionResults]);
+
   /**
    * Load AI detection results
    */
@@ -83,7 +89,7 @@ export function ClothingDetectionModal({
     try {
       setLoading(true);
       setError(null);
-      
+
       const response = await fetch('/api/ai/clothing-detection', {
         method: 'POST',
         headers: {
@@ -94,9 +100,9 @@ export function ClothingDetectionModal({
           category: userCategory,
         }),
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
         setDetectionResult(result.data);
       } else {
@@ -108,7 +114,7 @@ export function ClothingDetectionModal({
       setLoading(false);
     }
   };
-  
+
   /**
    * Handle confirmation of detection results
    */
@@ -118,14 +124,14 @@ export function ClothingDetectionModal({
       onConfirm(detectionResult);
     }
   };
-  
+
   /**
    * Handle rejection of detection results
    */
   const handleReject = () => {
     onClose();
   };
-  
+
   /**
    * Get confidence color for display
    */
@@ -134,20 +140,25 @@ export function ClothingDetectionModal({
     if (confidence >= 60) return 'text-yellow-600';
     return 'text-red-600';
   };
-  
+
   /**
    * Get quality color for display
    */
   const getQualityColor = (quality: string): string => {
     switch (quality) {
-      case 'excellent': return 'text-green-600';
-      case 'good': return 'text-blue-600';
-      case 'fair': return 'text-yellow-600';
-      case 'poor': return 'text-red-600';
-      default: return 'text-gray-600';
+      case 'excellent':
+        return 'text-green-600';
+      case 'good':
+        return 'text-blue-600';
+      case 'fair':
+        return 'text-yellow-600';
+      case 'poor':
+        return 'text-red-600';
+      default:
+        return 'text-gray-600';
     }
   };
-  
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={className}>
       <ModalHeader title="Clothing Detection">
@@ -156,7 +167,7 @@ export function ClothingDetectionModal({
           Our AI has analyzed your image and provided suggestions
         </p>
       </ModalHeader>
-      
+
       <ModalContent>
         {loading && (
           <div className="flex items-center justify-center py-8">
@@ -164,7 +175,7 @@ export function ClothingDetectionModal({
             <span className="ml-3">Analyzing your image...</span>
           </div>
         )}
-        
+
         {error && (
           <Alert variant="destructive" className="mb-4">
             <strong>Detection Failed</strong>
@@ -174,36 +185,46 @@ export function ClothingDetectionModal({
             </Button>
           </Alert>
         )}
-        
+
         {detectionResult && !loading && (
           <div className="space-y-6">
             {/* Detection Results */}
             <div className="space-y-4">
-              <h3 className="font-medium text-lg">Detection Results</h3>
-              
+              <h3 className="text-lg font-medium">Detection Results</h3>
+
               {/* Confidence and Quality */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-medium text-sm text-gray-600">Confidence</h4>
-                  <p className={`text-2xl font-bold ${getConfidenceColor(detectionResult.detection.confidence)}`}>
+                <div className="rounded-lg bg-gray-50 p-4">
+                  <h4 className="text-sm font-medium text-gray-600">
+                    Confidence
+                  </h4>
+                  <p
+                    className={`text-2xl font-bold ${getConfidenceColor(detectionResult.detection.confidence)}`}
+                  >
                     {detectionResult.detection.confidence}%
                   </p>
                   <p className="text-xs text-gray-500">
-                    {ClothingDetectionUtils.formatConfidence(detectionResult.detection.confidence)}
+                    {ClothingDetectionUtils.formatConfidence(
+                      detectionResult.detection.confidence
+                    )}
                   </p>
                 </div>
-                
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-medium text-sm text-gray-600">Quality</h4>
-                  <p className={`text-2xl font-bold ${getQualityColor(detectionResult.quality.quality)}`}>
+
+                <div className="rounded-lg bg-gray-50 p-4">
+                  <h4 className="text-sm font-medium text-gray-600">Quality</h4>
+                  <p
+                    className={`text-2xl font-bold ${getQualityColor(detectionResult.quality.quality)}`}
+                  >
                     {detectionResult.quality.quality}
                   </p>
                   <p className="text-xs text-gray-500">
-                    {ClothingDetectionUtils.formatQuality(detectionResult.detection.qualityScore)}
+                    {ClothingDetectionUtils.formatQuality(
+                      detectionResult.detection.qualityScore
+                    )}
                   </p>
                 </div>
               </div>
-              
+
               {/* Category Detection */}
               {detectionResult.detection.suggestedCategory && (
                 <Alert>
@@ -211,81 +232,105 @@ export function ClothingDetectionModal({
                   <p>
                     AI suggests this might be{' '}
                     <span className="font-medium">
-                      {ClothingDetectionUtils.getCategoryDisplayName(detectionResult.detection.suggestedCategory)}
+                      {ClothingDetectionUtils.getCategoryDisplayName(
+                        detectionResult.detection.suggestedCategory
+                      )}
                     </span>{' '}
                     instead of{' '}
                     <span className="font-medium">
-                      {ClothingDetectionUtils.getCategoryDisplayName(userCategory)}
+                      {ClothingDetectionUtils.getCategoryDisplayName(
+                        userCategory
+                      )}
                     </span>
                     .
                   </p>
                 </Alert>
               )}
-              
+
               {/* Detected Attributes */}
-              {Object.keys(detectionResult.detection.detectedAttributes).length > 0 && (
+              {Object.keys(detectionResult.detection.detectedAttributes)
+                .length > 0 && (
                 <div className="space-y-2">
                   <h4 className="font-medium">Detected Attributes</h4>
                   <div className="grid grid-cols-2 gap-2">
-                    {Object.entries(detectionResult.detection.detectedAttributes).map(([key, value]) => (
-                      <div key={key} className="p-2 bg-blue-50 rounded text-sm">
-                        <span className="font-medium capitalize">{key}:</span> {value}
+                    {Object.entries(
+                      detectionResult.detection.detectedAttributes
+                    ).map(([key, value]) => (
+                      <div key={key} className="rounded bg-blue-50 p-2 text-sm">
+                        <span className="font-medium capitalize">{key}:</span>{' '}
+                        {value}
                       </div>
                     ))}
                   </div>
                 </div>
               )}
-              
+
               {/* Suggestions */}
               {detectionResult.detection.suggestions.length > 0 && (
                 <div className="space-y-2">
                   <h4 className="font-medium">Styling Suggestions</h4>
                   <ul className="space-y-1">
-                    {detectionResult.detection.suggestions.map((suggestion, index) => (
-                      <li key={index} className="text-sm text-gray-600 flex items-start">
-                        <span className="text-green-500 mr-2">•</span>
-                        {suggestion}
-                      </li>
-                    ))}
+                    {detectionResult.detection.suggestions.map(
+                      (suggestion, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start text-sm text-gray-600"
+                        >
+                          <span className="mr-2 text-green-500">•</span>
+                          {suggestion}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               )}
-              
+
               {/* Warnings */}
               {detectionResult.detection.warnings.length > 0 && (
                 <Alert variant="destructive">
                   <strong>Issues Detected</strong>
                   <ul className="mt-2 space-y-1">
-                    {detectionResult.detection.warnings.map((warning, index) => (
-                      <li key={index} className="text-sm">• {warning}</li>
-                    ))}
+                    {detectionResult.detection.warnings.map(
+                      (warning, index) => (
+                        <li key={index} className="text-sm">
+                          • {warning}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </Alert>
               )}
-              
+
               {/* Quality Issues */}
               {detectionResult.quality.issues.length > 0 && (
                 <Alert>
                   <strong>Image Quality Issues</strong>
                   <ul className="mt-2 space-y-1">
                     {detectionResult.quality.issues.map((issue, index) => (
-                      <li key={index} className="text-sm">• {issue}</li>
+                      <li key={index} className="text-sm">
+                        • {issue}
+                      </li>
                     ))}
                   </ul>
                 </Alert>
               )}
-              
+
               {/* Recommendations */}
               {detectionResult.quality.recommendations.length > 0 && (
                 <div className="space-y-2">
                   <h4 className="font-medium">Recommendations</h4>
                   <ul className="space-y-1">
-                    {detectionResult.quality.recommendations.map((recommendation, index) => (
-                      <li key={index} className="text-sm text-gray-600 flex items-start">
-                        <span className="text-blue-500 mr-2">•</span>
-                        {recommendation}
-                      </li>
-                    ))}
+                    {detectionResult.quality.recommendations.map(
+                      (recommendation, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start text-sm text-gray-600"
+                        >
+                          <span className="mr-2 text-blue-500">•</span>
+                          {recommendation}
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               )}
@@ -293,13 +338,13 @@ export function ClothingDetectionModal({
           </div>
         )}
       </ModalContent>
-      
+
       <ModalFooter>
         <div className="flex justify-end space-x-3">
           <Button variant="outline" onClick={handleReject}>
             Cancel
           </Button>
-          
+
           {detectionResult && (
             <Button
               onClick={handleConfirm}

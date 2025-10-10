@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 interface AvatarProps {
@@ -8,7 +9,12 @@ interface AvatarProps {
   className?: string;
 }
 
-export function Avatar({ src, alt = 'Avatar', size = 'md', className }: AvatarProps) {
+export function Avatar({
+  src,
+  alt = 'Avatar',
+  size = 'md',
+  className,
+}: AvatarProps) {
   const sizeClasses = {
     sm: 'h-8 w-8',
     md: 'h-10 w-10',
@@ -18,14 +24,10 @@ export function Avatar({ src, alt = 'Avatar', size = 'md', className }: AvatarPr
   return (
     <div className={cn('relative inline-block', sizeClasses[size], className)}>
       {src ? (
-        <img
-          src={src}
-          alt={alt}
-          className="h-full w-full rounded-full object-cover"
-        />
+        <Image src={src} alt={alt} fill className="rounded-full object-cover" />
       ) : (
-        <div className="h-full w-full rounded-full bg-gray-300 flex items-center justify-center">
-          <span className="text-gray-600 text-sm font-medium">
+        <div className="flex h-full w-full items-center justify-center rounded-full bg-gray-300">
+          <span className="text-sm font-medium text-gray-600">
             {alt.charAt(0).toUpperCase()}
           </span>
         </div>

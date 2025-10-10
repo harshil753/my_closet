@@ -75,8 +75,8 @@ export default function ProfilePage() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       setSuccess('Profile updated successfully!');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update profile');
+    } catch {
+      setError('Failed to update profile');
     } finally {
       setSaving(false);
     }
@@ -98,7 +98,7 @@ export default function ProfilePage() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setSuccess('Email updated successfully!');
       setSaving(false);
-    } catch (err) {
+    } catch {
       setPasswordError('Invalid password. Please try again.');
     }
   };
