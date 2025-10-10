@@ -1,0 +1,139 @@
+MyCloset - Expanded Visual Identity
+Based on your wireframe, I can now see the complete user journey and functionality. Let me expand the visual identity to align with your app's specific features and flow.
+Enhanced Visual Identity System
+Color Palette (Refined)
+
+Primary Teal (#00CED1): Navigation elements, selected states, "Continue" buttons
+Sunset Coral (#FF6B6B): Upload buttons, call-to-action elements
+Electric Purple (#9D4EDD): Success states, "Wow Looking Good!" moments
+Soft Sage (#A8D5BA): Checkboxes, confirmation elements
+Neutrals:
+
+Background: #F8F9FA (soft white)
+Cards: #FFFFFF with subtle shadow
+Text: #2D3436 (charcoal)
+Borders: #E0E0E0 (light gray)
+
+
+
+Screen-Specific Design Elements
+1. Main Navigation (My Closet Home)
+
+Vertical tab navigation with icons + labels
+Active tab: Teal background with white text
+Inactive tabs: Charcoal text on white
+Smooth slide-in animation when switching categories
+Thumbnail grid: 3 columns with rounded corners and subtle hover scale effect
+
+2. Item Detail View
+
+Large hero image with swipe gallery dots
+Gradient overlay at bottom for text readability
+"On Click" interaction: Zoom-in animation with category options sliding up from bottom
+Category pills: Rounded, teal border, white background
+
+3. Upload Flow
+
+Drag-and-drop zone with dashed border (coral accent)
+Multiple upload slots with "+/- buttons for easy management
+Progress indicators for file uploads
+File preview thumbnails with X delete button in corner
+
+4. Action Hub (Check Out My Closet)
+
+Three card buttons in vertical stack
+Cards have gradient hover effect (teal to purple)
+Icons for each action:
+
+Shopping bag icon: "Add Things to My Closet"
+Hanger icon: "Upload Shirts/Tops"
+Sparkle icon: "Lets Try On Clothes"
+
+
+
+5. Selection Screen (Pick 1, 2, or all 3)
+
+Large checkboxes with custom styling
+Checked state: Teal fill with white checkmark
+Labels in clean typography, ample spacing
+"Continue" button: Gradient coral to purple, pill-shaped, disabled state in gray
+
+6. LLM Processing & Results
+
+Loading state: Animated clothing items floating/rotating
+Shimmer effect during processing
+Results card: White background, rounded corners, drop shadow
+Success message with confetti/sparkle animation
+
+7. Confirmation Screen
+
+Larger typography for celebratory message
+Subtle background pattern (clothing icons at 5% opacity)
+Primary CTA button to return to closet
+
+UI Component Library
+Buttons:
+
+Primary: Gradient (coral to purple), white text, 12px border-radius, shadow on hover
+Secondary: Teal border, teal text, transparent background
+Disabled: Gray fill, gray text, no hover state
+
+Cards:
+
+White background
+16px border-radius
+Box-shadow: 0 4px 12px rgba(0,0,0,0.08)
+Hover: Lift effect (translateY -4px + enhanced shadow)
+
+Navigation Tabs:
+
+Vertical pills on left side
+8px border-radius
+Active: Teal background + subtle glow
+Icons: 24x24px, consistent line weight
+
+Image Thumbnails:
+
+Aspect ratio: 1:1 for grid consistency
+8px border-radius
+Border: 2px solid #E0E0E0
+Selected state: 3px teal border + subtle glow
+
+Checkboxes:
+
+24x24px
+4px border-radius (slightly rounded square)
+Custom checkmark animation (scale + fade in)
+Teal fill when selected
+
+Iconography Style
+
+Line-based icons (2px stroke weight)
+Rounded endpoints for friendly feel
+Consistent 24x24px size
+Teal color (#00CED1) for active states
+
+Typography Hierarchy
+
+H1 (Page Titles): 32px, Bold, Charcoal
+H2 (Section Headers): 24px, Semibold, Charcoal
+Body: 16px, Regular, Charcoal
+Labels: 14px, Medium, Gray (#666)
+Buttons: 16px, Semibold, White/Teal
+Success Messages: 28px, Bold, Purple
+
+Micro-interactions
+
+Tab switching: Slide animation (300ms ease-out)
+Image selection: Scale pulse (150ms)
+Upload success: Checkmark draw animation
+Button press: Scale down slightly (0.95) then return
+Loading: Rotating hanger icon or clothing item morphing
+
+Spacing System
+
+Base unit: 8px
+Card padding: 24px
+Element spacing: 16px
+Section spacing: 32px
+Screen margins: 24px

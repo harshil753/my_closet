@@ -1,0 +1,1477 @@
+================
+CODE SNIPPETS
+================
+TITLE: Example: Real-time Music Generation
+DESCRIPTION: An example demonstrating how to connect, set up prompts and configurations, and start streaming music using the API.
+
+SOURCE: https://ai.google.dev/api/live_music_hl=ar
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Example: Real-time Music Generation
+
+### Request Example
+```python
+import asyncio
+from google.generativeai.types import LiveMusicGenerationConfig, WeightedPrompt
+
+async def receive_audio(session):
+  """Example background task to process incoming audio."""
+  while True:
+    async for message in session.receive():
+      # Assuming message structure includes audio_chunks
+      if hasattr(message, 'server_content') and message.server_content.audio_chunks:
+        audio_data = message.server_content.audio_chunks[0].data
+        # Process audio...
+        print(f"Received {len(audio_data)} bytes of audio data.")
+      await asyncio.sleep(10**-12) # Small sleep to prevent busy-waiting
+
+async def main():
+  # Replace with your actual client and model details
+  # client = ... 
+  # model_name = 'models/lyria-realtime-exp'
+
+  # Placeholder for actual client connection
+  class MockSession:
+      async def receive(self):
+          # Mocking receiving audio data
+          yield type('obj', (object,), {'server_content': type('obj', (object,), {'audio_chunks': [type('obj', (object,), {'data': b'fake_audio_data'})]})})()
+          await asyncio.sleep(1)
+
+      async def set_weighted_prompts(self, prompts):
+          print(f"Setting weighted prompts: {prompts}")
+
+      async def set_music_generation_config(self, config):
+          print(f"Setting music generation config: {config}")
+
+      async def play(self):
+          print("Starting music playback.")
+          # In a real scenario, this would start the stream
+          await asyncio.sleep(5) # Simulate stream running
+
+  mock_session = MockSession()
+
+  async with asyncio.TaskGroup() as tg:
+    # Set up task to receive server messages.
+    tg.create_task(receive_audio(mock_session))
+
+    # Send initial prompts and config
+    await mock_session.set_weighted_prompts(
+      prompts=[
+        WeightedPrompt(text='minimal techno', weight=1.0),
+      ]
+    )
+    await mock_session.set_music_generation_config(
+      config=LiveMusicGenerationConfig(bpm=90, temperature=1.0)
+    )
+
+    # Start streaming music
+    await mock_session.play()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+```
+
+--------------------------------
+
+TITLE: Configure Model Parameters for Google AI API
+DESCRIPTION: Demonstrates how to set various parameters for content generation, including candidate count, stop sequences, maximum output tokens, and temperature. This example shows the basic setup for sending a prompt to the Google AI API.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=es-419
+
+LANGUAGE: javascript
+CODE:
+```
+// Make sure to include the following import:
+// import {GoogleGenAI} from '@google/genai';
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+const response = await ai.models.generateContent({
+  model: "gemini-2.0-flash",
+  contents: "Tell me a story about a magic backpack.",
+  config: {
+    candidateCount: 1,
+    stopSequences: ["x"],
+    maxOutputTokens: 20,
+    temperature: 1.0,
+  },
+});
+
+console.log(response.text);
+```
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+// Create local variables for parameters.
+candidateCount := int32(1)
+maxOutputTokens := int32(20)
+temperature := float32(1.0)
+
+response, err := client.Models.GenerateContent(
+	ctx,
+	"gemini-2.0-flash",
+	genai.Text("Tell me a story about a magic backpack."),
+	&genai.GenerateContentConfig{
+		CandidateCount:  candidateCount,
+		StopSequences:   []string{"x"},
+		MaxOutputTokens: maxOutputTokens,
+		Temperature:     &temperature,
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+
+printResponse(response);
+```
+
+LANGUAGE: curl
+CODE:
+```
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY \
+    -H 'Content-Type: application/json' \
+    -X POST \
+    -d '{
+        "contents": [{"parts":[{"text": "Explain how AI works"}]}],
+        "generationConfig": {
+            "stopSequences": [
+                "Title"
+            ],
+            "temperature": 1.0,
+            "maxOutputTokens": 800,
+            "topP": 0.8,
+            "topK": 10
+        }
+    }'  2> /dev/null | grep "text"
+```
+
+LANGUAGE: java
+CODE:
+```
+Client client = new Client();
+
+GenerateContentConfig config = 
+        GenerateContentConfig.builder()
+                .candidateCount(1)
+                .stopSequences(List.of("x"))
+                .maxOutputTokens(20)
+                .temperature(1.0F)
+                .build();
+
+GenerateContentResponse response = 
+        client.models.generateContent(
+                "gemini-2.0-flash",
+                "Tell me a story about a magic backpack.",
+                config);
+
+System.out.println(response.text());
+```
+
+--------------------------------
+
+TITLE: Count Tokens and Generate Content with Gemini API (Go)
+DESCRIPTION: Provides a Go example for counting tokens and generating content using the Google GenAI API. It shows how to read image files and interact with the GenerativeModel. Ensure you have the 'genai' Go package installed.
+
+SOURCE: https://ai.google.dev/api/tokens_hl=bn
+
+LANGUAGE: go
+CODE:
+```
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+
+	"github.com/google/generative-ai-go/genai"
+	"google.golang.org/api/option"
+)
+
+func main() {
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, option.WithAPIKey(os.Getenv("GEMINI_API_KEY")))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer client.Close()
+
+	model := client.GenerativeModel("gemini-1.5-flash")
+	prompt := "Tell me about this image"
+	imageFile, err := os.ReadFile(filepath.Join(testDataDir, "personWorkingOnComputer.jpg"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	tokResp, err := model.CountTokens(ctx, genai.Text(prompt), genai.ImageData("jpeg", imageFile))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("total_tokens:", tokResp.TotalTokens)
+
+	resp, err := model.GenerateContent(ctx, genai.Text(prompt), genai.ImageData("jpeg", imageFile))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("prompt_token_count:", resp.UsageMetadata.PromptTokenCount)
+	fmt.Println("candidates_token_count:", resp.UsageMetadata.CandidatesTokenCount)
+	fmt.Println("total_token_count:", resp.UsageMetadata.TotalTokenCount)
+}
+```
+
+--------------------------------
+
+TITLE: Setup and Generate Content with Cache - Go
+DESCRIPTION: This Go example demonstrates initializing the Gemini API client, uploading a file to be used as a cache, creating a cached content entry, and then generating content using that cache. It requires the GEMINI_API_KEY environment variable to be set and a file named 'a11.txt' in the media directory.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=ja
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"), 
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+modelName := "gemini-1.5-flash-001"
+document, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "a11.txt"), 
+	&genai.UploadFileConfig{
+		MIMEType : "text/plain",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+parts := []*genai.Part{
+	genai.NewPartFromURI(document.URI, document.MIMEType),
+}
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
+		Contents: contents,
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", genai.RoleUser,
+		),
+})
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println("Cache created:")
+fmt.Println(cache)
+
+// Use the cache for generating content.
+response, err := client.Models.GenerateContent(
+	ctx,
+	modelName,
+	genai.Text("Please summarize this transcript"),
+	&genai.GenerateContentConfig{
+		CachedContent: cache.Name,
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+printResponse(response)
+cache.go
+```
+
+--------------------------------
+
+TITLE: Create and Get Cached Content (Go)
+DESCRIPTION: Provides a Go example for uploading a file, creating a cached content resource with a system instruction, and then fetching it using the genai client. This code requires setting up the Go client with an API key and handles potential errors during operations.
+
+SOURCE: https://ai.google.dev/api/caching
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+modelName := "gemini-1.5-flash-001"
+document, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "a11.txt"), 
+	&genai.UploadFileConfig{
+		MIMEType : "text/plain",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+parts := []*genai.Part{
+	genai.NewPartFromURI(document.URI, document.MIMEType),
+}
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
+	Contents:          contents,
+	SystemInstruction: genai.NewContentFromText(
+		"You are an expert analyzing transcripts.", genai.RoleUser,
+	),
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+cache, err = client.Caches.Get(ctx, cache.Name, &genai.GetCachedContentConfig{})
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println("Retrieved cache:")
+fmt.Println(cache)
+```
+
+--------------------------------
+
+TITLE: Upload Audio and Generate Content with Gemini API (Go)
+DESCRIPTION: This Go code snippet demonstrates uploading an audio file and generating content via the Gemini API. It uses the `genai` SDK for Go, requiring context setup, API key configuration, and file path handling. The example uploads the audio and then generates a description.
+
+SOURCE: https://ai.google.dev/api/files_hl=hi
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+myfile, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "sample.mp3"), 
+	&genai.UploadFileConfig{
+		MIMEType : "audio/mpeg",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Printf("myfile=%+v\n", myfile)
+
+parts := []*genai.Part{
+	genai.NewPartFromURI(myfile.URI, myfile.MIMEType),
+	genai.NewPartFromText("Describe this audio clip"),
+}
+
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+text := response.Text()
+fmt.Printf("result.text=%s\n", text);
+```
+
+--------------------------------
+
+TITLE: File Upload and Content Generation (Go)
+DESCRIPTION: Go example for uploading a file and then generating content using the uploaded file.
+
+SOURCE: https://ai.google.dev/api/files_hl=ko
+
+LANGUAGE: APIDOC
+CODE:
+```
+## File Upload and Content Generation (Go)
+
+### Description
+This Go code demonstrates how to upload a file using the `genai` library and then use that file to generate content with a Gemini model.
+
+### Method
+POST
+
+### Endpoint
+N/A (Library functions abstract the endpoints)
+
+### Parameters
+#### Request Body (Implicit via library)
+- **path** (string) - The path to the file to upload.
+- **config** (object) - Upload configuration, including MIME type.
+- **model** (string) - The model to use for content generation (e.g., "gemini-2.0-flash").
+- **contents** (array) - The content to send to the model, which can include uploaded files and text.
+
+### Request Example
+```go
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+myfile, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "poem.txt"), 
+	&genai.UploadFileConfig{
+		MIMEType : "text/plain",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Printf("myfile=%+v\n", myfile)
+
+parts := []*genai.Part{
+	genai.NewPartFromURI(myfile.URI, myfile.MIMEType),
+	genai.NewPartFromText("\n\n"),
+	genai.NewPartFromText("Can you add a few more lines to this poem?"),
+}
+
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+text := response.Text()
+fmt.Printf("result.text=%s\n", text)
+```
+
+### Response
+#### Success Response
+- **myfile** (object) - Information about the uploaded file.
+- **text** (string) - The generated text content.
+```
+
+--------------------------------
+
+TITLE: Example Structure
+DESCRIPTION: Defines the structure for an example input/output pair used to instruct the model.
+
+SOURCE: https://ai.google.dev/api/palm_hl=es-419
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Example
+
+**Description**: An example of input or output used to instruct the model. It demonstrates how the model should respond or how its response should be formatted.
+
+**Fields**:
+- **input** (`object` of `Message`): Required. An example of a user's `Message` input.
+- **output** (`object` of `Message`): Required. An example of what the model should generate given the input.
+
+**JSON Representation**:
+```json
+{
+  "input": {
+    "object": "Message"
+  },
+  "output": {
+    "object": "Message"
+  }
+}
+```
+```
+
+--------------------------------
+
+TITLE: Go: System Instruction Example
+DESCRIPTION: This Go example shows how to set a system instruction when generating content. The system instruction guides the model's behavior, in this case, instructing it to act as a cat named Neko.
+
+SOURCE: https://ai.google.dev/api/tokens
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+// Construct the user message contents.
+contents := []*genai.Content{
+	genai.NewContentFromText("Good morning! How are you?", genai.RoleUser),
+}
+
+// Set the system instruction as a *genai.Content.
+config := &genai.GenerateContentConfig{
+	SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
+}
+
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
+if err != nil {
+	log.Fatal(err)
+}
+printResponse(response)
+system_instruction.go
+```
+
+--------------------------------
+
+TITLE: Go Client Library for Text Generation
+DESCRIPTION: Example of using the Go client library to generate content from audio files.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=es-419
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Go Client Library for Text Generation
+
+### Description
+This Go example demonstrates uploading an audio file and generating content using the Gemini API client library.
+
+### Method
+Client-side library invocation
+
+### Endpoint
+Not directly applicable, as this uses a client library.
+
+### Parameters
+#### Request Body (Implicitly handled by client library)
+- **ctx** (context.Context) - Required - The context for the operation.
+- **clientConfig** (genai.ClientConfig) - Required - Configuration for the client.
+  - **APIKey** (string) - Required - Your API key.
+  - **Backend** (string) - Required - The backend to use (e.g., genai.BackendGeminiAPI).
+- **model** (string) - Required - The model to use (e.g., "gemini-2.0-flash").
+- **contents** (array of []*genai.Content) - Required - The content to send to the model.
+  - **genai.NewContentFromParts(parts []*genai.Part, role string)**
+    - **parts** ([]*genai.Part) - The parts of the content.
+      - **genai.NewPartFromText(string)**
+      - **genai.NewPartFromURI(string URI, string MIMEType)**
+
+### Request Example
+```go
+// Make sure to include the following import:
+// import "context"
+// import "os"
+// import "log"
+// import "path/filepath"
+// import "github.com/google/generative-ai-go/genai"
+
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+file, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "sample.mp3"), 
+	&genai.UploadFileConfig{
+		MIMEType : "audio/mpeg",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+
+parts := []*genai.Part{
+	genai.NewPartFromText("Give me a summary of this audio file."),
+	genai.NewPartFromURI(file.URI, file.MIMEType),
+}
+
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+printResponse(response)
+```
+
+### Response
+#### Success Response
+- **printResponse(response)** - Function to print the response. The generated text is contained within the response object.
+```
+
+--------------------------------
+
+TITLE: Upload PDF and Generate Content with Gemini API (cURL)
+DESCRIPTION: This cURL example demonstrates uploading a PDF file using a resumable upload process and then generating content from it. It involves defining metadata, starting the upload, uploading the file data, and finally making a `generateContent` request with the file's URI. Dependencies include `curl`, `jq`, and environment variables for API key and file paths.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=es-419
+
+LANGUAGE: shell
+CODE:
+```
+MIME_TYPE=$(file -b --mime-type "${PDF_PATH}")
+NUM_BYTES=$(wc -c < "${PDF_PATH}")
+DISPLAY_NAME=TEXT
+
+
+echo $MIME_TYPE
+tmp_header_file=upload-header.tmp
+
+# Initial resumable request defining metadata.
+# The upload url is in the response headers dump them to a file.
+curl "${BASE_URL}/upload/v1beta/files?key=${GEMINI_API_KEY}" \
+  -D upload-header.tmp \
+  -H "X-Goog-Upload-Protocol: resumable" \
+  -H "X-Goog-Upload-Command: start" \
+  -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
+  -H "X-Goog-Upload-Header-Content-Type: ${MIME_TYPE}" \
+  -H "Content-Type: application/json" \
+  -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+
+upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
+rm "${tmp_header_file}"
+
+# Upload the actual bytes.
+curl "${upload_url}" \
+  -H "Content-Length: ${NUM_BYTES}" \
+  -H "X-Goog-Upload-Offset: 0" \
+  -H "X-Goog-Upload-Command: upload, finalize" \
+  --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
+
+file_uri=$(jq ".file.uri" file_info.json)
+echo file_uri=$file_uri
+
+# Now generate content using that file
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -X POST \
+    -d '{
+      "contents": [{
+        "parts":[
+          {"text": "Can you add a few more lines to this poem?"},
+          {"file_data":{"mime_type": "application/pdf", "file_uri": '$file_uri'}}] 
+        }]
+       }' 2> /dev/null > response.json
+
+cat response.json
+echo
+
+jq ".candidates[].content.parts[].text" response.json
+```
+
+--------------------------------
+
+TITLE: Example Request and Response Structure
+DESCRIPTION: Provides an example of how input and output messages are structured for model interaction.
+
+SOURCE: https://ai.google.dev/api/palm
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Example
+
+### Description
+An input/output example used to instruct the Model. It demonstrates how the model should respond or format its response.
+
+### Fields
+- `input` (object (`Message`)) - Required. An example of an input `Message` from the user.
+- `output` (object (`Message`)) - Required. An example of what the model should output given the input.
+
+### JSON Representation
+```json
+{
+  "input": {
+    "object": "Message"
+  },
+  "output": {
+    "object": "Message"
+  }
+}
+```
+```
+
+--------------------------------
+
+TITLE: Go: Implement Function Calling with Arithmetic Tools
+DESCRIPTION: This Go code demonstrates setting up the Google AI client, defining arithmetic functions as tools, and sending a prompt that expects a function call. It processes the function call, executes the corresponding arithmetic operation, and sends the result back to the model. Requires the 'google.golang.org/api/aiplatform/v1' package and appropriate SDK setup.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=zh-tw
+
+LANGUAGE: go
+CODE:
+```
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/google/generative-ai-go/genai"
+	"google.golang.org/api/option"
+)
+
+// Dummy implementations for arithmetic functions
+func add(a, b float64) float64 { return a + b }
+func subtract(a, b float64) float64 { return a - b }
+func multiply(a, b float64) float64 { return a * b }
+func divide(a, b float64) float64 { return a / b }
+
+// Represents the arguments for arithmetic operations.
+type ArithmeticArgs struct {
+	FirstParam  float64 `json:"firstParam"`
+	SecondParam float64 `json:"secondParam"`
+}
+
+// Helper function to create tool declarations for arithmetic operations.
+func createArithmeticToolDeclaration(name, description string) *genai.FunctionDeclaration {
+	return &genai.FunctionDeclaration{
+		Name: name,
+		Parameters: &genai.Schema{
+			Type: genai.SchemaTypeObject,
+			Properties: map[string]*genai.Schema{
+				"firstParam": {
+					Type:        genai.SchemaTypeNumber,
+					Description: "The first parameter which can be an integer or a floating point number.",
+				},
+				"secondParam": {
+					Type:        genai.SchemaTypeNumber,
+					Description: "The second parameter which can be an integer or a floating point number.",
+				},
+			},
+			Required: []string{"firstParam", "secondParam"},
+		},
+	}
+}
+
+// Placeholder for printing the response
+func printResponse(resp *genai.GenerateContentResponse) {
+	for _, cand := range resp.Candidates {
+		if cand.Content != nil {
+			for _, part := range cand.Content.Parts {
+				log.Printf("%v\n", part)
+			}
+		}
+	}
+}
+
+func main() {
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
+		Backend: genai.BackendGeminiAPI,
+	}, option.WithAPIKey(os.Getenv("GEMINI_API_KEY")))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	modelName := "gemini-2.0-flash"
+
+	// Create the function declarations for arithmetic operations.
+	addDeclaration := createArithmeticToolDeclaration("addNumbers", "Return the result of adding two numbers.")
+	subtractDeclaration := createArithmeticToolDeclaration("subtractNumbers", "Return the result of subtracting the second number from the first.")
+	multiplyDeclaration := createArithmeticToolDeclaration("multiplyNumbers", "Return the product of two numbers.")
+	divideDeclaration := createArithmeticToolDeclaration("divideNumbers", "Return the quotient of dividing the first number by the second.")
+
+	// Group the function declarations as a tool.
+
+tools := []*genai.Tool{
+	{
+		FunctionDeclarations: []*genai.FunctionDeclaration{
+			addDeclaration,
+			subtractDeclaration,
+			multiplyDeclaration,
+			divideDeclaration,
+		},
+	},
+}
+
+	// Create the content prompt.
+
+	contents := []*genai.Content{
+		genai.NewContent(
+			genai.Text("I have 57 cats, each owns 44 mittens, how many mittens is that in total?"),
+			genai.RoleUser,
+		),
+	}
+
+	// Set up the generate content configuration with function calling enabled.
+	config := &genai.GenerateContentConfig{
+		Tools: tools,
+		ToolConfig: &genai.ToolConfig{
+			FunctionCallingConfig: &genai.FunctionCallingConfig{
+				// The mode equivalent to FunctionCallingConfigMode.ANY in JS.
+				Mode: genai.FunctionCallingConfigModeAny,
+			},
+		},
+	}
+
+	genContentResp, err := client.GenerateContent(ctx, modelName, contents, config)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Assume the response includes a list of function calls.
+	if len(genContentResp.Candidates[0].Content.Parts) == 0 {
+		log.Println("No function call returned from the AI.")
+		return
+	}
+
+	var functionCall *genai.FunctionCall
+	for _, part := range genContentResp.Candidates[0].Content.Parts {
+		if fc, ok := part.(genai.FunctionCall);
+			ok {
+			functionCall = &fc
+			break
+		}
+	}
+
+	if functionCall == nil {
+		log.Println("Could not find a function call in the response.")
+		return
+	}
+
+	log.Printf("Function call: %+v\n", functionCall)
+
+	// Marshal the Args map into JSON bytes.
+	argsMap, err := json.Marshal(functionCall.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Unmarshal the JSON bytes into the ArithmeticArgs struct.
+	var args ArithmeticArgs
+	if err := json.Unmarshal(argsMap, &args); err != nil {
+		log.Fatal(err)
+	}
+
+	// Map the function name to the actual arithmetic function.
+	var result float64
+	switch functionCall.Name {
+		case "addNumbers":
+			result = add(args.FirstParam, args.SecondParam)
+		case "subtractNumbers":
+			result = subtract(args.FirstParam, args.SecondParam)
+		case "multiplyNumbers":
+			result = multiply(args.FirstParam, args.SecondParam)
+		case "divideNumbers":
+			result = divide(args.FirstParam, args.SecondParam)
+		default:
+			log.Fatalf("unimplemented function: %s", functionCall.Name)
+	}
+	log.Printf("Function result: %v\n", result)
+
+	// Prepare the final result message as content.
+
+	// Use GenerateContent to send the final result.
+
+	finalResponse, err := client.GenerateContent(ctx, modelName, []*genai.Content{
+		genai.NewContent(genai.Text("The final result is " + fmt.Sprintf("%v", result)), genai.RoleUser),
+	}, &genai.GenerateContentConfig{})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	printResponse(finalResponse)
+}
+
+```
+
+--------------------------------
+
+TITLE: Call Gemini API with Lighting System Tools (Shell)
+DESCRIPTION: A shell script example using curl to interact with the Gemini API for controlling a lighting system. It sends a user request ('Turn on the lights please.') along with the defined lighting tools and tool configuration, then prints the relevant part of the API response.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=zh-tw
+
+LANGUAGE: shell
+CODE:
+```
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -d @<(echo '
+  {
+    "system_instruction": {
+      "parts": {
+        "text": "You are a helpful lighting system bot. You can turn lights on and off, and you can set the color. Do not perform any other tasks."
+      }
+    },
+    "tools": ['$(cat tools.json)'],
+
+    "tool_config": {
+      "function_calling_config": {"mode": "auto"}
+    },
+
+    "contents": {
+      "role": "user",
+      "parts": {
+        "text": "Turn on the lights please."
+      }
+    }
+  }') 2>/dev/null |sed -n '/"content"/,/"finishReason"/p'
+```
+
+--------------------------------
+
+TITLE: Go Chat Example
+DESCRIPTION: Example demonstrating how to use the Gemini API with Go for conversational interactions, including streaming responses.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=zh-tw
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Go Chat Example
+
+### Description
+Example demonstrating how to use the Gemini API with Go for conversational interactions, including streaming responses.
+
+### Method
+N/A (Library Usage)
+
+### Endpoint
+N/A (Library Usage)
+
+### Request Body
+N/A (Library Usage)
+
+### Request Example
+```go
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+history := []*genai.Content{
+	genai.NewContentFromText("Hello", genai.RoleUser),
+	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
+}
+chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+if err != nil {
+	log.Fatal(err)
+}
+
+for chunk, err := range chat.SendMessageStream(ctx, genai.Part{Text: "I have 2 dogs in my house."}) {
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(chunk.Text())
+	fmt.Println(strings.Repeat("_", 64))
+}
+
+for chunk, err := range chat.SendMessageStream(ctx, genai.Part{Text: "How many paws are in my house?"}) {
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(chunk.Text())
+	fmt.Println(strings.Repeat("_", 64))
+}
+
+fmt.Println(chat.History(false))
+```
+
+### Response
+#### Success Response
+Prints streamed text chunks for each message, followed by the full chat history.
+
+#### Response Example
+```
+Great to meet you. What would you like to know?
+________________________________________________________________________________
+In your house, there are 8 paws (4 paws per dog * 2 dogs).
+________________________________________________________________________________
+[<user> Hello
+<model> Great to meet you. What would you like to know?
+<user> I have 2 dogs in my house.
+<model> In your house, there are 8 paws (4 paws per dog * 2 dogs).
+]
+```
+```
+
+--------------------------------
+
+TITLE: Go Client Library - Get File Metadata
+DESCRIPTION: Demonstrates how to retrieve metadata for a specific file using the Go client library.
+
+SOURCE: https://ai.google.dev/api/files_hl=ja
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Go Client Library - Get File Metadata
+
+### Description
+This example shows how to upload a file and then retrieve its metadata using the Go client library.
+
+### Method
+N/A (Client Library Usage)
+
+### Endpoint
+N/A (Client Library Usage)
+
+### Parameters
+N/A (Client Library Usage)
+
+### Request Example
+```go
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+myfile, err := client.Files.UploadFromPath(
+	ctx,
+	filepath.Join(getMedia(), "poem.txt"), 
+	&genai.UploadFileConfig{
+		MIMEType: "text/plain",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+fileName := myfile.Name
+fmt.Println(fileName)
+file, err := client.Files.Get(ctx, fileName, nil)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println(file)
+```
+
+### Response
+#### Success Response
+- **file** (object) - Metadata of the file.
+
+#### Response Example
+```json
+{
+  "name": "files/abc-123",
+  "uri": "gs://generative-language/files/abc-123",
+  "create_time": "2023-10-27T10:00:00Z",
+  "update_time": "2023-10-27T10:00:00Z",
+  "display_name": "poem.txt",
+  "mime_type": "text/plain",
+  "size_bytes": 1024
+}
+```
+```
+
+--------------------------------
+
+TITLE: Get Specific Model Information using Gemini API (Python, Go, Shell)
+DESCRIPTION: This snippet demonstrates how to retrieve detailed information about a specific Gemini model using the Gemini API. It covers the necessary client setup, model name specification, and how to handle the response. The examples are provided for Python, Go, and a shell command.
+
+SOURCE: https://ai.google.dev/api/models
+
+LANGUAGE: python
+CODE:
+```
+from google import genai
+
+client = genai.Client()
+model_info = client.models.get(model="gemini-2.0-flash")
+print(model_info)
+models.py
+```
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+modelInfo, err := client.Models.Get(ctx, "gemini-2.0-flash", nil)
+if err != nil {
+	log.Fatal(err)
+}
+
+fmt.Println(modelInfo)
+models.go
+```
+
+LANGUAGE: shell
+CODE:
+```
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash?key=$GEMINI_API_KEY
+models.sh
+```
+
+--------------------------------
+
+TITLE: Session Setup
+DESCRIPTION: The initial message after connection sets up the session, including model, generation parameters, system instructions, and tools.
+
+SOURCE: https://ai.google.dev/api/live_hl=ar
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Session Setup
+
+### Description
+The initial message after connection sets up the session, which includes the model, generation parameters, system instructions, and tools. You can change the configuration parameters, except for the model, during the session.
+
+### Request Body Example
+```json
+{
+  "model": string,
+  "generationConfig": {
+    "candidateCount": integer,
+    "maxOutputTokens": integer,
+    "temperature": number,
+    "topP": number,
+    "topK": integer,
+    "presencePenalty": number,
+    "frequencyPenalty": number,
+    "responseModalities": [string],
+    "speechConfig": object,
+    "mediaResolution": object
+  },
+  "systemInstruction": string,
+  "tools": [object]
+}
+```
+
+### Request Body Parameters
+- **model** (string) - Required - The name of the model to use for generation.
+- **generationConfig** (object) - Optional - Configuration options for the generation process.
+  - **candidateCount** (integer) - Optional - The number of candidates to generate.
+  - **maxOutputTokens** (integer) - Optional - The maximum number of output tokens to generate.
+  - **temperature** (number) - Optional - Controls randomness. Values between 0 and 1.
+  - **topP** (number) - Optional - Controls diversity. Values between 0 and 1.
+  - **topK** (integer) - Optional - Controls diversity. Values greater than 0.
+  - **presencePenalty** (number) - Optional - Penalizes new tokens based on their existing presence.
+  - **frequencyPenalty** (number) - Optional - Penalizes new tokens based on their frequency.
+  - **responseModalities** (array[string]) - Optional - Specifies the modalities the model should respond with.
+  - **speechConfig** (object) - Optional - Configuration for speech generation.
+  - **mediaResolution** (object) - Optional - Configuration for media resolution.
+- **systemInstruction** (string) - Optional - Instructions for the model to follow.
+- **tools** (array[object]) - Optional - A list of tools the model can use.
+```
+
+--------------------------------
+
+TITLE: Video Upload (Python)
+DESCRIPTION: Python example for uploading a video file.
+
+SOURCE: https://ai.google.dev/api/files_hl=ko
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Video Upload (Python)
+
+### Description
+This Python code demonstrates how to upload a video file using the `google.generativeai` library.
+
+### Method
+POST
+
+### Endpoint
+N/A (Library functions abstract the endpoints)
+
+### Parameters
+#### Request Body (Implicit via library)
+- **file** (File object) - The video file to upload (e.g., `media / "Big_Buck_Bunny.mp4"`).
+
+### Request Example
+```python
+from google import genai
+import time
+
+client = genai.Client()
+# Video clip (CC BY 3.0) from https://peach.blender.org/download/
+myfile = client.files.upload(file=media / "Big_Buck_Bunny.mp4")
+print(f"{myfile=}")
+```
+
+### Response
+#### Success Response
+- **myfile** (object) - Information about the uploaded video file.
+```
+
+--------------------------------
+
+TITLE: Go: Upload Video, Count Tokens, Generate Content with Google AI
+DESCRIPTION: This Go example shows how to upload a video, monitor its processing status, count tokens for multimodal input, and generate content using the Google AI API. It utilizes the 'genai' SDK and requires an API key.
+
+SOURCE: https://ai.google.dev/api/tokens_hl=he
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+file, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+	&genai.UploadFileConfig{
+		MIMEType : "video/mp4",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+
+// Poll until the video file is completely processed (state becomes ACTIVE).
+for file.State == genai.FileStateUnspecified || file.State != genai.FileStateActive {
+	fmt.Println("Processing video...")
+	fmt.Println("File state:", file.State)
+	time.Sleep(5 * time.Second)
+
+	file, err = client.Files.Get(ctx, file.Name, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+parts := []*genai.Part{
+	genai.NewPartFromText("Tell me about this video"),
+	genai.NewPartFromURI(file.URI, file.MIMEType),
+}
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println("Multimodal video/audio token count:", tokenResp.TotalTokens)
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+usageMetadata, err := json.MarshalIndent(response.UsageMetadata, "", "  ")
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Println(string(usageMetadata))
+```
+
+--------------------------------
+
+TITLE: Go: Initialize Google Generative AI Client
+DESCRIPTION: Initializes the Google Generative AI client using a background context and API key. It configures the client to use the Gemini API backend and includes error handling for client creation.
+
+SOURCE: https://ai.google.dev/api/caching_hl=id
+
+LANGUAGE: go
+CODE:
+```
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+modelName := "gemini-1.5-flash-001"
+systemInstruction := "You are an expert analyzing transcripts."
+
+// Create initial chat with a system instruction.
+chat, err := client.Chats.Create(ctx, modelName, &genai.GenerateContentConfig{
+	SystemInstruction: genai.NewContentFromText(systemInstruction, genai.RoleUser),
+}, nil)
+if err != nil {
+	log.Fatal(err)
+}
+```
+
+--------------------------------
+
+TITLE: Go Client Library - Generate Content with Audio
+DESCRIPTION: Example of using the Go client library to generate content with an audio file.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=zh-tw
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Go Client Library - Generate Content with Audio
+
+### Description
+This code snippet demonstrates how to use the Go client library to upload an audio file and generate content based on it.
+
+### Method
+N/A (Client Library Usage)
+
+### Endpoint
+N/A (Client Library Usage)
+
+### Parameters
+- **ctx** (context.Context) - The context for the API request.
+- **client** (genai.Client) - An instance of the Gemini API client.
+- **file** (genai.File) - The uploaded audio file object.
+- **response** (genai.GenerateContentResponse) - The response from the generate content request.
+
+### Request Example
+```go
+ctx := context.Background()
+client, err := genai.NewClient(ctx, &genai.ClientConfig{
+	APIKey:  os.Getenv("GEMINI_API_KEY"),
+	Backend: genai.BackendGeminiAPI,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+file, err := client.Files.UploadFromPath(
+	ctx, 
+	filepath.Join(getMedia(), "sample.mp3"), 
+	&genai.UploadFileConfig{
+		MIMEType : "audio/mpeg",
+	},
+)
+if err != nil {
+	log.Fatal(err)
+}
+
+parts := []*genai.Part{
+	genai.NewPartFromText("Give me a summary of this audio file."),
+	genai.NewPartFromURI(file.URI, file.MIMEType),
+}
+
+contents := []*genai.Content{
+	genai.NewContentFromParts(parts, genai.RoleUser),
+}
+
+response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+if err != nil {
+	log.Fatal(err)
+}
+printResponse(response)
+```
+```
+
+--------------------------------
+
+TITLE: Session Setup
+DESCRIPTION: The initial message after connecting sets the model to be used for the session. The format may differ across SDKs.
+
+SOURCE: https://ai.google.dev/api/live_music_hl=ar
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Session Setup
+
+### Description
+Sets the model to be used during the session. This is the first message sent after establishing the connection.
+
+### Request Body
+```json
+{
+  "model": "string"
+}
+```
+```
+
+--------------------------------
+
+TITLE: Resumable PDF Upload and Content Generation (Shell)
+DESCRIPTION: This shell script demonstrates a resumable upload process for a PDF file, including starting the upload, sending the data in chunks (or finalizing in this example), and then using the uploaded file's URI to generate content with the Gemini API. It parses response headers to get the upload URL.
+
+SOURCE: https://ai.google.dev/api/generate-content_hl=ja
+
+LANGUAGE: shell
+CODE:
+```
+MIME_TYPE=$(file -b --mime-type "${PDF_PATH}")
+NUM_BYTES=$(wc -c < "${PDF_PATH}")
+DISPLAY_NAME=TEXT
+
+
+echo $MIME_TYPE
+tmp_header_file=upload-header.tmp
+
+# Initial resumable request defining metadata.
+# The upload url is in the response headers dump them to a file.
+curl "${BASE_URL}/upload/v1beta/files?key=${GEMINI_API_KEY}" \
+  -D upload-header.tmp \
+  -H "X-Goog-Upload-Protocol: resumable" \
+  -H "X-Goog-Upload-Command: start" \
+  -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
+  -H "X-Goog-Upload-Header-Content-Type: ${MIME_TYPE}" \
+  -H "Content-Type: application/json" \
+  -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+
+upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
+rm "${tmp_header_file}"
+
+# Upload the actual bytes.
+curl "${upload_url}" \
+  -H "Content-Length: ${NUM_BYTES}" \
+  -H "X-Goog-Upload-Offset: 0" \
+  -H "X-Goog-Upload-Command: upload, finalize" \
+  --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
+
+file_uri=$(jq ".file.uri" file_info.json)
+echo file_uri=$file_uri
+
+# Now generate content using that file
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -X POST \
+    -d '{
+      "contents": [{"parts":[{"text": "Can you add a few more lines to this poem?"},{"file_data":{"mime_type": "application/pdf", "file_uri": '$file_uri'}}]    }]    }' 2> /dev/null > response.json
+
+cat response.json
+echo
+
+jq ".candidates[].content.parts[].text" response.json
+```

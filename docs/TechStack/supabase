@@ -1,0 +1,731 @@
+================
+CODE SNIPPETS
+================
+TITLE: Copy Environment Example File
+DESCRIPTION: Copies the environment variable configuration example file to be used for setting up Supabase project URL and anon key.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/hono
+
+LANGUAGE: bash
+CODE:
+```
+cp .env.example .env
+```
+
+--------------------------------
+
+TITLE: Bootstrap Hono App with Supabase CLI
+DESCRIPTION: This command bootstraps a Hono example app from Supabase Samples using the Supabase CLI.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/hono
+
+LANGUAGE: bash
+CODE:
+```
+npx supabase@latest bootstrap hono
+```
+
+--------------------------------
+
+TITLE: Add Instruments Resource
+DESCRIPTION: Guides on using the Refine CLI to automatically generate resources and pages for the 'instruments' entity, including setup for list, create, show, and edit views.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Add Instruments Resource
+
+### Description
+Uses the Refine CLI to automatically generate the necessary code for the 'instruments' resource, including pages for listing, creating, showing, and editing. It also mentions the required dependencies (`@refinedev/react-table`, `@refinedev/react-hook-form`) for the Inferencer component.
+
+### Method
+Terminal Command
+
+### Endpoint
+N/A
+
+### Code
+```bash
+npm run refine create-resource instruments
+```
+
+### Note
+Ensure `@refinedev/react-table` and `@refinedev/react-hook-form` are installed as dependencies to avoid errors with the `<HeadlessInferencer />` component.
+```
+
+--------------------------------
+
+TITLE: Create and Run Refine App
+DESCRIPTION: Instructions for creating a new Refine application with the Supabase preset, navigating to the app directory, and starting the development server.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Create Refine App
+
+### Description
+Creates a new Refine application using the `refine-supabase` preset, which includes the `@refinedev/supabase` package for Supabase integration.
+
+### Method
+Terminal Command
+
+### Endpoint
+N/A
+
+### Code
+```bash
+npm create refine-app@latest -- --preset refine-supabase my-app
+```
+
+## Navigate to App Directory
+
+### Description
+Changes the current directory to the newly created Refine application.
+
+### Method
+Terminal Command
+
+### Endpoint
+N/A
+
+### Code
+```bash
+cd my-app
+```
+
+## Open in VS Code
+
+### Description
+Opens the Refine application directory in Visual Studio Code for development.
+
+### Method
+Terminal Command
+
+### Endpoint
+N/A
+
+### Code
+```bash
+code .
+```
+
+## Start Development Server
+
+### Description
+Starts the Refine development server. The application will be accessible at http://localhost:5173.
+
+### Method
+Terminal Command
+
+### Endpoint
+N/A
+
+### Code
+```bash
+npm run dev
+```
+```
+
+--------------------------------
+
+TITLE: Client Setup
+DESCRIPTION: Basic setup for Supabase Realtime client and channel configuration with broadcast, presence, and security options.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/ai-prompts/use-realtime
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Client Setup
+
+### Basic Setup
+
+```javascript
+// Basic setup
+const supabase = createClient('URL', 'ANON_KEY')
+```
+
+### Channel Configuration
+
+```javascript
+// Channel configuration
+const channel = supabase.channel('room:123:messages', {
+  config: {
+    broadcast: { self: true, ack: true },
+    presence: { key: 'user-session-id', enabled: true },
+    private: true  // Required for RLS authorization
+  }
+})
+```
+```
+
+--------------------------------
+
+TITLE: Initialize Refine App with Supabase
+DESCRIPTION: This code snippet demonstrates the core setup for a Refine application using Supabase as the data backend. It configures dataProvider, liveProvider, authProvider, and routerProvider, along with routing for the 'instruments' resource.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: tsx
+CODE:
+```
+import {
+    Refine,
+    WelcomePage
+} from "@refinedev/core";
+import {
+    RefineKbar,
+    RefineKbarProvider
+} from "@refinedev/kbar";
+import routerBindings,
+    {
+        DocumentTitleHandler,
+        NavigateToResource,
+        UnsavedChangesNotifier,
+    }
+from "@refinedev/react-router-v6";
+import {
+    dataProvider,
+    liveProvider
+} from "@refinedev/supabase";
+import {
+    BrowserRouter,
+    Route,
+    Routes
+} from "react-router-dom";
+
+import "./App.css";
+import authProvider from "./authProvider";
+import {
+    supabaseClient
+} from "./utility";
+import {
+    InstrumentsCreate,
+    InstrumentsEdit,
+    InstrumentsList,
+    InstrumentsShow
+} from "./pages/instruments";
+
+function App() {
+    return (
+        <BrowserRouter>
+            <RefineKbarProvider>
+                <Refine
+                    dataProvider={dataProvider(supabaseClient)}
+                    liveProvider={liveProvider(supabaseClient)}
+                    authProvider={authProvider}
+                    routerProvider={routerBindings}
+                    options={{
+                        syncWithLocation: true,
+                        warnWhenUnsavedChanges: true,
+                    }}
+                    resources={[
+                        {
+                            name: "instruments",
+                            list: "/instruments",
+                            create: "/instruments/create",
+                            edit: "/instruments/edit/:id",
+                            show: "/instruments/show/:id"
+                        }
+                    ]}>
+                    <Routes>
+                        <Route
+                            index
+                            element={<NavigateToResource resource="instruments" />} />
+                        <Route path="/instruments">
+                            <Route index element={<InstrumentsList />} />
+                            <Route path="create" element={<InstrumentsCreate />} />
+                            <Route path="edit/:id" element={<InstrumentsEdit />} />
+                            <Route path="show/:id" element={<InstrumentsShow />} />
+                        </Route>
+                    </Routes>
+                    <RefineKbar />
+                    <UnsavedChangesNotifier />
+                    <DocumentTitleHandler />
+                </Refine>
+            </RefineKbarProvider>
+        </BrowserRouter>
+    );
+}
+
+export default App;
+
+```
+
+--------------------------------
+
+TITLE: Install Supabase Client Library (Terminal)
+DESCRIPTION: This command installs the official Supabase JavaScript client library (`@supabase/supabase-js`) into your React project. Ensure you are in the project's root directory before running this command.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
+
+LANGUAGE: bash
+CODE:
+```
+cd my-app && npm install @supabase/supabase-js
+
+```
+
+--------------------------------
+
+TITLE: Install Node.js Dependencies
+DESCRIPTION: Installs project dependencies including Supabase client libraries for JavaScript and server-side rendering.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/hono
+
+LANGUAGE: bash
+CODE:
+```
+npm install
+```
+
+--------------------------------
+
+TITLE: Start Next.js Development Server
+DESCRIPTION: Command to run the Next.js development server, allowing you to view the application locally.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/nextjs
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Start Development Server
+
+### Description
+Starts the Next.js development server.
+
+### Command
+```bash
+npm run dev
+```
+
+### Access
+Navigate to `http://localhost:3000/instruments` in your browser to see the fetched data.
+```
+
+--------------------------------
+
+TITLE: Supabase Realtime Client Setup
+DESCRIPTION: Basic initialization of the Supabase client and creation of a Realtime channel with specific configurations for broadcast, presence, and privacy.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/ai-prompts/use-realtime
+
+LANGUAGE: javascript
+CODE:
+```
+const supabase = createClient('URL', 'ANON_KEY')
+
+const channel = supabase.channel('room:123:messages', {
+  config: {
+    broadcast: { self: true, ack: true },
+    presence: { key: 'user-session-id', enabled: true },
+    private: true  // Required for RLS authorization
+  }
+})
+```
+
+--------------------------------
+
+TITLE: Create a Supabase Project
+DESCRIPTION: Instructions on creating a new Supabase project via the dashboard or the Management API.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/ios-swiftui
+
+LANGUAGE: APIDOC
+CODE:
+```
+## POST /v1/projects
+
+### Description
+Creates a new Supabase project within a specified organization.
+
+### Method
+POST
+
+### Endpoint
+https://api.supabase.com/v1/projects
+
+### Parameters
+#### Headers
+- **Authorization** (string) - Required - Bearer token for authentication.
+- **Content-Type** (string) - Required - application/json
+
+#### Request Body
+- **organization_id** (string) - Required - The ID of the organization to create the project in.
+- **name** (string) - Required - The name of the new project.
+- **region** (string) - Required - The region for the project (e.g., "us-east-1").
+- **db_pass** (string) - Required - The password for the database.
+
+### Request Example
+```json
+{
+  "organization_id": "<org-id>",
+  "name": "My Project",
+  "region": "us-east-1",
+  "db_pass": "<your-secure-password>"
+}
+```
+
+### Response
+#### Success Response (201 Created)
+Details of the newly created project (structure not specified in source text).
+
+#### Response Example
+(No example provided in source text)
+
+## GET /v1/organizations
+
+### Description
+Lists all organizations associated with the authenticated user.
+
+### Method
+GET
+
+### Endpoint
+https://api.supabase.com/v1/organizations
+
+### Parameters
+#### Headers
+- **Authorization** (string) - Required - Bearer token for authentication.
+
+### Response
+#### Success Response (200 OK)
+An array of organization objects (structure not specified in source text).
+
+#### Response Example
+(No example provided in source text)
+```
+
+--------------------------------
+
+TITLE: Create a SvelteKit App (CLI)
+DESCRIPTION: This command uses npm to create a new SvelteKit project named 'my-app'. It's the initial step for building a SvelteKit application.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit
+
+LANGUAGE: bash
+CODE:
+```
+npx sv create my-app
+
+```
+
+--------------------------------
+
+TITLE: Configure Supabase Environment Variables
+DESCRIPTION: Instructions to set up the `.env.local` file with your Supabase project's URL and publishable key for client-side access.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/nextjs
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Environment Variables
+
+### Description
+Configure your Supabase connection details by creating or updating the `.env.local` file.
+
+### File: `.env.local`
+```env
+NEXT_PUBLIC_SUPABASE_URL=<SUBSTITUTE_SUPABASE_URL>
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<SUBSTITUTE_SUPABASE_PUBLISHABLE_KEY>
+```
+```
+
+--------------------------------
+
+TITLE: Supabase CLI: Link, List, Download Functions
+DESCRIPTION: Commands to link your local project to Supabase, list deployed functions, and download function source code.
+
+SOURCE: https://supabase.com/docs/guides/functions/quickstart-dashboard
+
+LANGUAGE: bash
+CODE:
+```
+supabase link --project-ref [project-ref]
+supabase functions list
+supabase functions download hello-world
+```
+
+--------------------------------
+
+TITLE: Start the Rails development server
+DESCRIPTION: Starts the Rails development server, allowing you to view your application at http://127.0.0.1:3000.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/ruby-on-rails
+
+LANGUAGE: shell
+CODE:
+```
+bin/rails server
+```
+
+--------------------------------
+
+TITLE: Configure Supabase Client
+DESCRIPTION: Details on how to update the `supabaseClient` in your Refine application with your Supabase project URL and public key to establish a connection.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Update supabaseClient
+
+### Description
+Configures the `supabaseClient` in your Refine application by providing your Supabase project URL (`SUPABASE_URL`) and publishable key (`SUPABASE_KEY`). This client is essential for the authentication and data providers to connect to your Supabase backend.
+
+### Method
+File Modification
+
+### Endpoint
+`src/utility/supabaseClient.ts`
+
+### Parameters
+#### File Content
+- **SUPABASE_URL** (string) - Required - Your Supabase project URL.
+- **SUPABASE_KEY** (string) - Required - Your Supabase publishable API key.
+
+### Request Example
+```typescript
+import { createClient } from "@refinedev/supabase";
+
+const SUPABASE_URL = YOUR_SUPABASE_URL;
+const SUPABASE_KEY = YOUR_SUPABASE_KEY;
+
+export const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY, {
+  db: {
+    schema: "public",
+  },
+  auth: {
+    persistSession: true,
+  },
+});
+```
+```
+
+--------------------------------
+
+TITLE: Create Supabase Project and Table
+DESCRIPTION: This section details how to create a Supabase project, either through the dashboard or the Management API, and how to set up an 'instruments' table with sample data and enable row-level security.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: APIDOC
+CODE:
+```
+## POST /v1/organizations
+
+### Description
+Lists your organizations to retrieve the organization ID needed for creating a new project.
+
+### Method
+GET
+
+### Endpoint
+https://api.supabase.com/v1/organizations
+
+### Parameters
+#### Header Parameters
+- **Authorization** (string) - Required - Bearer token obtained from Supabase dashboard.
+
+## POST /v1/projects
+
+### Description
+Creates a new Supabase project. Requires your organization ID, a project name, region, and a secure database password.
+
+### Method
+POST
+
+### Endpoint
+https://api.supabase.com/v1/projects
+
+### Parameters
+#### Header Parameters
+- **Authorization** (string) - Required - Bearer token obtained from Supabase dashboard.
+- **Content-Type** (string) - Required - application/json
+
+#### Request Body
+- **organization_id** (string) - Required - The ID of your Supabase organization.
+- **name** (string) - Required - The name for your new Supabase project.
+- **region** (string) - Required - The region where the project will be hosted (e.g., "us-east-1").
+- **db_pass** (string) - Required - A secure password for your database.
+
+### Request Example
+```json
+{
+    "organization_id": "<org-id>",
+    "name": "My Project",
+    "region": "us-east-1",
+    "db_pass": "<your-secure-password>"
+}
+```
+
+## SQL - Create Instruments Table
+
+### Description
+Creates an 'instruments' table and inserts sample data. It also enables row-level security (RLS) for the table.
+
+### Method
+SQL
+
+### Endpoint
+N/A (Executed in Supabase SQL Editor)
+
+### Code
+```sql
+-- Create the table
+create table instruments (
+  id bigint primary key generated always as identity,
+  name text not null
+);
+
+-- Insert some sample data into the table
+insert into instruments (name)
+values  ('violin'),  ('viola'),  ('cello');
+
+-- Enable row level security
+alter table instruments enable row level security;
+```
+
+## SQL - Create RLS Policy
+
+### Description
+Adds a row-level security policy to make the 'instruments' table publicly readable.
+
+### Method
+SQL
+
+### Endpoint
+N/A (Executed in Supabase SQL Editor)
+
+### Code
+```sql
+create policy "public can read instruments"
+on public.instruments
+for select
+to anon
+using (true);
+```
+```
+
+--------------------------------
+
+TITLE: Create React App with Vite (Terminal)
+DESCRIPTION: This command uses npm to create a new React project named 'my-app' using the Vite build tool with the React template. Navigate into the created directory to manage dependencies and start the development server.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/reactjs
+
+LANGUAGE: bash
+CODE:
+```
+npm create vite@latest my-app -- --template react
+
+```
+
+--------------------------------
+
+TITLE: Generate refine resource for 'instruments'
+DESCRIPTION: Command to automatically add resources and generate code for pages (list, create, show, edit) for the 'instruments' resource using refine's Inferencer. Requires installation of `@refinedev/react-table` and `@refinedev/react-hook-form`.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: bash
+CODE:
+```
+npm run refine create-resource instruments
+
+```
+
+--------------------------------
+
+TITLE: Start Supabase Project
+DESCRIPTION: Command to start the development server for a Supabase project. This command typically runs a local server to host the frontend application, allowing for development and testing. It requires Node.js and npm to be installed.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/tutorials/with-solidjs
+
+LANGUAGE: bash
+CODE:
+```
+npm start
+
+```
+
+--------------------------------
+
+TITLE: Navigate to app directory and open in VS Code
+DESCRIPTION: Commands to change the current directory to the newly created refine app and open the project in Visual Studio Code.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/refine
+
+LANGUAGE: bash
+CODE:
+```
+cd my-app
+code .
+
+```
+
+--------------------------------
+
+TITLE: Create Supabase Project via Management API
+DESCRIPTION: Demonstrates how to create a new Supabase project using the Management API, including obtaining an access token and specifying project details.
+
+SOURCE: https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit
+
+LANGUAGE: APIDOC
+CODE:
+```
+## POST /v1/projects
+
+### Description
+Creates a new Supabase project.
+
+### Method
+POST
+
+### Endpoint
+https://api.supabase.com/v1/projects
+
+### Parameters
+#### Headers
+- **Authorization** (string) - Required - Bearer token obtained from Supabase dashboard.
+- **Content-Type** (string) - Required - application/json
+
+#### Request Body
+- **organization_id** (string) - Required - The ID of the organization to create the project under.
+- **name** (string) - Required - The name for the new Supabase project.
+- **region** (string) - Required - The region where the project will be hosted (e.g., "us-east-1").
+- **db_pass** (string) - Required - A secure password for the database.
+
+### Request Example
+```json
+{
+  "organization_id": "<org-id>",
+  "name": "My Project",
+  "region": "us-east-1",
+  "db_pass": "<your-secure-password>"
+}
+```
+
+### Response
+#### Success Response (201)
+- **id** (string) - The unique identifier for the newly created project.
+- **name** (string) - The name of the project.
+- **organization_id** (string) - The organization ID associated with the project.
+- **status** (string) - The current status of the project creation.
+
+#### Response Example
+```json
+{
+  "id": "your-project-ref",
+  "name": "My Project",
+  "organization_id": "your-org-id",
+  "status": "creating"
+}
+```
+```

@@ -1,0 +1,532 @@
+openapi: 3.0.3
+info:
+  title: My Closet Virtual Try-On API
+  description: API for virtual closet management and AI-powered try-on functionality
+  version: 1.0.0
+  contact:
+    name: My Closet Team
+    email: support@mycloset.app
+
+servers:
+  - url: https://api.mycloset.app
+    description: Production server
+  - url: http://localhost:3000/api
+    description: Development server
+
+security:
+  - SupabaseAuth: []
+
+paths:
+  # Authentication endpoints
+  /auth/register:
+    post:
+      summary: Register new user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password, display_name]
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "user@example.com"
+                password:
+                  type: string
+                  minLength: 8
+                  example: "securepassword123"
+                display_name:
+                  type: string
+                  minLength: 2
+                  maxLength: 50
+                  example: "John Doe"
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  session:
+                    $ref: '#/components/schemas/Session'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /auth/login:
+    post:
+      summary: Login user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  session:
+                    $ref: '#/components/schemas/Session'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # User base photos endpoints
+  /user/base-photos:
+    get:
+      summary: Get user base photos
+      tags: [User Base Photos]
+      responses:
+        '200':
+          description: Base photos retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserBasePhoto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      summary: Upload user base photo
+      tags: [User Base Photos]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [image, image_type]
+              properties:
+                image:
+                  type: string
+                  format: binary
+                image_type:
+                  type: string
+                  enum: [front, side, full_body]
+      responses:
+        '201':
+          description: Base photo uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserBasePhoto'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '413':
+          $ref: '#/components/responses/FileTooLarge'
+
+  /user/base-photos/{id}:
+    delete:
+      summary: Delete user base photo
+      tags: [User Base Photos]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Base photo deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Clothing items endpoints
+  /clothing-items:
+    get:
+      summary: Get user clothing items
+      tags: [Clothing Items]
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+            enum: [shirts_tops, pants_bottoms, shoes]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Clothing items retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ClothingItem'
+                  total:
+                    type: integer
+                  has_more:
+                    type: boolean
+
+    post:
+      summary: Upload clothing items
+      tags: [Clothing Items]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [images, category]
+              properties:
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                category:
+                  type: string
+                  enum: [shirts_tops, pants_bottoms, shoes]
+                names:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Clothing items uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClothingItem'
+
+  /clothing-items/{id}:
+    get:
+      summary: Get clothing item details
+      tags: [Clothing Items]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Clothing item retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClothingItem'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      summary: Delete clothing item
+      tags: [Clothing Items]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Clothing item deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # Try-on sessions endpoints
+  /try-on/sessions:
+    post:
+      summary: Create try-on session
+      tags: [Try-On Sessions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [clothing_item_ids]
+              properties:
+                clothing_item_ids:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                  maxItems: 5
+      responses:
+        '201':
+          description: Try-on session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TryOnSession'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+    get:
+      summary: Get user try-on sessions
+      tags: [Try-On Sessions]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [pending, processing, completed, failed]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+      responses:
+        '200':
+          description: Try-on sessions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TryOnSession'
+
+  /try-on/sessions/{id}:
+    get:
+      summary: Get try-on session details
+      tags: [Try-On Sessions]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Try-on session retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TryOnSession'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /try-on/sessions/{id}/result:
+    get:
+      summary: Get try-on result image
+      tags: [Try-On Sessions]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Result image retrieved successfully
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '202':
+          description: Session still processing
+
+components:
+  securitySchemes:
+    SupabaseAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        display_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        preferences:
+          type: object
+
+    Session:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+
+    UserBasePhoto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        image_url:
+          type: string
+          format: uri
+        image_type:
+          type: string
+          enum: [front, side, full_body]
+        uploaded_at:
+          type: string
+          format: date-time
+        is_active:
+          type: boolean
+        metadata:
+          type: object
+
+    ClothingItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        category:
+          type: string
+          enum: [shirts_tops, pants_bottoms, shoes]
+        name:
+          type: string
+        image_url:
+          type: string
+          format: uri
+        thumbnail_url:
+          type: string
+          format: uri
+        uploaded_at:
+          type: string
+          format: date-time
+        is_active:
+          type: boolean
+        metadata:
+          type: object
+
+    TryOnSession:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, processing, completed, failed]
+        created_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        result_image_url:
+          type: string
+          format: uri
+        processing_time:
+          type: integer
+        error_message:
+          type: string
+        metadata:
+          type: object
+        clothing_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClothingItem'
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    Conflict:
+      description: Resource conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    FileTooLarge:
+      description: File too large
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

@@ -1,0 +1,1630 @@
+================
+CODE SNIPPETS
+================
+TITLE: Python setUp/tearDown Patching with unittest
+DESCRIPTION: Demonstrates managing patches using setUp and tearDown methods in unittest.TestCase. Ensures patches are started in setUp and stopped in tearDown to manage mock objects effectively.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+class MyTest(unittest.TestCase):
+    def setUp(self):
+        self.patcher = patch('mymodule.foo')
+        self.mock_foo = self.patcher.start()
+
+    def test_foo(self):
+        self.assertIs(mymodule.foo, self.mock_foo)
+
+    def tearDown(self):
+        self.patcher.stop()
+```
+
+--------------------------------
+
+TITLE: Python unittest TestCase with setUp method
+DESCRIPTION: An example demonstrating the use of the setUp method in unittest.TestCase. The setUp method is automatically called before each test method, allowing for common setup logic.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.rst
+
+LANGUAGE: python
+CODE:
+```
+import unittest
+
+class WidgetTestCase(unittest.TestCase):
+    def setUp(self):
+        self.widget = Widget('The widget')
+
+    def test_default_widget_size(self):
+        self.assertEqual(self.widget.size(), (50,50),
+```
+
+--------------------------------
+
+TITLE: Setup.py with Classifiers for Distutils
+DESCRIPTION: An example setup.py file demonstrating how to add 'classifiers' to the Distutils `setup` function for package metadata. This example is designed for compatibility with older Distutils versions.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/whatsnew/2.3.rst
+
+LANGUAGE: python
+CODE:
+```
+from distutils import core
+kw = {'name': "Quixote",
+      'version': "0.5.1",
+      'description': "A highly Pythonic Web application framework",
+      # ...
+      }
+
+if (hasattr(core, 'setup_keywords') and
+    'classifiers' in core.setup_keywords):
+    kw['classifiers'] = \
+        ['Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+         'Environment :: No Input/Output (Daemon)',
+         'Intended Audience :: Developers'],
+
+core.setup(**kw)
+```
+
+--------------------------------
+
+TITLE: Managing multiple patches in setUp and tearDown
+DESCRIPTION: Provides an example of managing multiple patches within the setUp and tearDown methods of a unittest.TestCase. It shows starting multiple patches in setUp and stopping them in tearDown.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> class MyTest(unittest.TestCase):
+...     def setUp(self):
+...         self.patcher1 = patch('package.module.Class1')
+...         self.patcher2 = patch('package.module.Class2')
+...         self.MockClass1 = self.patcher1.start()
+...         self.MockClass2 = self.patcher2.start()
+... 
+...     def tearDown(self):
+...         self.patcher1.stop()
+...         self.patcher2.stop()
+... 
+...     def test_something(self):
+...         assert package.module.Class1 is self.MockClass1
+...         assert package.module.Class2 is self.MockClass2
+... 
+>>> MyTest('test_something').run()
+```
+
+--------------------------------
+
+TITLE: Unattend.xml for Python Installation
+DESCRIPTION: An example unattend.xml file to configure Python installation options, mirroring the personal installation command. Values are provided as attributes and element text.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/using/windows.rst
+
+LANGUAGE: xml
+CODE:
+```
+<Options>
+        <Option Name="InstallAllUsers" Value="no" />
+        <Option Name="Include_launcher" Value="0" />
+        <Option Name="Include_test" Value="no" />
+        <Option Name="SimpleInstall" Value="yes" />
+        <Option Name="SimpleInstallDescription">Just for me, no test suite</Option>
+    </Options>
+```
+
+--------------------------------
+
+TITLE: Python Script Association Example
+DESCRIPTION: Shows an example of how the Windows installer might associate the .py extension with the Python interpreter for script execution.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/faq/windows.rst
+
+LANGUAGE: doscon
+CODE:
+```
+D:\Program Files\Python\python.exe "%1" %*
+```
+
+--------------------------------
+
+TITLE: Python Component Initialization Examples
+DESCRIPTION: Demonstrates valid and invalid inputs for a hypothetical 'Component' class, highlighting validation rules for string casing, allowed values, numeric ranges, and type checking.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/howto/descriptor.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> Component('Widget', 'metal', 5)      # Blocked: 'Widget' is not all uppercase
+Traceback (most recent call last):
+    ...
+ValueError: Expected <method 'isupper' of 'str' objects> to be true for 'Widget'
+
+>>> Component('WIDGET', 'metle', 5)      # Blocked: 'metle' is misspelled
+Traceback (most recent call last):
+    ...
+ValueError: Expected 'metle' to be one of {'metal', 'plastic', 'wood'}
+
+>>> Component('WIDGET', 'metal', -5)     # Blocked: -5 is negative
+Traceback (most recent call last):
+    ...
+ValueError: Expected -5 to be at least 0
+
+>>> Component('WIDGET', 'metal', 'V')    # Blocked: 'V' isn't a number
+Traceback (most recent call last):
+    ...
+TypeError: Expected 'V' to be an int or float
+
+>>> c = Component('WIDGET', 'metal', 5)  # Allowed:  The inputs are valid
+```
+
+--------------------------------
+
+TITLE: Python: Mocking and Patching in Tests
+DESCRIPTION: Demonstrates the use of patching to replace objects during testing and asserting their identity with the original objects. It includes setup for test cleanup.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+    patcher = patch(name)
+    thing = patcher.start()
+    self.addCleanup(patcher.stop)
+    return thing
+
+    def test_foo(self):
+        mock_foo = self.create_patch('mymodule.Foo')
+        mock_bar = self.create_patch('mymodule.Bar')
+        mock_spam = self.create_patch('mymodule.Spam')
+
+        assert mymodule.Foo is mock_foo
+        assert mymodule.Bar is mock_bar
+        assert mymodule.Spam is mock_spam
+
+```
+
+--------------------------------
+
+TITLE: Python unittest addCleanup for Patching
+DESCRIPTION: Illustrates using unittest.TestCase.addCleanup to simplify patch management. This ensures that patch.stop() is called even if exceptions occur during the test setup.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+class MyTest(unittest.TestCase):
+    def setUp(self):
+        patcher = patch('mymodule.foo')
+        self.addCleanup(patcher.stop)
+        self.mock_foo = patcher.start()
+
+    def test_foo(self):
+        self.assertIs(mymodule.foo, self.mock_foo)
+```
+
+--------------------------------
+
+TITLE: Mocking Asynchronous Context Managers with `AsyncMock`
+DESCRIPTION: Demonstrates mocking asynchronous context managers using `AsyncMock` or `MagicMock` by setting up `__aenter__` and `__aexit__`.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> import asyncio
+>>> from unittest.mock import MagicMock
+>>> class AsyncContextManager:
+...     async def __aenter__(self):
+...         return self
+...     async def __aexit__(self, exc_type, exc, tb):
+...         pass
+...
+>>> mock_instance = MagicMock(AsyncContextManager())  # AsyncMock also works here
+>>> async def main():
+...     async with mock_instance as result:
+...         pass
+... 
+>>> asyncio.run(main())
+>>> mock_instance.__aenter__.assert_awaited_once()
+>>> mock_instance.__aexit__.assert_awaited_once()
+```
+
+--------------------------------
+
+TITLE: Build and Install Custom Python Module
+DESCRIPTION: Provides the necessary Python setup files (`pyproject.toml` and `setup.py`) and shell commands to build and install a custom Python module written in C. This process compiles the C code and makes the module available for import.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/extending/newtypes_tutorial.rst
+
+LANGUAGE: python
+CODE:
+```
+from setuptools import Extension, setup
+setup(ext_modules=[Extension("custom", ["custom.c"])] )
+```
+
+LANGUAGE: shell
+CODE:
+```
+$ python -m pip install .
+```
+
+--------------------------------
+
+TITLE: Basic Argparse Setup
+DESCRIPTION: Demonstrates the minimal setup for an ArgumentParser, which automatically provides a --help option and handles unrecognized arguments.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/howto/argparse.rst
+
+LANGUAGE: python
+CODE:
+```
+import argparse
+parser = argparse.ArgumentParser()
+args = parser.parse_args()
+```
+
+--------------------------------
+
+TITLE: Bootstrap Application for Python Installer UI
+DESCRIPTION: This describes the C++ bootstrap application responsible for controlling the Python installer's UI, interacting with WiX for installation logic, and handling UI definitions from Default.thm.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: cpp
+CODE:
+```
+Bootstrap Application
+----------------------
+
+The bootstrap application is a C++ application that controls the UI and
+installation. While it does not directly compile into the main EXE of
+the installer, it forms the main active component. Most of the
+installation functionality is provided by WiX, and so the bootstrap
+application is predominantly responsible for the code behind the UI that
+is defined in the Default.thm file. The bootstrap application code is in
+bundle/bootstrap and is built automatically when building the bundle.
+```
+
+--------------------------------
+
+TITLE: Custom Mock Subclass Example
+DESCRIPTION: Illustrates creating a subclass of `MagicMock` to customize child mock behavior, ensuring attributes of the subclass do not inherit the subclass type.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> class Subclass(MagicMock):
+...     def _get_child_mock(self, /, **kwargs):
+...         return MagicMock(**kwargs)
+...
+>>> mymock = Subclass()
+>>> mymock.foo
+<MagicMock name='mock.foo' id='...'>
+>>> assert isinstance(mymock, Subclass)
+>>> assert not isinstance(mymock.foo, Subclass)
+>>> assert not isinstance(mymock(), Subclass)
+```
+
+--------------------------------
+
+TITLE: Shell: Output of Basic Logging Example
+DESCRIPTION: Shows the expected console output when running the basic Python logging setup example. Each line includes timestamp, logger name, level, and message.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/howto/logging.rst
+
+LANGUAGE: shell
+CODE:
+```
+$ python simple_logging_module.py
+2005-03-19 15:10:26,618 - simple_example - DEBUG - debug message
+2005-03-19 15:10:26,620 - simple_example - INFO - info message
+2005-03-19 15:10:26,695 - simple_example - WARNING - warn message
+2005-03-19 15:10:26,697 - simple_example - ERROR - error message
+2005-03-19 15:10:26,773 - simple_example - CRITICAL - critical message
+```
+
+--------------------------------
+
+TITLE: Install Free-threaded Python Binaries
+DESCRIPTION: Demonstrates how to install experimental free-threaded Python builds using the 'py install' command with tags specifying the version and architecture.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/using/windows.rst
+
+LANGUAGE: bash
+CODE:
+```
+$> py install 3.14t
+$> py install 3.14t-arm64
+$> py install 3.14t-32
+```
+
+--------------------------------
+
+TITLE: setup.py for C extension modules
+DESCRIPTION: An example setup.py script for distributing Python packages with C extension modules. It defines extension details like include directories, source files, and macros using the Extension class.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/whatsnew/2.0.rst
+
+LANGUAGE: python
+CODE:
+```
+from distutils.core import setup, Extension
+
+expat_extension = Extension('xml.parsers.pyexpat',
+     define_macros = [('XML_NS', None)],
+     include_dirs = [ 'extensions/expat/xmltok',
+                      'extensions/expat/xmlparse' ],
+     sources = [ 'extensions/pyexpat.c',
+                 'extensions/expat/xmltok/xmltok.c',
+                 'extensions/expat/xmltok/xmlrole.c' ]
+       )
+setup(name = "PyXML", version = "0.5.4",
+      ext_modules =[ expat_extension ] )
+```
+
+--------------------------------
+
+TITLE: URL Opener Creation and Installation
+DESCRIPTION: Demonstrates how to create and install a custom URL opener using OpenerDirector or build_opener, including adding custom handlers and overriding defaults.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/howto/urllib2.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## URL Opener Creation and Installation
+
+### Description
+This section explains how to create and manage URL openers in Python's `urllib.request` module. You can build openers from scratch using `OpenerDirector` and adding handlers, or use the convenience function `build_opener`. It also covers installing an opener as the global default for `urlopen` calls.
+
+### Creating an Opener
+
+Instantiate an `OpenerDirector` and add handlers using `.add_handler(some_handler_instance)`.
+
+Alternatively, use the convenience function `build_opener()`. `build_opener` adds default handlers but allows for easy addition or overriding of handlers.
+
+### Installing an Opener
+
+Use `install_opener()` to make an opener object the global default. Subsequent calls to `urlopen` will use the installed opener.
+
+### Opener `open` Method
+
+Opener objects have an `open` method that can be called directly to fetch URLs, eliminating the need for `install_opener` unless for convenience.
+```
+
+--------------------------------
+
+TITLE: Distutils Setup with Package Metadata
+DESCRIPTION: Demonstrates how to use the `setup` function from Distutils to define package metadata, including dependencies (`requires`, `obsoletes`) and download URL. This information is used for packaging and distribution.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/whatsnew/2.5.rst
+
+LANGUAGE: python
+CODE:
+```
+VERSION = '1.0'
+setup(name='PyPackage',
+      version=VERSION,
+      requires=['numarray', 'zlib (>=1.1.4)'],
+      obsoletes=['OldPackage']
+      download_url=('http://www.example.com/pypackage/dist/pkg-%s.tar.gz'
+                    % VERSION),
+     )
+```
+
+--------------------------------
+
+TITLE: PEP 397 Launcher Installation Path
+DESCRIPTION: Details the installation path for the PEP 397 launcher (py.exe or pyw.exe), which is used for managing multiple Python versions.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: text
+CODE:
+```
+.\py[w].exe         PEP 397 launcher
+```
+
+--------------------------------
+
+TITLE: Grammar for Arithmetic Expressions (Python AST)
+DESCRIPTION: A grammar similar to the C-based AST example, but specifically targeting Python AST objects. It defines rules for 'start', 'expr_stmt', 'expr', 'term', 'factor', and 'atom' using Python's 'ast' module.
+
+SOURCE: https://github.com/python/cpython/blob/main/InternalDocs/parser.md
+
+LANGUAGE: python
+CODE:
+```
+start[ast.Module]: a=expr_stmt* ENDMARKER { ast.Module(body=a or []) }
+expr_stmt: a=expr NEWLINE { ast.Expr(value=a, EXTRA) }
+
+expr:
+    | l=expr '+' r=term { ast.BinOp(left=l, op=ast.Add(), right=r, EXTRA) }
+    | l=expr '-' r=term { ast.BinOp(left=l, op=ast.Sub(), right=r, EXTRA) }
+    | term
+
+term:
+    | l=term '*' r=factor { ast.BinOp(left=l, op=ast.Mult(), right=r, EXTRA) }
+    | l=term '/' r=factor { ast.BinOp(left=l, op=ast.Div(), right=r, EXTRA) }
+    | factor
+
+factor:
+    | '(' e=expr ')' { e }
+    | atom
+
+atom:
+    | NAME
+    | NUMBER
+```
+
+--------------------------------
+
+TITLE: Tracking All Calls with mock_calls
+DESCRIPTION: Explains how to use the `mock_calls` attribute of a mock object to record all calls made to the mock and its children. This is useful for verifying complex interaction sequences.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> mock = MagicMock()
+>>> mock.method()
+<MagicMock name='mock.method()' id='...'>
+>>> mock.attribute.method(10, x=53)
+<MagicMock name='mock.attribute.method()' id='...'>
+>>> mock.mock_calls
+[call.method(), call.attribute.method(10, x=53)]
+```
+
+--------------------------------
+
+TITLE: Process start and termination example
+DESCRIPTION: Demonstrates creating, starting, and terminating a Process object using multiprocessing. The example shows how to check if a process is alive and retrieve its exit code after termination.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/multiprocessing.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> import multiprocessing, time, signal
+>>> mp_context = multiprocessing.get_context('spawn')
+>>> p = mp_context.Process(target=time.sleep, args=(1000,))
+>>> print(p, p.is_alive())
+<...Process ... initial> False
+>>> p.start()
+>>> print(p, p.is_alive())
+<...Process ... started> True
+>>> p.terminate()
+>>> time.sleep(0.1)
+>>> print(p, p.is_alive())
+<...Process ... stopped exitcode=-SIGTERM> False
+>>> p.exitcode == -signal.SIGTERM
+True
+```
+
+--------------------------------
+
+TITLE: Grammar for Arithmetic Expressions (C-based Python AST)
+DESCRIPTION: An example grammar for parsing arithmetic expressions, generating C-based Python AST nodes. It defines rules for 'start', 'expr_stmt', 'expr', 'term', 'factor', and 'atom'. 'EXTRA' is a macro for AST node metadata.
+
+SOURCE: https://github.com/python/cpython/blob/main/InternalDocs/parser.md
+
+LANGUAGE: c
+CODE:
+```
+start[mod_ty]: a=expr_stmt* ENDMARKER { _PyAST_Module(a, NULL, p->arena) }
+expr_stmt[stmt_ty]: a=expr NEWLINE { _PyAST_Expr(a, EXTRA) }
+
+expr[expr_ty]:
+    | l=expr '+' r=term { _PyAST_BinOp(l, Add, r, EXTRA) }
+    | l=expr '-' r=term { _PyAST_BinOp(l, Sub, r, EXTRA) }
+    | term
+
+term[expr_ty]:
+    | l=term '*' r=factor { _PyAST_BinOp(l, Mult, r, EXTRA) }
+    | l=term '/' r=factor { _PyAST_BinOp(l, Div, r, EXTRA) }
+    | factor
+
+factor[expr_ty]:
+    | '(' e=expr ')' { e }
+    | atom
+
+atom[expr_ty]:
+    | NAME
+    | NUMBER
+```
+
+--------------------------------
+
+TITLE: Starting and Serving Forever with Asyncio (Python)
+DESCRIPTION: Shows how to start accepting connections indefinitely using the `serve_forever` coroutine. This method is part of the asyncio Server object and can be used after a server is created, especially if it was initially configured not to accept connections. The example also illustrates setting up a client connection handler.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/asyncio-eventloop.rst
+
+LANGUAGE: python
+CODE:
+```
+async def client_connected(reader, writer):
+    # Communicate with the client with
+    # reader/writer streams.  For example:
+    await reader.readline()
+
+async def main(host, port):
+    srv = await asyncio.start_server(
+        client_connected, host, port)
+    await srv.serve_forever()
+
+asyncio.run(main('127.0.0.1', 0))
+```
+
+--------------------------------
+
+TITLE: Get Installation Paths
+DESCRIPTION: Retrieve installation paths based on a specified scheme.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/sysconfig.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## GET /sysconfig/install_paths/{scheme}
+
+### Description
+Retrieves the installation paths for a given scheme.
+
+### Method
+GET
+
+### Endpoint
+/sysconfig/install_paths/{scheme}
+
+### Parameters
+#### Path Parameters
+- **scheme** (string) - The installation scheme identifier (e.g., 'posix_prefix', 'nt_user', 'venv').
+
+### Request Example
+```
+GET /sysconfig/install_paths/posix_user
+```
+
+### Response
+#### Success Response (200)
+- **paths** (object) - A dictionary where keys are path identifiers (e.g., 'stdlib', 'platlib', 'scripts') and values are the corresponding installation directories.
+
+#### Response Example
+```json
+{
+  "paths": {
+    "stdlib": "/home/user/.local/lib/python3.9",
+    "platstdlib": "/home/user/.local/lib/python3.9",
+    "platlib": "/home/user/.local/lib/python3.9/site-packages",
+    "purelib": "/home/user/.local/lib/python3.9/site-packages",
+    "include": "/home/user/.local/include/python3.9",
+    "platinclude": "/home/user/.local/include/python3.9",
+    "scripts": "/home/user/.local/bin",
+    "data": "/home/user/.local/share/python3.9"
+  }
+}
+```
+```
+
+--------------------------------
+
+TITLE: WSGI Hello World Application Example
+DESCRIPTION: Provides a basic 'Hello World' WSGI application example demonstrating the application object structure and the use of the start_response callable.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/wsgiref.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Hello World WSGI Application
+
+### Description
+This is a working 'Hello World' WSGI application, where the *start_response* callable should follow the .StartResponse protocol. Every WSGI application must have an application object - a callable object that accepts two arguments: an environ dictionary and a start_response callable.
+
+### Method
+Callable Function
+
+### Endpoint
+N/A
+
+### Parameters
+#### Path Parameters
+N/A
+
+#### Query Parameters
+N/A
+
+#### Request Body
+N/A
+
+### Request Example
+```python
+from wsgiref.simple_server import make_server
+
+def hello_world_app(environ, start_response):
+    status = "200 OK"  # HTTP Status
+    # ... (rest of the application logic)
+```
+
+### Response
+#### Success Response (200)
+HTTP Response with status '200 OK'.
+
+#### Response Example
+N/A
+```
+
+--------------------------------
+
+TITLE: Python Installer Build Script for Testing (Batch)
+DESCRIPTION: This batch script is used to build the Python installer for testing purposes. It allows specifying target architectures (x86, x64, ARM64) and options to include documentation or build side-by-side installers.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: batch
+CODE:
+```
+build.bat [-x86] [-x64] [-ARM64] [--doc] [--test-marker] [--pack]
+```
+
+--------------------------------
+
+TITLE: Import and Initialize OptionParser
+DESCRIPTION: Demonstrates the initial steps to use the optparse module by importing the OptionParser class and creating an instance.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/optparse.rst
+
+LANGUAGE: python
+CODE:
+```
+from optparse import OptionParser
+...
+parser = OptionParser()
+```
+
+--------------------------------
+
+TITLE: Python: Creating an OptionParser instance
+DESCRIPTION: Demonstrates the initialization of an OptionParser object with various optional keyword arguments such as usage, description, and version.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/optparse.rst
+
+LANGUAGE: Python
+CODE:
+```
+from optparse import OptionParser
+
+parser = OptionParser(
+    usage="usage: %prog [options] arg",
+    version="%prog 1.0"
+)
+```
+
+--------------------------------
+
+TITLE: setup.py for Python packages with subpackages
+DESCRIPTION: An example setup.py script for distributing Python packages that include subpackages. It specifies the package structure using the 'packages' argument.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/whatsnew/2.0.rst
+
+LANGUAGE: python
+CODE:
+```
+from distutils.core import setup
+
+setup(name = "foo", version = "1.0",
+      packages = ["package", "package.subpackage"])
+```
+
+--------------------------------
+
+TITLE: Python unittest TestCase example
+DESCRIPTION: An example of creating a test case by subclassing unittest.TestCase and implementing a test method. The test method name must start with 'test' to be recognized by the test runner.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.rst
+
+LANGUAGE: python
+CODE:
+```
+import unittest
+
+class DefaultWidgetSizeTestCase(unittest.TestCase):
+    def test_default_widget_size(self):
+        widget = Widget('The widget')
+        self.assertEqual(widget.size(), (50, 50))
+```
+
+--------------------------------
+
+TITLE: Python Installation Directory Structure
+DESCRIPTION: Describes the typical files and folders found within a Python installation directory, including executables, DLLs, libraries, documentation, and scripts.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: text
+CODE:
+```
+.\python[w].exe The core executable files
+.\python3x.dll  The core interpreter
+.\python3.dll   The stable ABI reference
+.\DLLs          Stdlib extensions (*.pyd) and dependencies
+.\Doc           Documentation (*.html)
+.\include       Development headers (*.h)
+.\Lib           Standard library
+.\Lib\test      Test suite
+.\libs          Development libraries (*.lib)
+.\Scripts       Launcher scripts (*.exe, *.py)
+.\tcl           Tcl dependencies (*.dll, *.tcl and others)
+.\Tools         Tool scripts (*.py)
+```
+
+--------------------------------
+
+TITLE: Python range() Function Examples
+DESCRIPTION: Demonstrates the Python built-in range() function for generating arithmetic progressions. Includes examples of default, custom start, and step values.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/tutorial/controlflow.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> for i in range(5):
+   ...     print(i)
+   ...
+   0
+   1
+   2
+   3
+   4
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> list(range(5, 10))
+   [5, 6, 7, 8, 9]
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> list(range(0, 10, 3))
+   [0, 3, 6, 9]
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> list(range(-10, -100, -30))
+   [-10, -40, -70]
+```
+
+--------------------------------
+
+TITLE: Get available pip version (Python API)
+DESCRIPTION: The version() function returns a string specifying the available version of pip that will be installed when bootstrapping an environment.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/ensurepip.rst
+
+LANGUAGE: python
+CODE:
+```
+import ensurepip
+
+print(ensurepip.version())
+```
+
+--------------------------------
+
+TITLE: Build Installer Layouts with MSBuild
+DESCRIPTION: Commands to build different types of Python installer layouts using MSBuild. These commands target specific WiX project files to produce installers for testing or release.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: shell
+CODE:
+```
+msbuild bundle\snapshot.wixproj
+msbuild bundle\releaseweb.wixproj
+msbuild bundle\releaseweb.wixproj
+msbuild bundle\full.wixproj
+```
+
+--------------------------------
+
+TITLE: Command Line Interface
+DESCRIPTION: Instructions on how to use the ensurepip module from the command line to install or upgrade pip.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/ensurepip.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Command Line Interface
+
+### Description
+Invoke ensurepip using the Python interpreter's `-m` switch to bootstrap the `pip` installer.
+
+### Usage
+
+**Basic Installation:**
+```bash
+python -m ensurepip
+```
+This installs `pip` if it's not already present. If `pip` is already installed, this command does nothing.
+
+**Upgrade Existing pip:**
+```bash
+python -m ensurepip --upgrade
+```
+This ensures that the installed version of `pip` is at least as recent as the version bundled with `ensurepip`.
+
+**Controlling Installation Location:**
+
+*   `--root <dir>`: Installs `pip` relative to the specified directory instead of the default location (virtual environment or system site packages).
+*   `--user`: Installs `pip` into the user site-packages directory. This option is not permitted within an active virtual environment.
+
+**Controlling Script Installation:**
+
+*   `--altinstall`: Prevents the installation of the `pipX` script (where X is the Python version). Only `pipX.Y` and potentially `pip` scripts are installed.
+*   `--default-pip`: Installs the `pip` script in addition to the default `pipX` and `pipX.Y` scripts.
+
+**Note:** Providing both `--altinstall` and `--default-pip` will result in an error.
+```
+
+--------------------------------
+
+TITLE: Generating Python Package Sources with WiX
+DESCRIPTION: This snippet shows how WiX's InstallFiles element can be used in a .wixproj file to generate sources for packages, including the logic for cleaning __pycache__ directories.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: xml
+CODE:
+```
+<InstallFiles element in the .wixproj file to generate sources. See lib/lib.wixproj for an
+example, and msi.targets and csv_to_wxs.py for the implementation. This
+element is also responsible for generating the code for cleaning up and
+removing __pycache__ folders in any directory containing .py files.
+```
+
+--------------------------------
+
+TITLE: Update ./configure --help documentation
+DESCRIPTION: The documentation for './configure --help' has been updated to display default values for options, reference necessary documentation, and provide additional explanations. This improves the usability of the configure script.
+
+SOURCE: https://github.com/python/cpython/blob/main/Misc/NEWS.d/3.9.0a3.rst
+
+LANGUAGE: bash
+CODE:
+```
+# Execute the configure script with the --help option to see updated documentation:
+./configure --help
+```
+
+--------------------------------
+
+TITLE: Example Command-Line Parsing
+DESCRIPTION: Illustrates a hypothetical command-line with options, option arguments, and positional arguments, explaining how they are identified.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/optparse.rst
+
+LANGUAGE: text
+CODE:
+```
+prog -v --report report.txt foo bar
+```
+
+--------------------------------
+
+TITLE: Decimal Module Quick-Start Tutorial
+DESCRIPTION: Demonstrates the basic usage of the decimal module, including importing, getting and setting the context, constructing Decimal instances, and handling special values.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/decimal.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## Decimal Module Quick-Start Tutorial
+
+### Description
+This section provides a quick-start guide to using Python's `decimal` module for precise floating-point arithmetic. It covers importing the module, inspecting and modifying the current context (precision, rounding, traps), and constructing `Decimal` objects from various inputs.
+
+### Method
+N/A (Tutorial Overview)
+
+### Endpoint
+N/A (Module Usage)
+
+### Parameters
+N/A
+
+### Request Example
+```python
+from decimal import *
+
+# Get current context
+print(getcontext())
+
+# Set precision
+getcontext().prec = 7
+
+# Construct Decimal instances
+print(Decimal(10))
+print(Decimal('3.14'))
+print(Decimal(3.14))
+print(Decimal('NaN'))
+print(Decimal('-Infinity'))
+```
+
+### Response
+#### Success Response (N/A)
+N/A
+
+#### Response Example
+```
+Context(prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[Overflow, DivisionByZero, InvalidOperation])
+Decimal('10')
+Decimal('3.14')
+Decimal('3.140000000000000124344978758017532527446746826171875')
+Decimal('NaN')
+Decimal('-Infinity')
+```
+```
+
+--------------------------------
+
+TITLE: IMAP4 Basic Usage Example (Python)
+DESCRIPTION: A minimal example illustrating how to connect to an IMAP server, open a mailbox, and retrieve all messages. This serves as a starting point for interacting with IMAP servers using Python.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/imaplib.rst
+
+LANGUAGE: python
+CODE:
+```
+import getpass, imaplib
+
+M = imaplib.IMAP4(host='example.org')
+```
+
+--------------------------------
+
+TITLE: Mocking Class Instantiation with patch
+DESCRIPTION: Demonstrates how to mock a class using unittest.mock.patch. When a class is patched, calls to instantiate it return a mock object whose return_value can be configured to simulate instance behavior.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> def some_function():
+...     instance = module.Foo()
+...     return instance.method()
+...
+>>> with patch('module.Foo') as mock:
+...     instance = mock.return_value
+...     instance.method.return_value = 'the result'
+...     result = some_function()
+...     assert result == 'the result'
+```
+
+--------------------------------
+
+TITLE: Python itertools.count() examples
+DESCRIPTION: Generates an infinite stream of evenly spaced values. Accepts optional start and step arguments. Defaults to starting at 0 with a step of 1.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/howto/functional.rst
+
+LANGUAGE: python
+CODE:
+```
+import itertools
+
+itertools.count()
+# Output: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, ...
+itertools.count(10)
+# Output: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, ...
+itertools.count(10, 5)
+# Output: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, ...
+```
+
+--------------------------------
+
+TITLE: mimetypes CLI: Get MIME type by URL
+DESCRIPTION: Example of using the mimetypes command-line interface to get the MIME type of a URL.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/mimetypes.rst
+
+LANGUAGE: console
+CODE:
+```
+$ python -m mimetypes https://example.com/filename.txt
+type: text/plain encoding: None
+```
+
+--------------------------------
+
+TITLE: WiX Bundle Configuration and Package Groups
+DESCRIPTION: This section describes the structure of the WiX bundle, including the main EXE, package references, package groups, and payload groups used for embedding and downloading files. It also touches on install conditions for MSI and EXE packages.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: xml
+CODE:
+```
+Bundle
+------
+
+The bundle is compiled to the main EXE entry point that for most users
+will represent the Python installer. It is built from Tools/msi/bundle
+with packages references in Tools/msi/bundle/packagegroups.
+
+Build logic for the bundle is in bundle.targets, but should be invoked
+through one of the .wixproj files as described in Building the
+Installer.
+
+The UI is separated between Default.thm (UI layout), Default.wxl
+(strings), bundle.wxs (properties) and the bootstrap application.
+Bundle.wxs also contains the chain, which is the list of packages to
+install and the order they should be installed in. These refer to named
+package groups in bundle/packagegroups.
+
+Each package group specifies one or more packages to install. Most
+packages require two separate entries to support both per-user and
+all-users installations. Because these reuse the same package, it does
+not increase the overall size of the package.
+
+Package groups refer to payload groups, which allow better control over
+embedding and downloading files than the default settings. Whether files
+are embedded and where they are downloaded from depends on settings
+created by the project files.
+
+Package references can include install conditions that determine when to
+install the package. When a package is a dependency for others, the
+condition should be crafted to ensure it is installed.
+
+MSI packages are installed or uninstalled based on their current state
+and the install condition. This makes them most suitable for features
+that are clearly present or absent from the user's machine.
+
+EXE packages are executed based on a customisable condition that can be
+omitted. This makes them suitable for pre- or post-install tasks that
+need to run regardless of whether features have been added or removed.
+```
+
+--------------------------------
+
+TITLE: Get Python Distribution Package Version
+DESCRIPTION: Retrieves the version of an installed Python distribution package. Raises PackageNotFoundError if the package is not installed. Returns the version as a string.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/importlib.metadata.rst
+
+LANGUAGE: python
+CODE:
+```
+from importlib.metadata import version
+
+print(version('wheel'))
+```
+
+--------------------------------
+
+TITLE: mimetypes CLI: Get MIME type by filename
+DESCRIPTION: Example of using the mimetypes command-line interface to get the MIME type of a file.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/mimetypes.rst
+
+LANGUAGE: console
+CODE:
+```
+$ python -m mimetypes filename.png
+type: image/png encoding: None
+```
+
+--------------------------------
+
+TITLE: Get All Installation Paths for a Scheme
+DESCRIPTION: Returns a dictionary containing all installation paths for a given scheme. If no scheme is specified, the default scheme is used. Paths can be expanded or not.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/sysconfig.rst
+
+LANGUAGE: python
+CODE:
+```
+import sysconfig
+
+# Get all paths for the default scheme
+all_paths = sysconfig.get_paths()
+print(f"All default paths: {all_paths}")
+
+# Get all paths for a specific scheme (e.g., 'nt') without expansion
+nt_paths_no_expand = sysconfig.get_paths(scheme='nt', expand=False)
+print(f"NT scheme paths (no expand): {nt_paths_no_expand}")
+```
+
+--------------------------------
+
+TITLE: Optparse Usage Example (Shell)
+DESCRIPTION: A sample shell session demonstrating the output of an optparse-configured script when the --version option is used.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/optparse.rst
+
+LANGUAGE: shell-session
+CODE:
+```
+$ /usr/bin/foo --version
+foo 1.0
+```
+
+--------------------------------
+
+TITLE: Registry Keys for Python Core Installation (64-bit, All Users)
+DESCRIPTION: Specifies the root registry key for 64-bit Python interpreters installed for all users.
+
+SOURCE: https://github.com/python/cpython/blob/main/Tools/msi/README.txt
+
+LANGUAGE: registry
+CODE:
+```
+HKEY_LOCAL_MACHINE\Software\Python\PythonCore\3.X
+```
+
+--------------------------------
+
+TITLE: Setup Python Extension Modules
+DESCRIPTION: Configures the setup.py file to build and install Python extension modules. It uses setuptools.Extension to specify the module name and the corresponding C source file.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/extending/newtypes_tutorial.rst
+
+LANGUAGE: python
+CODE:
+```
+from setuptools import Extension, setup
+setup(
+    ext_modules=[
+        Extension("custom", ["custom.c"]),
+        Extension("custom2", ["custom2.c"]),
+    ]
+)
+```
+
+--------------------------------
+
+TITLE: Install CPython after building
+DESCRIPTION: The `make install` target first builds the `all` target (the complete Python project) and then proceeds to install the compiled Python binaries and associated files to the system.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/using/configure.rst
+
+LANGUAGE: make
+CODE:
+```
+make install
+```
+
+--------------------------------
+
+TITLE: cProfile.Profile.enable
+DESCRIPTION: Starts collecting profiling data.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/profile.rst
+
+LANGUAGE: APIDOC
+CODE:
+```
+## cProfile.Profile.enable
+
+### Description
+Starts collecting profiling data.
+
+### Method
+Method
+
+### Endpoint
+N/A
+
+### Parameters
+#### Path Parameters
+None
+
+#### Query Parameters
+None
+
+#### Request Body
+None
+
+### Request Example
+```python
+import cProfile
+
+pr = cProfile.Profile()
+pr.enable()
+# Code to profile goes here
+```
+
+### Response
+#### Success Response (200)
+Profiling collection is enabled.
+
+#### Response Example
+```
+None
+```
+```
+
+--------------------------------
+
+TITLE: Saferepr Function Example
+DESCRIPTION: Shows an example of using the saferepr function to get a string representation of an object, protected against recursion in common data structures.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/pprint.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> import pprint
+>>> stuff = ['spam', 'eggs', 'lumberjack', 'knights', 'ni']
+>>> stuff.insert(0, stuff[:]) # Make it recursive
+>>> pprint.saferepr(stuff)
+"[<Recursion on list with id=...>, 'spam', 'eggs', 'lumberjack', 'knights', 'ni']"
+```
+
+--------------------------------
+
+TITLE: Setting Return Values and Attributes on Mocks
+DESCRIPTION: Explains how to set return values for mock objects and their methods directly or during initialization. It also shows how to assign attributes to mocks.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> from unittest.mock import Mock
+>>> mock = Mock()
+>>> mock.return_value = 3
+>>> mock()
+3
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> mock = Mock()
+>>> mock.method.return_value = 3
+>>> mock.method()
+3
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> mock = Mock(return_value=3)
+>>> mock()
+3
+```
+
+LANGUAGE: python
+CODE:
+```
+>>> mock = Mock()
+>>> mock.x = 3
+>>> mock.x
+3
+```
+
+--------------------------------
+
+TITLE: Install Python Package
+DESCRIPTION: Command to install the Python package, typically used after modifying setup.py or extension modules. This command rebuilds and installs the package in the current environment.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/extending/newtypes_tutorial.rst
+
+LANGUAGE: shell
+CODE:
+```
+python -m pip install .
+```
+
+--------------------------------
+
+TITLE: Python SequenceMatcher Get Matching Blocks Example
+DESCRIPTION: Demonstrates how to use `SequenceMatcher.get_matching_blocks()` to find non-overlapping matching subsequences between two strings. It initializes a `SequenceMatcher` object and then calls `get_matching_blocks()` to retrieve a list of `Match` objects, each representing a matching block by its start indices in `a` and `b` and its size. The last `Match` object in the list is a dummy with size 0, indicating the end of the sequences.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/difflib.rst
+
+LANGUAGE: python
+CODE:
+```
+s = SequenceMatcher(None, "abxcd", "abcd")
+s.get_matching_blocks()
+```
+
+--------------------------------
+
+TITLE: Create and Activate a Virtual Environment
+DESCRIPTION: Demonstrates the standard Python method for creating and activating a virtual environment. This is recommended for project isolation and dependency management.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/using/windows.rst
+
+LANGUAGE: bash
+CODE:
+```
+python -m venv <env path>
+```
+
+LANGUAGE: bash
+CODE:
+```
+<env>\Scripts\Activate
+```
+
+--------------------------------
+
+TITLE: Start and Serve with BaseManager
+DESCRIPTION: This snippet demonstrates how to create a BaseManager, get its server object, and start serving requests indefinitely. It requires importing BaseManager from multiprocessing.managers.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/multiprocessing.rst
+
+LANGUAGE: python
+CODE:
+```
+from multiprocessing.managers import BaseManager
+
+manager = BaseManager(address=('', 50000), authkey=b'abc')
+server = manager.get_server()
+server.serve_forever()
+```
+
+--------------------------------
+
+TITLE: Option Argument Syntax Examples
+DESCRIPTION: Demonstrates various ways an option argument can follow its option on the command line. This includes arguments in separate or the same command-line tokens.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/optparse.rst
+
+LANGUAGE: text
+CODE:
+```
+-f foo
+--file foo
+```
+
+LANGUAGE: text
+CODE:
+```
+-ffoo
+--file=foo
+```
+
+--------------------------------
+
+TITLE: Create Doctest TestSuite from Files
+DESCRIPTION: Describes the DocFileSuite function, which creates a unittest.TestSuite from doctests found in text files. It details parameters like package, module_relative, setUp, tearDown, globs, optionflags, parser, and encoding, explaining their roles in test execution and context setup.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/doctest.rst
+
+LANGUAGE: python
+CODE:
+```
+   calling module's directory is used as the base directory for module-relative
+   filenames.  It is an error to specify *package* if *module_relative* is
+   ``False``.
+
+   Optional argument *setUp* specifies a set-up function for the test suite.
+   This is called before running the tests in each file.  The *setUp* function
+   will be passed a :class:`DocTest` object.  The *setUp* function can access the
+   test globals as the :attr:`~DocTest.globs` attribute of the test passed.
+
+   Optional argument *tearDown* specifies a tear-down function for the test
+   suite.  This is called after running the tests in each file.  The *tearDown*
+   function will be passed a :class:`DocTest` object.  The *tearDown* function can
+   access the test globals as the :attr:`~DocTest.globs` attribute of the test
+   passed.
+
+   Optional argument *globs* is a dictionary containing the initial global
+   variables for the tests.  A new copy of this dictionary is created for each
+   test.  By default, *globs* is a new empty dictionary.
+
+   Optional argument *optionflags* specifies the default doctest options for the
+   tests, created by or-ing together individual option flags.  See section
+   :ref:`doctest-options`. See function :func:`set_unittest_reportflags` below
+   for a better way to set reporting options.
+
+   Optional argument *parser* specifies a :class:`DocTestParser` (or subclass)
+   that should be used to extract tests from the files.  It defaults to a normal
+   parser (i.e., ``DocTestParser()``).
+
+   Optional argument *encoding* specifies an encoding that should be used to
+   convert the file to unicode.
+
+   The global ``__file__`` is added to the globals provided to doctests loaded
+   from a text file using :func:`DocFileSuite`.
+```
+
+--------------------------------
+
+TITLE: Get Supported Start Methods (multiprocessing)
+DESCRIPTION: Returns a list of available process start methods ('fork', 'spawn', 'forkserver'), with the default method listed first. Not all methods are supported on every platform.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/multiprocessing.rst
+
+LANGUAGE: python
+CODE:
+```
+from multiprocessing import get_all_start_methods
+
+methods = get_all_start_methods()
+print(f"Supported start methods: {methods}")
+```
+
+--------------------------------
+
+TITLE: WSGI Hello World Application Example
+DESCRIPTION: A basic WSGI application demonstrating the 'Hello World' response. It defines a callable that accepts environment and start_response arguments, sets the HTTP status, and returns a simple byte string. It also shows how to create a WSGI server using make_server.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/wsgiref.rst
+
+LANGUAGE: python
+CODE:
+```
+from wsgiref.simple_server import make_server
+
+def hello_world_app(environ, start_response):
+    status = "200 OK"  # HTTP Status
+
+```
+
+--------------------------------
+
+TITLE: Minimal setup.py for Python-only packages
+DESCRIPTION: A basic setup.py script for distributing Python packages containing only .py files. It uses distutils.core.setup to define package metadata and modules.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/whatsnew/2.0.rst
+
+LANGUAGE: python
+CODE:
+```
+from distutils.core import setup
+
+setup(name = "foo", version = "1.0",
+      py_modules = ["module1", "module2"])
+```
+
+--------------------------------
+
+TITLE: mimetypes CLI: Get complex MIME type
+DESCRIPTION: Example of using the mimetypes command-line interface to get the MIME type of a file with a complex extension like .tar.gz.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/mimetypes.rst
+
+LANGUAGE: console
+CODE:
+```
+$ python -m mimetypes filename.tar.gz
+type: application/x-tar encoding: gzip
+```
+
+--------------------------------
+
+TITLE: Tracking Call Order with Mock.mock_calls
+DESCRIPTION: Explains how to use the `mock_calls` attribute of a parent mock to track the order of calls made to its child mocks. This is achieved by creating child mocks from the parent mock.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/unittest.mock-examples.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> manager = Mock()
+>>> mock_foo = manager.foo
+>>> mock_bar = manager.bar
+
+>>> mock_foo.something()
+<Mock name='mock.foo.something()' id='...'>
+>>> mock_bar.other.thing()
+<Mock name='mock.bar.other.thing()' id='...'>
+
+>>> manager.mock_calls
+[call.foo.something(), call.bar.other.thing()]
+
+>>> expected_calls = [call.foo.something(), call.bar.other.thing()]
+>>> manager.mock_calls == expected_calls
+True
+```
+
+--------------------------------
+
+TITLE: Python Range Examples
+DESCRIPTION: Demonstrates various ways to create and use Python's range() function to generate sequences of numbers. Includes examples with different start, stop, and step values, as well as edge cases.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/library/stdtypes.rst
+
+LANGUAGE: python
+CODE:
+```
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(1, 11))
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+>>> list(range(0, 10, 3))
+[0, 3, 6, 9]
+>>> list(range(0, -10, -1))
+[0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+>>> list(range(0))
+[]
+>>> list(range(1, 0))
+[]
+```
+
+--------------------------------
+
+TITLE: Template for New Test File
+DESCRIPTION: Example Python code structure for a new test file, including unittest setup and main execution block.
+
+SOURCE: https://github.com/python/cpython/blob/main/Lib/idlelib/idle_test/README.txt
+
+LANGUAGE: python
+CODE:
+```
+if __name__ == "__main__":
+    from unittest import main
+    main('idlelib.idle_test.test_abc', verbosity=2, exit=False)
+```
+
+--------------------------------
+
+TITLE: Worker Thread Example using queue.Queue
+DESCRIPTION: Demonstrates a basic multithreaded application where worker threads consume jobs from a queue. It shows how to create a queue, start multiple worker threads, put jobs into the queue, and how workers handle an empty queue. This example uses the `threading` and `queue` modules.
+
+SOURCE: https://github.com/python/cpython/blob/main/Doc/faq/library.rst
+
+LANGUAGE: python
+CODE:
+```
+import threading, queue, time
+
+# The worker thread gets jobs off the queue.  When the queue is empty, it
+# assumes there will be no more work and exits.
+# (Realistically workers will run until terminated.)
+def worker():
+    print('Running worker')
+    time.sleep(0.1)
+    while True:
+        try:
+            arg = q.get(block=False)
+        except queue.Empty:
+            print('Worker', threading.current_thread(), end=' ')
+            print('queue empty')
+            break
+        else:
+            print('Worker', threading.current_thread(), end=' ')
+            print('running with argument', arg)
+            time.sleep(0.5)
+
+# Create queue
+q = queue.Queue()
+
+# Start a pool of 5 workers
+for i in range(5):
+    t = threading.Thread(target=worker, name='worker %i' % (i+1))
+    t.start()
+
+# Begin adding work to the queue
+for i in range(50):
+    q.put(i)
+
+# Give threads time to run
+print('Main thread sleeping')
+time.sleep(5)
+```

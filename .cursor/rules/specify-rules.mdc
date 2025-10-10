@@ -1,0 +1,25 @@
+﻿# my_closet Development Guidelines
+
+Auto-generated from all feature plans. Last updated: 2025-10-10
+
+## Active Technologies
+- Python 3.11+ (backend), Node.js 18+ (frontend), TypeScript 5.0+ + Next.js 14, FastAPI, Supabase, Google Gemini AI, Pillow (PIL) (001-we-will-be)
+
+## Project Structure
+```
+backend/
+frontend/
+tests/
+```
+
+## Commands
+cd src; pytest; ruff check .
+
+## Code Style
+Python 3.11+ (backend), Node.js 18+ (frontend), TypeScript 5.0+: Follow standard conventions
+
+## Recent Changes
+- 001-we-will-be: Added Python 3.11+ (backend), Node.js 18+ (frontend), TypeScript 5.0+ + Next.js 14, FastAPI, Supabase, Google Gemini AI, Pillow (PIL)
+
+<!-- MANUAL ADDITIONS START -->
+<!-- MANUAL ADDITIONS END -->
