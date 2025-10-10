@@ -81,7 +81,7 @@ export default function ClosetPage() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/closet/stats');
+      const response = await fetch(`/api/closet/stats?user_id=${user.id}`);
       const result = await response.json();
 
       if (result.success) {
@@ -221,7 +221,7 @@ export default function ClosetPage() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center">
-                <div className="mr-3 text-2xl">👕</div>
+                <div className="mr-3 text-2xl">📦</div>
                 <div>
                   <p className="text-sm text-gray-600">Total Items</p>
                   <p className="text-2xl font-bold">{closetStats.totalItems}</p>
@@ -261,11 +261,11 @@ export default function ClosetPage() {
           <Card>
             <CardContent className="p-4">
               <div className="flex items-center">
-                <div className="mr-3 text-2xl">⭐</div>
+                <div className="mr-3 text-2xl">👕</div>
                 <div>
-                  <p className="text-sm text-gray-600">Favorites</p>
+                  <p className="text-sm text-gray-600">Shirts & Tops</p>
                   <p className="text-2xl font-bold">
-                    {closetStats.favoriteItems.length}
+                    {closetStats.shirtsTopsCount}
                   </p>
                 </div>
               </div>

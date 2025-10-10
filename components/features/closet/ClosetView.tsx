@@ -96,9 +96,16 @@ export function ClosetView({
   // Load items on component mount
   useEffect(() => {
     if (user?.id) {
+      console.log('Loading items for user:', user.id);
       loadItems();
     }
   }, [user?.id]);
+
+  // Force refresh when component mounts
+  useEffect(() => {
+    setError(null);
+    setLoading(false);
+  }, []);
 
   /**
    * Load clothing items from API
@@ -108,13 +115,20 @@ export function ClosetView({
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/clothing-items');
+      const response = await fetch(
+        `/api/clothing-items?user_id=${user?.id}&_t=${Date.now()}`
+      );
       const result = await response.json();
 
+      console.log('API Response:', result);
+      console.log('Response status:', response.status);
+
       if (result.success) {
-        // Ensure data is an array
-        const itemsData = Array.isArray(result.data) ? result.data : [];
-        setItems(itemsData);
+        // Handle the correct API response structure
+        const itemsData = result.data?.items || result.data || [];
+        console.log('Items data:', itemsData);
+        setItems(Array.isArray(itemsData) ? itemsData : []);
+        setError(null); // Clear any previous errors
       } else {
         throw new Error(result.error || 'Failed to load items');
       }
@@ -298,9 +312,12 @@ export function ClosetView({
       <Alert variant="destructive">
         <strong>Error Loading Closet</strong>
         <p>{error}</p>
-        <Button onClick={loadItems} className="mt-2">
-          Try Again
-        </Button>
+        <div className="mt-2 space-x-2">
+          <Button onClick={loadItems}>Try Again</Button>
+          <Button onClick={() => window.location.reload()} variant="outline">
+            Hard Refresh
+          </Button>
+        </div>
       </Alert>
     );
   }
