@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { useAuth } from '@/lib/auth/auth-context';
+import { resetPassword } from '@/lib/auth/supabase-auth';
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -141,7 +142,6 @@ export default function ProfilePage() {
       }
 
       // Use the existing resetPassword function
-      const { resetPassword } = await import('@/lib/auth/supabase-auth');
       const result = await resetPassword(user.email);
 
       if (!result.success) {

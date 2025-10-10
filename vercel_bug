@@ -1,0 +1,753 @@
+11:23:31.100 Running build in Washington, D.C., USA (East) – iad1
+11:23:31.101 Build machine configuration: 2 cores, 8 GB
+11:23:31.137 Cloning github.com/harshil753/my_closet (Branch: main, Commit: c07c6c1)
+11:23:32.527 Previous build caches not available
+11:23:33.048 Cloning completed: 1.910s
+11:23:33.384 Running "vercel build"
+11:23:33.789 Vercel CLI 48.2.9
+11:23:34.137 Installing dependencies...
+11:23:34.168 bun install v1.2.23 (cf136713)
+11:23:34.205 Resolving dependencies
+11:23:34.722 Resolved, downloaded and extracted [16]
+11:23:58.180 Saved lockfile
+11:23:58.181 
+11:23:58.182 + @playwright/test@1.56.0
+11:23:58.182 + @tailwindcss/postcss@4.1.14
+11:23:58.182 + @testing-library/jest-dom@6.9.1
+11:23:58.182 + @testing-library/react@16.3.0
+11:23:58.182 + @types/estree@1.0.8
+11:23:58.182 + @types/json-schema@7.0.15
+11:23:58.182 + @types/node@22.18.9
+11:23:58.182 + @types/phoenix@1.6.6
+11:23:58.182 + @types/react@19.2.2
+11:23:58.182 + @types/react-dom@19.2.1
+11:23:58.183 + @typescript-eslint/eslint-plugin@8.46.0
+11:23:58.183 + @typescript-eslint/parser@8.46.0
+11:23:58.183 + eslint@9.37.0
+11:23:58.183 + eslint-config-next@15.5.4
+11:23:58.183 + glob@11.0.3
+11:23:58.183 + jest@29.7.0
+11:23:58.183 + jest-environment-jsdom@29.7.0
+11:23:58.183 + prettier@3.6.2
+11:23:58.183 + prettier-plugin-tailwindcss@0.6.14
+11:23:58.183 + tailwindcss@4.1.14
+11:23:58.186 + typescript@5.9.3
+11:23:58.186 + @google/generative-ai@0.24.1
+11:23:58.186 + @supabase/ssr@0.7.0
+11:23:58.186 + @supabase/supabase-js@2.75.0
+11:23:58.186 + class-variance-authority@0.7.1
+11:23:58.186 + clsx@2.1.1
+11:23:58.186 + dotenv@17.2.3
+11:23:58.186 + hasown@2.0.2
+11:23:58.186 + lru-cache@10.4.3
+11:23:58.186 + lucide-react@0.545.0
+11:23:58.186 + next@15.5.4
+11:23:58.186 + react@19.2.0
+11:23:58.186 + react-dom@19.2.0
+11:23:58.186 + react-dropzone@14.3.8
+11:23:58.186 + tailwind-merge@3.3.1
+11:23:58.186 
+11:23:58.186 708 packages installed [24.03s]
+11:23:58.214 Detected Next.js version: 15.5.4
+11:23:58.223 Running "bun run build"
+11:23:58.238 $ next build --turbopack
+11:23:59.085 Attention: Next.js now collects completely anonymous telemetry regarding usage.
+11:23:59.086 This information is used to shape Next.js' roadmap and prioritize features.
+11:23:59.086 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+11:23:59.087 https://nextjs.org/telemetry
+11:23:59.087 
+11:23:59.140    ▲ Next.js 15.5.4 (Turbopack)
+11:23:59.141 
+11:23:59.224    Creating an optimized production build ...
+11:24:09.290  ✓ Finished writing to disk in 28ms
+11:24:09.418 Turbopack build encountered 6 warnings:
+11:24:09.418 ./app/(dashboard)/profile/page.tsx:144:39
+11:24:09.418 Module not found: Can't resolve '@/lib/auth/supabase-auth'
+11:24:09.419 [0m [90m 142 |[39m
+11:24:09.419  [90m 143 |[39m       [90m// Use the existing resetPassword function[39m
+11:24:09.419 [31m[1m>[22m[39m[90m 144 |[39m       [36mconst[39m { resetPassword } [33m=[39m [36mawait[39m [36mimport[39m([32m'@/lib/auth/supabase-auth'[39m)[33m;[39m
+11:24:09.419  [90m     |[39m                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.420  [90m 145 |[39m       [36mconst[39m result [33m=[39m [36mawait[39m resetPassword(user[33m.[39memail)[33m;[39m
+11:24:09.420  [90m 146 |[39m
+11:24:09.421  [90m 147 |[39m       [36mif[39m ([33m![39mresult[33m.[39msuccess) {[0m
+11:24:09.421 
+11:24:09.421 Import map: aliased to relative './lib/auth/supabase-auth' inside of [project]/
+11:24:09.421 
+11:24:09.421 
+11:24:09.421 https://nextjs.org/docs/messages/module-not-found
+11:24:09.421 
+11:24:09.422 
+11:24:09.422 ./app/(dashboard)/profile/page.tsx:144:39
+11:24:09.422 Module not found: Can't resolve '@/lib/auth/supabase-auth'
+11:24:09.422 [0m [90m 142 |[39m
+11:24:09.422  [90m 143 |[39m       [90m// Use the existing resetPassword function[39m
+11:24:09.426 [31m[1m>[22m[39m[90m 144 |[39m       [36mconst[39m { resetPassword } [33m=[39m [36mawait[39m [36mimport[39m([32m'@/lib/auth/supabase-auth'[39m)[33m;[39m
+11:24:09.430  [90m     |[39m                                       [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.430  [90m 145 |[39m       [36mconst[39m result [33m=[39m [36mawait[39m resetPassword(user[33m.[39memail)[33m;[39m
+11:24:09.430  [90m 146 |[39m
+11:24:09.431  [90m 147 |[39m       [36mif[39m ([33m![39mresult[33m.[39msuccess) {[0m
+11:24:09.431 
+11:24:09.431 Import map: aliased to relative './lib/auth/supabase-auth' inside of [project]/
+11:24:09.431 
+11:24:09.431 
+11:24:09.431 https://nextjs.org/docs/messages/module-not-found
+11:24:09.431 
+11:24:09.431 
+11:24:09.432 ./app/reset-password/page.tsx:42:54
+11:24:09.432 Module not found: Can't resolve '@/lib/config/supabase'
+11:24:09.434 [0m [90m 40 |[39m     [36mconst[39m setSession [33m=[39m [36masync[39m () [33m=>[39m {
+11:24:09.438  [90m 41 |[39m       [36mtry[39m {
+11:24:09.442 [31m[1m>[22m[39m[90m 42 |[39m         [36mconst[39m { createSupabaseServerClient } [33m=[39m [36mawait[39m [36mimport[39m(
+11:24:09.442  [90m    |[39m                                                      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.448 [31m[1m>[22m[39m[90m 43 |[39m           [32m'@/lib/config/supabase'[39m
+11:24:09.448  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.449 [31m[1m>[22m[39m[90m 44 |[39m         )[33m;[39m
+11:24:09.449  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.450  [90m 45 |[39m         [36mconst[39m supabase [33m=[39m [36mawait[39m createSupabaseServerClient()[33m;[39m
+11:24:09.450  [90m 46 |[39m
+11:24:09.454  [90m 47 |[39m         [36mconst[39m { error } [33m=[39m [36mawait[39m supabase[33m.[39mauth[33m.[39msetSession({[0m
+11:24:09.454 
+11:24:09.454 Import map: aliased to relative './lib/config/supabase' inside of [project]/
+11:24:09.454 
+11:24:09.454 
+11:24:09.455 https://nextjs.org/docs/messages/module-not-found
+11:24:09.457 
+11:24:09.457 
+11:24:09.457 ./app/reset-password/page.tsx:42:54
+11:24:09.458 Module not found: Can't resolve '@/lib/config/supabase'
+11:24:09.459 [0m [90m 40 |[39m     [36mconst[39m setSession [33m=[39m [36masync[39m () [33m=>[39m {
+11:24:09.459  [90m 41 |[39m       [36mtry[39m {
+11:24:09.459 [31m[1m>[22m[39m[90m 42 |[39m         [36mconst[39m { createSupabaseServerClient } [33m=[39m [36mawait[39m [36mimport[39m(
+11:24:09.459  [90m    |[39m                                                      [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.460 [31m[1m>[22m[39m[90m 43 |[39m           [32m'@/lib/config/supabase'[39m
+11:24:09.460  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.460 [31m[1m>[22m[39m[90m 44 |[39m         )[33m;[39m
+11:24:09.460  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.460  [90m 45 |[39m         [36mconst[39m supabase [33m=[39m [36mawait[39m createSupabaseServerClient()[33m;[39m
+11:24:09.460  [90m 46 |[39m
+11:24:09.460  [90m 47 |[39m         [36mconst[39m { error } [33m=[39m [36mawait[39m supabase[33m.[39mauth[33m.[39msetSession({[0m
+11:24:09.460 
+11:24:09.460 Import map: aliased to relative './lib/config/supabase' inside of [project]/
+11:24:09.460 
+11:24:09.460 
+11:24:09.460 https://nextjs.org/docs/messages/module-not-found
+11:24:09.460 
+11:24:09.460 
+11:24:09.461 ./app/reset-password/page.tsx:84:52
+11:24:09.461 Module not found: Can't resolve '@/lib/config/supabase'
+11:24:09.461 [0m [90m 82 |[39m       }
+11:24:09.461  [90m 83 |[39m
+11:24:09.461 [31m[1m>[22m[39m[90m 84 |[39m       [36mconst[39m { createSupabaseServerClient } [33m=[39m [36mawait[39m [36mimport[39m(
+11:24:09.461  [90m    |[39m                                                    [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.463 [31m[1m>[22m[39m[90m 85 |[39m         [32m'@/lib/config/supabase'[39m
+11:24:09.463  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.463 [31m[1m>[22m[39m[90m 86 |[39m       )[33m;[39m
+11:24:09.463  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.463  [90m 87 |[39m       [36mconst[39m supabase [33m=[39m [36mawait[39m createSupabaseServerClient()[33m;[39m
+11:24:09.463  [90m 88 |[39m
+11:24:09.463  [90m 89 |[39m       [36mconst[39m { error } [33m=[39m [36mawait[39m supabase[33m.[39mauth[33m.[39mupdateUser({[0m
+11:24:09.463 
+11:24:09.463 Import map: aliased to relative './lib/config/supabase' inside of [project]/
+11:24:09.463 
+11:24:09.463 
+11:24:09.463 https://nextjs.org/docs/messages/module-not-found
+11:24:09.463 
+11:24:09.463 
+11:24:09.463 ./app/reset-password/page.tsx:84:52
+11:24:09.463 Module not found: Can't resolve '@/lib/config/supabase'
+11:24:09.463 [0m [90m 82 |[39m       }
+11:24:09.463  [90m 83 |[39m
+11:24:09.463 [31m[1m>[22m[39m[90m 84 |[39m       [36mconst[39m { createSupabaseServerClient } [33m=[39m [36mawait[39m [36mimport[39m(
+11:24:09.463  [90m    |[39m                                                    [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.463 [31m[1m>[22m[39m[90m 85 |[39m         [32m'@/lib/config/supabase'[39m
+11:24:09.463  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.463 [31m[1m>[22m[39m[90m 86 |[39m       )[33m;[39m
+11:24:09.464  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.464  [90m 87 |[39m       [36mconst[39m supabase [33m=[39m [36mawait[39m createSupabaseServerClient()[33m;[39m
+11:24:09.465  [90m 88 |[39m
+11:24:09.465  [90m 89 |[39m       [36mconst[39m { error } [33m=[39m [36mawait[39m supabase[33m.[39mauth[33m.[39mupdateUser({[0m
+11:24:09.465 
+11:24:09.465 Import map: aliased to relative './lib/config/supabase' inside of [project]/
+11:24:09.465 
+11:24:09.465 
+11:24:09.465 https://nextjs.org/docs/messages/module-not-found
+11:24:09.465 
+11:24:09.465 
+11:24:09.478 
+11:24:09.479 > Build error occurred
+11:24:09.489 Error: Turbopack build failed with 114 errors:
+11:24:09.489 ./app/api/ai/clothing-detection/route.ts:10:1
+11:24:09.489 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.489 [0m [90m  8 |[39m
+11:24:09.489  [90m  9 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+11:24:09.489 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mClothingDetectionService[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.489  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.489  [90m 11 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.489  [90m 12 |[39m
+11:24:09.489  [90m 13 |[39m [90m/**[39m[0m
+11:24:09.490 
+11:24:09.490 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.490 
+11:24:09.490 
+11:24:09.490 https://nextjs.org/docs/messages/module-not-found
+11:24:09.490 
+11:24:09.490 
+11:24:09.490 ./app/api/ai/clothing-detection/route.ts:10:1
+11:24:09.490 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.490 [0m [90m  8 |[39m
+11:24:09.490  [90m  9 |[39m [36mimport[39m { [33mNextRequest[39m[33m,[39m [33mNextResponse[39m } [36mfrom[39m [32m'next/server'[39m[33m;[39m
+11:24:09.490 [31m[1m>[22m[39m[90m 10 |[39m [36mimport[39m { [33mClothingDetectionService[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.490  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.490  [90m 11 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.490  [90m 12 |[39m
+11:24:09.490  [90m 13 |[39m [90m/**[39m[0m
+11:24:09.490 
+11:24:09.490 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.490 
+11:24:09.490 
+11:24:09.490 https://nextjs.org/docs/messages/module-not-found
+11:24:09.490 
+11:24:09.490 
+11:24:09.490 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+11:24:09.490 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.491 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.491  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.491 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.491  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.491  [90m 18 |[39m
+11:24:09.491  [90m 19 |[39m [90m// Clothing item interface[39m
+11:24:09.491  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+11:24:09.491 
+11:24:09.491 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.491 
+11:24:09.491 
+11:24:09.491 https://nextjs.org/docs/messages/module-not-found
+11:24:09.491 
+11:24:09.491 
+11:24:09.491 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+11:24:09.491 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.493 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.493  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.494 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.494  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.494  [90m 18 |[39m
+11:24:09.494  [90m 19 |[39m [90m// Clothing item interface[39m
+11:24:09.495  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+11:24:09.495 
+11:24:09.495 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.495 
+11:24:09.495 
+11:24:09.495 https://nextjs.org/docs/messages/module-not-found
+11:24:09.496 
+11:24:09.496 
+11:24:09.496 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+11:24:09.496 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.496 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.497  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.497 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.497  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.497  [90m 18 |[39m
+11:24:09.497  [90m 19 |[39m [90m// Clothing item interface[39m
+11:24:09.497  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+11:24:09.498 
+11:24:09.498 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.498 
+11:24:09.498 
+11:24:09.498 https://nextjs.org/docs/messages/module-not-found
+11:24:09.498 
+11:24:09.498 
+11:24:09.498 ./components/features/closet/ClothingItemDetailModal.tsx:17:1
+11:24:09.498 Module not found: Can't resolve '@/lib/ai/clothingDetection'
+11:24:09.498 [0m [90m 15 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.498  [90m 16 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.498 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { [33mClothingDetectionUtils[39m } [36mfrom[39m [32m'@/lib/ai/clothingDetection'[39m[33m;[39m
+11:24:09.498  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.498  [90m 18 |[39m
+11:24:09.498  [90m 19 |[39m [90m// Clothing item interface[39m
+11:24:09.498  [90m 20 |[39m [36minterface[39m [33mClothingItem[39m {[0m
+11:24:09.498 
+11:24:09.498 Import map: aliased to relative './lib/ai/clothingDetection' inside of [project]/
+11:24:09.498 
+11:24:09.498 
+11:24:09.499 https://nextjs.org/docs/messages/module-not-found
+11:24:09.499 
+11:24:09.499 
+11:24:09.499 ./app/(auth)/login/page.tsx:17:1
+11:24:09.499 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.499 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.499  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.499 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.499  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.499  [90m 18 |[39m
+11:24:09.499  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLoginPage[39m() {
+11:24:09.499  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.499 
+11:24:09.499 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.499 
+11:24:09.499 
+11:24:09.499 https://nextjs.org/docs/messages/module-not-found
+11:24:09.499 
+11:24:09.499 
+11:24:09.499 ./app/(auth)/login/page.tsx:17:1
+11:24:09.499 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.499 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.499  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.499 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.499  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.499  [90m 18 |[39m
+11:24:09.499  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLoginPage[39m() {
+11:24:09.499  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.500 
+11:24:09.500 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.500 
+11:24:09.500 
+11:24:09.500 https://nextjs.org/docs/messages/module-not-found
+11:24:09.500 
+11:24:09.500 
+11:24:09.500 ./app/(auth)/login/page.tsx:17:1
+11:24:09.500 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.500 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.500  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.500 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.500  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.500  [90m 18 |[39m
+11:24:09.500  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLoginPage[39m() {
+11:24:09.500  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.500 
+11:24:09.500 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.500 
+11:24:09.500 
+11:24:09.500 https://nextjs.org/docs/messages/module-not-found
+11:24:09.500 
+11:24:09.500 
+11:24:09.500 ./app/(auth)/login/page.tsx:17:1
+11:24:09.500 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.500 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.500  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.500 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.501  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.501  [90m 18 |[39m
+11:24:09.501  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLoginPage[39m() {
+11:24:09.501  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.501 
+11:24:09.501 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.501 
+11:24:09.501 
+11:24:09.501 https://nextjs.org/docs/messages/module-not-found
+11:24:09.501 
+11:24:09.501 
+11:24:09.501 ./app/(auth)/register/page.tsx:17:1
+11:24:09.501 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.501 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.501  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.501 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.501  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.501  [90m 18 |[39m
+11:24:09.501  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mRegisterPage[39m() {
+11:24:09.501  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.501 
+11:24:09.501 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.501 
+11:24:09.501 
+11:24:09.501 https://nextjs.org/docs/messages/module-not-found
+11:24:09.501 
+11:24:09.501 
+11:24:09.501 ./app/(auth)/register/page.tsx:17:1
+11:24:09.502 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.502 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.502  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.502 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.502  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.502  [90m 18 |[39m
+11:24:09.502  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mRegisterPage[39m() {
+11:24:09.502  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.502 
+11:24:09.502 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.502 
+11:24:09.502 
+11:24:09.502 https://nextjs.org/docs/messages/module-not-found
+11:24:09.502 
+11:24:09.502 
+11:24:09.502 ./app/(auth)/register/page.tsx:17:1
+11:24:09.502 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.502 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.502  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.502 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.502  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.502  [90m 18 |[39m
+11:24:09.502  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mRegisterPage[39m() {
+11:24:09.502  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.502 
+11:24:09.502 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.502 
+11:24:09.503 
+11:24:09.503 https://nextjs.org/docs/messages/module-not-found
+11:24:09.503 
+11:24:09.503 
+11:24:09.503 ./app/(auth)/register/page.tsx:17:1
+11:24:09.503 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.503 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.503  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.503 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.503  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.503  [90m 18 |[39m
+11:24:09.503  [90m 19 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mRegisterPage[39m() {
+11:24:09.503  [90m 20 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m''[39m)[33m;[39m[0m
+11:24:09.503 
+11:24:09.503 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.503 
+11:24:09.504 
+11:24:09.504 https://nextjs.org/docs/messages/module-not-found
+11:24:09.504 
+11:24:09.504 
+11:24:09.504 ./app/(dashboard)/closet/edit/[id]/page.tsx:17:1
+11:24:09.504 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.504 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.504  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.504 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.504  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.504  [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.504  [90m 19 |[39m
+11:24:09.504  [90m 20 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.504 
+11:24:09.504 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.504 
+11:24:09.504 
+11:24:09.504 https://nextjs.org/docs/messages/module-not-found
+11:24:09.504 
+11:24:09.504 
+11:24:09.505 ./app/(dashboard)/closet/edit/[id]/page.tsx:17:1
+11:24:09.505 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.505 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.505  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.505 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.505  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.505  [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.505  [90m 19 |[39m
+11:24:09.505  [90m 20 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.505 
+11:24:09.505 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.505 
+11:24:09.505 
+11:24:09.505 https://nextjs.org/docs/messages/module-not-found
+11:24:09.505 
+11:24:09.505 
+11:24:09.505 ./app/(dashboard)/closet/edit/[id]/page.tsx:17:1
+11:24:09.505 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.505 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.505  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.505 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.505  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.505  [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.505  [90m 19 |[39m
+11:24:09.505  [90m 20 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.505 
+11:24:09.505 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.505 
+11:24:09.505 
+11:24:09.506 https://nextjs.org/docs/messages/module-not-found
+11:24:09.506 
+11:24:09.506 
+11:24:09.506 ./app/(dashboard)/closet/edit/[id]/page.tsx:17:1
+11:24:09.506 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.506 [0m [90m 15 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.506  [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.506 [31m[1m>[22m[39m[90m 17 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.506  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.506  [90m 18 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.506  [90m 19 |[39m
+11:24:09.506  [90m 20 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.506 
+11:24:09.506 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.506 
+11:24:09.506 
+11:24:09.506 https://nextjs.org/docs/messages/module-not-found
+11:24:09.506 
+11:24:09.506 
+11:24:09.506 ./app/(dashboard)/closet/page.tsx:18:1
+11:24:09.506 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.506 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.506  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+11:24:09.506 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.506  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.506  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.506  [90m 20 |[39m
+11:24:09.506  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.507 
+11:24:09.507 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.507 
+11:24:09.507 
+11:24:09.507 https://nextjs.org/docs/messages/module-not-found
+11:24:09.507 
+11:24:09.507 
+11:24:09.507 ./app/(dashboard)/closet/page.tsx:18:1
+11:24:09.507 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.507 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.507  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+11:24:09.507 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.507  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.507  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.507  [90m 20 |[39m
+11:24:09.507  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.507 
+11:24:09.507 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.507 
+11:24:09.507 
+11:24:09.507 https://nextjs.org/docs/messages/module-not-found
+11:24:09.507 
+11:24:09.507 
+11:24:09.507 ./app/(dashboard)/closet/page.tsx:18:1
+11:24:09.507 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.507 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.507  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+11:24:09.507 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.508  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.508  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.508  [90m 20 |[39m
+11:24:09.508  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.508 
+11:24:09.508 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.508 
+11:24:09.508 
+11:24:09.508 https://nextjs.org/docs/messages/module-not-found
+11:24:09.508 
+11:24:09.508 
+11:24:09.508 ./app/(dashboard)/closet/page.tsx:18:1
+11:24:09.508 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.508 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.508  [90m 17 |[39m [36mimport[39m { [33mClosetView[39m } [36mfrom[39m [32m'@/components/features/closet/ClosetView'[39m[33m;[39m
+11:24:09.508 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.508  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.508  [90m 19 |[39m [36mimport[39m { [33mClothingCategory[39m } [36mfrom[39m [32m'@/lib/types/common'[39m[33m;[39m
+11:24:09.508  [90m 20 |[39m
+11:24:09.508  [90m 21 |[39m [90m// Clothing item interface[39m[0m
+11:24:09.508 
+11:24:09.508 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.508 
+11:24:09.508 
+11:24:09.508 https://nextjs.org/docs/messages/module-not-found
+11:24:09.508 
+11:24:09.508 
+11:24:09.508 ./app/(dashboard)/profile/page.tsx:15:1
+11:24:09.509 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.509 [0m [90m 13 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.509  [90m 14 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.509 [31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.509  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.509  [90m 16 |[39m
+11:24:09.509  [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mProfilePage[39m() {
+11:24:09.509  [90m 18 |[39m   [36mconst[39m { user[33m,[39m loading[33m:[39m authLoading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.509 
+11:24:09.509 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.509 
+11:24:09.509 
+11:24:09.509 https://nextjs.org/docs/messages/module-not-found
+11:24:09.509 
+11:24:09.509 
+11:24:09.509 ./app/(dashboard)/profile/page.tsx:15:1
+11:24:09.509 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.509 [0m [90m 13 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.509  [90m 14 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.509 [31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.509  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.509  [90m 16 |[39m
+11:24:09.509  [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mProfilePage[39m() {
+11:24:09.509  [90m 18 |[39m   [36mconst[39m { user[33m,[39m loading[33m:[39m authLoading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.509 
+11:24:09.509 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.509 
+11:24:09.510 
+11:24:09.510 https://nextjs.org/docs/messages/module-not-found
+11:24:09.510 
+11:24:09.510 
+11:24:09.510 ./app/(dashboard)/profile/page.tsx:15:1
+11:24:09.510 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.510 [0m [90m 13 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.510  [90m 14 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.510 [31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.510  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.510  [90m 16 |[39m
+11:24:09.511  [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mProfilePage[39m() {
+11:24:09.511  [90m 18 |[39m   [36mconst[39m { user[33m,[39m loading[33m:[39m authLoading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.511 
+11:24:09.511 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.511 
+11:24:09.511 
+11:24:09.511 https://nextjs.org/docs/messages/module-not-found
+11:24:09.511 
+11:24:09.511 
+11:24:09.511 ./app/(dashboard)/profile/page.tsx:15:1
+11:24:09.511 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.511 [0m [90m 13 |[39m [36mimport[39m { [33mAlert[39m } [36mfrom[39m [32m'@/components/ui/alert'[39m[33m;[39m
+11:24:09.511  [90m 14 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.511 [31m[1m>[22m[39m[90m 15 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.511  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.511  [90m 16 |[39m
+11:24:09.511  [90m 17 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mProfilePage[39m() {
+11:24:09.511  [90m 18 |[39m   [36mconst[39m { user[33m,[39m loading[33m:[39m authLoading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.511 
+11:24:09.511 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.511 
+11:24:09.511 
+11:24:09.512 https://nextjs.org/docs/messages/module-not-found
+11:24:09.512 
+11:24:09.512 
+11:24:09.512 ./app/(dashboard)/upload/page.tsx:18:1
+11:24:09.512 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.512 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.512  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+11:24:09.512 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.512  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.512  [90m 19 |[39m
+11:24:09.512  [90m 20 |[39m [90m// Upload tips data[39m
+11:24:09.512  [90m 21 |[39m [36mconst[39m [33mUPLOAD_TIPS[39m [33m=[39m [[0m
+11:24:09.512 
+11:24:09.512 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.512 
+11:24:09.512 
+11:24:09.512 https://nextjs.org/docs/messages/module-not-found
+11:24:09.512 
+11:24:09.512 
+11:24:09.512 ./app/(dashboard)/upload/page.tsx:18:1
+11:24:09.512 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.512 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.512  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+11:24:09.512 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.512  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.512  [90m 19 |[39m
+11:24:09.512  [90m 20 |[39m [90m// Upload tips data[39m
+11:24:09.512  [90m 21 |[39m [36mconst[39m [33mUPLOAD_TIPS[39m [33m=[39m [[0m
+11:24:09.512 
+11:24:09.512 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.512 
+11:24:09.512 
+11:24:09.512 https://nextjs.org/docs/messages/module-not-found
+11:24:09.512 
+11:24:09.512 
+11:24:09.512 ./app/(dashboard)/upload/page.tsx:18:1
+11:24:09.512 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.512 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.512  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+11:24:09.512 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.513  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.513  [90m 19 |[39m
+11:24:09.513  [90m 20 |[39m [90m// Upload tips data[39m
+11:24:09.513  [90m 21 |[39m [36mconst[39m [33mUPLOAD_TIPS[39m [33m=[39m [[0m
+11:24:09.513 
+11:24:09.513 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.513 
+11:24:09.513 
+11:24:09.513 https://nextjs.org/docs/messages/module-not-found
+11:24:09.513 
+11:24:09.513 
+11:24:09.513 ./app/(dashboard)/upload/page.tsx:18:1
+11:24:09.513 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.513 [0m [90m 16 |[39m [36mimport[39m { [33mLoadingSpinner[39m } [36mfrom[39m [32m'@/components/layout/LoadingSpinner'[39m[33m;[39m
+11:24:09.513  [90m 17 |[39m [36mimport[39m { [33mClothingUploadForm[39m } [36mfrom[39m [32m'@/components/forms/ClothingUploadForm'[39m[33m;[39m
+11:24:09.513 [31m[1m>[22m[39m[90m 18 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.513  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.513  [90m 19 |[39m
+11:24:09.513  [90m 20 |[39m [90m// Upload tips data[39m
+11:24:09.513  [90m 21 |[39m [36mconst[39m [33mUPLOAD_TIPS[39m [33m=[39m [[0m
+11:24:09.513 
+11:24:09.513 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.513 
+11:24:09.513 
+11:24:09.513 https://nextjs.org/docs/messages/module-not-found
+11:24:09.513 
+11:24:09.513 
+11:24:09.513 ./app/layout.tsx:4:1
+11:24:09.513 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.513 [0m [90m 2 |[39m [36mimport[39m { [33mGeist[39m[33m,[39m [33mGeist_Mono[39m } [36mfrom[39m [32m'next/font/google'[39m[33m;[39m
+11:24:09.513  [90m 3 |[39m [36mimport[39m [32m'./globals.css'[39m[33m;[39m
+11:24:09.513 [31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { [33mAuthProvider[39m } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.514  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.514  [90m 5 |[39m
+11:24:09.514  [90m 6 |[39m [36mconst[39m geistSans [33m=[39m [33mGeist[39m({
+11:24:09.514  [90m 7 |[39m   variable[33m:[39m [32m'--font-geist-sans'[39m[33m,[39m[0m
+11:24:09.514 
+11:24:09.514 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.514 
+11:24:09.514 
+11:24:09.514 https://nextjs.org/docs/messages/module-not-found
+11:24:09.514 
+11:24:09.514 
+11:24:09.514 ./app/layout.tsx:4:1
+11:24:09.514 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.514 [0m [90m 2 |[39m [36mimport[39m { [33mGeist[39m[33m,[39m [33mGeist_Mono[39m } [36mfrom[39m [32m'next/font/google'[39m[33m;[39m
+11:24:09.514  [90m 3 |[39m [36mimport[39m [32m'./globals.css'[39m[33m;[39m
+11:24:09.514 [31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { [33mAuthProvider[39m } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.514  [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.514  [90m 5 |[39m
+11:24:09.514  [90m 6 |[39m [36mconst[39m geistSans [33m=[39m [33mGeist[39m({
+11:24:09.514  [90m 7 |[39m   variable[33m:[39m [32m'--font-geist-sans'[39m[33m,[39m[0m
+11:24:09.514 
+11:24:09.514 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.514 
+11:24:09.514 
+11:24:09.514 https://nextjs.org/docs/messages/module-not-found
+11:24:09.514 
+11:24:09.514 
+11:24:09.514 ./app/page.tsx:11:1
+11:24:09.514 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.514 [0m [90m  9 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+11:24:09.514  [90m 10 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m
+11:24:09.515 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.515  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.515  [90m 12 |[39m
+11:24:09.515  [90m 13 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomePage[39m() {
+11:24:09.515  [90m 14 |[39m   [36mconst[39m { user[33m,[39m loading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.515 
+11:24:09.515 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.515 
+11:24:09.515 
+11:24:09.515 https://nextjs.org/docs/messages/module-not-found
+11:24:09.515 
+11:24:09.515 
+11:24:09.515 ./app/page.tsx:11:1
+11:24:09.515 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.515 [0m [90m  9 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+11:24:09.515  [90m 10 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m
+11:24:09.515 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.515  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.515  [90m 12 |[39m
+11:24:09.515  [90m 13 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomePage[39m() {
+11:24:09.515  [90m 14 |[39m   [36mconst[39m { user[33m,[39m loading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.515 
+11:24:09.515 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.515 
+11:24:09.515 
+11:24:09.515 https://nextjs.org/docs/messages/module-not-found
+11:24:09.515 
+11:24:09.515 
+11:24:09.515 ./app/page.tsx:11:1
+11:24:09.515 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.515 [0m [90m  9 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+11:24:09.516  [90m 10 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m
+11:24:09.516 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.517  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.517  [90m 12 |[39m
+11:24:09.517  [90m 13 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomePage[39m() {
+11:24:09.517  [90m 14 |[39m   [36mconst[39m { user[33m,[39m loading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.517 
+11:24:09.517 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.517 
+11:24:09.517 
+11:24:09.517 https://nextjs.org/docs/messages/module-not-found
+11:24:09.517 
+11:24:09.517 
+11:24:09.517 ./app/page.tsx:11:1
+11:24:09.517 Module not found: Can't resolve '@/lib/auth/auth-context'
+11:24:09.517 [0m [90m  9 |[39m [36mimport[39m { [33mButton[39m } [36mfrom[39m [32m'@/components/ui/button'[39m[33m;[39m
+11:24:09.517  [90m 10 |[39m [36mimport[39m { [33mCard[39m[33m,[39m [33mCardContent[39m[33m,[39m [33mCardHeader[39m[33m,[39m [33mCardTitle[39m } [36mfrom[39m [32m'@/components/ui/card'[39m[33m;[39m
+11:24:09.517 [31m[1m>[22m[39m[90m 11 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/auth/auth-context'[39m[33m;[39m
+11:24:09.517  [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+11:24:09.517  [90m 12 |[39m
+11:24:09.517  [90m 13 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mHomePage[39m() {
+11:24:09.517  [90m 14 |[39m   [36mconst[39m { user[33m,[39m loading } [33m=[39m useAuth()[33m;[39m[0m
+11:24:09.517 
+11:24:09.517 Import map: aliased to relative './lib/auth/auth-context' inside of [project]/
+11:24:09.517 
+11:24:09.517 
+11:24:09.517 https://nextjs.org/docs/messages/module-not-found
+11:24:09.517 
