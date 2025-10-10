@@ -79,7 +79,7 @@ export default function ClearAuthPage() {
           <div className="mt-6 rounded-lg bg-gray-50 p-4">
             <h4 className="mb-2 font-semibold">Testing Instructions:</h4>
             <ol className="list-inside list-decimal space-y-1 text-sm">
-              <li>Click "Clear & Reload Page" to start fresh</li>
+              <li>Click &quot;Clear & Reload Page&quot; to start fresh</li>
               <li>
                 Go to <code>/register</code> to create a new account
               </li>

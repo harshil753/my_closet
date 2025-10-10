@@ -59,20 +59,6 @@ export default function ClosetPage() {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [showQuickActions, setShowQuickActions] = useState(false);
 
-  // Load closet data on component mount
-  useEffect(() => {
-    if (user?.id) {
-      loadClosetData();
-    }
-  }, [user?.id, loadClosetData]);
-
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!authLoading && !user) {
-      router.push('/login');
-    }
-  }, [user, authLoading, router]);
-
   /**
    * Load closet statistics and data
    */
@@ -97,6 +83,20 @@ export default function ClosetPage() {
       setLoading(false);
     }
   }, [user?.id]);
+
+  // Load closet data on component mount
+  useEffect(() => {
+    if (user?.id) {
+      loadClosetData();
+    }
+  }, [user?.id, loadClosetData]);
+
+  // Redirect if not authenticated
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, authLoading, router]);
 
   /**
    * Handle item selection for multi-select mode

@@ -8,7 +8,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Modal,
   ModalHeader,
@@ -113,7 +113,7 @@ export function ClothingDetectionModal({
     } finally {
       setLoading(false);
     }
-  }, [imageUrl, category]);
+  }, [imageUrl, userCategory]);
 
   /**
    * Handle confirmation of detection results

@@ -1,256 +1,242 @@
-12:06:46.653 Running build in Washington, D.C., USA (East) – iad1
-12:06:46.654 Build machine configuration: 2 cores, 8 GB
-12:06:46.667 Cloning github.com/harshil753/my_closet (Branch: main, Commit: 138ee5c)
-12:06:47.771 Cloning completed: 1.103s
-12:06:50.575 Restored build cache from previous deployment (Ae2J1LAUxYD9DK5vxexNBM4c2GaX)
-12:06:51.185 Running "vercel build"
-12:06:51.582 Vercel CLI 48.2.9
-12:06:51.978 Installing dependencies...
-12:06:52.014 bun install v1.2.23 (cf136713)
-12:06:52.041 Resolving dependencies
-12:06:52.479 Resolved, downloaded and extracted [16]
-12:06:52.555 Saved lockfile
-12:06:52.556 
-12:06:52.556 Checked 770 installs across 709 packages (no changes) [558.00ms]
-12:06:52.564 Detected Next.js version: 15.5.4
-12:06:52.572 Running "bun run build"
-12:06:52.576 $ next build
-12:06:53.770    ▲ Next.js 15.5.4
-12:06:53.771 
-12:06:53.866    Creating an optimized production build ...
-12:07:00.898  ✓ Compiled successfully in 6.9s
-12:07:00.903    Linting and checking validity of types ...
-12:07:10.000 
-12:07:10.004 Failed to compile.
-12:07:10.005 
-12:07:10.005 ./app/(dashboard)/closet/edit/[id]/page.tsx
-12:07:10.005 83:9  Warning: The 'loadItem' function makes the dependencies of useEffect Hook (at line 71) change on every render. Move it inside the useEffect callback. Alternatively, wrap the definition of 'loadItem' in its own useCallback() Hook.  react-hooks/exhaustive-deps
-12:07:10.005 197:34  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-12:07:10.005 197:58  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-12:07:10.005 197:77  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-12:07:10.005 
-12:07:10.005 ./app/(dashboard)/closet/page.tsx
-12:07:10.005 79:9  Warning: The 'loadClosetData' function makes the dependencies of useEffect Hook (at line 67) change on every render. To fix this, wrap the definition of 'loadClosetData' in its own useCallback() Hook.  react-hooks/exhaustive-deps
-12:07:10.005 
-12:07:10.005 ./app/(dashboard)/profile/page.tsx
-12:07:10.006 130:14  Warning: 'err' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.006 
-12:07:10.006 ./app/(dashboard)/upload/page.tsx
-12:07:10.006 236:28  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-12:07:10.006 
-12:07:10.006 ./app/api/auth/create-profile/route.ts
-12:07:10.006 7:10  Warning: 'NextRequest' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.006 
-12:07:10.006 ./app/api/closet/stats/route.ts
-12:07:10.006 60:17  Error: Parsing error: Expression expected.
-12:07:10.007 
-12:07:10.012 ./app/api/test-db/route.ts
-12:07:10.013 7:10  Warning: 'NextRequest' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.013 
-12:07:10.013 ./app/dev/clear-auth/page.tsx
-12:07:10.013 82:25  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-12:07:10.013 82:45  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
-12:07:10.013 
-12:07:10.013 ./components/features/closet/ClosetView.tsx
-12:07:10.013 113:9  Warning: The 'loadItems' function makes the dependencies of useEffect Hook (at line 102) change on every render. To fix this, wrap the definition of 'loadItems' in its own useCallback() Hook.  react-hooks/exhaustive-deps
-12:07:10.013 
-12:07:10.013 ./components/features/closet/ClothingDetectionModal.tsx
-12:07:10.013 88:9  Warning: The 'loadDetectionResults' function makes the dependencies of useEffect Hook (at line 83) change on every render. To fix this, wrap the definition of 'loadDetectionResults' in its own useCallback() Hook.  react-hooks/exhaustive-deps
-12:07:10.013 
-12:07:10.013 ./components/forms/ClothingUploadForm.tsx
-12:07:10.014 96:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.014 149:5  Warning: React Hook useCallback has unnecessary dependencies: 'allowedTypes' and 'maxFileSize'. Either exclude them or remove the dependency array.  react-hooks/exhaustive-deps
-12:07:10.014 
-12:07:10.014 ./lib/auth/supabase-auth.ts
-12:07:10.014 17:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.014 
-12:07:10.014 ./lib/database/migration-runner.ts
-12:07:10.014 154:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.014 154:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.014 
-12:07:10.014 ./lib/database/schema-validator.ts
-12:07:10.014 156:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.014 156:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.015 233:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.015 233:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 287:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 287:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 
-12:07:10.026 ./lib/database/supabase-client.ts
-12:07:10.026 11:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 27:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 49:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.026 62:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.027 77:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.027 
-12:07:10.027 ./lib/middleware/tierEnforcement.ts
-12:07:10.028 146:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.028 183:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.028 233:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.028 234:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 
-12:07:10.029 ./lib/middleware/usage-tracking.ts
-12:07:10.029 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 70:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 100:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 138:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 165:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 189:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 214:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 237:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.029 390:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 417:3  Warning: '_config' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.030 
-12:07:10.030 ./lib/middleware/usageTracking.ts
-12:07:10.030 23:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 32:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 122:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 124:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 175:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.030 201:3  Warning: '_usageData' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.032 201:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.032 256:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.032 
-12:07:10.032 ./lib/services/clothingService.ts
-12:07:10.032 41:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.032 384:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.032 511:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.032 
-12:07:10.033 ./lib/services/image-processing.ts
-12:07:10.033 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.033 126:67  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.033 146:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.033 245:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.033 281:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.033 
-12:07:10.036 ./lib/services/tierService.ts
-12:07:10.036 122:5  Warning: '_metadata' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.036 122:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.036 168:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 215:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 247:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 420:40  Warning: '_userId' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.037 451:5  Warning: '_action' is defined but never used.  @typescript-eslint/no-unused-vars
-12:07:10.037 
-12:07:10.037 ./lib/supabase/client.ts
-12:07:10.037 186:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 
-12:07:10.037 ./lib/supabase/storage.ts
-12:07:10.037 54:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 54:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 81:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 81:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 95:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 95:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.037 107:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 107:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 119:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 119:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 175:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 
-12:07:10.038 ./lib/types/clothing.ts
-12:07:10.038 222:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 
-12:07:10.038 ./lib/types/common.ts
-12:07:10.038 25:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 88:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 96:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 
-12:07:10.038 ./lib/types/database.ts
-12:07:10.038 16:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 31:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 46:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 66:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.038 77:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 88:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 98:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 107:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 116:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 125:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 136:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 147:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 
-12:07:10.039 ./lib/types/index.ts
-12:07:10.039 73:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 78:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 81:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 91:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.039 108:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 111:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 114:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 171:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 179:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 189:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.040 
-12:07:10.040 ./lib/types/try-on.ts
-12:07:10.040 57:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.053 60:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.053 266:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.059 
-12:07:10.059 ./lib/types/user.ts
-12:07:10.059 45:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.059 149:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.059 195:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 196:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 
-12:07:10.060 ./lib/utils/closetOrganization.ts
-12:07:10.060 189:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 189:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 
-12:07:10.060 ./lib/utils/error-boundary.tsx
-12:07:10.060 91:19  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-12:07:10.060 144:81  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 
-12:07:10.060 ./lib/utils/errors.ts
-12:07:10.060 12:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 21:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 33:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 36:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 48:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.060 53:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 66:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 71:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 84:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 87:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 99:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 102:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 114:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 119:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 132:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 139:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 152:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 155:74  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 167:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 173:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.061 186:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 192:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 289:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 338:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 344:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 
-12:07:10.062 ./lib/utils/index.ts
-12:07:10.062 71:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 71:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 85:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 85:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 102:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 115:62  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 116:72  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.062 118:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 
-12:07:10.063 ./lib/utils/logger.ts
-12:07:10.063 14:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 86:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 149:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 153:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 157:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 161:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 165:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 216:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 
-12:07:10.063 ./lib/utils/native-helpers.ts
-12:07:10.063 43:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
-12:07:10.063 
-12:07:10.063 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
-12:07:10.082 error: script "build" exited with code 1
-12:07:10.091 Error: Command "bun run build" exited with 1
+12:14:19.785 Running build in Washington, D.C., USA (East) – iad1
+12:14:19.785 Build machine configuration: 2 cores, 8 GB
+12:14:19.799 Cloning github.com/harshil753/my_closet (Branch: main, Commit: db80e1f)
+12:14:20.941 Cloning completed: 1.142s
+12:14:23.790 Restored build cache from previous deployment (Ae2J1LAUxYD9DK5vxexNBM4c2GaX)
+12:14:24.357 Running "vercel build"
+12:14:24.746 Vercel CLI 48.2.9
+12:14:25.573 Installing dependencies...
+12:14:25.603 bun install v1.2.23 (cf136713)
+12:14:25.629 Resolving dependencies
+12:14:26.111 Resolved, downloaded and extracted [16]
+12:14:26.186 Saved lockfile
+12:14:26.186 
+12:14:26.186 Checked 770 installs across 709 packages (no changes) [595.00ms]
+12:14:26.194 Detected Next.js version: 15.5.4
+12:14:26.201 Running "bun run build"
+12:14:26.205 $ next build
+12:14:27.385    ▲ Next.js 15.5.4
+12:14:27.385 
+12:14:27.471    Creating an optimized production build ...
+12:14:34.611  ✓ Compiled successfully in 7.0s
+12:14:34.616    Linting and checking validity of types ...
+12:14:43.529 
+12:14:43.530 ./app/api/test-db/route.ts
+12:14:43.530 7:10  Warning: 'NextRequest' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.530 
+12:14:43.530 ./app/dev/clear-auth/page.tsx
+12:14:43.530 82:25  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+12:14:43.530 82:45  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+12:14:43.530 
+12:14:43.530 ./components/features/closet/ClothingDetectionModal.tsx
+12:14:43.531 116:6  Warning: React Hook useCallback has a missing dependency: 'userCategory'. Either include it or remove the dependency array. Outer scope values like 'category' aren't valid dependencies because mutating them doesn't re-render the component.  react-hooks/exhaustive-deps
+12:14:43.531 
+12:14:43.531 ./components/forms/ClothingUploadForm.tsx
+12:14:43.531 182:5  Warning: React Hook useCallback has a missing dependency: 'validateFile'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+12:14:43.531 
+12:14:43.531 ./lib/auth/supabase-auth.ts
+12:14:43.531 17:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.531 
+12:14:43.531 ./lib/database/migration-runner.ts
+12:14:43.531 154:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.531 154:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 
+12:14:43.532 ./lib/database/schema-validator.ts
+12:14:43.532 156:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 156:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 233:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 233:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 287:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 287:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.532 
+12:14:43.532 ./lib/database/supabase-client.ts
+12:14:43.533 11:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 27:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 49:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 62:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 77:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 
+12:14:43.533 ./lib/middleware/tierEnforcement.ts
+12:14:43.533 146:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 183:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 233:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.533 234:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.534 
+12:14:43.534 ./lib/middleware/usage-tracking.ts
+12:14:43.534 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.534 70:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.534 100:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.534 138:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 165:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 189:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 214:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 237:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 390:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.535 417:3  Warning: '_config' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.535 
+12:14:43.536 ./lib/middleware/usageTracking.ts
+12:14:43.540 23:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.540 32:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.540 122:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.540 124:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 175:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 201:3  Warning: '_usageData' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.541 201:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 256:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 
+12:14:43.541 ./lib/services/clothingService.ts
+12:14:43.541 41:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 384:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 511:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.541 
+12:14:43.541 ./lib/services/image-processing.ts
+12:14:43.541 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 126:67  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 146:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 245:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.542 281:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 
+12:14:43.542 ./lib/services/tierService.ts
+12:14:43.542 122:5  Warning: '_metadata' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.542 122:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 168:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 215:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 247:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 420:40  Warning: '_userId' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.542 451:5  Warning: '_action' is defined but never used.  @typescript-eslint/no-unused-vars
+12:14:43.542 
+12:14:43.542 ./lib/supabase/client.ts
+12:14:43.542 186:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 
+12:14:43.542 ./lib/supabase/storage.ts
+12:14:43.542 54:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 54:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 81:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 81:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 95:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 95:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 107:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 107:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 119:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 119:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 175:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 
+12:14:43.542 ./lib/types/clothing.ts
+12:14:43.542 222:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 
+12:14:43.542 ./lib/types/common.ts
+12:14:43.542 25:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 88:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 96:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.542 
+12:14:43.542 ./lib/types/database.ts
+12:14:43.542 16:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 31:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 46:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 66:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 77:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 88:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 98:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 107:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 116:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 125:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 136:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 147:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 
+12:14:43.543 ./lib/types/index.ts
+12:14:43.543 73:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 78:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 81:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 91:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 108:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.543 111:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.553 114:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.553 171:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.553 179:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.553 189:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.553 
+12:14:43.553 ./lib/types/try-on.ts
+12:14:43.554 57:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 60:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 266:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 
+12:14:43.554 ./lib/types/user.ts
+12:14:43.554 45:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 149:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 195:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.554 196:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.555 
+12:14:43.555 ./lib/utils/closetOrganization.ts
+12:14:43.555 189:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.555 189:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.555 
+12:14:43.555 ./lib/utils/error-boundary.tsx
+12:14:43.555 91:19  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+12:14:43.555 144:81  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 
+12:14:43.556 ./lib/utils/errors.ts
+12:14:43.556 12:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 21:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 33:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 36:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 48:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.556 53:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 66:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 71:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 84:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 87:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 99:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 102:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 114:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.557 119:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.559 132:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.559 139:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.559 152:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.559 155:74  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.559 167:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.560 173:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.561 186:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.564 192:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.564 289:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.564 338:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.564 344:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 
+12:14:43.565 ./lib/utils/index.ts
+12:14:43.565 71:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 71:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 85:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 85:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 102:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 115:62  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.565 116:72  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 118:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 
+12:14:43.566 ./lib/utils/logger.ts
+12:14:43.566 14:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 86:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 149:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 153:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.566 157:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.567 161:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.567 165:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.567 216:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.567 
+12:14:43.567 ./lib/utils/native-helpers.ts
+12:14:43.567 43:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:14:43.567 
+12:14:43.567 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+12:14:47.775 Failed to compile.
+12:14:47.775 
+12:14:47.776 ./app/(dashboard)/closet/page.tsx:67:17
+12:14:47.776 Type error: Block-scoped variable 'loadClosetData' used before its declaration.
+12:14:47.776 
+12:14:47.776 [0m [90m 65 |[39m       loadClosetData()[33m;[39m
+12:14:47.776  [90m 66 |[39m     }
+12:14:47.776 [31m[1m>[22m[39m[90m 67 |[39m   }[33m,[39m [user[33m?[39m[33m.[39mid[33m,[39m loadClosetData])[33m;[39m
+12:14:47.776  [90m    |[39m                 [31m[1m^[22m[39m
+12:14:47.776  [90m 68 |[39m
+12:14:47.776  [90m 69 |[39m   [90m// Redirect if not authenticated[39m
+12:14:47.776  [90m 70 |[39m   useEffect(() [33m=>[39m {[0m
+12:14:47.806 Next.js build worker exited with code: 1 and signal: null
+12:14:47.829 error: script "build" exited with code 1
+12:14:47.838 Error: Command "bun run build" exited with 1

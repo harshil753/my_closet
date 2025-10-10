@@ -2255,3 +2255,90 @@ All linter errors have been resolved and the code is now ready for Vercel deploy
 
 ---
 
+_**User (2025-10-10 14:11Z)**_
+
+I have a few critical errors this time to remedy and a few more typescripting errors like before can you fix what you see and then see if you can find a way to confirm that similar types of errors don't exist in the code base 
+
+@vercelbugs 
+
+---
+
+_**Assistant (claude-4.5-sonnet-thinking)**_
+
+I can see the critical error! The issue is that in `app/(dashboard)/closet/page.tsx`, the `useEffect` hook is trying to reference `loadClosetData` before it's declared. Let me fix this and the other issues:
+
+---
+
+Tool use: **read_file**
+
+Read file: app/(dashboard)/closet/page.tsx
+
+---
+
+I see the issue - the `useEffect` is before the `useCallback`. Let me fix this by moving the function declaration before the useEffect:
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: app/(dashboard)/closet/page.tsx</summary>
+
+**Chunk 1**
+Lines added: undefined, lines removed: 14
+
+```diff
+@@ -59,18 +59,4 @@
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [showQuickActions, setShowQuickActions] = useState(false);
+- 
+-   // Load closet data on component mount
+-   useEffect(() => {
+-     if (user?.id) {
+-       loadClosetData();
+-     }
+-   }, [user?.id, loadClosetData]);
+- 
+-   // Redirect if not authenticated
+-   useEffect(() => {
+-     if (!authLoading && !user) {
+-       router.push('/login');
+-     }
+-   }, [user, authLoading, router]);
+  
+    /**
+```
+
+**Chunk 2**
+Lines added: 14, lines removed: undefined
+
+```diff
+@@ -98,4 +84,18 @@
+      }
+    }, [user?.id]);
++ 
++   // Load closet data on component mount
++   useEffect(() => {
++     if (user?.id) {
++       loadClosetData();
++     }
++   }, [user?.id, loadClosetData]);
++ 
++   // Redirect if not authenticated
++   useEffect(() => {
++     if (!authLoading && !user) {
++       router.push('/login');
++     }
++   }, [user, authLoading, router]);
+  
+    /**
+```
+
+</details>
+
+---
+
+Now let me fix the other
+
+---
+

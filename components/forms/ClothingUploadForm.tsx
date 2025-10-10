@@ -143,25 +143,28 @@ export function ClothingUploadForm({
   /**
    * Validate uploaded file
    */
-  const validateFile = (file: File): { valid: boolean; error?: string } => {
-    // Check file size
-    if (file.size > maxFileSize * 1024 * 1024) {
-      return {
-        valid: false,
-        error: `File too large. Maximum size: ${maxFileSize}MB`,
-      };
-    }
+  const validateFile = useCallback(
+    (file: File): { valid: boolean; error?: string } => {
+      // Check file size
+      if (file.size > maxFileSize * 1024 * 1024) {
+        return {
+          valid: false,
+          error: `File too large. Maximum size: ${maxFileSize}MB`,
+        };
+      }
 
-    // Check file type
-    if (!allowedTypes.includes(file.type)) {
-      return {
-        valid: false,
-        error: `Invalid file type. Allowed: ${allowedTypes.join(', ')}`,
-      };
-    }
+      // Check file type
+      if (!allowedTypes.includes(file.type)) {
+        return {
+          valid: false,
+          error: `Invalid file type. Allowed: ${allowedTypes.join(', ')}`,
+        };
+      }
 
-    return { valid: true };
-  };
+      return { valid: true };
+    },
+    [maxFileSize, allowedTypes]
+  );
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -179,7 +182,7 @@ export function ClothingUploadForm({
         setErrors((prev) => ({ ...prev, image: '' }));
       }
     },
-    [maxFileSize, allowedTypes]
+    [maxFileSize, allowedTypes, validateFile]
   );
 
   /**

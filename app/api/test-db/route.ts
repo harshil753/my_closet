@@ -4,7 +4,7 @@
  * Simple endpoint to test database connectivity and table structure
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/lib/config/supabase';
 
 export async function GET() {
