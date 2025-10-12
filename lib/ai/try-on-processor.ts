@@ -244,7 +244,8 @@ export class TryOnProcessor {
     // Check for pants/bottoms
     if (
       categories.some(
-        (cat) => cat.includes('pant') || cat.includes('bottom') || cat.includes('jean')
+        (cat) =>
+          cat.includes('pant') || cat.includes('bottom') || cat.includes('jean')
       )
     ) {
       constraints.push(
@@ -268,7 +269,12 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
    */
   private static async callGeminiAPI(
     basePhoto: string,
-    clothingItems: Array<{ id: string; imageUrl: string; category: string; name: string }>,
+    clothingItems: Array<{
+      id: string;
+      imageUrl: string;
+      category: string;
+      name: string;
+    }>,
     userId: string
   ): Promise<string> {
     try {
@@ -276,7 +282,12 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
       console.log('Timestamp:', new Date().toISOString());
       console.log('Model: gemini-2.5-flash-image');
       console.log('Base photo:', basePhoto);
-      console.log('Clothing items:', clothingItems.map(item => `${item.name} (${item.category})`).join(', '));
+      console.log(
+        'Clothing items:',
+        clothingItems
+          .map((item) => `${item.name} (${item.category})`)
+          .join(', ')
+      );
       console.log('==============================');
 
       // Initialize Google AI client (like AI Studio) via dynamic import to avoid ESM issues in Jest
@@ -290,15 +301,15 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
         clothingItems.map((item) => this.downloadImageAsBase64(item.imageUrl))
       );
       console.log('✅ All images downloaded and converted');
-      
+
       // Generate region-specific constraints based on clothing categories
       const regionConstraints = this.generateRegionConstraints(clothingItems);
       console.log('📍 Region constraints:', regionConstraints);
 
       // Build clothing items description with categories
-      const clothingDescriptions = clothingItems.map((item, idx) => 
-        `${idx + 2}. ${item.name} (${item.category})`
-      ).join('\n');
+      const clothingDescriptions = clothingItems
+        .map((item, idx) => `${idx + 2}. ${item.name} (${item.category})`)
+        .join('\n');
 
       // Final attempt: Frame as editing task with strict reference preservation and region targeting
       const prompt = `TASK: Photo editing - REGION-SPECIFIC clothing replacement.
@@ -436,7 +447,10 @@ Output: A photo-realistic image that looks like the person from the first photo 
 
       // No image found in stream
       console.log('⚠️  No image found in stream, using fallback');
-      return await this.createCompositeImage(basePhoto, clothingItems.map(item => item.imageUrl));
+      return await this.createCompositeImage(
+        basePhoto,
+        clothingItems.map((item) => item.imageUrl)
+      );
     } catch (error) {
       console.error('❌ Gemini API error:', error);
 
@@ -450,7 +464,10 @@ Output: A photo-realistic image that looks like the person from the first photo 
       }
 
       // Fall back to composite image on error
-      return await this.createCompositeImage(basePhoto, clothingItems.map(item => item.imageUrl));
+      return await this.createCompositeImage(
+        basePhoto,
+        clothingItems.map((item) => item.imageUrl)
+      );
     }
   }
 
