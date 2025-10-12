@@ -122,7 +122,7 @@ export class TryOnProcessor {
       console.log('👕 Clothing Items:', request.clothingItems.length);
       const result = await this.callGeminiAPI(
         request.basePhotoUrl,
-        request.clothingItems.map((item) => item.imageUrl),
+        request.clothingItems,
         request.userId
       );
 
@@ -211,12 +211,64 @@ export class TryOnProcessor {
   }
 
   /**
+   * Generate region-specific constraints based on clothing categories
+   */
+  private static generateRegionConstraints(
+    clothingItems: Array<{ category: string; name: string }>
+  ): string {
+    const constraints: string[] = [];
+    const categories = clothingItems.map((item) => item.category.toLowerCase());
+
+    // Check for shoes
+    if (categories.some((cat) => cat.includes('shoe'))) {
+      constraints.push(
+        '- SHOES: Modify ONLY the foot/shoe area at the BOTTOM of the image (bottom 15% of the body). Keep the rest of the legs, pants, upper body, and face completely unchanged.'
+      );
+    }
+
+    // Check for tops/shirts
+    if (
+      categories.some(
+        (cat) =>
+          cat.includes('shirt') ||
+          cat.includes('top') ||
+          cat.includes('t-shirt') ||
+          cat.includes('tshirt')
+      )
+    ) {
+      constraints.push(
+        '- TOPS/SHIRTS: Modify ONLY the upper body area (shoulders, chest, torso) ABOVE the waist. Keep the pants/bottoms, shoes, and lower body completely unchanged. Preserve the exact face, neck, and arms.'
+      );
+    }
+
+    // Check for pants/bottoms
+    if (
+      categories.some(
+        (cat) => cat.includes('pant') || cat.includes('bottom') || cat.includes('jean')
+      )
+    ) {
+      constraints.push(
+        '- PANTS/BOTTOMS: Modify ONLY the leg area from waist to ankles (middle section). Keep the shoes/feet at bottom and upper body/torso at top completely unchanged.'
+      );
+    }
+
+    if (constraints.length === 0) {
+      return 'Apply the clothing items to the appropriate body regions based on their type.';
+    }
+
+    return `REGION-SPECIFIC EDITING RULES:
+${constraints.join('\n')}
+
+CRITICAL: Only edit the specified regions for each clothing type. All other parts of the body and image must remain EXACTLY as they appear in the reference photo.`;
+  }
+
+  /**
    * Real AI integration with Gemini API for virtual try-on
    * Using Google Generative AI SDK from AI Studio (streaming approach)
    */
   private static async callGeminiAPI(
     basePhoto: string,
-    clothingItems: string[],
+    clothingItems: Array<{ id: string; imageUrl: string; category: string; name: string }>,
     userId: string
   ): Promise<string> {
     try {
@@ -224,7 +276,7 @@ export class TryOnProcessor {
       console.log('Timestamp:', new Date().toISOString());
       console.log('Model: gemini-2.5-flash-image');
       console.log('Base photo:', basePhoto);
-      console.log('Clothing items:', clothingItems);
+      console.log('Clothing items:', clothingItems.map(item => `${item.name} (${item.category})`).join(', '));
       console.log('==============================');
 
       // Initialize Google AI client (like AI Studio) via dynamic import to avoid ESM issues in Jest
@@ -235,25 +287,36 @@ export class TryOnProcessor {
       console.log('📥 Downloading images from URLs...');
       const basePhotoBase64 = await this.downloadImageAsBase64(basePhoto);
       const clothingItemsBase64 = await Promise.all(
-        clothingItems.map((url) => this.downloadImageAsBase64(url))
+        clothingItems.map((item) => this.downloadImageAsBase64(item.imageUrl))
       );
       console.log('✅ All images downloaded and converted');
+      
+      // Generate region-specific constraints based on clothing categories
+      const regionConstraints = this.generateRegionConstraints(clothingItems);
+      console.log('📍 Region constraints:', regionConstraints);
 
-      // Final attempt: Frame as editing task with strict reference preservation
-      const prompt = `TASK: Photo editing - clothing replacement only.
+      // Build clothing items description with categories
+      const clothingDescriptions = clothingItems.map((item, idx) => 
+        `${idx + 2}. ${item.name} (${item.category})`
+      ).join('\n');
+
+      // Final attempt: Frame as editing task with strict reference preservation and region targeting
+      const prompt = `TASK: Photo editing - REGION-SPECIFIC clothing replacement.
 
 INPUT IMAGES (${1 + clothingItemsBase64.length} total):
 1. Reference photo (first image below): A person standing in front of a white door
-2. Clothing items (next ${clothingItemsBase64.length} images): Individual garments to apply to the person
+${clothingDescriptions}
 
 CRITICAL CONSTRAINTS:
 - You must use the EXACT person, pose, background, and lighting from the first reference photo
-- ONLY the clothing should change - everything else must remain IDENTICAL
+- ONLY modify specific regions based on the clothing type - everything else must remain IDENTICAL
 - The person's face, skin tone, body type, and hair must be EXACTLY as shown in the first photo
 - The background (white door, floor) must be EXACTLY as shown in the first photo
 
+${regionConstraints}
+
 INSTRUCTIONS:
-Take the first reference photo and digitally replace ONLY the person's clothing with the items shown in images 2-${1 + clothingItemsBase64.length}. Think of this as Photoshop clothing swap - the base photo stays the same, only the outfit changes.
+Take the first reference photo and digitally replace ONLY the clothing in the SPECIFIED REGIONS with the items shown in images 2-${1 + clothingItemsBase64.length}. This is surgical photo editing - modify ONLY the targeted body regions for each clothing type.
 
 What to preserve from the first photo:
 - Exact same person (face, features, skin tone, hair, body proportions)
@@ -262,11 +325,15 @@ What to preserve from the first photo:
 - Exact same floor (beige/tan tile)
 - Exact same lighting and shadows
 - Exact same image framing and composition
+- All body regions NOT specified in the region rules above
 
 What to change from the first photo:
-- ONLY the clothing/outfit - replace with items from images 2-${1 + clothingItemsBase64.length}
+- ONLY the clothing in the SPECIFIC REGIONS defined above for each clothing type
+- If editing shoes: ONLY the bottom portion (feet area)
+- If editing tops: ONLY the upper body area (shoulders to waist)
+- If editing pants: ONLY the middle section (waist to ankles)
 
-Output: A photo-realistic image that looks like the person from the first photo changed their clothes. An observer should recognize this as the same person, same location, same everything - except the outfit.`;
+Output: A photo-realistic image that looks like the person from the first photo changed specific clothing items. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else identical to the original.`;
 
       // Build the parts array with text prompt and images
       interface GeminiPart {
@@ -369,7 +436,7 @@ Output: A photo-realistic image that looks like the person from the first photo 
 
       // No image found in stream
       console.log('⚠️  No image found in stream, using fallback');
-      return await this.createCompositeImage(basePhoto, clothingItems);
+      return await this.createCompositeImage(basePhoto, clothingItems.map(item => item.imageUrl));
     } catch (error) {
       console.error('❌ Gemini API error:', error);
 
@@ -383,7 +450,7 @@ Output: A photo-realistic image that looks like the person from the first photo 
       }
 
       // Fall back to composite image on error
-      return await this.createCompositeImage(basePhoto, clothingItems);
+      return await this.createCompositeImage(basePhoto, clothingItems.map(item => item.imageUrl));
     }
   }
 
