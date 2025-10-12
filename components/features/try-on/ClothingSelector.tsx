@@ -144,7 +144,9 @@ export function ClothingSelector({
           clothing = Array.isArray(itemsData) ? itemsData : [];
           if (cacheKey) cacheRoot.clothingByUser[cacheKey] = clothing;
         } else {
-          throw new Error(getErrorMessage(result.error, 'Failed to load items'));
+          throw new Error(
+            getErrorMessage(result.error, 'Failed to load items')
+          );
         }
       }
 

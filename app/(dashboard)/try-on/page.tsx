@@ -339,7 +339,9 @@ function TryOnSelectionPageContent() {
         // Navigate to try-on processing page
         router.push(`/try-on/process/${result.data.id}`);
       } else {
-        throw new Error(getErrorMessage(result.error, 'Failed to create try-on session'));
+        throw new Error(
+          getErrorMessage(result.error, 'Failed to create try-on session')
+        );
       }
     } catch (err) {
       setError(
