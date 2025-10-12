@@ -31,6 +31,7 @@ export default function TryOnProcessPage() {
   const [lastRefresh, setLastRefresh] = useState<number>(0);
   const [processingStarted, setProcessingStarted] = useState<boolean>(false);
   const storageKey = `tryon_processing_started_${sessionId}`;
+  const processingRef = React.useRef<boolean>(false);
 
   useEffect(() => {
     if (sessionId) {
@@ -150,7 +151,13 @@ export default function TryOnProcessPage() {
     });
 
     if (secondsElapsed > 2) {
+      // Use ref to prevent duplicate calls even if effect runs multiple times
+      if (processingRef.current) {
+        console.log('Processing already initiated via ref, skipping...');
+        return;
+      }
       console.log('Starting AI processing after delay...');
+      processingRef.current = true;
       setProcessingStarted(true);
       try {
         if (typeof window !== 'undefined')
@@ -166,7 +173,8 @@ export default function TryOnProcessPage() {
       setTimeout(
         () => {
           console.log('Timeout: Forcing AI processing start...');
-          if (!processingStarted) {
+          if (!processingStarted && !processingRef.current) {
+            processingRef.current = true;
             setProcessingStarted(true);
             try {
               if (typeof window !== 'undefined')

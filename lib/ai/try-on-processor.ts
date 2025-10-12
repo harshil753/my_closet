@@ -211,6 +211,54 @@ export class TryOnProcessor {
   }
 
   /**
+   * Get image dimensions from buffer (simple JPEG/PNG parser)
+   */
+  private static async getImageDimensions(
+    buffer: Buffer
+  ): Promise<{ width: number; height: number }> {
+    try {
+      // Try using sharp if available (more reliable)
+      const sharp = await import('sharp');
+      const metadata = await sharp.default(buffer).metadata();
+      return {
+        width: metadata.width || 1024,
+        height: metadata.height || 1024,
+      };
+    } catch {
+      // Fallback to simple parsing for JPEG
+      if (buffer[0] === 0xff && buffer[1] === 0xd8) {
+        // JPEG format
+        let offset = 2;
+        while (offset < buffer.length) {
+          if (buffer[offset] !== 0xff) break;
+          const marker = buffer[offset + 1];
+          if (marker === 0xc0 || marker === 0xc2) {
+            // SOF0 or SOF2
+            const height = buffer.readUInt16BE(offset + 5);
+            const width = buffer.readUInt16BE(offset + 7);
+            return { width, height };
+          }
+          const length = buffer.readUInt16BE(offset + 2);
+          offset += length + 2;
+        }
+      }
+      // PNG format
+      else if (
+        buffer[0] === 0x89 &&
+        buffer[1] === 0x50 &&
+        buffer[2] === 0x4e &&
+        buffer[3] === 0x47
+      ) {
+        const width = buffer.readUInt32BE(16);
+        const height = buffer.readUInt32BE(20);
+        return { width, height };
+      }
+      // Default fallback
+      return { width: 1024, height: 1024 };
+    }
+  }
+
+  /**
    * Generate region-specific constraints based on clothing categories
    */
   private static generateRegionConstraints(
@@ -298,9 +346,17 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
       console.log('📥 Downloading images from URLs...');
       const basePhotoBase64 = await this.downloadImageAsBase64(basePhoto);
 
-      // Get base photo dimensions for logging
+      // Get base photo dimensions for logging and prompt
       const basePhotoBuffer = Buffer.from(basePhotoBase64, 'base64');
       console.log('📐 Base photo size:', basePhotoBuffer.length, 'bytes');
+
+      // Get actual image dimensions
+      const dimensions = await this.getImageDimensions(basePhotoBuffer);
+      console.log(
+        '📐 Base photo dimensions:',
+        `${dimensions.width}x${dimensions.height}`
+      );
+      const aspectRatio = dimensions.width / dimensions.height;
 
       const clothingItemsBase64 = await Promise.all(
         clothingItems.map((item) => this.downloadImageAsBase64(item.imageUrl))
@@ -323,14 +379,19 @@ INPUT IMAGES (${1 + clothingItemsBase64.length} total):
 1. Reference photo (first image below): A person standing in front of a white door
 ${clothingDescriptions}
 
-CRITICAL CONSTRAINTS:
+CRITICAL CONSTRAINTS - ABSOLUTE REQUIREMENTS:
 - You must use the EXACT person, pose, background, and lighting from the first reference photo
 - ONLY modify specific regions based on the clothing type - everything else must remain IDENTICAL
 - The person's face, skin tone, body type, and hair must be EXACTLY as shown in the first photo
 - The background (white door, floor) must be EXACTLY as shown in the first photo
+
+CRITICAL DIMENSIONS - MUST MATCH EXACTLY:
+- Reference photo dimensions: ${dimensions.width} x ${dimensions.height} pixels
+- Aspect ratio: ${aspectRatio.toFixed(3)} (width/height)
+- Output MUST be EXACTLY ${dimensions.width} x ${dimensions.height} pixels
+- DO NOT crop, zoom, or reframe the image in ANY way
+- The ENTIRE person from head to feet must be visible in the output
 - PRESERVE THE COMPLETE IMAGE FRAME: Generate the ENTIRE image from head to toe, including all visible body parts in the original
-- DO NOT CROP: The output must show the complete person from top to bottom, just like the reference photo
-- MAINTAIN EXACT ASPECT RATIO: The output image dimensions must match the reference photo exactly
 
 ${regionConstraints}
 
@@ -355,12 +416,16 @@ What to change from the first photo:
 - If editing pants: ONLY the middle section (waist to ankles)
 
 CRITICAL OUTPUT REQUIREMENTS:
+- Output dimensions: EXACTLY ${dimensions.width} x ${dimensions.height} pixels (no exceptions)
+- Output aspect ratio: EXACTLY ${aspectRatio.toFixed(3)} (width/height)
 - Generate a COMPLETE image showing the ENTIRE person from head to toe
 - DO NOT crop or cut off any body parts (head, feet, arms, etc.)
-- The output must have the SAME dimensions and framing as the reference photo
+- DO NOT zoom in or out from the original framing
+- The output must preserve the EXACT same framing and composition as the reference photo
 - Every pixel from the original frame should be represented in the output
+- All four edges (top, bottom, left, right) must match the reference photo exactly
 
-Output: A photo-realistic FULL-FRAME image that looks like the person from the first photo changed specific clothing items. The image must show the complete person and scene without any cropping. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else (including full frame composition) identical to the original.`;
+Output: A photo-realistic FULL-FRAME image at EXACTLY ${dimensions.width}x${dimensions.height} pixels that looks like the person from the first photo changed specific clothing items. The image must show the complete person and scene without any cropping, zooming, or reframing. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else (including exact dimensions, full frame composition, and aspect ratio) identical to the original.`;
 
       // Build the parts array with text prompt and images
       interface GeminiPart {
