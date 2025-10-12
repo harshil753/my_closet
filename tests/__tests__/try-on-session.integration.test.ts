@@ -31,8 +31,42 @@ const mockTierLimitChecker = TierLimitChecker as jest.Mocked<
 >;
 const mockUsageTracker = UsageTracker as jest.Mocked<typeof UsageTracker>;
 
+// Helper to create a properly mocked NextRequest with cookies
+function createMockNextRequest(
+  url: string,
+  options?: RequestInit
+): NextRequest {
+  const request = new NextRequest(url, options) as NextRequest & {
+    cookies: {
+      get: jest.Mock;
+      getAll: jest.Mock;
+      set: jest.Mock;
+      delete: jest.Mock;
+    };
+  };
+
+  // Mock cookies properly
+  Object.defineProperty(request, 'cookies', {
+    value: {
+      get: jest.fn(),
+      getAll: jest.fn(),
+      set: jest.fn(),
+      delete: jest.fn(),
+    },
+    writable: true,
+    configurable: true,
+  });
+
+  return request;
+}
+
 describe('Try-On Session API Integration', () => {
-  let mockSupabase: any;
+  let mockSupabase: {
+    auth: {
+      getUser: jest.Mock;
+    };
+    from: jest.Mock;
+  };
 
   beforeEach(() => {
     // Reset all mocks
@@ -108,7 +142,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -145,7 +179,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -172,7 +206,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -199,7 +233,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -237,7 +271,7 @@ describe('Try-On Session API Integration', () => {
         new Error('Monthly try-ons limit reached')
       );
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -275,7 +309,7 @@ describe('Try-On Session API Integration', () => {
           error: null,
         });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -323,7 +357,7 @@ describe('Try-On Session API Integration', () => {
           error: { message: 'Database error' },
         });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -383,7 +417,7 @@ describe('Try-On Session API Integration', () => {
         error: { message: 'Database error' },
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -435,7 +469,7 @@ describe('Try-On Session API Integration', () => {
         count: 2,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions'
       );
       const response = await GET(request);
@@ -468,7 +502,7 @@ describe('Try-On Session API Integration', () => {
         count: 1,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions?status=completed'
       );
       const response = await GET(request);
@@ -491,7 +525,7 @@ describe('Try-On Session API Integration', () => {
         count: 0,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions?limit=10&offset=0'
       );
       const response = await GET(request);
@@ -509,7 +543,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions?limit=150'
       );
       const response = await GET(request);
@@ -526,7 +560,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions'
       );
       const response = await GET(request);
@@ -555,7 +589,7 @@ describe('Try-On Session API Integration', () => {
           count: null,
         });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions'
       );
       const response = await GET(request);
@@ -574,7 +608,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',
@@ -598,7 +632,7 @@ describe('Try-On Session API Integration', () => {
         error: null,
       });
 
-      const request = new NextRequest(
+      const request = createMockNextRequest(
         'http://localhost:3000/api/try-on/sessions',
         {
           method: 'POST',

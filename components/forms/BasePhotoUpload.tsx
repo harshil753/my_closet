@@ -457,7 +457,7 @@ export default function BasePhotoUpload({
             <li>• Use clear, well-lit photos with good contrast</li>
             <li>• Include your full body or at least torso and shoulders</li>
             <li>• Avoid busy backgrounds or patterns</li>
-            <li>• Make sure you're the main subject of the photo</li>
+            <li>• Make sure you&apos;re the main subject of the photo</li>
             <li>• Higher resolution photos produce better results</li>
           </ul>
         </CardContent>

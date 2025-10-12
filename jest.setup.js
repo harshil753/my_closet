@@ -8,6 +8,11 @@ if (typeof global.fetch === 'undefined') {
   global.Headers = class Headers {};
 }
 
+// Mock window.confirm for tests
+global.confirm = jest.fn(() => true);
+global.alert = jest.fn();
+global.prompt = jest.fn();
+
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,

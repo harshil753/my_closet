@@ -23,9 +23,16 @@ export class GlobalErrorHandler {
   static handleApiError(
     error: unknown,
     context?: ErrorContext
-  ): { statusCode: number; response: any } {
+  ): {
+    statusCode: number;
+    response: { success: boolean; error: string; code: string };
+  } {
     // Log the error
-    logger.error('API Error', error instanceof Error ? error : undefined, context);
+    logger.error(
+      'API Error',
+      error instanceof Error ? error : undefined,
+      context
+    );
 
     // Track error in analytics
     if (error instanceof Error) {
@@ -220,8 +227,8 @@ export class GlobalErrorHandler {
   /**
    * Circuit breaker pattern for external services
    */
-  static createCircuitBreaker(
-    operation: () => Promise<any>,
+  static createCircuitBreaker<T>(
+    operation: () => Promise<T>,
     failureThreshold: number = 5,
     timeout: number = 60000
   ) {
@@ -229,7 +236,7 @@ export class GlobalErrorHandler {
     let lastFailureTime = 0;
     let state: 'CLOSED' | 'OPEN' | 'HALF_OPEN' = 'CLOSED';
 
-    return async (): Promise<any> => {
+    return async (): Promise<T> => {
       const now = Date.now();
 
       // Check if circuit should be opened

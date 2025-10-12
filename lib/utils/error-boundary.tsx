@@ -143,7 +143,7 @@ export function useErrorHandler() {
   }, []);
 
   const handleError = React.useCallback(
-    (error: Error, context?: Record<string, any>) => {
+    (error: Error, context?: Record<string, unknown>) => {
       const appError = new ErrorBoundaryError(
         'useErrorHandler',
         error,

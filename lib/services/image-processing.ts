@@ -19,7 +19,7 @@ export interface ImageProcessingResult {
   compressed_size?: number;
   compression_ratio?: number;
   error?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 /**
@@ -123,7 +123,7 @@ export class ImageProcessingService {
   /**
    * Get image information using Python Pillow service
    */
-  async getImageInfo(imageBuffer: Buffer): Promise<Record<string, any>> {
+  async getImageInfo(imageBuffer: Buffer): Promise<Record<string, unknown>> {
     try {
       const result = await this.callPythonService('get_image_info', {
         image_data: imageBuffer.toString('base64'),
@@ -143,7 +143,7 @@ export class ImageProcessingService {
    */
   private async callPythonService(
     functionName: string,
-    params: Record<string, any>
+    params: Record<string, unknown>
   ): Promise<string> {
     return new Promise((resolve, reject) => {
       const tempFile = join(tmpdir(), `image_processing_${randomUUID()}.json`);
@@ -242,7 +242,7 @@ print(json.dumps(result_dict))
       }
 
       return parsed;
-    } catch (error) {
+    } catch {
       return {
         success: false,
         error: 'Failed to parse Python service result',
@@ -278,6 +278,6 @@ export async function createThumbnail(
 
 export async function getImageInfo(
   imageBuffer: Buffer
-): Promise<Record<string, any>> {
+): Promise<Record<string, unknown>> {
   return imageProcessingService.getImageInfo(imageBuffer);
 }

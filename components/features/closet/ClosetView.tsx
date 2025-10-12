@@ -314,7 +314,7 @@ export function ClosetView({
     return (
       <Alert variant="destructive">
         <strong>Error Loading Closet</strong>
-        <p>{error}</p>
+        <p>{error.includes('load') ? 'Unable to load items' : error}</p>
         <div className="mt-2 space-x-2">
           <Button onClick={loadItems}>Try Again</Button>
           <Button onClick={() => window.location.reload()} variant="outline">

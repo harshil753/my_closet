@@ -360,14 +360,15 @@ export function ClothingUploadForm({
       // Check if response is ok
       if (!response.ok) {
         const errorText = await response.text();
+        const errorMessage = errorText || 'Unknown error';
         console.error(
           'Upload failed:',
           response.status,
-          response.statusText,
-          errorText
+          response.statusText || 'No status text',
+          errorMessage
         );
         throw new Error(
-          `Upload failed: ${response.status} ${response.statusText} - ${errorText}`
+          `Upload failed: ${response.status} ${response.statusText || 'Error'} - ${errorMessage}`
         );
       }
 
@@ -375,8 +376,13 @@ export function ClothingUploadForm({
       const contentType = response.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         const responseText = await response.text();
-        console.error('Invalid response format:', contentType, responseText);
-        throw new Error(`Invalid response format: ${responseText}`);
+        const errorMsg = responseText || 'No response body';
+        console.error(
+          'Invalid response format:',
+          contentType || 'no content-type',
+          errorMsg
+        );
+        throw new Error(`Invalid response format: ${errorMsg}`);
       }
 
       const result = await response.json();

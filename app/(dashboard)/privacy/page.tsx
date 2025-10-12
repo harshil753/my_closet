@@ -96,11 +96,11 @@ export default function PrivacyPage() {
         : { requests: [] };
 
       setDataRequests([
-        ...exportData.requests.map((req: any) => ({
+        ...exportData.requests.map((req: Omit<DataRequest, 'type'>) => ({
           ...req,
           type: 'export' as const,
         })),
-        ...deletionData.requests.map((req: any) => ({
+        ...deletionData.requests.map((req: Omit<DataRequest, 'type'>) => ({
           ...req,
           type: 'deletion' as const,
         })),
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
           text: 'Failed to update privacy settings',
         });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Error updating privacy settings' });
     } finally {
       setLoading(false);
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
       } else {
         setMessage({ type: 'error', text: 'Failed to request data export' });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Error requesting data export' });
     } finally {
       setLoading(false);
@@ -196,7 +196,7 @@ export default function PrivacyPage() {
       } else {
         setMessage({ type: 'error', text: 'Failed to request data deletion' });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Error requesting data deletion' });
     } finally {
       setLoading(false);
@@ -405,7 +405,7 @@ export default function PrivacyPage() {
                 </p>
                 <div className="space-y-2">
                   <Label htmlFor="deletion-confirmation">
-                    Type "DELETE MY DATA" to confirm:
+                    Type &quot;DELETE MY DATA&quot; to confirm:
                   </Label>
                   <Input
                     id="deletion-confirmation"
