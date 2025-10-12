@@ -1,26 +1,6 @@
 {
-  "version": 2,
   "installCommand": "bun install --frozen-lockfile",
   "buildCommand": "bun run build",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
@@ -55,6 +35,5 @@
       ]
     }
   ],
-  "regions": ["iad1"],
-  "framework": "nextjs"
+  "regions": ["iad1"]
 }
