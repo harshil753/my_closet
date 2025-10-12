@@ -23,6 +23,11 @@ export interface LogContext {
   error?: any;
   key?: string;
   reason?: string;
+  userAgent?: string;
+  status?: number | string;
+  duration?: number;
+  requestCount?: number;
+  attemptCount?: number;
   metadata?: Record<string, any>;
 }
 
