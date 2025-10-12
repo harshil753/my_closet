@@ -237,13 +237,14 @@ export default function EditClothingItemPage() {
             <CardTitle>Item Preview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
+            <div className="mx-auto aspect-square max-w-md overflow-hidden rounded-lg bg-gray-100">
               {item.image_url ? (
                 <Image
                   src={item.image_url}
                   alt={item.name}
-                  fill
-                  className="object-cover"
+                  width={400}
+                  height={400}
+                  className="h-full w-full object-cover"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center text-gray-500">
@@ -251,7 +252,7 @@ export default function EditClothingItemPage() {
                 </div>
               )}
             </div>
-            <div className="mt-4">
+            <div className="mt-4 text-center">
               <h3 className="font-medium">{formData.name || 'Untitled'}</h3>
               <p className="text-sm text-gray-600 capitalize">
                 {formData.category.replace('_', ' ')}

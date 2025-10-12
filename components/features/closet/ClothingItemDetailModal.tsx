@@ -220,13 +220,14 @@ export function ClothingItemDetailModal({
         <div className="space-y-6">
           {/* Image Display */}
           <div className="relative">
-            <div className="aspect-square overflow-hidden rounded-lg bg-gray-100">
+            <div className="mx-auto aspect-square max-w-lg overflow-hidden rounded-lg bg-gray-100">
               {!imageError ? (
                 <Image
                   src={item.image_url}
                   alt={item.name}
-                  fill
-                  className={`object-cover transition-opacity duration-200 ${
+                  width={512}
+                  height={512}
+                  className={`h-full w-full object-cover transition-opacity duration-200 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoad={handleImageLoad}

@@ -297,11 +297,11 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
       // Download and convert images to base64
       console.log('📥 Downloading images from URLs...');
       const basePhotoBase64 = await this.downloadImageAsBase64(basePhoto);
-      
+
       // Get base photo dimensions for logging
       const basePhotoBuffer = Buffer.from(basePhotoBase64, 'base64');
       console.log('📐 Base photo size:', basePhotoBuffer.length, 'bytes');
-      
+
       const clothingItemsBase64 = await Promise.all(
         clothingItems.map((item) => this.downloadImageAsBase64(item.imageUrl))
       );
@@ -452,11 +452,18 @@ Output: A photo-realistic FULL-FRAME image that looks like the person from the f
           console.log(
             `📊 Generated image data length: ${imageData.length} characters, type: ${mimeType}`
           );
-          
+
           // Log image size for debugging aspect ratio issues
           const generatedBuffer = Buffer.from(imageData, 'base64');
-          console.log('📐 Generated image size:', generatedBuffer.length, 'bytes');
-          console.log('📊 Size ratio (generated/original):', (generatedBuffer.length / basePhotoBuffer.length).toFixed(2));
+          console.log(
+            '📐 Generated image size:',
+            generatedBuffer.length,
+            'bytes'
+          );
+          console.log(
+            '📊 Size ratio (generated/original):',
+            (generatedBuffer.length / basePhotoBuffer.length).toFixed(2)
+          );
 
           const imageUrl = await this.uploadGeneratedImage(
             imageData,
