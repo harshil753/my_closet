@@ -8,7 +8,7 @@ import { createSupabaseServerClient } from '@/lib/config/supabase';
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient();
+    const supabase = await createSupabaseServerClient();
 
     // Get the current user
     const {

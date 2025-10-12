@@ -32,14 +32,13 @@ export interface UserEngagement {
 }
 
 export class AnalyticsService {
-  private static supabase = createSupabaseServerClient();
-
   /**
    * Track user events and interactions
    */
   static async trackEvent(event: AnalyticsEvent): Promise<void> {
     try {
-      const { error } = await this.supabase.from('analytics_events').insert({
+      const supabase = await createSupabaseServerClient();
+      const { error } = await supabase.from('analytics_events').insert({
         event: event.event,
         user_id: event.userId,
         session_id: event.sessionId,
