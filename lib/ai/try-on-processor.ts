@@ -271,7 +271,15 @@ What to change from the first photo:
 Output: A photo-realistic image that looks like the person from the first photo changed their clothes. An observer should recognize this as the same person, same location, same everything - except the outfit.`;
 
       // Build the parts array with text prompt and images
-      const parts: any[] = [
+      interface GeminiPart {
+        text?: string;
+        inlineData?: {
+          mimeType: string;
+          data: string;
+        };
+      }
+
+      const parts: GeminiPart[] = [
         { text: prompt },
         // Add base photo
         {
@@ -329,7 +337,6 @@ Output: A photo-realistic image that looks like the person from the first photo 
       console.log('✅ Streaming started, processing chunks...');
 
       // Process streaming response
-      let fileIndex = 0;
       for await (const chunk of response) {
         if (
           !chunk.candidates ||
@@ -365,11 +372,15 @@ Output: A photo-realistic image that looks like the person from the first photo 
       // No image found in stream
       console.log('⚠️  No image found in stream, using fallback');
       return await this.createCompositeImage(basePhoto, clothingItems);
-    } catch (error: any) {
+    } catch (error) {
       console.error('❌ Gemini API error:', error);
 
       // Handle rate limiting
-      if (error?.status === 429 || error?.message?.includes('429')) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      const hasRateLimit = errorMessage.includes('429');
+
+      if (hasRateLimit) {
         console.warn('⚠️  Rate limit hit, using composite image');
       }
 
