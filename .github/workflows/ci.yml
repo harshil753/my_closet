@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        bun-version: [1.0.0]
+        bun-version: [latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -53,13 +53,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-    - name: Run Python tests
-      run: pytest services/ || true
-      continue-on-error: true
-      
-    - name: Run Python linting
-      run: |
-        flake8 services/
-        black --check services/
-        mypy services/
-      continue-on-error: true
+      - name: Run Python tests
+        run: pytest services/ || true
+        continue-on-error: true
+
+      - name: Run Python linting
+        run: |
+          flake8 services/
+          black --check services/
+          mypy services/
+        continue-on-error: true
