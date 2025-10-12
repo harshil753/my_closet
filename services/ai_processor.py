@@ -7,8 +7,11 @@ import os
 import json
 import base64
 import asyncio
+import time
+import random
 from typing import List, Dict, Any, Optional, Tuple
 from dataclasses import dataclass
+from enum import Enum
 from google.generativeai import GenerativeModel, configure
 import google.generativeai as genai
 from services.image_processor import image_processor
@@ -44,6 +47,40 @@ class ClothingDetectionResult:
     confidence: float
 
 
+class AIFailureType(Enum):
+    """AI failure classification types"""
+    API_QUOTA_EXCEEDED = "api_quota_exceeded"
+    API_RATE_LIMIT = "api_rate_limit"
+    API_TIMEOUT = "api_timeout"
+    API_AUTHENTICATION = "api_authentication"
+    API_SERVER_ERROR = "api_server_error"
+    IMAGE_PROCESSING_ERROR = "image_processing_error"
+    INVALID_REQUEST = "invalid_request"
+    CONTENT_POLICY_VIOLATION = "content_policy_violation"
+    UNKNOWN_ERROR = "unknown_error"
+
+
+@dataclass
+class AIFailureInfo:
+    """Detailed failure information for classification"""
+    failure_type: AIFailureType
+    error_message: str
+    retryable: bool
+    user_friendly_message: str
+    suggested_action: str
+    retry_after_seconds: Optional[int] = None
+
+
+@dataclass
+class RetryConfig:
+    """Configuration for retry logic with exponential backoff"""
+    max_retries: int = 3
+    base_delay: float = 1.0  # Base delay in seconds
+    max_delay: float = 60.0  # Maximum delay in seconds
+    backoff_multiplier: float = 2.0
+    jitter: bool = True  # Add random jitter to prevent thundering herd
+
+
 class AIProcessor:
     """
     AI processing service for virtual try-on generation
@@ -62,8 +99,29 @@ class AIProcessor:
         
         # Processing limits
         self.max_processing_time = 60  # seconds
-        self.max_retries = 2
-        self.retry_delay = 5  # seconds
+        self.retry_config = RetryConfig()
+        
+        # Failure classification patterns
+        self.failure_patterns = {
+            AIFailureType.API_QUOTA_EXCEEDED: [
+                "quota exceeded", "quota limit", "usage limit", "billing"
+            ],
+            AIFailureType.API_RATE_LIMIT: [
+                "rate limit", "too many requests", "throttled", "429"
+            ],
+            AIFailureType.API_TIMEOUT: [
+                "timeout", "timed out", "request timeout", "deadline exceeded"
+            ],
+            AIFailureType.API_AUTHENTICATION: [
+                "unauthorized", "authentication", "invalid key", "401", "403"
+            ],
+            AIFailureType.API_SERVER_ERROR: [
+                "server error", "internal error", "500", "502", "503", "504"
+            ],
+            AIFailureType.CONTENT_POLICY_VIOLATION: [
+                "content policy", "safety", "inappropriate", "blocked"
+            ]
+        }
         
     async def process_virtual_try_on(
         self, 
@@ -114,10 +172,21 @@ class AIProcessor:
             
         except Exception as e:
             processing_time = asyncio.get_event_loop().time() - start_time
+            
+            # Classify the failure for better error reporting
+            failure_info = self._classify_failure(e)
+            
             return VirtualTryOnResult(
                 success=False,
-                error=f"Virtual try-on processing failed: {str(e)}",
-                processing_time=processing_time
+                error=failure_info.user_friendly_message,
+                processing_time=processing_time,
+                metadata={
+                    'failure_type': failure_info.failure_type.value,
+                    'suggested_action': failure_info.suggested_action,
+                    'retryable': failure_info.retryable,
+                    'retry_after_seconds': failure_info.retry_after_seconds,
+                    'technical_error': failure_info.error_message
+                }
             )
     
     async def detect_clothing(
@@ -135,8 +204,8 @@ class AIProcessor:
         """
         try:
             # Process image for AI
-            processed_result = image_processor.process_clothing_image(image_data)
-            if not processed_result.success:
+            processed_result = image_processor.prepare_clothing_image_for_ai_bytes(image_data)
+            if not processed_result.get('success'):
                 return ClothingDetectionResult(
                     is_clothing=False,
                     category='unknown',
@@ -146,7 +215,7 @@ class AIProcessor:
                 )
             
             # Convert to base64 for AI processing
-            image_base64 = base64.b64encode(processed_result.processed_image).decode('utf-8')
+            image_base64 = base64.b64encode(processed_result['processed_image']).decode('utf-8')
             
             # Create prompt for clothing detection
             prompt = self._create_clothing_detection_prompt()
@@ -177,19 +246,19 @@ class AIProcessor:
         # Process user base photos
         for photo_base64 in request.user_base_photos:
             photo_data = base64.b64decode(photo_base64)
-            processed_result = image_processor.process_base_photo(photo_data)
-            if processed_result.success:
+            processed_result = image_processor.prepare_base_photo_for_ai_bytes(photo_data)
+            if processed_result.get('success'):
                 processed_user_photos.append(
-                    base64.b64encode(processed_result.processed_image).decode('utf-8')
+                    base64.b64encode(processed_result['processed_image']).decode('utf-8')
                 )
         
         # Process clothing items
         for item_base64 in request.clothing_items:
             item_data = base64.b64decode(item_base64)
-            processed_result = image_processor.process_clothing_image(item_data)
-            if processed_result.success:
+            processed_result = image_processor.prepare_clothing_image_for_ai_bytes(item_data)
+            if processed_result.get('success'):
                 processed_clothing_items.append(
-                    base64.b64encode(processed_result.processed_image).decode('utf-8')
+                    base64.b64encode(processed_result['processed_image']).decode('utf-8')
                 )
         
         return {
@@ -242,11 +311,12 @@ class AIProcessor:
         content: Any,
         max_retries: int = None
     ) -> str:
-        """Generate content with retry logic"""
+        """Generate content with exponential backoff retry logic"""
         if max_retries is None:
-            max_retries = self.max_retries
+            max_retries = self.retry_config.max_retries
         
         last_error = None
+        last_failure_info = None
         
         for attempt in range(max_retries + 1):
             try:
@@ -266,12 +336,24 @@ class AIProcessor:
                 
             except Exception as e:
                 last_error = e
-                if attempt < max_retries:
-                    await asyncio.sleep(self.retry_delay)
+                last_failure_info = self._classify_failure(e)
+                
+                # Check if we should retry
+                if attempt < max_retries and last_failure_info.retryable:
+                    # Calculate exponential backoff delay
+                    delay = self._calculate_retry_delay(attempt)
+                    await asyncio.sleep(delay)
                 else:
-                    raise e
+                    # No more retries or non-retryable error
+                    break
         
-        raise last_error
+        # If we get here, all retries failed
+        if last_failure_info:
+            # Create a more informative error message
+            error_msg = f"{last_failure_info.user_friendly_message} (Technical: {last_failure_info.error_message})"
+            raise Exception(error_msg)
+        else:
+            raise last_error
     
     def _create_virtual_try_on_prompt(self, user_photos_count: int, clothing_count: int) -> str:
         """Create prompt for virtual try-on generation"""
@@ -382,6 +464,132 @@ Return a JSON response with:
             return {'valid': False, 'error': 'Too many clothing items (max 5)'}
         
         return {'valid': True}
+    
+    def _classify_failure(self, error: Exception) -> AIFailureInfo:
+        """
+        Classify AI failure and provide user-friendly information
+        
+        Args:
+            error: The exception that occurred
+            
+        Returns:
+            AIFailureInfo with classification and user guidance
+        """
+        error_str = str(error).lower()
+        error_type = type(error).__name__
+        
+        # Check for specific failure patterns
+        for failure_type, patterns in self.failure_patterns.items():
+            if any(pattern in error_str for pattern in patterns):
+                return self._create_failure_info(failure_type, error)
+        
+        # Check for specific exception types
+        if "timeout" in error_type.lower() or "timeout" in error_str:
+            return self._create_failure_info(AIFailureType.API_TIMEOUT, error)
+        elif "connection" in error_str or "network" in error_str:
+            return self._create_failure_info(AIFailureType.API_SERVER_ERROR, error)
+        elif "image" in error_str or "processing" in error_str:
+            return self._create_failure_info(AIFailureType.IMAGE_PROCESSING_ERROR, error)
+        
+        # Default to unknown error
+        return self._create_failure_info(AIFailureType.UNKNOWN_ERROR, error)
+    
+    def _create_failure_info(self, failure_type: AIFailureType, error: Exception) -> AIFailureInfo:
+        """Create detailed failure information based on failure type"""
+        
+        failure_messages = {
+            AIFailureType.API_QUOTA_EXCEEDED: {
+                'user_message': "AI service quota exceeded. Please try again later or upgrade your plan.",
+                'suggested_action': "Wait 24 hours or contact support to increase quota limits.",
+                'retryable': True,
+                'retry_after': 3600  # 1 hour
+            },
+            AIFailureType.API_RATE_LIMIT: {
+                'user_message': "Too many requests. Please wait a moment before trying again.",
+                'suggested_action': "Wait a few minutes and try again.",
+                'retryable': True,
+                'retry_after': 300  # 5 minutes
+            },
+            AIFailureType.API_TIMEOUT: {
+                'user_message': "Request timed out. The AI service is taking longer than expected.",
+                'suggested_action': "Try again with fewer clothing items or simpler images.",
+                'retryable': True,
+                'retry_after': 60  # 1 minute
+            },
+            AIFailureType.API_AUTHENTICATION: {
+                'user_message': "Authentication failed. Please contact support.",
+                'suggested_action': "Contact support to verify your API key configuration.",
+                'retryable': False,
+                'retry_after': None
+            },
+            AIFailureType.API_SERVER_ERROR: {
+                'user_message': "AI service temporarily unavailable. Please try again later.",
+                'suggested_action': "Wait a few minutes and try again.",
+                'retryable': True,
+                'retry_after': 180  # 3 minutes
+            },
+            AIFailureType.IMAGE_PROCESSING_ERROR: {
+                'user_message': "Image processing failed. Please check your images and try again.",
+                'suggested_action': "Ensure images are clear, well-lit, and in supported formats.",
+                'retryable': True,
+                'retry_after': 30  # 30 seconds
+            },
+            AIFailureType.INVALID_REQUEST: {
+                'user_message': "Invalid request. Please check your input and try again.",
+                'suggested_action': "Verify you have selected clothing items and uploaded base photos.",
+                'retryable': False,
+                'retry_after': None
+            },
+            AIFailureType.CONTENT_POLICY_VIOLATION: {
+                'user_message': "Content policy violation. Please use appropriate images.",
+                'suggested_action': "Ensure all images are appropriate and follow our guidelines.",
+                'retryable': False,
+                'retry_after': None
+            },
+            AIFailureType.UNKNOWN_ERROR: {
+                'user_message': "An unexpected error occurred. Please try again.",
+                'suggested_action': "If the problem persists, contact support.",
+                'retryable': True,
+                'retry_after': 60  # 1 minute
+            }
+        }
+        
+        config = failure_messages.get(failure_type, failure_messages[AIFailureType.UNKNOWN_ERROR])
+        
+        return AIFailureInfo(
+            failure_type=failure_type,
+            error_message=str(error),
+            retryable=config['retryable'],
+            user_friendly_message=config['user_message'],
+            suggested_action=config['suggested_action'],
+            retry_after_seconds=config['retry_after']
+        )
+    
+    def _calculate_retry_delay(self, attempt: int) -> float:
+        """
+        Calculate exponential backoff delay with jitter
+        
+        Args:
+            attempt: Current attempt number (0-based)
+            
+        Returns:
+            Delay in seconds
+        """
+        if attempt == 0:
+            return 0
+        
+        # Exponential backoff: base_delay * (backoff_multiplier ^ (attempt - 1))
+        delay = self.retry_config.base_delay * (self.retry_config.backoff_multiplier ** (attempt - 1))
+        
+        # Cap at max_delay
+        delay = min(delay, self.retry_config.max_delay)
+        
+        # Add jitter to prevent thundering herd
+        if self.retry_config.jitter:
+            jitter = random.uniform(0.1, 0.3) * delay
+            delay += jitter
+        
+        return delay
 
 
 # Create global instance

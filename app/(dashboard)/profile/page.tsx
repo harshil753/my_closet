@@ -14,6 +14,8 @@ import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { useAuth } from '@/lib/auth/auth-context';
 import { resetPassword } from '@/lib/auth/supabase-auth';
+import BasePhotoUpload from '@/components/forms/BasePhotoUpload';
+// Ensure base photo upload exists per tasks 52/55
 
 export default function ProfilePage() {
   const { user, loading: authLoading } = useAuth();
@@ -287,6 +289,11 @@ export default function ProfilePage() {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Base Photos Section */}
+      <div className="mt-8">
+        <BasePhotoUpload />
       </div>
 
       {/* Password Verification Modal for Email Changes */}

@@ -427,6 +427,73 @@ class ImageProcessor:
         except Exception as e:
             logger.error(f"Error cleaning up temp files: {str(e)}")
 
+    # Byte-based helpers for AI processor integration
+    def prepare_clothing_image_for_ai_bytes(self, image_bytes: bytes) -> Dict[str, Union[bool, str, bytes]]:
+        """
+        Prepare a clothing image provided as raw bytes for AI processing.
+
+        Returns a dict with keys: success (bool), processed_image (bytes) or error (str).
+        """
+        try:
+            with Image.open(io.BytesIO(image_bytes)) as img:
+                # Convert to RGB for JPEG output
+                if img.mode in ('RGBA', 'LA', 'P'):
+                    background = Image.new('RGB', img.size, (255, 255, 255))
+                    if img.mode == 'P':
+                        img = img.convert('RGBA')
+                    background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+                    img = background
+                elif img.mode != 'RGB':
+                    img = img.convert('RGB')
+
+                # Resize to compressed setting
+                settings = self.QUALITY_SETTINGS['compressed']
+                if img.size[0] > settings['max_size'][0] or img.size[1] > settings['max_size'][1]:
+                    img.thumbnail(settings['max_size'], Image.Resampling.LANCZOS)
+
+                img = ImageOps.exif_transpose(img)
+
+                buffer = io.BytesIO()
+                img.save(buffer, 'JPEG', quality=settings['quality'], optimize=True)
+                return {'success': True, 'processed_image': buffer.getvalue()}
+        except Exception as e:
+            return {'success': False, 'error': f'Clothing image prepare error: {str(e)}'}
+
+    def prepare_base_photo_for_ai_bytes(self, image_bytes: bytes) -> Dict[str, Union[bool, str, bytes]]:
+        """
+        Prepare a user base photo provided as raw bytes for AI processing.
+
+        Ensures minimum dimensions and outputs high-quality JPEG bytes.
+        """
+        try:
+            with Image.open(io.BytesIO(image_bytes)) as img:
+                # Validate minimum dimensions for AI processing
+                if img.width < 512 or img.height < 512:
+                    return {'success': False, 'error': f'Base photo too small: {img.width}x{img.height} (minimum: 512x512)'}
+
+                # Convert to RGB for JPEG output
+                if img.mode in ('RGBA', 'LA', 'P'):
+                    background = Image.new('RGB', img.size, (255, 255, 255))
+                    if img.mode == 'P':
+                        img = img.convert('RGBA')
+                    background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+                    img = background
+                elif img.mode != 'RGB':
+                    img = img.convert('RGB')
+
+                # Resize to full setting
+                settings = self.QUALITY_SETTINGS['full']
+                if img.size[0] > settings['max_size'][0] or img.size[1] > settings['max_size'][1]:
+                    img.thumbnail(settings['max_size'], Image.Resampling.LANCZOS)
+
+                img = ImageOps.exif_transpose(img)
+
+                buffer = io.BytesIO()
+                img.save(buffer, 'JPEG', quality=settings['quality'], optimize=True)
+                return {'success': True, 'processed_image': buffer.getvalue()}
+        except Exception as e:
+            return {'success': False, 'error': f'Base photo prepare error: {str(e)}'}
+
 
 # Utility functions for easy integration
 def process_clothing_image(image_path: str, output_dir: str, item_name: str) -> Dict[str, str]:
@@ -474,6 +541,10 @@ def validate_image(image_path: str) -> Dict[str, Union[bool, str, int]]:
     """
     processor = ImageProcessor()
     return processor.validate_image(image_path)
+
+
+# Module-level instance for consumers that prefer a singleton-style helper
+image_processor = ImageProcessor()
 
 
 if __name__ == "__main__":

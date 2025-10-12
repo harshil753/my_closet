@@ -24,7 +24,16 @@ const nextConfig: NextConfig = {
 
   // Image optimization settings
   images: {
-    domains: ['localhost', 'supabase.co'],
+    domains: [
+      'localhost',
+      'supabase.co',
+      'storage.supabase.co',
+      'example.com', // For testing
+      // Add the specific Supabase project domain from environment
+      ...(process.env.NEXT_PUBLIC_SUPABASE_URL
+        ? [new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname]
+        : []),
+    ],
     formats: ['image/webp', 'image/avif'],
   },
 

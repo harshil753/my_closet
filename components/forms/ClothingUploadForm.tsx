@@ -97,7 +97,7 @@ export function ClothingUploadForm({
     tier: string;
     limits: {
       clothing_items: {
-        allowed: boolean;
+        allowed: boolean | null;
         reason?: string;
         percentage: number;
       };
@@ -182,7 +182,7 @@ export function ClothingUploadForm({
         setErrors((prev) => ({ ...prev, image: '' }));
       }
     },
-    [maxFileSize, allowedTypes, validateFile]
+    [validateFile]
   );
 
   /**
@@ -327,7 +327,7 @@ export function ClothingUploadForm({
     if (tierStatus && !tierStatus.limits.clothing_items.allowed) {
       setUploadStatus((prev) => ({
         ...prev,
-        error: tierStatus.limits.clothing_items.reason,
+        error: tierStatus.limits.clothing_items.reason || null,
       }));
       return;
     }
@@ -690,7 +690,10 @@ export function ClothingUploadForm({
                 uploadStatus.uploading ||
                 !formData.name ||
                 !formData.image ||
-                (tierStatus && !tierStatus.limits.clothing_items.allowed)
+                !!(
+                  tierStatus &&
+                  tierStatus.limits.clothing_items.allowed !== true
+                )
               }
             >
               {uploadStatus.uploading ? 'Uploading...' : 'Upload Item'}

@@ -75,13 +75,6 @@ export function ClothingDetectionModal({
   const [error, setError] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
 
-  // Load detection results when modal opens
-  useEffect(() => {
-    if (isOpen && imageUrl) {
-      loadDetectionResults();
-    }
-  }, [isOpen, imageUrl, loadDetectionResults]);
-
   /**
    * Load AI detection results
    */
@@ -114,6 +107,13 @@ export function ClothingDetectionModal({
       setLoading(false);
     }
   }, [imageUrl, userCategory]);
+
+  // Load detection results when modal opens
+  useEffect(() => {
+    if (isOpen && imageUrl) {
+      loadDetectionResults();
+    }
+  }, [isOpen, imageUrl, loadDetectionResults]);
 
   /**
    * Handle confirmation of detection results

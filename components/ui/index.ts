@@ -7,13 +7,29 @@
 export { Button, buttonVariants } from './button';
 export { Input } from './input';
 export { Badge, badgeVariants } from './badge';
+export { Label } from './label';
+export { Switch } from './switch';
 
 // Layout components
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card';
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from './card';
+export { Separator } from './separator';
 
 // Feedback components
 export { Alert, AlertTitle, AlertDescription } from './alert';
-export { Spinner, LoadingSpinner, LoadingDots, Skeleton, LoadingOverlay } from './loading';
+export {
+  Spinner,
+  LoadingSpinner,
+  LoadingDots,
+  Skeleton,
+  LoadingOverlay,
+} from './loading';
 
 // Overlay components
 export { Modal, ModalHeader, ModalContent, ModalFooter } from './modal';

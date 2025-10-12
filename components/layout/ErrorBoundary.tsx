@@ -7,7 +7,8 @@
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
+import { AlertTriangle, RefreshCw, Home, Bug, Mail } from 'lucide-react';
+import { useAnalytics } from '@/lib/hooks/useAnalytics';
 
 /**
  * Error boundary state
@@ -53,6 +54,31 @@ export class ErrorBoundary extends Component<
       error,
       errorInfo,
     });
+
+    // Track error in analytics
+    try {
+      // This will be handled by the analytics hook in the component
+      if (typeof window !== 'undefined') {
+        // Track error event
+        fetch('/api/analytics/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'error_boundary_caught',
+            properties: {
+              errorMessage: error.message,
+              errorStack: error.stack,
+              componentStack: errorInfo.componentStack,
+            },
+          }),
+        }).catch(() => {
+          // Silently fail if analytics tracking fails
+        });
+      }
+    } catch (analyticsError) {
+      // Silently fail if analytics tracking fails
+      console.warn('Failed to track error in analytics:', analyticsError);
+    }
 
     // Call custom error handler if provided
     if (this.props.onError) {

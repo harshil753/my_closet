@@ -8,7 +8,7 @@
 
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -93,20 +93,6 @@ export function ClosetView({
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12);
 
-  // Load items on component mount
-  useEffect(() => {
-    if (user?.id) {
-      console.log('Loading items for user:', user.id);
-      loadItems();
-    }
-  }, [user?.id, loadItems]);
-
-  // Force refresh when component mounts
-  useEffect(() => {
-    setError(null);
-    setLoading(false);
-  }, []);
-
   /**
    * Load clothing items from API
    */
@@ -138,6 +124,20 @@ export function ClosetView({
       setLoading(false);
     }
   }, [user?.id]);
+
+  // Load items on component mount
+  useEffect(() => {
+    if (user?.id) {
+      console.log('Loading items for user:', user.id);
+      loadItems();
+    }
+  }, [user?.id, loadItems]);
+
+  // Force refresh when component mounts
+  useEffect(() => {
+    setError(null);
+    setLoading(false);
+  }, []);
 
   /**
    * Handle item selection for multi-select mode

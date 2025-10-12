@@ -17,6 +17,7 @@ import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { ClosetView } from '@/components/features/closet/ClosetView';
 import { useAuth } from '@/lib/auth/auth-context';
 import { ClothingCategory } from '@/lib/types/common';
+import { useSessionCleanup } from '@/lib/hooks/useSessionCleanup';
 
 // Clothing item interface
 interface ClothingItem {
@@ -51,6 +52,7 @@ export default function ClosetPage() {
   // Authentication and navigation
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const { checkAndCleanup } = useSessionCleanup();
 
   // State management
   const [closetStats, setClosetStats] = useState<ClosetStats | null>(null);
@@ -90,6 +92,20 @@ export default function ClosetPage() {
       loadClosetData();
     }
   }, [user?.id, loadClosetData]);
+
+  // Auto-cleanup sessions when user accesses closet
+  useEffect(() => {
+    if (user?.id) {
+      console.log('User accessed closet - cleaning up old sessions');
+      checkAndCleanup().then((success) => {
+        if (success) {
+          console.log('✅ Session cleanup completed on closet access');
+        } else {
+          console.warn('Session cleanup failed on closet access');
+        }
+      });
+    }
+  }, [user?.id, checkAndCleanup]);
 
   // Redirect if not authenticated
   useEffect(() => {

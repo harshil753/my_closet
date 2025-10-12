@@ -1,13 +1,13 @@
 /**
  * User Tier Status API Route
- *
- * Returns the current user's tier information and usage limits
+ * Returns user's current tier and usage information
  */
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServerClient } from '@/lib/config/supabase';
+import { TierService } from '@/lib/services/tierService';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const supabase = await createSupabaseServerClient();
 
@@ -16,86 +16,34 @@ export async function GET() {
       data: { user },
       error: authError,
     } = await supabase.auth.getUser();
-
     if (authError || !user) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Get user's tier information
-    const { data: userData, error: userError } = await supabase
-      .from('users')
-      .select('tier, created_at')
-      .eq('id', user.id)
-      .single();
+    // Get user tier and usage information
+    const [tierConfig, usageStats] = await Promise.all([
+      TierService.getUserTier(user.id),
+      TierService.getUserUsage(user.id),
+    ]);
 
-    if (userError) {
-      console.error('Error fetching user data:', userError);
-      return NextResponse.json(
-        { success: false, error: 'Failed to fetch user data' },
-        { status: 500 }
-      );
-    }
-
-    // Get clothing items count
-    const { count: clothingCount, error: countError } = await supabase
-      .from('clothing_items')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', user.id);
-
-    if (countError) {
-      console.error('Error counting clothing items:', countError);
-      return NextResponse.json(
-        { success: false, error: 'Failed to count clothing items' },
-        { status: 500 }
-      );
-    }
-
-    // Determine tier limits
-    const tier = userData?.tier || 'free';
-    const limits = {
-      free: {
-        clothing_items: { limit: 10, allowed: (clothingCount || 0) < 10 },
+    return NextResponse.json({
+      tier: tierConfig.name,
+      limits: tierConfig.limits,
+      usage: {
+        active_sessions: usageStats.active_sessions,
+        clothing_items_used: usageStats.clothing_items_used,
+        try_ons_this_month: usageStats.try_ons_this_month,
+        storage_used_gb: usageStats.storage_used_gb,
       },
-      premium: {
-        clothing_items: { limit: 100, allowed: (clothingCount || 0) < 100 },
-      },
-    };
-
-    const tierLimits = limits[tier as keyof typeof limits] || limits.free;
-    const clothingLimit = tierLimits.clothing_items;
-    const percentage = Math.round(
-      ((clothingCount || 0) / clothingLimit.limit) * 100
-    );
-
-    const response = {
-      success: true,
-      data: {
-        tier,
-        usage: {
-          clothing_items_used: clothingCount || 0,
-        },
-        limits: {
-          clothing_items: {
-            limit: clothingLimit.limit,
-            allowed: clothingLimit.allowed,
-            percentage,
-            reason: !clothingLimit.allowed
-              ? `You've reached your limit of ${clothingLimit.limit} clothing items. Upgrade to Premium for more storage.`
-              : null,
-          },
-        },
-        upgradeAvailable: tier === 'free',
-      },
-    };
-
-    return NextResponse.json(response);
+      monthly_reset_date: usageStats.monthly_reset_date,
+    });
   } catch (error) {
     console.error('Tier status error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      {
+        error: 'Failed to get tier status',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }

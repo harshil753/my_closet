@@ -87,6 +87,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
           data: { session },
         } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
+
+        // Do not trigger client-side session cleanup here; handled server-side
       } catch (error) {
         console.error('Error getting initial session:', error);
         setUser(null);
@@ -122,6 +124,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const result = await signIn(email, password);
     if (result.success) {
       setUser(result.user || null);
+
+      // No client-side cleanup on sign-in; server endpoints enforce cleanup
     }
     return result;
   };
