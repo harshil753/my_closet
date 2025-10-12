@@ -23,7 +23,7 @@ An AI-powered virtual try-on application that allows users to upload clothing ph
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - Python 3.11+
 - Supabase account
 - Google AI API key

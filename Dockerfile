@@ -1,6 +1,6 @@
 # Multi-stage Docker build for My Closet Virtual Try-On
 # Stage 1: Base image with Node.js and Python
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Install Python and build tools for AI processing
 RUN apk add --no-cache python3 py3-pip build-base python3-dev
