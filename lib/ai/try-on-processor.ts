@@ -375,15 +375,19 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
       // Final attempt: Frame as editing task with strict reference preservation and region targeting
       const prompt = `TASK: Photo editing - REGION-SPECIFIC clothing replacement with FULL FRAME PRESERVATION.
 
+OBJECTIVE: Take the user's full-length photo (head to toe) and ONLY replace specific clothing items based on their location on the body. The person, pose, framing, and everything else MUST remain exactly the same.
+
 INPUT IMAGES (${1 + clothingItemsBase64.length} total):
-1. Reference photo (first image below): A person standing in front of a white door
+1. Reference photo (first image below): A full-length photo of a person from head to toe
 ${clothingDescriptions}
 
 CRITICAL CONSTRAINTS - ABSOLUTE REQUIREMENTS:
-- You must use the EXACT person, pose, background, and lighting from the first reference photo
-- ONLY modify specific regions based on the clothing type - everything else must remain IDENTICAL
-- The person's face, skin tone, body type, and hair must be EXACTLY as shown in the first photo
-- The background (white door, floor) must be EXACTLY as shown in the first photo
+- PRESERVE THE ENTIRE USER PHOTO: The output must show the COMPLETE person from head to toe, exactly as they appear in the reference photo
+- ONLY CHANGE CLOTHING: The ONLY modifications allowed are replacing clothing items in their designated regions
+- DO NOT alter the person in any way (face, skin, hair, body proportions, pose, position)
+- DO NOT alter the background, lighting, shadows, or scene composition
+- DO NOT crop, zoom, reframe, or cut off any part of the person or photo
+- The user uploaded a full-length photo - you must return a full-length photo showing the same complete view
 
 CRITICAL DIMENSIONS - MUST MATCH EXACTLY:
 - Reference photo dimensions: ${dimensions.width} x ${dimensions.height} pixels
@@ -392,11 +396,37 @@ CRITICAL DIMENSIONS - MUST MATCH EXACTLY:
 - DO NOT crop, zoom, or reframe the image in ANY way
 - The ENTIRE person from head to feet must be visible in the output
 - PRESERVE THE COMPLETE IMAGE FRAME: Generate the ENTIRE image from head to toe, including all visible body parts in the original
+- CRITICAL: When editing shoes/pants combinations, ensure the COMPLETE body (head, torso, legs, feet) remains visible - do not crop at ankles or anywhere else
 
 ${regionConstraints}
 
+SPATIAL HIERARCHY - CLOTHING PLACEMENT ON BODY:
+The human body has a clear vertical structure from HEAD TO TOE. Clothing items occupy specific regions:
+1. SHOES - Located at the BOTTOM (feet area, under pants)
+2. PANTS - Located in the MIDDLE (legs from waist to ankles, between shoes below and shirts above)
+3. SHIRTS/TOPS - Located at the TOP (neck down to waist, above pants)
+
+When editing, respect this spatial hierarchy:
+- Shoes are the LOWEST items (bottom of the image)
+- Pants are in the MIDDLE (above shoes, below shirts)
+- Shirts are in the UPPER region (above pants, below head)
+
+FULL-LENGTH PHOTO REQUIREMENT:
+The reference photo shows the ENTIRE person from HEAD to FEET. Your output MUST also show:
+- The complete head at the top
+- The complete torso in the middle
+- The complete legs
+- The complete feet/shoes at the bottom
+- The same amount of floor/background space around the person
+
+DO NOT:
+- Zoom into just the torso or legs
+- Cut off the head, feet, or any body part
+- Change the camera angle or framing
+- Crop to focus on just the clothing areas being edited
+
 INSTRUCTIONS:
-Take the first reference photo and digitally replace ONLY the clothing in the SPECIFIED REGIONS with the items shown in images 2-${1 + clothingItemsBase64.length}. This is surgical photo editing - modify ONLY the targeted body regions for each clothing type.
+Take the first reference photo (showing the FULL person from head to toe) and digitally replace ONLY the clothing in the SPECIFIED REGIONS with the items shown in images 2-${1 + clothingItemsBase64.length}. This is surgical photo editing - modify ONLY the targeted clothing regions while preserving the complete head-to-toe view of the person.
 
 What to preserve from the first photo:
 - Exact same person (face, features, skin tone, hair, body proportions)
@@ -411,9 +441,16 @@ What to preserve from the first photo:
 
 What to change from the first photo:
 - ONLY the clothing in the SPECIFIC REGIONS defined above for each clothing type
-- If editing shoes: ONLY the bottom portion (feet area)
-- If editing tops: ONLY the upper body area (shoulders to waist)
-- If editing pants: ONLY the middle section (waist to ankles)
+- If editing SHOES: ONLY the bottom portion (feet area at the LOWEST part of the image, UNDER the pants hem)
+- If editing PANTS: ONLY the middle leg area (from waist to ankles, BETWEEN the shoes below and shirt above)
+- If editing TOPS/SHIRTS: ONLY the upper body area (from neck down to waist, ABOVE the pants, below the head)
+
+REMEMBER: These regions are stacked vertically on the body:
+- HEAD (top - never edit)
+- SHIRTS/TOPS (upper body)
+- PANTS (middle body)
+- SHOES (bottom)
+You must maintain this complete vertical structure in the output - from head at top to shoes at bottom
 
 CRITICAL OUTPUT REQUIREMENTS:
 - Output dimensions: EXACTLY ${dimensions.width} x ${dimensions.height} pixels (no exceptions)
@@ -425,7 +462,14 @@ CRITICAL OUTPUT REQUIREMENTS:
 - Every pixel from the original frame should be represented in the output
 - All four edges (top, bottom, left, right) must match the reference photo exactly
 
-Output: A photo-realistic FULL-FRAME image at EXACTLY ${dimensions.width}x${dimensions.height} pixels that looks like the person from the first photo changed specific clothing items. The image must show the complete person and scene without any cropping, zooming, or reframing. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else (including exact dimensions, full frame composition, and aspect ratio) identical to the original.`;
+FINAL OUTPUT DESCRIPTION:
+Generate a photo-realistic FULL-LENGTH image (HEAD TO TOE) at EXACTLY ${dimensions.width}x${dimensions.height} pixels showing:
+- The SAME complete person from the reference photo (head at top, feet/shoes at bottom)
+- The SAME pose, position, background, and framing
+- ONLY the specified clothing items changed in their designated regions (shoes at bottom, pants in middle, shirts at top)
+- Everything else IDENTICAL to the reference photo
+
+The output must be a complete head-to-toe view with no cropping, no zooming, no reframing. An observer should see the FULL person (from head to floor) with ONLY the targeted clothing items changed in their proper locations on the body.`;
 
       // Build the parts array with text prompt and images
       interface GeminiPart {
@@ -529,6 +573,39 @@ Output: A photo-realistic FULL-FRAME image at EXACTLY ${dimensions.width}x${dime
             '📊 Size ratio (generated/original):',
             (generatedBuffer.length / basePhotoBuffer.length).toFixed(2)
           );
+
+          // Verify generated image dimensions match original
+          try {
+            const generatedDims =
+              await this.getImageDimensions(generatedBuffer);
+            console.log(
+              '📐 Generated image dimensions:',
+              `${generatedDims.width}x${generatedDims.height}`
+            );
+
+            // Check if dimensions match
+            if (
+              generatedDims.width !== dimensions.width ||
+              generatedDims.height !== dimensions.height
+            ) {
+              console.warn(
+                `⚠️  DIMENSION MISMATCH! Expected ${dimensions.width}x${dimensions.height}, got ${generatedDims.width}x${generatedDims.height}`
+              );
+              console.warn(
+                '⚠️  Gemini did not respect the dimension requirements'
+              );
+              console.warn(
+                '💡 This likely means the image is cropped/reframed - consider trying another generation'
+              );
+            } else {
+              console.log('✅ Dimensions match perfectly!');
+            }
+          } catch (dimError) {
+            console.warn(
+              '⚠️  Could not verify generated image dimensions:',
+              dimError
+            );
+          }
 
           const imageUrl = await this.uploadGeneratedImage(
             imageData,
