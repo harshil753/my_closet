@@ -44,6 +44,7 @@ export const createSupabaseServerClient = async () => {
  * Only available server-side to prevent client-side GoTrueClient conflicts
  */
 export const createSupabaseAdminClient = () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { createClient } = require('@supabase/supabase-js');
   return createClient(env.supabase.url, env.supabase.serviceRoleKey, {
     auth: {

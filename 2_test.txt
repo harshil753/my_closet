@@ -1,0 +1,925 @@
+﻿2025-10-12T19:47:55.2349124Z Current runner version: '2.328.0'
+2025-10-12T19:47:55.2403824Z ##[group]Runner Image Provisioner
+2025-10-12T19:47:55.2405085Z Hosted Compute Agent
+2025-10-12T19:47:55.2405982Z Version: 20250912.392
+2025-10-12T19:47:55.2407112Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-12T19:47:55.2408339Z Build Date: 2025-09-12T15:23:14Z
+2025-10-12T19:47:55.2409319Z ##[endgroup]
+2025-10-12T19:47:55.2410426Z ##[group]Operating System
+2025-10-12T19:47:55.2431894Z Ubuntu
+2025-10-12T19:47:55.2432826Z 24.04.3
+2025-10-12T19:47:55.2433731Z LTS
+2025-10-12T19:47:55.2434455Z ##[endgroup]
+2025-10-12T19:47:55.2435424Z ##[group]Runner Image
+2025-10-12T19:47:55.2436402Z Image: ubuntu-24.04
+2025-10-12T19:47:55.2437340Z Version: 20250929.60.1
+2025-10-12T19:47:55.2439128Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-12T19:47:55.2442286Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-12T19:47:55.2443990Z ##[endgroup]
+2025-10-12T19:47:55.2445802Z ##[group]GITHUB_TOKEN Permissions
+2025-10-12T19:47:55.2448332Z Contents: read
+2025-10-12T19:47:55.2449257Z Metadata: read
+2025-10-12T19:47:55.2450121Z Packages: read
+2025-10-12T19:47:55.2450897Z ##[endgroup]
+2025-10-12T19:47:55.2474286Z Secret source: Actions
+2025-10-12T19:47:55.2475535Z Prepare workflow directory
+2025-10-12T19:47:55.3427677Z Prepare all required actions
+2025-10-12T19:47:55.3484552Z Getting action download info
+2025-10-12T19:47:55.7024053Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-12T19:47:55.8803547Z Download action repository 'oven-sh/setup-bun@v1' (SHA:f4d14e03ff726c06358e5557344e1da148b56cf7)
+2025-10-12T19:47:56.1809605Z Download action repository 'actions/setup-python@v4' (SHA:7f4fc3e22c37d6ff65e88745f38bd3157c663f7c)
+2025-10-12T19:47:56.4183133Z Complete job name: test
+2025-10-12T19:47:56.4857924Z ##[group]Run actions/checkout@v4
+2025-10-12T19:47:56.4858766Z with:
+2025-10-12T19:47:56.4859197Z   repository: harshil753/my_closet
+2025-10-12T19:47:56.4859870Z   token: ***
+2025-10-12T19:47:56.4860246Z   ssh-strict: true
+2025-10-12T19:47:56.4860636Z   ssh-user: git
+2025-10-12T19:47:56.4861195Z   persist-credentials: true
+2025-10-12T19:47:56.4861646Z   clean: true
+2025-10-12T19:47:56.4862039Z   sparse-checkout-cone-mode: true
+2025-10-12T19:47:56.4862513Z   fetch-depth: 1
+2025-10-12T19:47:56.4862887Z   fetch-tags: false
+2025-10-12T19:47:56.4863282Z   show-progress: true
+2025-10-12T19:47:56.4863671Z   lfs: false
+2025-10-12T19:47:56.4864051Z   submodules: false
+2025-10-12T19:47:56.4864461Z   set-safe-directory: true
+2025-10-12T19:47:56.4865147Z ##[endgroup]
+2025-10-12T19:47:56.5991394Z Syncing repository: harshil753/my_closet
+2025-10-12T19:47:56.5993919Z ##[group]Getting Git version info
+2025-10-12T19:47:56.5995544Z Working directory is '/home/runner/work/my_closet/my_closet'
+2025-10-12T19:47:56.6000001Z [command]/usr/bin/git version
+2025-10-12T19:47:56.6076816Z git version 2.51.0
+2025-10-12T19:47:56.6105298Z ##[endgroup]
+2025-10-12T19:47:56.6121251Z Temporarily overriding HOME='/home/runner/work/_temp/35fb7816-953f-40e4-8de0-a12dd015e9e2' before making global git config changes
+2025-10-12T19:47:56.6124888Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T19:47:56.6139714Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T19:47:56.6177790Z Deleting the contents of '/home/runner/work/my_closet/my_closet'
+2025-10-12T19:47:56.6182484Z ##[group]Initializing the repository
+2025-10-12T19:47:56.6187285Z [command]/usr/bin/git init /home/runner/work/my_closet/my_closet
+2025-10-12T19:47:56.6291217Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-12T19:47:56.6294378Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-12T19:47:56.6296939Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-12T19:47:56.6299103Z hint:
+2025-10-12T19:47:56.6300006Z hint: 	git config --global init.defaultBranch <name>
+2025-10-12T19:47:56.6301299Z hint:
+2025-10-12T19:47:56.6302326Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-12T19:47:56.6303943Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-12T19:47:56.6305239Z hint:
+2025-10-12T19:47:56.6305924Z hint: 	git branch -m <name>
+2025-10-12T19:47:56.6306660Z hint:
+2025-10-12T19:47:56.6307638Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-12T19:47:56.6310261Z Initialized empty Git repository in /home/runner/work/my_closet/my_closet/.git/
+2025-10-12T19:47:56.6314102Z [command]/usr/bin/git remote add origin https://github.com/harshil753/my_closet
+2025-10-12T19:47:56.6377972Z ##[endgroup]
+2025-10-12T19:47:56.6379197Z ##[group]Disabling automatic garbage collection
+2025-10-12T19:47:56.6382965Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-12T19:47:56.6416863Z ##[endgroup]
+2025-10-12T19:47:56.6418161Z ##[group]Setting up auth
+2025-10-12T19:47:56.6423816Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T19:47:56.6457567Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T19:47:56.6789875Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T19:47:56.6823817Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T19:47:56.7058799Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-12T19:47:56.7096283Z ##[endgroup]
+2025-10-12T19:47:56.7098864Z ##[group]Fetching the repository
+2025-10-12T19:47:56.7116483Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +89beca2f722fc19ed15500cbb38fc0d9a2a4131b:refs/remotes/origin/main
+2025-10-12T19:47:57.2555930Z From https://github.com/harshil753/my_closet
+2025-10-12T19:47:57.2697610Z  * [new ref]         89beca2f722fc19ed15500cbb38fc0d9a2a4131b -> origin/main
+2025-10-12T19:47:57.2704214Z ##[endgroup]
+2025-10-12T19:47:57.2705922Z ##[group]Determining the checkout info
+2025-10-12T19:47:57.2707709Z ##[endgroup]
+2025-10-12T19:47:57.2708833Z [command]/usr/bin/git sparse-checkout disable
+2025-10-12T19:47:57.2712597Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-12T19:47:57.2717046Z ##[group]Checking out the ref
+2025-10-12T19:47:57.2719215Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-12T19:47:57.3434277Z Switched to a new branch 'main'
+2025-10-12T19:47:57.3440329Z branch 'main' set up to track 'origin/main'.
+2025-10-12T19:47:57.3448435Z ##[endgroup]
+2025-10-12T19:47:57.3451837Z [command]/usr/bin/git log -1 --format=%H
+2025-10-12T19:47:57.3453613Z 89beca2f722fc19ed15500cbb38fc0d9a2a4131b
+2025-10-12T19:47:57.3755838Z ##[group]Run oven-sh/setup-bun@v1
+2025-10-12T19:47:57.3757624Z with:
+2025-10-12T19:47:57.3758928Z   bun-version: latest
+2025-10-12T19:47:57.3760452Z   no-cache: false
+2025-10-12T19:47:57.3762103Z ##[endgroup]
+2025-10-12T19:47:57.5156781Z Downloading a new version of Bun: https://bun.sh/download/latest/linux/x64?avx2=true&profile=false
+2025-10-12T19:47:58.1489154Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/4856bb46-b874-4e19-a378-fc509e44de31
+2025-10-12T19:47:59.0212077Z [command]/home/runner/.bun/bin/bun --revision
+2025-10-12T19:47:59.0251962Z 1.3.0+b0a6feca5
+2025-10-12T19:47:59.0420771Z ##[group]Run actions/setup-python@v4
+2025-10-12T19:47:59.0421311Z with:
+2025-10-12T19:47:59.0421503Z   python-version: 3.11
+2025-10-12T19:47:59.0421711Z   check-latest: false
+2025-10-12T19:47:59.0422040Z   token: ***
+2025-10-12T19:47:59.0422513Z   update-environment: true
+2025-10-12T19:47:59.0422730Z   allow-prereleases: false
+2025-10-12T19:47:59.0422956Z ##[endgroup]
+2025-10-12T19:47:59.2115769Z ##[group]Installed versions
+2025-10-12T19:47:59.2829256Z Successfully set up CPython (3.11.13)
+2025-10-12T19:47:59.2832793Z ##[endgroup]
+2025-10-12T19:47:59.2944996Z ##[group]Run bun install --frozen-lockfile
+2025-10-12T19:47:59.2945384Z [36;1mbun install --frozen-lockfile[0m
+2025-10-12T19:47:59.2945677Z [36;1mpip install -r requirements.txt[0m
+2025-10-12T19:47:59.3207874Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:47:59.3208113Z env:
+2025-10-12T19:47:59.3208354Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:47:59.3208773Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T19:47:59.3209168Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:47:59.3209526Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:47:59.3209874Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:47:59.3210235Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T19:47:59.3210526Z ##[endgroup]
+2025-10-12T19:47:59.3389923Z bun install v1.3.0 (b0a6feca)
+2025-10-12T19:48:05.8664591Z 
+2025-10-12T19:48:05.8665285Z + @eslint/eslintrc@3.3.1
+2025-10-12T19:48:05.8665750Z + @playwright/test@1.56.0
+2025-10-12T19:48:05.8666103Z + @tailwindcss/postcss@4.1.14
+2025-10-12T19:48:05.8666559Z + @testing-library/jest-dom@6.9.1
+2025-10-12T19:48:05.8667084Z + @testing-library/react@16.3.0
+2025-10-12T19:48:05.8685393Z + @types/estree@1.0.8
+2025-10-12T19:48:05.8685759Z + @types/json-schema@7.0.15
+2025-10-12T19:48:05.8855292Z + @types/node@22.18.10
+2025-10-12T19:48:05.8855638Z + @types/phoenix@1.6.6
+2025-10-12T19:48:05.8855979Z + @types/react@19.2.2
+2025-10-12T19:48:05.8856295Z + @types/react-dom@19.2.1
+2025-10-12T19:48:05.8856674Z + @typescript-eslint/eslint-plugin@8.46.0
+2025-10-12T19:48:05.8857127Z + @typescript-eslint/parser@8.46.0
+2025-10-12T19:48:05.8857523Z + eslint@9.37.0
+2025-10-12T19:48:05.8857829Z + eslint-config-next@15.5.4
+2025-10-12T19:48:05.8858156Z + glob@11.0.3
+2025-10-12T19:48:05.8858423Z + jest@29.7.0
+2025-10-12T19:48:05.8858710Z + jest-environment-jsdom@29.7.0
+2025-10-12T19:48:05.8859095Z + prettier@3.6.2
+2025-10-12T19:48:05.8859423Z + prettier-plugin-tailwindcss@0.6.14
+2025-10-12T19:48:05.8859825Z + tailwindcss@4.1.14
+2025-10-12T19:48:05.8860124Z + typescript@5.9.3
+2025-10-12T19:48:05.8860431Z + @google/genai@1.24.0
+2025-10-12T19:48:05.8860759Z + @google/generative-ai@0.24.1
+2025-10-12T19:48:05.8861291Z + @radix-ui/react-label@2.1.7
+2025-10-12T19:48:05.8861668Z + @radix-ui/react-separator@1.1.7
+2025-10-12T19:48:05.8862048Z + @radix-ui/react-switch@1.2.6
+2025-10-12T19:48:05.8862400Z + @supabase/ssr@0.7.0
+2025-10-12T19:48:05.8862719Z + @supabase/supabase-js@2.75.0
+2025-10-12T19:48:05.8863092Z + class-variance-authority@0.7.1
+2025-10-12T19:48:05.8863443Z + clsx@2.1.1
+2025-10-12T19:48:05.8863707Z + dotenv@17.2.3
+2025-10-12T19:48:05.8863988Z + hasown@2.0.2
+2025-10-12T19:48:05.8864270Z + lru-cache@10.4.3
+2025-10-12T19:48:05.8864558Z + lucide-react@0.545.0
+2025-10-12T19:48:05.8864868Z + mime@4.1.0
+2025-10-12T19:48:05.8865132Z + next@15.5.4
+2025-10-12T19:48:05.8865403Z + react@19.2.0
+2025-10-12T19:48:05.8865681Z + react-dom@19.2.0
+2025-10-12T19:48:05.8865997Z + react-dropzone@14.3.8
+2025-10-12T19:48:05.8866324Z + tailwind-merge@3.3.1
+2025-10-12T19:48:05.8866527Z 
+2025-10-12T19:48:05.8866673Z 680 packages installed [6.53s]
+2025-10-12T19:48:12.7092192Z Collecting google-generativeai==0.8.3 (from -r requirements.txt (line 2))
+2025-10-12T19:48:12.7584979Z   Downloading google_generativeai-0.8.3-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T19:48:12.9362244Z Collecting pillow==11.0.0 (from -r requirements.txt (line 3))
+2025-10-12T19:48:12.9420590Z   Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2025-10-12T19:48:12.9658722Z Collecting supabase==2.8.0 (from -r requirements.txt (line 4))
+2025-10-12T19:48:12.9711556Z   Downloading supabase-2.8.0-py3-none-any.whl.metadata (10 kB)
+2025-10-12T19:48:12.9876737Z Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 5))
+2025-10-12T19:48:12.9912984Z   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+2025-10-12T19:48:13.0182904Z Collecting requests==2.32.3 (from -r requirements.txt (line 6))
+2025-10-12T19:48:13.0219866Z   Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T19:48:13.1881814Z Collecting numpy==2.1.3 (from -r requirements.txt (line 7))
+2025-10-12T19:48:13.1936209Z   Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2025-10-12T19:48:13.2730073Z Collecting opencv-python==4.10.0.84 (from -r requirements.txt (line 8))
+2025-10-12T19:48:13.2770188Z   Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+2025-10-12T19:48:13.3099888Z Collecting pytest==8.3.4 (from -r requirements.txt (line 11))
+2025-10-12T19:48:13.3163422Z   Downloading pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
+2025-10-12T19:48:13.3357265Z Collecting pytest-asyncio==0.24.0 (from -r requirements.txt (line 12))
+2025-10-12T19:48:13.3403444Z   Downloading pytest_asyncio-0.24.0-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T19:48:13.4000633Z Collecting black==24.10.0 (from -r requirements.txt (line 13))
+2025-10-12T19:48:13.4051427Z   Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2025-10-12T19:48:13.4328552Z Collecting flake8==7.1.1 (from -r requirements.txt (line 14))
+2025-10-12T19:48:13.4377785Z   Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-10-12T19:48:13.5335557Z Collecting mypy==1.13.0 (from -r requirements.txt (line 15))
+2025-10-12T19:48:13.5426438Z   Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+2025-10-12T19:48:13.5582806Z Collecting google-ai-generativelanguage==0.6.10 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:13.5643683Z   Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T19:48:13.5993142Z Collecting google-api-core (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:13.6031353Z   Downloading google_api_core-2.26.0-py3-none-any.whl.metadata (3.2 kB)
+2025-10-12T19:48:13.6591215Z Collecting google-api-python-client (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:13.6630306Z   Downloading google_api_python_client-2.184.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T19:48:13.7003008Z Collecting google-auth>=2.15.0 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:13.7041762Z   Downloading google_auth-2.41.1-py2.py3-none-any.whl.metadata (6.6 kB)
+2025-10-12T19:48:13.8594397Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:13.8629976Z   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2025-10-12T19:48:13.9991659Z Collecting pydantic (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.0034182Z   Downloading pydantic-2.12.0-py3-none-any.whl.metadata (83 kB)
+2025-10-12T19:48:14.0404240Z Collecting tqdm (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.0438665Z   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+2025-10-12T19:48:14.0649313Z Collecting typing-extensions (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.0684397Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T19:48:14.0890319Z Collecting gotrue<3.0,>=1.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.0940190Z   Downloading gotrue-2.12.4-py3-none-any.whl.metadata (2.0 kB)
+2025-10-12T19:48:14.1141349Z Collecting httpx<0.28,>=0.24 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.1180395Z   Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+2025-10-12T19:48:14.1362110Z Collecting postgrest<0.18.0,>=0.14 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.1413113Z   Downloading postgrest-0.17.2-py3-none-any.whl.metadata (3.4 kB)
+2025-10-12T19:48:14.1586314Z Collecting realtime<3.0.0,>=2.0.0 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.1621171Z   Downloading realtime-2.22.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T19:48:14.1789381Z Collecting storage3<0.9.0,>=0.5.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.1833724Z   Downloading storage3-0.8.2-py3-none-any.whl.metadata (1.8 kB)
+2025-10-12T19:48:14.1997058Z Collecting supafunc<0.7.0,>=0.3.1 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:14.2044329Z   Downloading supafunc-0.6.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:14.2853103Z Collecting charset-normalizer<4,>=2 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T19:48:14.2890482Z   Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+2025-10-12T19:48:14.3084852Z Collecting idna<4,>=2.5 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T19:48:14.3117312Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T19:48:14.3398711Z Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T19:48:14.3437540Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-10-12T19:48:14.3651830Z Collecting certifi>=2017.4.17 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T19:48:14.3687118Z   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+2025-10-12T19:48:14.4016333Z Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T19:48:14.4054589Z   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+2025-10-12T19:48:14.4256245Z Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T19:48:14.4288742Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T19:48:14.4471381Z Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T19:48:14.4506015Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2025-10-12T19:48:14.4783911Z Collecting click>=8.0.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T19:48:14.4819382Z   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T19:48:14.4925170Z Collecting mypy-extensions>=0.4.3 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T19:48:14.4968549Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:14.5114730Z Collecting pathspec>=0.9.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T19:48:14.5149694Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-10-12T19:48:14.5348586Z Collecting platformdirs>=2 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T19:48:14.5384804Z   Downloading platformdirs-4.5.0-py3-none-any.whl.metadata (12 kB)
+2025-10-12T19:48:14.5517485Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T19:48:14.5552206Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T19:48:14.5702187Z Collecting pycodestyle<2.13.0,>=2.12.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T19:48:14.5737333Z   Downloading pycodestyle-2.12.1-py2.py3-none-any.whl.metadata (4.5 kB)
+2025-10-12T19:48:14.5893239Z Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T19:48:14.5931644Z   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T19:48:14.7992648Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.8030359Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T19:48:14.8716530Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.8754475Z   Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+2025-10-12T19:48:14.8961160Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:14.9005652Z   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
+2025-10-12T19:48:15.5288580Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.5331236Z   Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+2025-10-12T19:48:15.5827464Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.5861850Z   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.6201484Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.6235849Z   Downloading cachetools-6.2.1-py3-none-any.whl.metadata (5.5 kB)
+2025-10-12T19:48:15.6419320Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.6456135Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T19:48:15.6622962Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.6666752Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T19:48:15.7094938Z Collecting pyjwt<3.0.0,>=2.10.1 (from gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:15.7136231Z   Downloading PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+2025-10-12T19:48:15.7756900Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+2025-10-12T19:48:15.7765322Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:15.7804551Z   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.7891907Z   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.7970880Z   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.8636190Z   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.8714636Z   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.8796279Z   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.8876425Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T19:48:15.9977994Z Collecting anyio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0015151Z   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+2025-10-12T19:48:16.0234590Z Collecting httpcore==1.* (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0270553Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2025-10-12T19:48:16.0378687Z Collecting sniffio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0412500Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T19:48:16.0529149Z Collecting h11>=0.16 (from httpcore==1.*->httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0564998Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-10-12T19:48:16.0735209Z Collecting h2<5,>=3 (from httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0779289Z   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+2025-10-12T19:48:16.0914414Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.0952760Z   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+2025-10-12T19:48:16.1542396Z Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.1584340Z   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T19:48:16.1759971Z Collecting deprecation<3.0.0,>=2.1.0 (from postgrest<0.18.0,>=0.14->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:16.1796232Z   Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T19:48:16.2827949Z Collecting annotated-types>=0.6.0 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:16.2864553Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2025-10-12T19:48:16.9735708Z Collecting pydantic-core==2.41.1 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:16.9775201Z   Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2025-10-12T19:48:16.9907577Z Collecting typing-inspection>=0.4.2 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:16.9946320Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T19:48:17.0994306Z Collecting websockets<16,>=11 (from realtime<3.0.0,>=2.0.0->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:17.1036325Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2025-10-12T19:48:17.1290319Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:17.1324652Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T19:48:17.1488423Z Collecting python-dateutil<3.0.0,>=2.8.2 (from storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:17.1529599Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T19:48:17.1732340Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T19:48:17.1767458Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-10-12T19:48:17.2364921Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:17.2406496Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T19:48:17.2719166Z Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:17.2754933Z   Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T19:48:17.2863907Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:17.2898647Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T19:48:17.3169970Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T19:48:17.3221775Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T19:48:17.3452895Z Downloading google_generativeai-0.8.3-py3-none-any.whl (160 kB)
+2025-10-12T19:48:17.3554763Z Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.4 MB)
+2025-10-12T19:48:17.3844578Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 158.7 MB/s  0:00:00
+2025-10-12T19:48:17.3896037Z Downloading supabase-2.8.0-py3-none-any.whl (16 kB)
+2025-10-12T19:48:17.3954287Z Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
+2025-10-12T19:48:17.4016075Z Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+2025-10-12T19:48:17.4095084Z Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
+2025-10-12T19:48:17.5072669Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 170.2 MB/s  0:00:00
+2025-10-12T19:48:17.5147027Z Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
+2025-10-12T19:48:17.9930047Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 131.2 MB/s  0:00:00
+2025-10-12T19:48:17.9970539Z Downloading pytest-8.3.4-py3-none-any.whl (343 kB)
+2025-10-12T19:48:18.0077193Z Downloading pytest_asyncio-0.24.0-py3-none-any.whl (18 kB)
+2025-10-12T19:48:18.0185062Z Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+2025-10-12T19:48:18.0470240Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 58.0 MB/s  0:00:00
+2025-10-12T19:48:18.0513341Z Downloading flake8-7.1.1-py2.py3-none-any.whl (57 kB)
+2025-10-12T19:48:18.0599032Z Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (12.5 MB)
+2025-10-12T19:48:18.1616789Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.5/12.5 MB 124.0 MB/s  0:00:00
+2025-10-12T19:48:18.1686016Z Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl (760 kB)
+2025-10-12T19:48:18.1757312Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.0/760.0 kB 122.2 MB/s  0:00:00
+2025-10-12T19:48:18.1796317Z Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (150 kB)
+2025-10-12T19:48:18.1871544Z Downloading google_api_core-2.26.0-py3-none-any.whl (162 kB)
+2025-10-12T19:48:18.1940160Z Downloading google_auth-2.41.1-py2.py3-none-any.whl (221 kB)
+2025-10-12T19:48:18.2003656Z Downloading cachetools-6.2.1-py3-none-any.whl (11 kB)
+2025-10-12T19:48:18.2058212Z Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
+2025-10-12T19:48:18.2124385Z Downloading gotrue-2.12.4-py3-none-any.whl (42 kB)
+2025-10-12T19:48:18.2203138Z Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.5 MB)
+2025-10-12T19:48:18.2492379Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.5/6.5 MB 237.8 MB/s  0:00:00
+2025-10-12T19:48:18.2529583Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+2025-10-12T19:48:18.2586958Z Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+2025-10-12T19:48:18.2643574Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2025-10-12T19:48:18.2698513Z Downloading h2-4.3.0-py3-none-any.whl (61 kB)
+2025-10-12T19:48:18.2753770Z Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
+2025-10-12T19:48:18.2813392Z Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
+2025-10-12T19:48:18.2865771Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-10-12T19:48:18.2920582Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2025-10-12T19:48:18.2978218Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2025-10-12T19:48:18.3040614Z Downloading postgrest-0.17.2-py3-none-any.whl (21 kB)
+2025-10-12T19:48:18.3094317Z Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T19:48:18.3149084Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
+2025-10-12T19:48:18.3215352Z Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+2025-10-12T19:48:18.3300201Z Downloading pycodestyle-2.12.1-py2.py3-none-any.whl (31 kB)
+2025-10-12T19:48:18.3366963Z Downloading pydantic-2.12.0-py3-none-any.whl (459 kB)
+2025-10-12T19:48:18.3442169Z Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2025-10-12T19:48:18.3564555Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 198.6 MB/s  0:00:00
+2025-10-12T19:48:18.3604089Z Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+2025-10-12T19:48:18.3659202Z Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
+2025-10-12T19:48:18.3712177Z Downloading realtime-2.22.0-py3-none-any.whl (22 kB)
+2025-10-12T19:48:18.3775018Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+2025-10-12T19:48:18.3834994Z Downloading storage3-0.8.2-py3-none-any.whl (16 kB)
+2025-10-12T19:48:18.3887370Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2025-10-12T19:48:18.4033769Z Downloading supafunc-0.6.2-py3-none-any.whl (6.6 kB)
+2025-10-12T19:48:18.4476237Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-10-12T19:48:18.4535388Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-10-12T19:48:18.4597799Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+2025-10-12T19:48:18.4660287Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2025-10-12T19:48:18.4716483Z Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+2025-10-12T19:48:18.4779379Z Downloading click-8.3.0-py3-none-any.whl (107 kB)
+2025-10-12T19:48:18.4839211Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-10-12T19:48:18.4897718Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2025-10-12T19:48:18.4953341Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-10-12T19:48:18.5013636Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-10-12T19:48:18.5064914Z Downloading platformdirs-4.5.0-py3-none-any.whl (18 kB)
+2025-10-12T19:48:18.5120025Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+2025-10-12T19:48:18.5185235Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2025-10-12T19:48:18.5246103Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T19:48:18.5299400Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2025-10-12T19:48:18.5356478Z Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+2025-10-12T19:48:18.5413745Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2025-10-12T19:48:18.5486546Z Downloading google_api_python_client-2.184.0-py3-none-any.whl (14.3 MB)
+2025-10-12T19:48:18.6135611Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 227.4 MB/s  0:00:00
+2025-10-12T19:48:18.6186240Z Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl (9.3 kB)
+2025-10-12T19:48:18.6242197Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
+2025-10-12T19:48:18.6299110Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
+2025-10-12T19:48:18.6355428Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+2025-10-12T19:48:18.6405957Z Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+2025-10-12T19:48:18.6457875Z Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+2025-10-12T19:48:18.9472926Z Installing collected packages: websockets, urllib3, uritemplate, typing-extensions, tqdm, sniffio, six, python-dotenv, pyparsing, pyjwt, pyflakes, pycodestyle, pyasn1, protobuf, pluggy, platformdirs, pillow, pathspec, packaging, numpy, mypy-extensions, mccabe, iniconfig, idna, hyperframe, hpack, h11, click, charset-normalizer, certifi, cachetools, annotated-types, typing-inspection, rsa, requests, python-dateutil, pytest, pydantic-core, pyasn1-modules, proto-plus, opencv-python, mypy, httplib2, httpcore, h2, grpcio, googleapis-common-protos, flake8, deprecation, black, anyio, pytest-asyncio, pydantic, httpx, grpcio-status, google-auth, realtime, google-auth-httplib2, google-api-core, supafunc, storage3, postgrest, gotrue, google-api-python-client, supabase, google-ai-generativelanguage, google-generativeai
+2025-10-12T19:48:26.3508293Z 
+2025-10-12T19:48:26.3546997Z Successfully installed annotated-types-0.7.0 anyio-4.11.0 black-24.10.0 cachetools-6.2.1 certifi-2025.10.5 charset-normalizer-3.4.3 click-8.3.0 deprecation-2.1.0 flake8-7.1.1 google-ai-generativelanguage-0.6.10 google-api-core-2.26.0 google-api-python-client-2.184.0 google-auth-2.41.1 google-auth-httplib2-0.2.0 google-generativeai-0.8.3 googleapis-common-protos-1.70.0 gotrue-2.12.4 grpcio-1.75.1 grpcio-status-1.71.2 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httplib2-0.31.0 httpx-0.27.2 hyperframe-6.1.0 idna-3.11 iniconfig-2.1.0 mccabe-0.7.0 mypy-1.13.0 mypy-extensions-1.1.0 numpy-2.1.3 opencv-python-4.10.0.84 packaging-25.0 pathspec-0.12.1 pillow-11.0.0 platformdirs-4.5.0 pluggy-1.6.0 postgrest-0.17.2 proto-plus-1.26.1 protobuf-5.29.5 pyasn1-0.6.1 pyasn1-modules-0.4.2 pycodestyle-2.12.1 pydantic-2.12.0 pydantic-core-2.41.1 pyflakes-3.2.0 pyjwt-2.10.1 pyparsing-3.2.5 pytest-8.3.4 pytest-asyncio-0.24.0 python-dateutil-2.9.0.post0 python-dotenv-1.0.1 realtime-2.22.0 requests-2.32.3 rsa-4.9.1 six-1.17.0 sniffio-1.3.1 storage3-0.8.2 supabase-2.8.0 supafunc-0.6.2 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 uritemplate-4.2.0 urllib3-2.5.0 websockets-15.0.1
+2025-10-12T19:48:26.9065153Z ##[group]Run bun run type-check
+2025-10-12T19:48:26.9065458Z [36;1mbun run type-check[0m
+2025-10-12T19:48:26.9098639Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:48:26.9098859Z env:
+2025-10-12T19:48:26.9099097Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:26.9099503Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T19:48:26.9099887Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:26.9100231Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:26.9100577Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:26.9100918Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T19:48:26.9101467Z ##[endgroup]
+2025-10-12T19:48:26.9175786Z $ tsc --noEmit
+2025-10-12T19:48:38.8270548Z ##[group]Run bun run lint
+2025-10-12T19:48:38.8270805Z [36;1mbun run lint[0m
+2025-10-12T19:48:38.8304029Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:48:38.8304248Z env:
+2025-10-12T19:48:38.8304483Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:38.8304905Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T19:48:38.8305306Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:38.8305669Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:38.8306043Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:48:38.8306391Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T19:48:38.8306679Z ##[endgroup]
+2025-10-12T19:48:38.8378800Z $ eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0
+2025-10-12T19:48:44.7447827Z 
+2025-10-12T19:48:44.7449540Z /home/runner/work/my_closet/my_closet/app/(dashboard)/privacy/page.tsx
+2025-10-12T19:48:44.7453833Z    99:42  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7456712Z   103:44  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7462938Z   136:14  warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7465010Z   161:14  warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7467054Z   199:14  warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7469089Z   408:26  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7471313Z   408:41  warning  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7472479Z 
+2025-10-12T19:48:44.7473077Z /home/runner/work/my_closet/my_closet/app/(dashboard)/try-on/page.tsx
+2025-10-12T19:48:44.7474382Z    79:50  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7476303Z    95:6   warning  React Hook useEffect has a missing dependency: 'loadPreSelectedItems'. Either include it or remove the dependency array                                                                                                                                                                  react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7478044Z   114:56  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7479395Z   122:40  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7480748Z   247:56  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7482640Z   308:36  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7483950Z   309:37  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7486096Z   660:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7487672Z 
+2025-10-12T19:48:44.7488082Z /home/runner/work/my_closet/my_closet/app/(dashboard)/try-on/process/[sessionId]/page.tsx
+2025-10-12T19:48:44.7489115Z    14:19  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7490658Z    60:6   warning  React Hook useEffect has a missing dependency: 'loadSession'. Either include it or remove the dependency array                                                                                                                                                                           react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7492891Z   180:6   warning  React Hook useEffect has missing dependencies: 'startAIProcessing' and 'storageKey'. Either include them or remove the dependency array                                                                                                                                                  react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7495561Z   453:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7497449Z 
+2025-10-12T19:48:44.7497818Z /home/runner/work/my_closet/my_closet/app/api/dev/auto-cleanup-sessions/route.ts
+2025-10-12T19:48:44.7498703Z   10:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7499194Z 
+2025-10-12T19:48:44.7499515Z /home/runner/work/my_closet/my_closet/app/api/dev/check-all-sessions/route.ts
+2025-10-12T19:48:44.7500332Z   12:27  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7501473Z   50:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7502393Z   51:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7503292Z   52:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7504175Z   53:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7505063Z   56:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7505943Z   63:41  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7506460Z 
+2025-10-12T19:48:44.7506762Z /home/runner/work/my_closet/my_closet/app/api/dev/check-table/route.ts
+2025-10-12T19:48:44.7507535Z    9:27  warning  'request' is defined but never used        @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7508556Z   23:13  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7509063Z 
+2025-10-12T19:48:44.7509379Z /home/runner/work/my_closet/my_closet/app/api/dev/clear-sessions/route.ts
+2025-10-12T19:48:44.7510147Z   9:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7510620Z 
+2025-10-12T19:48:44.7510920Z /home/runner/work/my_closet/my_closet/app/api/dev/debug-session/route.ts
+2025-10-12T19:48:44.7516199Z   56:24  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7517179Z   58:35  warning  'itemsError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7518139Z   63:35  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7518694Z 
+2025-10-12T19:48:44.7519006Z /home/runner/work/my_closet/my_closet/app/api/dev/debug-sessions/route.ts
+2025-10-12T19:48:44.7519804Z   10:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7520283Z 
+2025-10-12T19:48:44.7520580Z /home/runner/work/my_closet/my_closet/app/api/dev/direct-db-fix/route.ts
+2025-10-12T19:48:44.7521674Z    12:28  warning  'request' is defined but never used              @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7522613Z    50:28  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7523572Z   134:41  warning  'finalError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7524124Z 
+2025-10-12T19:48:44.7524465Z /home/runner/work/my_closet/my_closet/app/api/dev/find-hidden-session/route.ts
+2025-10-12T19:48:44.7525270Z   9:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7525747Z 
+2025-10-12T19:48:44.7526083Z /home/runner/work/my_closet/my_closet/app/api/dev/force-clear-sessions/route.ts
+2025-10-12T19:48:44.7526897Z   9:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7527370Z 
+2025-10-12T19:48:44.7527661Z /home/runner/work/my_closet/my_closet/app/api/dev/gemini-status/route.ts
+2025-10-12T19:48:44.7528639Z   9:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7529112Z 
+2025-10-12T19:48:44.7529394Z /home/runner/work/my_closet/my_closet/app/api/dev/nuclear-clear/route.ts
+2025-10-12T19:48:44.7530167Z   12:28  warning  'request' is defined but never used       @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7531216Z   95:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7531751Z 
+2025-10-12T19:48:44.7532010Z /home/runner/work/my_closet/my_closet/app/api/feedback/route.ts
+2025-10-12T19:48:44.7532797Z   28:14  warning  'authError' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7533335Z 
+2025-10-12T19:48:44.7533593Z /home/runner/work/my_closet/my_closet/app/api/health/route.ts
+2025-10-12T19:48:44.7534328Z    8:27  warning  'request' is defined but never used        @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7535164Z   14:13  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7535668Z 
+2025-10-12T19:48:44.7536000Z /home/runner/work/my_closet/my_closet/app/api/try-on/cleanup-sessions/route.ts
+2025-10-12T19:48:44.7536795Z   10:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7537270Z 
+2025-10-12T19:48:44.7537573Z /home/runner/work/my_closet/my_closet/app/api/try-on/process/route.ts
+2025-10-12T19:48:44.7538372Z   8:3  warning  'TierLimitError' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7538981Z 
+2025-10-12T19:48:44.7539334Z /home/runner/work/my_closet/my_closet/app/api/try-on/sessions/[sessionId]/route.ts
+2025-10-12T19:48:44.7540415Z   91:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7540950Z 
+2025-10-12T19:48:44.7541486Z /home/runner/work/my_closet/my_closet/app/api/try-on/sessions/route.ts
+2025-10-12T19:48:44.7542303Z   107:70  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7542851Z 
+2025-10-12T19:48:44.7543140Z /home/runner/work/my_closet/my_closet/app/api/user/base-photos/route.ts
+2025-10-12T19:48:44.7543938Z    10:27  warning  'request' is defined but never used                 @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7544866Z   134:19  warning  'uploadData' is assigned a value but never used     @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7545824Z   156:19  warning  'thumbnailData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7546395Z 
+2025-10-12T19:48:44.7546694Z /home/runner/work/my_closet/my_closet/app/api/user/data-deletion/route.ts
+2025-10-12T19:48:44.7547468Z   203:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7547968Z 
+2025-10-12T19:48:44.7548262Z /home/runner/work/my_closet/my_closet/app/api/user/data-export/route.ts
+2025-10-12T19:48:44.7549099Z   180:22  warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7550049Z   198:19  warning  'uploadData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7551139Z   226:27  warning  'request' is defined but never used              @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7551667Z 
+2025-10-12T19:48:44.7551966Z /home/runner/work/my_closet/my_closet/app/api/user/tier-status/route.ts
+2025-10-12T19:48:44.7552732Z   10:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7553214Z 
+2025-10-12T19:48:44.7553523Z /home/runner/work/my_closet/my_closet/app/dev/session-manager/page.tsx
+2025-10-12T19:48:44.7554437Z    58:19  warning  Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7555732Z   291:6   warning  React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7556734Z 
+2025-10-12T19:48:44.7556938Z /home/runner/work/my_closet/my_closet/app/page.tsx
+2025-10-12T19:48:44.7557631Z   128:20  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7558154Z 
+2025-10-12T19:48:44.7558517Z /home/runner/work/my_closet/my_closet/components/features/support/SupportCenter.tsx
+2025-10-12T19:48:44.7559358Z   17:3   warning  'Phone' is defined but never used         @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7560197Z   21:3   warning  'ExternalLink' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7561267Z   92:19  warning  Unexpected empty method 'action'          @typescript-eslint/no-empty-function
+2025-10-12T19:48:44.7562152Z   99:19  warning  Unexpected empty method 'action'          @typescript-eslint/no-empty-function
+2025-10-12T19:48:44.7562684Z 
+2025-10-12T19:48:44.7563061Z /home/runner/work/my_closet/my_closet/components/features/try-on/CategorySelector.tsx
+2025-10-12T19:48:44.7564068Z    80:38  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7565195Z    85:20  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7566470Z    86:21  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7567614Z    87:44  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7568732Z    99:18  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7569869Z   129:45  warning  Unexpected any. Specify a different type                                                                                                                  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7571661Z   175:6   warning  React Hook useCallback has missing dependencies: 'cacheRoot.clothingByUser' and 'selectedCategories'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7573263Z   314:73  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                           react/no-unescaped-entities
+2025-10-12T19:48:44.7573872Z 
+2025-10-12T19:48:44.7574264Z /home/runner/work/my_closet/my_closet/components/features/try-on/ClothingSelector.tsx
+2025-10-12T19:48:44.7575291Z   100:38  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7576397Z   104:20  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7577492Z   105:21  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7578592Z   106:44  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7579685Z   125:21  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7581130Z   150:28  warning  Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7582582Z   156:6   warning  React Hook useCallback has a missing dependency: 'cacheRoot.clothingByUser'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-10-12T19:48:44.7583540Z 
+2025-10-12T19:48:44.7583890Z /home/runner/work/my_closet/my_closet/components/features/try-on/TryOnResult.tsx
+2025-10-12T19:48:44.7585900Z   30:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7588181Z   76:35  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7589454Z   77:39  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7590135Z 
+2025-10-12T19:48:44.7590617Z /home/runner/work/my_closet/my_closet/components/forms/BasePhotoUpload.tsx
+2025-10-12T19:48:44.7591715Z   460:32  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7592260Z 
+2025-10-12T19:48:44.7592578Z /home/runner/work/my_closet/my_closet/components/forms/ConsentManager.tsx
+2025-10-12T19:48:44.7593359Z   107:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7593843Z 
+2025-10-12T19:48:44.7594138Z /home/runner/work/my_closet/my_closet/components/forms/FeedbackForm.tsx
+2025-10-12T19:48:44.7594943Z   116:13  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7595822Z   294:15  warning  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+2025-10-12T19:48:44.7596338Z 
+2025-10-12T19:48:44.7596624Z /home/runner/work/my_closet/my_closet/components/help/HelpCenter.tsx
+2025-10-12T19:48:44.7597619Z   164:53  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7599943Z   243:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7601761Z 
+2025-10-12T19:48:44.7602137Z /home/runner/work/my_closet/my_closet/components/monitoring/MonitoringDashboard.tsx
+2025-10-12T19:48:44.7603055Z    16:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7603972Z    17:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7604873Z    19:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7605763Z   181:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7606486Z 
+2025-10-12T19:48:44.7606827Z /home/runner/work/my_closet/my_closet/components/onboarding/OnboardingFlow.tsx
+2025-10-12T19:48:44.7608831Z   177:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7610494Z 
+2025-10-12T19:48:44.7610767Z /home/runner/work/my_closet/my_closet/components/ui/LazyImage.tsx
+2025-10-12T19:48:44.7611911Z    33:3   warning  'quality' is assigned a value but never used                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7613159Z    51:5   warning  'isInView' is assigned a value but never used                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7614439Z    52:17  warning  'handleLazyLoad' is assigned a value but never used                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7615978Z    53:18  warning  'handleLazyError' is assigned a value but never used                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7618278Z   106:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:48:44.7619958Z 
+2025-10-12T19:48:44.7620243Z /home/runner/work/my_closet/my_closet/components/ui/fallback-ui.tsx
+2025-10-12T19:48:44.7621194Z   15:3  warning  'Wifi' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7621693Z 
+2025-10-12T19:48:44.7621957Z /home/runner/work/my_closet/my_closet/components/ui/input.tsx
+2025-10-12T19:48:44.7622875Z   9:18  error  An interface declaring no members is equivalent to its supertype  @typescript-eslint/no-empty-object-type
+2025-10-12T19:48:44.7623538Z 
+2025-10-12T19:48:44.7623755Z /home/runner/work/my_closet/my_closet/lib/ai/gemini.ts
+2025-10-12T19:48:44.7624505Z    24:29  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7625438Z   334:13  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7626357Z   335:14  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7627293Z   351:46  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7628215Z   365:49  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7629145Z   403:32  warning  Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7630057Z   510:11  warning  'result' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7630581Z 
+2025-10-12T19:48:44.7630851Z /home/runner/work/my_closet/my_closet/lib/ai/try-on-processor.ts
+2025-10-12T19:48:44.7631985Z    11:8   warning  'mime' is defined but never used           @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7632843Z   461:5   warning  'basePhoto' is defined but never used      @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7633734Z   462:5   warning  'clothingItems' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7634607Z   500:13  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7635111Z 
+2025-10-12T19:48:44.7635375Z /home/runner/work/my_closet/my_closet/lib/auth/supabase-auth.ts
+2025-10-12T19:48:44.7636178Z   17:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7636714Z 
+2025-10-12T19:48:44.7636960Z /home/runner/work/my_closet/my_closet/lib/config/supabase.ts
+2025-10-12T19:48:44.7637708Z   47:28  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7638220Z 
+2025-10-12T19:48:44.7638521Z /home/runner/work/my_closet/my_closet/lib/database/migration-runner.ts
+2025-10-12T19:48:44.7639339Z   154:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7640259Z   154:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7640787Z 
+2025-10-12T19:48:44.7641305Z /home/runner/work/my_closet/my_closet/lib/database/schema-validator.ts
+2025-10-12T19:48:44.7642140Z   156:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7643046Z   156:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7644130Z   233:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7645071Z   233:52  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7645987Z   287:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7646887Z   287:53  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7647419Z 
+2025-10-12T19:48:44.7647720Z /home/runner/work/my_closet/my_closet/lib/database/supabase-client.ts
+2025-10-12T19:48:44.7648536Z   11:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7649438Z   27:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7650321Z   49:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7651380Z   62:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7652287Z   77:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7652820Z 
+2025-10-12T19:48:44.7653074Z /home/runner/work/my_closet/my_closet/lib/hooks/useAnalytics.ts
+2025-10-12T19:48:44.7653846Z   11:59  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7654710Z   16:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7655620Z   27:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7656514Z   44:65  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7657030Z 
+2025-10-12T19:48:44.7657283Z /home/runner/work/my_closet/my_closet/lib/middleware/security.ts
+2025-10-12T19:48:44.7658115Z    26:42  warning  'sessionManager' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7659060Z   335:3   warning  'token' is defined but never used                    @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7659769Z 
+2025-10-12T19:48:44.7660072Z /home/runner/work/my_closet/my_closet/lib/middleware/tierEnforcement.ts
+2025-10-12T19:48:44.7660906Z   146:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7662043Z   183:55  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7662950Z   233:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7663851Z   234:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7664390Z 
+2025-10-12T19:48:44.7664681Z /home/runner/work/my_closet/my_closet/lib/middleware/usage-tracking.ts
+2025-10-12T19:48:44.7665504Z    22:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7666395Z    70:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7667301Z   100:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7668205Z   138:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7669112Z   165:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7670018Z   189:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7670924Z   214:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7672010Z   237:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7673090Z   390:24  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7673997Z   417:3   warning  '_config' is defined but never used       @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7674503Z 
+2025-10-12T19:48:44.7674806Z /home/runner/work/my_closet/my_closet/lib/middleware/usageTracking.ts
+2025-10-12T19:48:44.7675623Z    23:49  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7676517Z    32:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7677413Z   122:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7678317Z   124:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7679222Z   175:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7680108Z   201:3   warning  '_usageData' is defined but never used    @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7681214Z   201:15  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7682170Z   256:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7682712Z 
+2025-10-12T19:48:44.7682974Z /home/runner/work/my_closet/my_closet/lib/monitoring/logger.ts
+2025-10-12T19:48:44.7683736Z    23:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7684635Z    33:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7685523Z   323:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7686431Z   324:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7687339Z   396:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7688251Z   414:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7689161Z   563:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7690276Z   565:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7691355Z   566:13  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7691888Z 
+2025-10-12T19:48:44.7692162Z /home/runner/work/my_closet/my_closet/lib/security/rateLimiter.ts
+2025-10-12T19:48:44.7692936Z   217:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7693798Z   348:9   warning  '_' is defined but never used             @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7694597Z   418:17  warning  '_' is defined but never used             @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7695407Z   419:25  warning  '_' is defined but never used             @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7695880Z 
+2025-10-12T19:48:44.7696147Z /home/runner/work/my_closet/my_closet/lib/services/analytics.ts
+2025-10-12T19:48:44.7696916Z    13:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7697829Z   151:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7698789Z   232:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7699693Z   246:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7700226Z 
+2025-10-12T19:48:44.7700522Z /home/runner/work/my_closet/my_closet/lib/services/clothingService.ts
+2025-10-12T19:48:44.7701501Z    41:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7702565Z   384:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7703485Z   511:42  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7704025Z 
+2025-10-12T19:48:44.7704336Z /home/runner/work/my_closet/my_closet/lib/services/image-processing.ts
+2025-10-12T19:48:44.7705153Z    22:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7706050Z   126:67  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7706964Z   146:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7707840Z   245:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7708725Z   281:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7709263Z 
+2025-10-12T19:48:44.7709547Z /home/runner/work/my_closet/my_closet/lib/services/tierService.ts
+2025-10-12T19:48:44.7710307Z   122:5   warning  '_metadata' is defined but never used     @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7711409Z   122:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7712355Z   168:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7713277Z   215:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7714187Z   247:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7715052Z   420:40  warning  '_userId' is defined but never used       @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7715895Z   451:5   warning  '_action' is defined but never used       @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7716385Z 
+2025-10-12T19:48:44.7716640Z /home/runner/work/my_closet/my_closet/lib/supabase/client.ts
+2025-10-12T19:48:44.7717410Z   186:54  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7717944Z 
+2025-10-12T19:48:44.7718193Z /home/runner/work/my_closet/my_closet/lib/supabase/storage.ts
+2025-10-12T19:48:44.7719134Z    54:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7720032Z    54:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7720927Z    81:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7721983Z    81:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7722888Z    95:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7723792Z    95:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7724694Z   107:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7725598Z   107:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7726515Z   119:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7727429Z   119:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7728331Z   175:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7728860Z 
+2025-10-12T19:48:44.7729110Z /home/runner/work/my_closet/my_closet/lib/types/clothing.ts
+2025-10-12T19:48:44.7729869Z   222:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7730408Z 
+2025-10-12T19:48:44.7730627Z /home/runner/work/my_closet/my_closet/lib/types/common.ts
+2025-10-12T19:48:44.7731765Z   25:34  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7732693Z   88:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7733599Z   96:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7734124Z 
+2025-10-12T19:48:44.7734357Z /home/runner/work/my_closet/my_closet/lib/types/database.ts
+2025-10-12T19:48:44.7735103Z    16:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7735998Z    31:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7736881Z    46:40  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7737776Z    66:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7738669Z    77:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7739557Z    88:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7740442Z    98:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7741508Z   107:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7742421Z   116:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7743309Z   125:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7744212Z   136:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7745113Z   147:37  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7745647Z 
+2025-10-12T19:48:44.7745874Z /home/runner/work/my_closet/my_closet/lib/types/index.ts
+2025-10-12T19:48:44.7746604Z    73:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7747485Z    78:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7748565Z    81:35  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7749458Z    91:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7750432Z   108:33  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7751571Z   111:10  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7752486Z   114:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7753392Z   171:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7754293Z   179:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7755180Z   189:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7755707Z 
+2025-10-12T19:48:44.7755931Z /home/runner/work/my_closet/my_closet/lib/types/try-on.ts
+2025-10-12T19:48:44.7756663Z    57:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7757576Z    60:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7758466Z   266:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7758996Z 
+2025-10-12T19:48:44.7759214Z /home/runner/work/my_closet/my_closet/lib/types/user.ts
+2025-10-12T19:48:44.7759921Z    45:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7761123Z   149:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7762067Z   195:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7762983Z   196:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7763524Z 
+2025-10-12T19:48:44.7763827Z /home/runner/work/my_closet/my_closet/lib/utils/closetOrganization.ts
+2025-10-12T19:48:44.7764641Z   189:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7765556Z   189:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7766089Z 
+2025-10-12T19:48:44.7766357Z /home/runner/work/my_closet/my_closet/lib/utils/codeSplitting.tsx
+2025-10-12T19:48:44.7767141Z    28:22  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7768037Z    58:73  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7768925Z    68:27  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7769818Z    71:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7770721Z   214:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7799083Z   232:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7800128Z   309:68  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7801270Z   314:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7801831Z 
+2025-10-12T19:48:44.7802116Z /home/runner/work/my_closet/my_closet/lib/utils/error-boundary.tsx
+2025-10-12T19:48:44.7802950Z   146:45  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7803490Z 
+2025-10-12T19:48:44.7803717Z /home/runner/work/my_closet/my_closet/lib/utils/errors.ts
+2025-10-12T19:48:44.7804466Z    12:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7805667Z    21:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7806573Z    33:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7807466Z    36:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7808353Z    48:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7809247Z    53:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7810148Z    66:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7811284Z    71:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7812201Z    84:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7813098Z    87:58  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7813995Z    99:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7814918Z   102:57  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7815835Z   114:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7816728Z   119:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7817612Z   132:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7818689Z   139:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7819624Z   152:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7820541Z   155:74  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7821632Z   167:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7822524Z   173:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7823430Z   186:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7824333Z   192:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7825227Z   289:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7826126Z   338:43  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7827026Z   344:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7827578Z 
+2025-10-12T19:48:44.7827886Z /home/runner/work/my_closet/my_closet/lib/utils/global-error-handler.ts
+2025-10-12T19:48:44.7828717Z    26:38  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7829601Z   224:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7830490Z   232:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7831226Z 
+2025-10-12T19:48:44.7831455Z /home/runner/work/my_closet/my_closet/lib/utils/index.ts
+2025-10-12T19:48:44.7832206Z    71:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7833102Z    71:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7833971Z    85:46  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7834872Z    85:56  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7835965Z   102:32  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7836864Z   115:62  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7837759Z   116:72  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7838660Z   118:29  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7839190Z 
+2025-10-12T19:48:44.7839412Z /home/runner/work/my_closet/my_closet/lib/utils/logger.ts
+2025-10-12T19:48:44.7840132Z    14:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7841226Z    86:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7842129Z   149:51  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7843030Z   153:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7843934Z   157:50  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7844812Z   161:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7845711Z   165:66  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7846621Z   216:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7847149Z 
+2025-10-12T19:48:44.7847424Z /home/runner/work/my_closet/my_closet/lib/utils/native-helpers.ts
+2025-10-12T19:48:44.7848386Z   43:39  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7848928Z 
+2025-10-12T19:48:44.7849185Z /home/runner/work/my_closet/my_closet/lib/utils/performance.ts
+2025-10-12T19:48:44.7849957Z    62:67  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7850874Z   138:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7852002Z   149:31  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7852852Z   311:36  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7853351Z 
+2025-10-12T19:48:44.7853543Z /home/runner/work/my_closet/my_closet/next-env.d.ts
+2025-10-12T19:48:44.7854522Z   3:1  error  Do not use a triple slash reference for ./.next/types/routes.d.ts, use `import` style instead  @typescript-eslint/triple-slash-reference
+2025-10-12T19:48:44.7855297Z 
+2025-10-12T19:48:44.7855553Z /home/runner/work/my_closet/my_closet/scripts/setup-database.js
+2025-10-12T19:48:44.7856298Z     8:26  error    A `require()` style import is forbidden        @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7857176Z     9:12  error    A `require()` style import is forbidden        @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7858046Z    10:14  error    A `require()` style import is forbidden        @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7858943Z    53:19  warning  'testData' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7859840Z   140:15  warning  'data' is assigned a value but never used      @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7860363Z 
+2025-10-12T19:48:44.7860650Z /home/runner/work/my_closet/my_closet/scripts/setup-environment.js
+2025-10-12T19:48:44.7861587Z   8:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7862428Z   9:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7862928Z 
+2025-10-12T19:48:44.7863197Z /home/runner/work/my_closet/my_closet/scripts/verify-database.js
+2025-10-12T19:48:44.7864139Z    7:26  error    A `require()` style import is forbidden         @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7865016Z    8:1   error    A `require()` style import is forbidden         @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7865907Z   29:19  warning  'users' is assigned a value but never used      @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7866816Z   42:19  warning  'tableInfo' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7867358Z 
+2025-10-12T19:48:44.7867733Z /home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts
+2025-10-12T19:48:44.7868427Z   88:25  error  Parsing error: '>' expected
+2025-10-12T19:48:44.7868725Z 
+2025-10-12T19:48:44.7869049Z /home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts
+2025-10-12T19:48:44.7869667Z   42:33  error  Parsing error: '>' expected
+2025-10-12T19:48:44.7869948Z 
+2025-10-12T19:48:44.7870418Z /home/runner/work/my_closet/my_closet/tests/__tests__/try-on-result-generation.integration.test.ts
+2025-10-12T19:48:44.7871557Z     8:10  warning  'createClient' is defined but never used  @typescript-eslint/no-unused-vars
+2025-10-12T19:48:44.7872455Z    42:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7873341Z    43:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7874231Z    44:26  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7875112Z    45:23  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7876169Z   160:32  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7877081Z   209:32  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7877962Z   276:32  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7878839Z   525:32  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7879706Z   555:35  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7880567Z   556:32  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7881686Z   599:35  error    A `require()` style import is forbidden   @typescript-eslint/no-require-imports
+2025-10-12T19:48:44.7882204Z 
+2025-10-12T19:48:44.7882594Z /home/runner/work/my_closet/my_closet/tests/__tests__/try-on-session.integration.test.ts
+2025-10-12T19:48:44.7883535Z   35:21  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+2025-10-12T19:48:44.7884068Z 
+2025-10-12T19:48:44.7884504Z ✖ 318 problems (19 errors, 299 warnings)
+2025-10-12T19:48:44.7884793Z 
+2025-10-12T19:48:44.7988702Z error: script "lint" exited with code 1
+2025-10-12T19:48:44.8010880Z ##[error]Process completed with exit code 1.
+2025-10-12T19:48:44.8096640Z Post job cleanup.
+2025-10-12T19:48:44.9178864Z [command]/usr/bin/git version
+2025-10-12T19:48:44.9220578Z git version 2.51.0
+2025-10-12T19:48:44.9269582Z Temporarily overriding HOME='/home/runner/work/_temp/3ba8942b-e669-4e60-bb5a-f30b5436a778' before making global git config changes
+2025-10-12T19:48:44.9271799Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T19:48:44.9276281Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T19:48:44.9321968Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T19:48:44.9359653Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T19:48:44.9607215Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T19:48:44.9632099Z http.https://github.com/.extraheader
+2025-10-12T19:48:44.9646181Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-12T19:48:44.9682228Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T19:48:45.0033095Z Cleaning up orphan processes

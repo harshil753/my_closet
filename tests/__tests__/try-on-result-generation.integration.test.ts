@@ -157,6 +157,7 @@ describe('Try-On Result Generation Integration', () => {
 
   describe('Successful Try-On Generation', () => {
     it('should process complete try-on request successfully', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { ai_processor } = require('../../services/ai_processor');
 
       // Mock successful AI processing
@@ -206,6 +207,7 @@ describe('Try-On Result Generation Integration', () => {
     });
 
     it('should update session status to completed', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { ai_processor } = require('../../services/ai_processor');
 
       ai_processor.process_virtual_try_on.mockResolvedValue({
@@ -273,6 +275,7 @@ describe('Try-On Result Generation Integration', () => {
 
   describe('Error Handling', () => {
     it('should handle AI processing failures', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { ai_processor } = require('../../services/ai_processor');
 
       ai_processor.process_virtual_try_on.mockResolvedValue({
@@ -522,6 +525,7 @@ describe('Try-On Result Generation Integration', () => {
         error: null,
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { ai_processor } = require('../../services/ai_processor');
       ai_processor.process_virtual_try_on.mockResolvedValue({
         success: true,
@@ -552,7 +556,9 @@ describe('Try-On Result Generation Integration', () => {
 
   describe('Image Processing Integration', () => {
     it('should process images before AI generation', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { image_processor } = require('../../services/image_processor');
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { ai_processor } = require('../../services/ai_processor');
 
       image_processor.prepare_base_photo_for_ai_bytes.mockResolvedValue({
@@ -596,6 +602,7 @@ describe('Try-On Result Generation Integration', () => {
     });
 
     it('should handle image processing failures', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const { image_processor } = require('../../services/image_processor');
 
       image_processor.prepare_base_photo_for_ai_bytes.mockResolvedValue({
