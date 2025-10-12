@@ -1365,15 +1365,3 @@ FAIL tests/__tests__/try-on-session.integration.test.ts
 
 ---
 
-_**User (2025-10-12 19:28Z)**_
-
-continue what you were doing
-
----
-
-_**Assistant (default)**_
-
-
-
----
-
