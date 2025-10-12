@@ -47,20 +47,20 @@ export async function GET(request: NextRequest) {
 
     // Categorize sessions by status
     const sessionsByStatus = {
-      pending: allSessions?.filter((s) => s.status === 'pending') || [],
-      processing: allSessions?.filter((s) => s.status === 'processing') || [],
-      completed: allSessions?.filter((s) => s.status === 'completed') || [],
-      failed: allSessions?.filter((s) => s.status === 'failed') || [],
+      pending: allSessions?.filter((s: any) => s.status === 'pending') || [],
+      processing: allSessions?.filter((s: any) => s.status === 'processing') || [],
+      completed: allSessions?.filter((s: any) => s.status === 'completed') || [],
+      failed: allSessions?.filter((s: any) => s.status === 'failed') || [],
       other:
         allSessions?.filter(
-          (s) =>
+          (s: any) =>
             !['pending', 'processing', 'completed', 'failed'].includes(s.status)
         ) || [],
     };
 
     // Show recent sessions with details
     const recentSessions =
-      allSessions?.slice(0, 10).map((s) => ({
+      allSessions?.slice(0, 10).map((s: any) => ({
         id: s.id,
         status: s.status,
         created_at: s.created_at,

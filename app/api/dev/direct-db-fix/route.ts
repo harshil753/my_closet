@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     console.log('All sessions found:', allSessions?.length || 0);
     console.log(
       'Session details:',
-      allSessions?.map((s) => ({
+      allSessions?.map((s: any) => ({
         id: s.id,
         status: s.status,
         created_at: s.created_at,

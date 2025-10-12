@@ -31,7 +31,7 @@ export function withSecurity(
   return async (req: NextRequest): Promise<NextResponse> => {
     try {
       // Get client IP
-      const ip = req.ip || req.headers.get('x-forwarded-for') || 'unknown';
+      const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
 
       // Check if IP is blocked
       if (ipBlocker.isBlocked(ip)) {

@@ -14,7 +14,7 @@ const supabase = createClient(
 
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const token = cookieStore.get('sb-access-token')?.value;
 
     if (!token) {
@@ -225,7 +225,7 @@ async function generateUserDataExport(userId: string) {
 
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const token = cookieStore.get('sb-access-token')?.value;
 
     if (!token) {

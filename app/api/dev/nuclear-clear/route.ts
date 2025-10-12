@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       totalSessionsFound: allSessions?.length || 0,
       sessionsUpdated: updatedSessions?.length || 0,
       clearedSessions:
-        updatedSessions?.map((s) => ({
+        updatedSessions?.map((s: any) => ({
           id: s.id,
           status: s.status,
           created_at: s.created_at,

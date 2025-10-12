@@ -53,14 +53,14 @@ export async function GET(request: NextRequest) {
       .eq('session_id', sessionId);
 
     // Get clothing item details
-    let clothingItems = [];
+    let clothingItems: any[] = [];
     if (sessionItems && sessionItems.length > 0) {
       const { data: items, error: itemsError } = await supabase
         .from('clothing_items')
         .select('id, name, category, image_url')
         .in(
           'id',
-          sessionItems.map((item) => item.clothing_item_id)
+          sessionItems.map((item: any) => item.clothing_item_id)
         );
 
       clothingItems = items || [];
