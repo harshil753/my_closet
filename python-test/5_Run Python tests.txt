@@ -1,0 +1,23 @@
+﻿2025-10-12T19:57:36.2930308Z ##[group]Run pytest services/ || true
+2025-10-12T19:57:36.2930640Z [36;1mpytest services/ || true[0m
+2025-10-12T19:57:36.2963528Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:36.2963753Z env:
+2025-10-12T19:57:36.2963990Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:57:36.2964391Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T19:57:36.2964795Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:57:36.2965139Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:57:36.2965484Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T19:57:36.2965831Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T19:57:36.2966108Z ##[endgroup]
+2025-10-12T19:57:36.9260865Z /opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:208: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+2025-10-12T19:57:36.9264827Z The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+2025-10-12T19:57:36.9266050Z 
+2025-10-12T19:57:36.9266282Z   warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+2025-10-12T19:57:36.9907842Z ============================= test session starts ==============================
+2025-10-12T19:57:36.9910280Z platform linux -- Python 3.11.13, pytest-8.3.4, pluggy-1.6.0
+2025-10-12T19:57:36.9910820Z rootdir: /home/runner/work/my_closet/my_closet
+2025-10-12T19:57:36.9911253Z plugins: asyncio-0.24.0, anyio-4.11.0
+2025-10-12T19:57:36.9912023Z asyncio: mode=Mode.STRICT, default_loop_scope=None
+2025-10-12T19:57:36.9912440Z collected 0 items
+2025-10-12T19:57:36.9912632Z 
+2025-10-12T19:57:36.9912812Z ============================ no tests ran in 0.01s =============================

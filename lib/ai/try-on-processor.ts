@@ -7,7 +7,6 @@ import {
   createSupabaseServerClient,
   createSupabaseAdminClient,
 } from '@/lib/config/supabase';
-import { GoogleGenAI } from '@google/genai';
 import mime from 'mime';
 
 export interface TryOnRequest {
@@ -228,10 +227,9 @@ export class TryOnProcessor {
       console.log('Clothing items:', clothingItems);
       console.log('==============================');
 
-      // Initialize Google AI client (like AI Studio)
-      const ai = new GoogleGenAI({
-        apiKey: this.GEMINI_API_KEY!,
-      });
+      // Initialize Google AI client (like AI Studio) via dynamic import to avoid ESM issues in Jest
+      const { GoogleGenAI } = await import('@google/genai');
+      const ai = new GoogleGenAI({ apiKey: this.GEMINI_API_KEY! });
 
       // Download and convert images to base64
       console.log('📥 Downloading images from URLs...');

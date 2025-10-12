@@ -1,0 +1,1036 @@
+﻿2025-10-12T19:57:11.0053420Z Current runner version: '2.328.0'
+2025-10-12T19:57:11.0136010Z ##[group]Runner Image Provisioner
+2025-10-12T19:57:11.0137234Z Hosted Compute Agent
+2025-10-12T19:57:11.0138267Z Version: 20250912.392
+2025-10-12T19:57:11.0139262Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-12T19:57:11.0140381Z Build Date: 2025-09-12T15:23:14Z
+2025-10-12T19:57:11.0141784Z ##[endgroup]
+2025-10-12T19:57:11.0142670Z ##[group]Operating System
+2025-10-12T19:57:11.0143588Z Ubuntu
+2025-10-12T19:57:11.0144269Z 24.04.3
+2025-10-12T19:57:11.0145142Z LTS
+2025-10-12T19:57:11.0145839Z ##[endgroup]
+2025-10-12T19:57:11.0146667Z ##[group]Runner Image
+2025-10-12T19:57:11.0147846Z Image: ubuntu-24.04
+2025-10-12T19:57:11.0148701Z Version: 20250929.60.1
+2025-10-12T19:57:11.0150443Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-12T19:57:11.0157157Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-12T19:57:11.0158854Z ##[endgroup]
+2025-10-12T19:57:11.0161097Z ##[group]GITHUB_TOKEN Permissions
+2025-10-12T19:57:11.0163900Z Contents: read
+2025-10-12T19:57:11.0164925Z Metadata: read
+2025-10-12T19:57:11.0165701Z Packages: read
+2025-10-12T19:57:11.0166470Z ##[endgroup]
+2025-10-12T19:57:11.0169754Z Secret source: Actions
+2025-10-12T19:57:11.0171397Z Prepare workflow directory
+2025-10-12T19:57:11.1058782Z Prepare all required actions
+2025-10-12T19:57:11.1177847Z Getting action download info
+2025-10-12T19:57:11.5141479Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-12T19:57:12.5299767Z Download action repository 'oven-sh/setup-bun@v1' (SHA:f4d14e03ff726c06358e5557344e1da148b56cf7)
+2025-10-12T19:57:13.0065438Z Complete job name: test (latest)
+2025-10-12T19:57:13.0844984Z ##[group]Run actions/checkout@v4
+2025-10-12T19:57:13.0845978Z with:
+2025-10-12T19:57:13.0846480Z   repository: harshil753/my_closet
+2025-10-12T19:57:13.0847290Z   token: ***
+2025-10-12T19:57:13.0847814Z   ssh-strict: true
+2025-10-12T19:57:13.0848235Z   ssh-user: git
+2025-10-12T19:57:13.0848661Z   persist-credentials: true
+2025-10-12T19:57:13.0849157Z   clean: true
+2025-10-12T19:57:13.0849609Z   sparse-checkout-cone-mode: true
+2025-10-12T19:57:13.0850125Z   fetch-depth: 1
+2025-10-12T19:57:13.0850544Z   fetch-tags: false
+2025-10-12T19:57:13.0851402Z   show-progress: true
+2025-10-12T19:57:13.0851856Z   lfs: false
+2025-10-12T19:57:13.0852264Z   submodules: false
+2025-10-12T19:57:13.0852705Z   set-safe-directory: true
+2025-10-12T19:57:13.0853603Z ##[endgroup]
+2025-10-12T19:57:13.1995123Z Syncing repository: harshil753/my_closet
+2025-10-12T19:57:13.1997860Z ##[group]Getting Git version info
+2025-10-12T19:57:13.1999138Z Working directory is '/home/runner/work/my_closet/my_closet'
+2025-10-12T19:57:13.2002203Z [command]/usr/bin/git version
+2025-10-12T19:57:13.2077918Z git version 2.51.0
+2025-10-12T19:57:13.2112756Z ##[endgroup]
+2025-10-12T19:57:13.2129858Z Temporarily overriding HOME='/home/runner/work/_temp/944d8a44-7178-404b-9363-d218e1089ceb' before making global git config changes
+2025-10-12T19:57:13.2132652Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T19:57:13.2146366Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T19:57:13.2185333Z Deleting the contents of '/home/runner/work/my_closet/my_closet'
+2025-10-12T19:57:13.2191776Z ##[group]Initializing the repository
+2025-10-12T19:57:13.2196937Z [command]/usr/bin/git init /home/runner/work/my_closet/my_closet
+2025-10-12T19:57:13.2350111Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-12T19:57:13.2352436Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-12T19:57:13.2354521Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-12T19:57:13.2356025Z hint:
+2025-10-12T19:57:13.2357074Z hint: 	git config --global init.defaultBranch <name>
+2025-10-12T19:57:13.2358687Z hint:
+2025-10-12T19:57:13.2359919Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-12T19:57:13.2361883Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-12T19:57:13.2363312Z hint:
+2025-10-12T19:57:13.2364129Z hint: 	git branch -m <name>
+2025-10-12T19:57:13.2365029Z hint:
+2025-10-12T19:57:13.2366265Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-12T19:57:13.2368592Z Initialized empty Git repository in /home/runner/work/my_closet/my_closet/.git/
+2025-10-12T19:57:13.2407534Z [command]/usr/bin/git remote add origin https://github.com/harshil753/my_closet
+2025-10-12T19:57:13.2418225Z ##[endgroup]
+2025-10-12T19:57:13.2419499Z ##[group]Disabling automatic garbage collection
+2025-10-12T19:57:13.2421134Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-12T19:57:13.2455421Z ##[endgroup]
+2025-10-12T19:57:13.2458110Z ##[group]Setting up auth
+2025-10-12T19:57:13.2459535Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T19:57:13.2492044Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T19:57:13.2847831Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T19:57:13.2882466Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T19:57:13.3115098Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-12T19:57:13.3153340Z ##[endgroup]
+2025-10-12T19:57:13.3154942Z ##[group]Fetching the repository
+2025-10-12T19:57:13.3174364Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +888e0beae63d64c5034d57f94570c2a37232146b:refs/remotes/origin/main
+2025-10-12T19:57:14.0315674Z From https://github.com/harshil753/my_closet
+2025-10-12T19:57:14.0317584Z  * [new ref]         888e0beae63d64c5034d57f94570c2a37232146b -> origin/main
+2025-10-12T19:57:14.0356215Z ##[endgroup]
+2025-10-12T19:57:14.0360410Z ##[group]Determining the checkout info
+2025-10-12T19:57:14.0362804Z ##[endgroup]
+2025-10-12T19:57:14.0366427Z [command]/usr/bin/git sparse-checkout disable
+2025-10-12T19:57:14.0435579Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-12T19:57:14.0494312Z ##[group]Checking out the ref
+2025-10-12T19:57:14.0502758Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-12T19:57:14.1152503Z Switched to a new branch 'main'
+2025-10-12T19:57:14.1157010Z branch 'main' set up to track 'origin/main'.
+2025-10-12T19:57:14.1170611Z ##[endgroup]
+2025-10-12T19:57:14.1208995Z [command]/usr/bin/git log -1 --format=%H
+2025-10-12T19:57:14.1231624Z 888e0beae63d64c5034d57f94570c2a37232146b
+2025-10-12T19:57:14.1502935Z ##[group]Run oven-sh/setup-bun@v1
+2025-10-12T19:57:14.1504016Z with:
+2025-10-12T19:57:14.1504791Z   bun-version: latest
+2025-10-12T19:57:14.1505669Z   no-cache: false
+2025-10-12T19:57:14.1506509Z ##[endgroup]
+2025-10-12T19:57:14.2802809Z Downloading a new version of Bun: https://bun.sh/download/latest/linux/x64?avx2=true&profile=false
+2025-10-12T19:57:15.3081397Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/2a1c1fe0-4414-45d5-a8e7-d708e13a3a01
+2025-10-12T19:57:16.1016418Z [command]/home/runner/.bun/bin/bun --revision
+2025-10-12T19:57:16.1055972Z 1.3.0+b0a6feca5
+2025-10-12T19:57:16.1178330Z ##[group]Run bun install --frozen-lockfile
+2025-10-12T19:57:16.1178730Z [36;1mbun install --frozen-lockfile[0m
+2025-10-12T19:57:16.1216841Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:16.1217105Z ##[endgroup]
+2025-10-12T19:57:16.1337046Z bun install v1.3.0 (b0a6feca)
+2025-10-12T19:57:22.6492319Z 
+2025-10-12T19:57:22.6511529Z + @eslint/eslintrc@3.3.1
+2025-10-12T19:57:22.6512384Z + @playwright/test@1.56.0
+2025-10-12T19:57:22.6512754Z + @tailwindcss/postcss@4.1.14
+2025-10-12T19:57:22.6513163Z + @testing-library/jest-dom@6.9.1
+2025-10-12T19:57:22.6513560Z + @testing-library/react@16.3.0
+2025-10-12T19:57:22.6513928Z + @types/aria-query@5.0.4
+2025-10-12T19:57:22.6514279Z + @types/estree@1.0.8
+2025-10-12T19:57:22.6514613Z + @types/json-schema@7.0.15
+2025-10-12T19:57:22.6514973Z + @types/node@22.18.10
+2025-10-12T19:57:22.6515311Z + @types/phoenix@1.6.6
+2025-10-12T19:57:22.6515615Z + @types/react@19.2.2
+2025-10-12T19:57:22.6515930Z + @types/react-dom@19.2.1
+2025-10-12T19:57:22.6516363Z + @typescript-eslint/eslint-plugin@8.46.0
+2025-10-12T19:57:22.6516808Z + @typescript-eslint/parser@8.46.0
+2025-10-12T19:57:22.6517189Z + eslint@9.37.0
+2025-10-12T19:57:22.6517489Z + eslint-config-next@15.5.4
+2025-10-12T19:57:22.6517819Z + glob@11.0.3
+2025-10-12T19:57:22.6518082Z + ignore@7.0.5
+2025-10-12T19:57:22.6518359Z + jest@29.7.0
+2025-10-12T19:57:22.6518660Z + jest-environment-jsdom@29.7.0
+2025-10-12T19:57:22.6519044Z + prettier@3.6.2
+2025-10-12T19:57:22.6519394Z + prettier-plugin-tailwindcss@0.6.14
+2025-10-12T19:57:22.6519822Z + tailwindcss@4.1.14
+2025-10-12T19:57:22.6520153Z + typescript@5.9.3
+2025-10-12T19:57:22.6520444Z + @google/genai@1.24.0
+2025-10-12T19:57:22.6552190Z + @google/generative-ai@0.24.1
+2025-10-12T19:57:22.6552602Z + @radix-ui/react-label@2.1.7
+2025-10-12T19:57:22.6552993Z + @radix-ui/react-separator@1.1.7
+2025-10-12T19:57:22.6553411Z + @radix-ui/react-switch@1.2.6
+2025-10-12T19:57:22.6553759Z + @supabase/ssr@0.7.0
+2025-10-12T19:57:22.6554088Z + @supabase/supabase-js@2.75.0
+2025-10-12T19:57:22.6554477Z + class-variance-authority@0.7.1
+2025-10-12T19:57:22.6554838Z + clsx@2.1.1
+2025-10-12T19:57:22.6555099Z + dotenv@17.2.3
+2025-10-12T19:57:22.6555378Z + hasown@2.0.2
+2025-10-12T19:57:22.6555651Z + lru-cache@10.4.3
+2025-10-12T19:57:22.6555952Z + lucide-react@0.545.0
+2025-10-12T19:57:22.6556257Z + mime@4.1.0
+2025-10-12T19:57:22.6556513Z + next@15.5.4
+2025-10-12T19:57:22.6556788Z + react@19.2.0
+2025-10-12T19:57:22.6557058Z + react-dom@19.2.0
+2025-10-12T19:57:22.6557361Z + react-dropzone@14.3.8
+2025-10-12T19:57:22.6557680Z + tailwind-merge@3.3.1
+2025-10-12T19:57:22.6557883Z 
+2025-10-12T19:57:22.6558028Z 680 packages installed [6.52s]
+2025-10-12T19:57:22.7069415Z ##[group]Run bun run type-check
+2025-10-12T19:57:22.7069879Z [36;1mbun run type-check[0m
+2025-10-12T19:57:22.7121645Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:22.7122079Z ##[endgroup]
+2025-10-12T19:57:22.7221301Z $ tsc --noEmit
+2025-10-12T19:57:32.2338279Z ##[group]Run bun run lint || echo "Lint skipped due to Bun compatibility issues"
+2025-10-12T19:57:32.2338829Z [36;1mbun run lint || echo "Lint skipped due to Bun compatibility issues"[0m
+2025-10-12T19:57:32.2371069Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:32.2371311Z ##[endgroup]
+2025-10-12T19:57:32.2443132Z $ next lint
+2025-10-12T19:57:32.5048972Z `next lint` is deprecated and will be removed in Next.js 16.
+2025-10-12T19:57:32.5049686Z For new projects, use create-next-app to choose your preferred linter.
+2025-10-12T19:57:32.5050359Z For existing projects, migrate to the ESLint CLI:
+2025-10-12T19:57:32.5051215Z npx @next/codemod@canary next-lint-to-eslint-cli .
+2025-10-12T19:57:32.5052359Z 
+2025-10-12T19:57:34.5743253Z 
+2025-10-12T19:57:34.5745547Z  ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+2025-10-12T19:57:38.6237187Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+2025-10-12T19:57:38.6245708Z This information is used to shape Next.js' roadmap and prioritize features.
+2025-10-12T19:57:38.6246731Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2025-10-12T19:57:38.6247634Z https://nextjs.org/telemetry
+2025-10-12T19:57:38.6247900Z 
+2025-10-12T19:57:38.8977428Z 
+2025-10-12T19:57:38.8977824Z ./app/(dashboard)/privacy/page.tsx
+2025-10-12T19:57:38.8979014Z 99:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8979965Z 103:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8981047Z 136:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.8981870Z 161:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.8982708Z 199:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.8983585Z 408:26  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.8984480Z 408:41  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.8985005Z 
+2025-10-12T19:57:38.8985162Z ./app/(dashboard)/try-on/page.tsx
+2025-10-12T19:57:38.8985810Z 79:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8987153Z 95:6  Warning: React Hook useEffect has a missing dependency: 'loadPreSelectedItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.8988499Z 114:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8989570Z 122:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8990533Z 247:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8991609Z 308:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8992486Z 309:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.8994498Z 660:27  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9107519Z 
+2025-10-12T19:57:38.9107851Z ./app/(dashboard)/try-on/process/[sessionId]/page.tsx
+2025-10-12T19:57:38.9108619Z 14:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9110305Z 60:6  Warning: React Hook useEffect has a missing dependency: 'loadSession'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.9112056Z 180:6  Warning: React Hook useEffect has missing dependencies: 'startAIProcessing' and 'storageKey'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.9114142Z 453:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9115526Z 
+2025-10-12T19:57:38.9115679Z ./app/api/dev/auto-cleanup-sessions/route.ts
+2025-10-12T19:57:38.9116235Z 10:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9116697Z 
+2025-10-12T19:57:38.9116864Z ./app/api/dev/check-all-sessions/route.ts
+2025-10-12T19:57:38.9117394Z 12:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9118104Z 50:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9118871Z 51:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9119609Z 52:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9120369Z 53:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9127606Z 56:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9128574Z 63:41  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9129336Z 
+2025-10-12T19:57:38.9129488Z ./app/api/dev/check-table/route.ts
+2025-10-12T19:57:38.9130085Z 9:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9131166Z 23:13  Warning: 'data' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9131689Z 
+2025-10-12T19:57:38.9131854Z ./app/api/dev/clear-sessions/route.ts
+2025-10-12T19:57:38.9132462Z 9:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9132959Z 
+2025-10-12T19:57:38.9133100Z ./app/api/dev/debug-session/route.ts
+2025-10-12T19:57:38.9133753Z 56:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9134742Z 58:35  Warning: 'itemsError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9135642Z 63:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9136221Z 
+2025-10-12T19:57:38.9136374Z ./app/api/dev/debug-sessions/route.ts
+2025-10-12T19:57:38.9136988Z 10:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9137486Z 
+2025-10-12T19:57:38.9137631Z ./app/api/dev/direct-db-fix/route.ts
+2025-10-12T19:57:38.9138230Z 12:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9139100Z 50:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9140040Z 134:41  Warning: 'finalError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9140607Z 
+2025-10-12T19:57:38.9140956Z ./app/api/dev/find-hidden-session/route.ts
+2025-10-12T19:57:38.9141576Z 9:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9142068Z 
+2025-10-12T19:57:38.9142232Z ./app/api/dev/force-clear-sessions/route.ts
+2025-10-12T19:57:38.9142895Z 9:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9143400Z 
+2025-10-12T19:57:38.9143541Z ./app/api/dev/gemini-status/route.ts
+2025-10-12T19:57:38.9144389Z 9:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9144880Z 
+2025-10-12T19:57:38.9145023Z ./app/api/dev/nuclear-clear/route.ts
+2025-10-12T19:57:38.9145627Z 12:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9146476Z 95:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9147015Z 
+2025-10-12T19:57:38.9147145Z ./app/api/feedback/route.ts
+2025-10-12T19:57:38.9147779Z 28:14  Warning: 'authError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9148329Z 
+2025-10-12T19:57:38.9148460Z ./app/api/health/route.ts
+2025-10-12T19:57:38.9149016Z 8:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9149876Z 14:13  Warning: 'data' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9150415Z 
+2025-10-12T19:57:38.9150598Z ./app/api/try-on/cleanup-sessions/route.ts
+2025-10-12T19:57:38.9151425Z 10:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9151937Z 
+2025-10-12T19:57:38.9152088Z ./app/api/try-on/process/route.ts
+2025-10-12T19:57:38.9152757Z 8:3  Warning: 'TierLimitError' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9153395Z 
+2025-10-12T19:57:38.9153595Z ./app/api/try-on/sessions/[sessionId]/route.ts
+2025-10-12T19:57:38.9154575Z 91:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9155139Z 
+2025-10-12T19:57:38.9155297Z ./app/api/try-on/sessions/route.ts
+2025-10-12T19:57:38.9155963Z 107:70  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9156534Z 
+2025-10-12T19:57:38.9156691Z ./app/api/user/base-photos/route.ts
+2025-10-12T19:57:38.9157338Z 10:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9177162Z 134:19  Warning: 'uploadData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9178241Z 156:19  Warning: 'thumbnailData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9178844Z 
+2025-10-12T19:57:38.9179009Z ./app/api/user/data-deletion/route.ts
+2025-10-12T19:57:38.9179662Z 203:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9180190Z 
+2025-10-12T19:57:38.9180353Z ./app/api/user/data-export/route.ts
+2025-10-12T19:57:38.9181334Z 180:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9182326Z 198:19  Warning: 'uploadData' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9183240Z 226:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9183753Z 
+2025-10-12T19:57:38.9183910Z ./app/api/user/tier-status/route.ts
+2025-10-12T19:57:38.9184552Z 10:27  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9185065Z 
+2025-10-12T19:57:38.9185229Z ./app/dev/session-manager/page.tsx
+2025-10-12T19:57:38.9185913Z 58:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9187187Z 291:6  Warning: React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.9188065Z 
+2025-10-12T19:57:38.9188191Z ./app/page.tsx
+2025-10-12T19:57:38.9188756Z 128:20  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.9189307Z 
+2025-10-12T19:57:38.9189508Z ./components/features/support/SupportCenter.tsx
+2025-10-12T19:57:38.9190203Z 17:3  Warning: 'Phone' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9191506Z 21:3  Warning: 'ExternalLink' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9192456Z 92:19  Warning: Unexpected empty method 'action'.  @typescript-eslint/no-empty-function
+2025-10-12T19:57:38.9193360Z 99:19  Warning: Unexpected empty method 'action'.  @typescript-eslint/no-empty-function
+2025-10-12T19:57:38.9193903Z 
+2025-10-12T19:57:38.9194115Z ./components/features/try-on/CategorySelector.tsx
+2025-10-12T19:57:38.9194876Z 80:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9195817Z 85:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9196767Z 86:21  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9197694Z 87:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9198636Z 99:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9199581Z 129:45  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9201374Z 175:6  Warning: React Hook useCallback has missing dependencies: 'cacheRoot.clothingByUser' and 'selectedCategories'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.9202951Z 314:73  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.9203679Z 
+2025-10-12T19:57:38.9203881Z ./components/features/try-on/ClothingSelector.tsx
+2025-10-12T19:57:38.9204646Z 100:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9205611Z 104:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9206555Z 105:21  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9207517Z 106:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9208498Z 125:21  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9209445Z 150:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9211014Z 156:6  Warning: React Hook useCallback has a missing dependency: 'cacheRoot.clothingByUser'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+2025-10-12T19:57:38.9212017Z 
+2025-10-12T19:57:38.9212186Z ./components/features/try-on/TryOnResult.tsx
+2025-10-12T19:57:38.9214034Z 30:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9216130Z 76:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9217067Z 77:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9217614Z 
+2025-10-12T19:57:38.9217774Z ./components/forms/BasePhotoUpload.tsx
+2025-10-12T19:57:38.9218479Z 460:32  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.9219039Z 
+2025-10-12T19:57:38.9219207Z ./components/forms/ConsentManager.tsx
+2025-10-12T19:57:38.9219836Z 107:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9220331Z 
+2025-10-12T19:57:38.9220488Z ./components/forms/FeedbackForm.tsx
+2025-10-12T19:57:38.9221289Z 116:13  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.9222360Z 294:15  Warning: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+2025-10-12T19:57:38.9222917Z 
+2025-10-12T19:57:38.9223079Z ./components/help/HelpCenter.tsx
+2025-10-12T19:57:38.9223817Z 164:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9225951Z 243:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9227671Z 
+2025-10-12T19:57:38.9227884Z ./components/monitoring/MonitoringDashboard.tsx
+2025-10-12T19:57:38.9228607Z 16:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9229571Z 17:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9230526Z 19:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9231606Z 181:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9232163Z 
+2025-10-12T19:57:38.9232331Z ./components/onboarding/OnboardingFlow.tsx
+2025-10-12T19:57:38.9234193Z 177:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9236015Z 
+2025-10-12T19:57:38.9236156Z ./components/ui/LazyImage.tsx
+2025-10-12T19:57:38.9236786Z 33:3  Warning: 'quality' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9237724Z 51:5  Warning: 'isInView' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9238727Z 52:17  Warning: 'handleLazyLoad' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9239772Z 53:18  Warning: 'handleLazyError' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9242068Z 106:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2025-10-12T19:57:38.9243785Z 
+2025-10-12T19:57:38.9243939Z ./components/ui/fallback-ui.tsx
+2025-10-12T19:57:38.9244531Z 15:3  Warning: 'Wifi' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9245038Z 
+2025-10-12T19:57:38.9245163Z ./lib/ai/gemini.ts
+2025-10-12T19:57:38.9245743Z 24:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9246693Z 334:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9247653Z 335:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9248607Z 351:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9249560Z 365:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9250525Z 403:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9251622Z 510:11  Warning: 'result' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9252193Z 
+2025-10-12T19:57:38.9252342Z ./lib/ai/try-on-processor.ts
+2025-10-12T19:57:38.9252925Z 11:8  Warning: 'mime' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9253794Z 461:5  Warning: 'basePhoto' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9254905Z 462:5  Warning: 'clothingItems' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9255825Z 500:13  Warning: 'data' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9256361Z 
+2025-10-12T19:57:38.9256513Z ./lib/auth/supabase-auth.ts
+2025-10-12T19:57:38.9257148Z 17:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9257709Z 
+2025-10-12T19:57:38.9257865Z ./lib/database/migration-runner.ts
+2025-10-12T19:57:38.9258546Z 154:23  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9259507Z 154:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9260069Z 
+2025-10-12T19:57:38.9260228Z ./lib/database/schema-validator.ts
+2025-10-12T19:57:38.9261034Z 156:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9262000Z 156:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9262956Z 233:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9263907Z 233:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9264854Z 287:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9265984Z 287:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9266547Z 
+2025-10-12T19:57:38.9266702Z ./lib/database/supabase-client.ts
+2025-10-12T19:57:38.9267375Z 11:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9268347Z 27:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9269280Z 49:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9270201Z 62:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9271264Z 77:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9271819Z 
+2025-10-12T19:57:38.9271961Z ./lib/hooks/useAnalytics.ts
+2025-10-12T19:57:38.9272581Z 11:59  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9273522Z 16:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9274473Z 27:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9275411Z 44:65  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9275976Z 
+2025-10-12T19:57:38.9276115Z ./lib/middleware/security.ts
+2025-10-12T19:57:38.9276805Z 26:42  Warning: 'sessionManager' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9277757Z 335:3  Warning: 'token' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9278256Z 
+2025-10-12T19:57:38.9278411Z ./lib/middleware/tierEnforcement.ts
+2025-10-12T19:57:38.9279100Z 146:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9280066Z 183:55  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9281133Z 233:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9282088Z 234:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9282643Z 
+2025-10-12T19:57:38.9282798Z ./lib/middleware/usage-tracking.ts
+2025-10-12T19:57:38.9283456Z 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9284635Z 70:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9285737Z 100:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9286713Z 138:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9287684Z 165:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9288640Z 189:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9289621Z 214:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9290584Z 237:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9291710Z 390:24  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9292629Z 417:3  Warning: '_config' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9293134Z 
+2025-10-12T19:57:38.9293299Z ./lib/middleware/usageTracking.ts
+2025-10-12T19:57:38.9294013Z 23:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9294995Z 32:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9295958Z 122:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9297085Z 124:12  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9298028Z 175:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9298954Z 201:3  Warning: '_usageData' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9299923Z 201:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9301032Z 256:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9301596Z 
+2025-10-12T19:57:38.9301744Z ./lib/monitoring/logger.ts
+2025-10-12T19:57:38.9302380Z 23:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9303328Z 33:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9304284Z 323:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9305249Z 324:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9306219Z 396:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9307163Z 414:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9308163Z 563:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9309099Z 565:17  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9310038Z 566:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9310615Z 
+2025-10-12T19:57:38.9310882Z ./lib/security/rateLimiter.ts
+2025-10-12T19:57:38.9311519Z 217:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9312403Z 348:9  Warning: '_' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9313161Z 418:17  Warning: '_' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9313889Z 419:25  Warning: '_' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9314337Z 
+2025-10-12T19:57:38.9314474Z ./lib/services/analytics.ts
+2025-10-12T19:57:38.9315086Z 13:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9316188Z 151:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9317106Z 232:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9318027Z 246:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9318580Z 
+2025-10-12T19:57:38.9318723Z ./lib/services/clothingService.ts
+2025-10-12T19:57:38.9319357Z 41:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9320290Z 384:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9321649Z 511:42  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9322217Z 
+2025-10-12T19:57:38.9322367Z ./lib/services/image-processing.ts
+2025-10-12T19:57:38.9323069Z 22:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9324023Z 126:67  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9324981Z 146:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9325874Z 245:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9326770Z 281:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9327552Z 
+2025-10-12T19:57:38.9327705Z ./lib/services/tierService.ts
+2025-10-12T19:57:38.9328318Z 122:5  Warning: '_metadata' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9329244Z 122:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9330180Z 168:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9331265Z 215:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9332167Z 247:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9333051Z 420:40  Warning: '_userId' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9333899Z 451:5  Warning: '_action' is defined but never used.  @typescript-eslint/no-unused-vars
+2025-10-12T19:57:38.9334403Z 
+2025-10-12T19:57:38.9334536Z ./lib/supabase/client.ts
+2025-10-12T19:57:38.9335113Z 186:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9335612Z 
+2025-10-12T19:57:38.9335754Z ./lib/supabase/storage.ts
+2025-10-12T19:57:38.9336343Z 54:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9337209Z 54:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9338148Z 81:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9339046Z 81:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9339947Z 95:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9340997Z 95:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9341917Z 107:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9342861Z 107:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9343885Z 119:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9344736Z 119:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9345813Z 175:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9346380Z 
+2025-10-12T19:57:38.9346512Z ./lib/types/clothing.ts
+2025-10-12T19:57:38.9347070Z 222:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9347587Z 
+2025-10-12T19:57:38.9347717Z ./lib/types/common.ts
+2025-10-12T19:57:38.9348261Z 25:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9349149Z 88:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9350021Z 96:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9350524Z 
+2025-10-12T19:57:38.9350782Z ./lib/types/database.ts
+2025-10-12T19:57:38.9351324Z 16:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9352185Z 31:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9353058Z 46:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9353925Z 66:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9354790Z 77:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9355669Z 88:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9356683Z 98:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9357521Z 107:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9358384Z 116:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9359329Z 125:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9360261Z 136:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9361305Z 147:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9361844Z 
+2025-10-12T19:57:38.9361957Z ./lib/types/index.ts
+2025-10-12T19:57:38.9362518Z 73:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9363421Z 78:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9364344Z 81:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9365249Z 91:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9366183Z 108:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9367110Z 111:10  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9368043Z 114:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9368973Z 171:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9369882Z 179:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9370973Z 189:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9371535Z 
+2025-10-12T19:57:38.9371656Z ./lib/types/try-on.ts
+2025-10-12T19:57:38.9372248Z 57:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9373169Z 60:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9374080Z 266:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9374626Z 
+2025-10-12T19:57:38.9374752Z ./lib/types/user.ts
+2025-10-12T19:57:38.9375502Z 45:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9376470Z 149:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9377400Z 195:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9378325Z 196:20  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9378875Z 
+2025-10-12T19:57:38.9379036Z ./lib/utils/closetOrganization.ts
+2025-10-12T19:57:38.9379688Z 189:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9380785Z 189:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9381343Z 
+2025-10-12T19:57:38.9381483Z ./lib/utils/codeSplitting.tsx
+2025-10-12T19:57:38.9382115Z 28:22  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9383033Z 58:73  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9383949Z 68:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9384904Z 71:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9385833Z 214:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9386993Z 232:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9387931Z 309:68  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9388850Z 314:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9389389Z 
+2025-10-12T19:57:38.9389533Z ./lib/utils/error-boundary.tsx
+2025-10-12T19:57:38.9390166Z 146:45  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9390856Z 
+2025-10-12T19:57:38.9390978Z ./lib/utils/errors.ts
+2025-10-12T19:57:38.9391545Z 12:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9392424Z 21:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9393342Z 33:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9394260Z 36:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9395181Z 48:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9396089Z 53:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9397014Z 66:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9397941Z 71:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9398852Z 84:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9399775Z 87:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9400826Z 99:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9401776Z 102:57  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9402719Z 114:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9403643Z 119:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9404579Z 132:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9405673Z 139:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9406617Z 152:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9407543Z 155:74  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9408514Z 167:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9409448Z 173:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9410379Z 186:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9411455Z 192:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9412391Z 289:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9413327Z 338:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9414265Z 344:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9414822Z 
+2025-10-12T19:57:38.9414975Z ./lib/utils/global-error-handler.ts
+2025-10-12T19:57:38.9415636Z 26:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9416919Z 224:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9418471Z 232:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9419036Z 
+2025-10-12T19:57:38.9419340Z ./lib/utils/index.ts
+2025-10-12T19:57:38.9420060Z 71:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9425675Z 71:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9426646Z 85:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9427559Z 85:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9428457Z 102:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9429352Z 115:62  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9430244Z 116:72  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9431282Z 118:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9431817Z 
+2025-10-12T19:57:38.9431935Z ./lib/utils/logger.ts
+2025-10-12T19:57:38.9432495Z 14:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9433401Z 86:30  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9434318Z 149:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9435221Z 153:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9436131Z 157:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9437034Z 161:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9437938Z 165:66  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9438825Z 216:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9439358Z 
+2025-10-12T19:57:38.9439499Z ./lib/utils/native-helpers.ts
+2025-10-12T19:57:38.9440112Z 43:39  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9440765Z 
+2025-10-12T19:57:38.9441093Z ./lib/utils/performance.ts
+2025-10-12T19:57:38.9441708Z 62:67  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9442629Z 138:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9443534Z 149:31  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9444441Z 311:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2025-10-12T19:57:38.9444981Z 
+2025-10-12T19:57:38.9445586Z info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+2025-10-12T19:57:39.0155747Z ##[group]Run bun run test
+2025-10-12T19:57:39.0156027Z [36;1mbun run test[0m
+2025-10-12T19:57:39.0194473Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:39.0194705Z ##[endgroup]
+2025-10-12T19:57:39.0266343Z $ jest --passWithNoTests
+2025-10-12T19:57:40.7766391Z FAIL tests/__tests__/try-on-result-generation.integration.test.ts
+2025-10-12T19:57:40.7781988Z   ● Test suite failed to run
+2025-10-12T19:57:40.7782321Z 
+2025-10-12T19:57:40.7782478Z     Jest encountered an unexpected token
+2025-10-12T19:57:40.7782774Z 
+2025-10-12T19:57:40.7783568Z     Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
+2025-10-12T19:57:40.7784487Z 
+2025-10-12T19:57:40.7785023Z     Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
+2025-10-12T19:57:40.7786326Z 
+2025-10-12T19:57:40.7786636Z     By default "node_modules" folder is ignored by transformers.
+2025-10-12T19:57:40.7787029Z 
+2025-10-12T19:57:40.7787159Z     Here's what you can do:
+2025-10-12T19:57:40.7788129Z      • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
+2025-10-12T19:57:40.7789360Z      • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
+2025-10-12T19:57:40.7790895Z      • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
+2025-10-12T19:57:40.7792106Z      • If you need a custom transformation specify a "transform" option in your config.
+2025-10-12T19:57:40.7793335Z      • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
+2025-10-12T19:57:40.7794009Z 
+2025-10-12T19:57:40.7794248Z     You'll find more details and examples of these config options in the docs:
+2025-10-12T19:57:40.7794833Z     https://jestjs.io/docs/configuration
+2025-10-12T19:57:40.7795229Z     For information about custom transformations, see:
+2025-10-12T19:57:40.7795706Z     https://jestjs.io/docs/code-transformation
+2025-10-12T19:57:40.7795994Z 
+2025-10-12T19:57:40.7796098Z     Details:
+2025-10-12T19:57:40.7796261Z 
+2025-10-12T19:57:40.7796655Z     /home/runner/work/my_closet/my_closet/node_modules/@google/genai/dist/web/index.mjs:15448
+2025-10-12T19:57:40.7850603Z     export { ActivityHandling, AdapterSize, ApiError, ApiSpec, AuthType, Batches, Behavior, BlockedReason, Caches, Chat, Chats, ComputeTokensResponse, ContentReferenceImage, ControlReferenceImage, ControlReferenceType, CountTokensResponse, CreateFileResponse, DeleteCachedContentResponse, DeleteFileResponse, DeleteModelResponse, DynamicRetrievalConfigMode, EditImageResponse, EditMode, EmbedContentResponse, EndSensitivity, Environment, FeatureSelectionPreference, FileSource, FileState, Files, FinishReason, FunctionCallingConfigMode, FunctionResponse, FunctionResponseBlob, FunctionResponseFileData, FunctionResponsePart, FunctionResponseScheduling, GenerateContentResponse, GenerateContentResponsePromptFeedback, GenerateContentResponseUsageMetadata, GenerateImagesResponse, GenerateVideosOperation, GenerateVideosResponse, GoogleGenAI, HarmBlockMethod, HarmBlockThreshold, HarmCategory, HarmProbability, HarmSeverity, HttpResponse, ImagePromptLanguage, InlinedEmbedContentResponse, InlinedResponse, JobState, Language, ListBatchJobsResponse, ListCachedContentsResponse, ListFilesResponse, ListModelsResponse, ListTuningJobsResponse, Live, LiveClientToolResponse, LiveMusicPlaybackControl, LiveMusicServerMessage, LiveSendToolResponseParameters, LiveServerMessage, MaskReferenceImage, MaskReferenceMode, MediaModality, MediaResolution, Modality, Mode, Models, MusicGenerationMode, Operations, Outcome, PagedItem, Pager, PersonGeneration, RawReferenceImage, RecontextImageResponse, ReplayResponse, SafetyFilterLevel, Scale, SegmentImageResponse, SegmentMode, Session, SingleEmbedContentResponse, StartSensitivity, StyleReferenceImage, SubjectReferenceImage, SubjectReferenceType, Tokens, TrafficType, TuningMode, TuningTask, TurnCompleteReason, TurnCoverage, Type, UpscaleImageResponse, UrlRetrievalStatus, VideoCompressionQuality, VideoGenerationMaskMode, VideoGenerationReferenceType, createFunctionResponsePartFromBase64, createFunctionResponsePartFromUri, createModelContent, createPartFromBase64, createPartFromCodeExecutionResult, createPartFromExecutableCode, createPartFromFunctionCall, createPartFromFunctionResponse, createPartFromText, createPartFromUri, createUserContent, mcpToTool, setDefaultBaseUrls };
+2025-10-12T19:57:40.7866036Z     ^^^^^^
+2025-10-12T19:57:40.7866228Z 
+2025-10-12T19:57:40.7866399Z     SyntaxError: Unexpected token 'export'
+2025-10-12T19:57:40.7866723Z 
+2025-10-12T19:57:40.7867599Z     [0m [90m 13 |[39m [36mexport[39m [36minterface[39m [33mTryOnRequest[39m {
+2025-10-12T19:57:40.7868345Z      [90m 14 |[39m   sessionId[33m:[39m string[33m;[39m
+2025-10-12T19:57:40.7869069Z     [31m[1m>[22m[39m[90m 15 |[39m   userId[33m:[39m string[33m;[39m
+2025-10-12T19:57:40.7869714Z      [90m    |[39m                [31m[1m^[22m[39m
+2025-10-12T19:57:40.7870327Z      [90m 16 |[39m   basePhotoUrl[33m:[39m string[33m;[39m
+2025-10-12T19:57:40.7871304Z      [90m 17 |[39m   clothingItems[33m:[39m [33mArray[39m[33m<[39m{
+2025-10-12T19:57:40.7871977Z      [90m 18 |[39m     id[33m:[39m string[33m;[39m[0m
+2025-10-12T19:57:40.7872302Z 
+2025-10-12T19:57:40.7872714Z       at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1505:14)
+2025-10-12T19:57:40.7873480Z       at Object.<anonymous> (lib/ai/try-on-processor.ts:15:16)
+2025-10-12T19:57:40.7874101Z       at Object.<anonymous> (app/api/try-on/process/route.ts:21:25)
+2025-10-12T19:57:40.7874902Z       at Object.<anonymous> (tests/__tests__/try-on-result-generation.integration.test.ts:9:16)
+2025-10-12T19:57:40.7875466Z 
+2025-10-12T19:57:41.1096425Z FAIL tests/__tests__/try-on-session.integration.test.ts
+2025-10-12T19:57:41.1141431Z   ● Console
+2025-10-12T19:57:41.1145398Z 
+2025-10-12T19:57:41.1149348Z     console.log
+2025-10-12T19:57:41.1185095Z       Creating new Supabase client instance
+2025-10-12T19:57:41.1189074Z 
+2025-10-12T19:57:41.1193115Z       at log (lib/supabase/client.ts:24:13)
+2025-10-12T19:57:41.1197072Z 
+2025-10-12T19:57:41.1200976Z     console.log
+2025-10-12T19:57:41.1205196Z       Creating new Supabase admin client instance
+2025-10-12T19:57:41.1209254Z 
+2025-10-12T19:57:41.1213267Z       at log (lib/supabase/client.ts:91:13)
+2025-10-12T19:57:41.1217083Z 
+2025-10-12T19:57:41.1221687Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should create a try-on session successfully
+2025-10-12T19:57:41.1226004Z 
+2025-10-12T19:57:41.1230171Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1234712Z 
+2025-10-12T19:57:41.1238914Z     [0m [90m 82 |[39m         [33m.[39m[36min[39m()
+2025-10-12T19:57:41.1243301Z      [90m 83 |[39m         [33m.[39meq()
+2025-10-12T19:57:41.1246222Z     [31m[1m>[22m[39m[90m 84 |[39m         [33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1248869Z      [90m    |[39m          [31m[1m^[22m[39m
+2025-10-12T19:57:41.1252379Z      [90m 85 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }[33m,[39m { id[33m:[39m [32m'item-2'[39m }][33m,[39m
+2025-10-12T19:57:41.1266687Z      [90m 86 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1267282Z      [90m 87 |[39m         })[33m;[39m[0m
+2025-10-12T19:57:41.1267562Z 
+2025-10-12T19:57:41.1267991Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:84:10)
+2025-10-12T19:57:41.1268560Z 
+2025-10-12T19:57:41.1269204Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should reject unauthenticated requests
+2025-10-12T19:57:41.1269808Z 
+2025-10-12T19:57:41.1270491Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1271127Z 
+2025-10-12T19:57:41.1271375Z     [0m [90m 146 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1271825Z      [90m 147 |[39m
+2025-10-12T19:57:41.1272534Z     [31m[1m>[22m[39m[90m 148 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1273334Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1274157Z      [90m 149 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1274800Z      [90m 150 |[39m         {
+2025-10-12T19:57:41.1275392Z      [90m 151 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1275775Z 
+2025-10-12T19:57:41.1276199Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1277426Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1278326Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:148:23)
+2025-10-12T19:57:41.1278852Z 
+2025-10-12T19:57:41.1279420Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should validate clothing item IDs
+2025-10-12T19:57:41.1279940Z 
+2025-10-12T19:57:41.1280210Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1280610Z 
+2025-10-12T19:57:41.1281106Z     [0m [90m 173 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1281592Z      [90m 174 |[39m
+2025-10-12T19:57:41.1282357Z     [31m[1m>[22m[39m[90m 175 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1283175Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1283984Z      [90m 176 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1284677Z      [90m 177 |[39m         {
+2025-10-12T19:57:41.1285233Z      [90m 178 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1285591Z 
+2025-10-12T19:57:41.1285984Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1286911Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1287752Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:175:23)
+2025-10-12T19:57:41.1288247Z 
+2025-10-12T19:57:41.1288790Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should enforce maximum item limit
+2025-10-12T19:57:41.1289358Z 
+2025-10-12T19:57:41.1289623Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1290041Z 
+2025-10-12T19:57:41.1290261Z     [0m [90m 200 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1290899Z      [90m 201 |[39m
+2025-10-12T19:57:41.1291618Z     [31m[1m>[22m[39m[90m 202 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1292409Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1293156Z      [90m 203 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1293803Z      [90m 204 |[39m         {
+2025-10-12T19:57:41.1294386Z      [90m 205 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1294777Z 
+2025-10-12T19:57:41.1295212Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1296205Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1297091Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:202:23)
+2025-10-12T19:57:41.1297604Z 
+2025-10-12T19:57:41.1298112Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should enforce tier limits
+2025-10-12T19:57:41.1298625Z 
+2025-10-12T19:57:41.1299124Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1299524Z 
+2025-10-12T19:57:41.1299746Z     [0m [90m 238 |[39m       )[33m;[39m
+2025-10-12T19:57:41.1300172Z      [90m 239 |[39m
+2025-10-12T19:57:41.1303590Z     [31m[1m>[22m[39m[90m 240 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1304499Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1305354Z      [90m 241 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1306051Z      [90m 242 |[39m         {
+2025-10-12T19:57:41.1306687Z      [90m 243 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1307080Z 
+2025-10-12T19:57:41.1307529Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1308803Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1309756Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:240:23)
+2025-10-12T19:57:41.1310297Z 
+2025-10-12T19:57:41.1311202Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should validate clothing items belong to user
+2025-10-12T19:57:41.1311870Z 
+2025-10-12T19:57:41.1312307Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1312921Z 
+2025-10-12T19:57:41.1313269Z     [0m [90m 271 |[39m         [33m.[39m[36min[39m()
+2025-10-12T19:57:41.1313828Z      [90m 272 |[39m         [33m.[39meq()
+2025-10-12T19:57:41.1314497Z     [31m[1m>[22m[39m[90m 273 |[39m         [33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1315150Z      [90m     |[39m          [31m[1m^[22m[39m
+2025-10-12T19:57:41.1315907Z      [90m 274 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
+2025-10-12T19:57:41.1316690Z      [90m 275 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1317297Z      [90m 276 |[39m         })[33m;[39m[0m
+2025-10-12T19:57:41.1317603Z 
+2025-10-12T19:57:41.1318033Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:273:10)
+2025-10-12T19:57:41.1318623Z 
+2025-10-12T19:57:41.1319367Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should handle database errors during session creation
+2025-10-12T19:57:41.1320082Z 
+2025-10-12T19:57:41.1320528Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1321281Z 
+2025-10-12T19:57:41.1321586Z     [0m [90m 309 |[39m         [33m.[39m[36min[39m()
+2025-10-12T19:57:41.1322089Z      [90m 310 |[39m         [33m.[39meq()
+2025-10-12T19:57:41.1322695Z     [31m[1m>[22m[39m[90m 311 |[39m         [33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1323276Z      [90m     |[39m          [31m[1m^[22m[39m
+2025-10-12T19:57:41.1323966Z      [90m 312 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
+2025-10-12T19:57:41.1324669Z      [90m 313 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1325226Z      [90m 314 |[39m         })[33m;[39m[0m
+2025-10-12T19:57:41.1325501Z 
+2025-10-12T19:57:41.1325905Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:311:10)
+2025-10-12T19:57:41.1326441Z 
+2025-10-12T19:57:41.1327145Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should handle database errors during session items creation
+2025-10-12T19:57:41.1327861Z 
+2025-10-12T19:57:41.1328293Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1328888Z 
+2025-10-12T19:57:41.1329160Z     [0m [90m 357 |[39m         [33m.[39m[36min[39m()
+2025-10-12T19:57:41.1329677Z      [90m 358 |[39m         [33m.[39meq()
+2025-10-12T19:57:41.1330584Z     [31m[1m>[22m[39m[90m 359 |[39m         [33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1331402Z      [90m     |[39m          [31m[1m^[22m[39m
+2025-10-12T19:57:41.1332062Z      [90m 360 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
+2025-10-12T19:57:41.1332741Z      [90m 361 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1333340Z      [90m 362 |[39m         })[33m;[39m[0m
+2025-10-12T19:57:41.1333609Z 
+2025-10-12T19:57:41.1334010Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:359:10)
+2025-10-12T19:57:41.1334546Z 
+2025-10-12T19:57:41.1335128Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should retrieve user sessions successfully
+2025-10-12T19:57:41.1335723Z 
+2025-10-12T19:57:41.1336499Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1337125Z 
+2025-10-12T19:57:41.1337369Z     [0m [90m 430 |[39m       ][33m;[39m
+2025-10-12T19:57:41.1337820Z      [90m 431 |[39m
+2025-10-12T19:57:41.1338897Z     [31m[1m>[22m[39m[90m 432 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1340026Z      [90m     |[39m                                                         [31m[1m^[22m[39m
+2025-10-12T19:57:41.1340843Z      [90m 433 |[39m         data[33m:[39m mockSessions[33m,[39m
+2025-10-12T19:57:41.1341500Z      [90m 434 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1342159Z      [90m 435 |[39m         count[33m:[39m [35m2[39m[33m,[39m[0m
+2025-10-12T19:57:41.1342532Z 
+2025-10-12T19:57:41.1342966Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:432:57)
+2025-10-12T19:57:41.1343559Z 
+2025-10-12T19:57:41.1344160Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should filter sessions by status
+2025-10-12T19:57:41.1344750Z 
+2025-10-12T19:57:41.1345256Z     TypeError: mockSupabase.from(...).select(...).eq(...).eq(...).order(...).range(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1345932Z 
+2025-10-12T19:57:41.1346221Z     [0m [90m 463 |[39m       ][33m;[39m
+2025-10-12T19:57:41.1346677Z      [90m 464 |[39m
+2025-10-12T19:57:41.1347863Z     [31m[1m>[22m[39m[90m 465 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1349137Z      [90m     |[39m                                                              [31m[1m^[22m[39m
+2025-10-12T19:57:41.1349857Z      [90m 466 |[39m         data[33m:[39m mockSessions[33m,[39m
+2025-10-12T19:57:41.1350591Z      [90m 467 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1351518Z      [90m 468 |[39m         count[33m:[39m [35m1[39m[33m,[39m[0m
+2025-10-12T19:57:41.1351886Z 
+2025-10-12T19:57:41.1352336Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:465:62)
+2025-10-12T19:57:41.1352946Z 
+2025-10-12T19:57:41.1353514Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should handle pagination
+2025-10-12T19:57:41.1354075Z 
+2025-10-12T19:57:41.1354557Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1355184Z 
+2025-10-12T19:57:41.1355459Z     [0m [90m 486 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1355944Z      [90m 487 |[39m
+2025-10-12T19:57:41.1357028Z     [31m[1m>[22m[39m[90m 488 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1358228Z      [90m     |[39m                                                         [31m[1m^[22m[39m
+2025-10-12T19:57:41.1359124Z      [90m 489 |[39m         data[33m:[39m [][33m,[39m
+2025-10-12T19:57:41.1359811Z      [90m 490 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1360518Z      [90m 491 |[39m         count[33m:[39m [35m0[39m[33m,[39m[0m
+2025-10-12T19:57:41.1361088Z 
+2025-10-12T19:57:41.1361532Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:488:57)
+2025-10-12T19:57:41.1362122Z 
+2025-10-12T19:57:41.1362660Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should enforce maximum limit
+2025-10-12T19:57:41.1363194Z 
+2025-10-12T19:57:41.1363457Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1363863Z 
+2025-10-12T19:57:41.1364080Z     [0m [90m 510 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1364511Z      [90m 511 |[39m
+2025-10-12T19:57:41.1365461Z     [31m[1m>[22m[39m[90m 512 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1366254Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1366986Z      [90m 513 |[39m         [32m'http://localhost:3000/api/try-on/sessions?limit=150'[39m
+2025-10-12T19:57:41.1367619Z      [90m 514 |[39m       )[33m;[39m
+2025-10-12T19:57:41.1368367Z      [90m 515 |[39m       [36mconst[39m response [33m=[39m [36mawait[39m [33mGET[39m(request)[33m;[39m[0m
+2025-10-12T19:57:41.1368870Z 
+2025-10-12T19:57:41.1369283Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1370176Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1371176Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:512:23)
+2025-10-12T19:57:41.1371668Z 
+2025-10-12T19:57:41.1372219Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should reject unauthenticated requests
+2025-10-12T19:57:41.1372798Z 
+2025-10-12T19:57:41.1373079Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1373493Z 
+2025-10-12T19:57:41.1373719Z     [0m [90m 527 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1374155Z      [90m 528 |[39m
+2025-10-12T19:57:41.1374882Z     [31m[1m>[22m[39m[90m 529 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1375672Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1376361Z      [90m 530 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m
+2025-10-12T19:57:41.1376955Z      [90m 531 |[39m       )[33m;[39m
+2025-10-12T19:57:41.1377739Z      [90m 532 |[39m       [36mconst[39m response [33m=[39m [36mawait[39m [33mGET[39m(request)[33m;[39m[0m
+2025-10-12T19:57:41.1378268Z 
+2025-10-12T19:57:41.1378711Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1379673Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1380571Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:529:23)
+2025-10-12T19:57:41.1381248Z 
+2025-10-12T19:57:41.1381813Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should handle database errors
+2025-10-12T19:57:41.1382371Z 
+2025-10-12T19:57:41.1382848Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
+2025-10-12T19:57:41.1383528Z 
+2025-10-12T19:57:41.1383882Z     [0m [90m 550 |[39m         [33m.[39morder()
+2025-10-12T19:57:41.1384419Z      [90m 551 |[39m         [33m.[39mrange()
+2025-10-12T19:57:41.1385106Z     [31m[1m>[22m[39m[90m 552 |[39m         [33m.[39mmockResolvedValue({
+2025-10-12T19:57:41.1385785Z      [90m     |[39m          [31m[1m^[22m[39m
+2025-10-12T19:57:41.1386439Z      [90m 553 |[39m           data[33m:[39m [36mnull[39m[33m,[39m
+2025-10-12T19:57:41.1387570Z      [90m 554 |[39m           error[33m:[39m { message[33m:[39m [32m'Database error'[39m }[33m,[39m
+2025-10-12T19:57:41.1388476Z      [90m 555 |[39m           count[33m:[39m [36mnull[39m[33m,[39m[0m
+2025-10-12T19:57:41.1388885Z 
+2025-10-12T19:57:41.1389317Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:552:10)
+2025-10-12T19:57:41.1389915Z 
+2025-10-12T19:57:41.1390445Z   ● Try-On Session API Integration › Error Handling › should handle malformed JSON
+2025-10-12T19:57:41.1391190Z 
+2025-10-12T19:57:41.1391470Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1391895Z 
+2025-10-12T19:57:41.1392179Z     [0m [90m 575 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1392663Z      [90m 576 |[39m
+2025-10-12T19:57:41.1393428Z     [31m[1m>[22m[39m[90m 577 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1394509Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1395349Z      [90m 578 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1396051Z      [90m 579 |[39m         {
+2025-10-12T19:57:41.1396672Z      [90m 580 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1397079Z 
+2025-10-12T19:57:41.1397536Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1398523Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1399448Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:577:23)
+2025-10-12T19:57:41.1399993Z 
+2025-10-12T19:57:41.1400584Z   ● Try-On Session API Integration › Error Handling › should handle missing request body
+2025-10-12T19:57:41.1401331Z 
+2025-10-12T19:57:41.1401606Z     TypeError: Cannot read properties of undefined (reading 'get')
+2025-10-12T19:57:41.1402012Z 
+2025-10-12T19:57:41.1402263Z     [0m [90m 599 |[39m       })[33m;[39m
+2025-10-12T19:57:41.1402659Z      [90m 600 |[39m
+2025-10-12T19:57:41.1403314Z     [31m[1m>[22m[39m[90m 601 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
+2025-10-12T19:57:41.1403998Z      [90m     |[39m                       [31m[1m^[22m[39m
+2025-10-12T19:57:41.1404728Z      [90m 602 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
+2025-10-12T19:57:41.1405373Z      [90m 603 |[39m         {
+2025-10-12T19:57:41.1405907Z      [90m 604 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
+2025-10-12T19:57:41.1406273Z 
+2025-10-12T19:57:41.1406700Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
+2025-10-12T19:57:41.1407662Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
+2025-10-12T19:57:41.1408575Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:601:23)
+2025-10-12T19:57:41.1409086Z 
+2025-10-12T19:57:41.2286371Z FAIL tests/__tests__/closet-view.integration.test.ts
+2025-10-12T19:57:41.2334757Z   ● Test suite failed to run
+2025-10-12T19:57:41.2335041Z 
+2025-10-12T19:57:41.2335275Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.2336225Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
+2025-10-12T19:57:41.2337036Z      [2m85[0m | 
+2025-10-12T19:57:41.2337516Z      [2m86[0m |   describe('Data Loading Integration', () => {
+2025-10-12T19:57:41.2338264Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
+2025-10-12T19:57:41.2338909Z      [2m88[0m |       render(<ClosetView />);
+2025-10-12T19:57:41.2339422Z         : [35;1m                         ^[0m
+2025-10-12T19:57:41.2339894Z      [2m89[0m |       
+2025-10-12T19:57:41.2340332Z      [2m90[0m |       await waitFor(() => {
+2025-10-12T19:57:41.2341655Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
+2025-10-12T19:57:41.2342243Z         `----
+2025-10-12T19:57:41.2342638Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.2343531Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
+2025-10-12T19:57:41.2344326Z      [2m85[0m | 
+2025-10-12T19:57:41.2344796Z      [2m86[0m |   describe('Data Loading Integration', () => {
+2025-10-12T19:57:41.2345532Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
+2025-10-12T19:57:41.2346178Z      [2m88[0m |       render(<ClosetView />);
+2025-10-12T19:57:41.2346677Z         : [35;1m                          ^[0m
+2025-10-12T19:57:41.2347125Z      [2m89[0m |       
+2025-10-12T19:57:41.2347531Z      [2m90[0m |       await waitFor(() => {
+2025-10-12T19:57:41.2349747Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
+2025-10-12T19:57:41.2350302Z         `----
+2025-10-12T19:57:41.2350876Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.2351775Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
+2025-10-12T19:57:41.2352573Z      [2m85[0m | 
+2025-10-12T19:57:41.2353056Z      [2m86[0m |   describe('Data Loading Integration', () => {
+2025-10-12T19:57:41.2353771Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
+2025-10-12T19:57:41.2354397Z      [2m88[0m |       render(<ClosetView />);
+2025-10-12T19:57:41.2354883Z         : [35;1m                           ^[0m
+2025-10-12T19:57:41.2355315Z      [2m89[0m |       
+2025-10-12T19:57:41.2355717Z      [2m90[0m |       await waitFor(() => {
+2025-10-12T19:57:41.2356397Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
+2025-10-12T19:57:41.2356943Z         `----
+2025-10-12T19:57:41.2357105Z 
+2025-10-12T19:57:41.2357110Z 
+2025-10-12T19:57:41.2357216Z     Caused by:
+2025-10-12T19:57:41.2357495Z         Syntax Error
+2025-10-12T19:57:41.2357683Z 
+2025-10-12T19:57:41.2357998Z       at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+2025-10-12T19:57:41.2358744Z       at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+2025-10-12T19:57:41.2359493Z       at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+2025-10-12T19:57:41.2360471Z       at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+2025-10-12T19:57:41.2361893Z       at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+2025-10-12T19:57:41.2363069Z       at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+2025-10-12T19:57:41.2363686Z 
+2025-10-12T19:57:41.4147304Z FAIL tests/__tests__/clothing-upload.test.ts
+2025-10-12T19:57:41.4154847Z   ● Test suite failed to run
+2025-10-12T19:57:41.4155122Z 
+2025-10-12T19:57:41.4155386Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.4156216Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
+2025-10-12T19:57:41.4156963Z      [2m39[0m | 
+2025-10-12T19:57:41.4157401Z      [2m40[0m |   describe('Form Rendering', () => {
+2025-10-12T19:57:41.4159268Z      [2m41[0m |     it('renders all form fields correctly', () => {
+2025-10-12T19:57:41.4161143Z      [2m42[0m |       render(<ClothingUploadForm />);
+2025-10-12T19:57:41.4162852Z         : [35;1m                                 ^[0m
+2025-10-12T19:57:41.4164642Z      [2m43[0m |       
+2025-10-12T19:57:41.4166660Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4168866Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4170986Z         `----
+2025-10-12T19:57:41.4172672Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.4175193Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
+2025-10-12T19:57:41.4176244Z      [2m39[0m | 
+2025-10-12T19:57:41.4176780Z      [2m40[0m |   describe('Form Rendering', () => {
+2025-10-12T19:57:41.4177581Z      [2m41[0m |     it('renders all form fields correctly', () => {
+2025-10-12T19:57:41.4178400Z      [2m42[0m |       render(<ClothingUploadForm />);
+2025-10-12T19:57:41.4179187Z         : [35;1m                                  ^[0m
+2025-10-12T19:57:41.4181002Z      [2m43[0m |       
+2025-10-12T19:57:41.4181745Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4182663Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4183233Z         `----
+2025-10-12T19:57:41.4183891Z       [31mx[0m Expression expected
+2025-10-12T19:57:41.4184742Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
+2025-10-12T19:57:41.4185487Z      [2m39[0m | 
+2025-10-12T19:57:41.4185921Z      [2m40[0m |   describe('Form Rendering', () => {
+2025-10-12T19:57:41.4186545Z      [2m41[0m |     it('renders all form fields correctly', () => {
+2025-10-12T19:57:41.4187172Z      [2m42[0m |       render(<ClothingUploadForm />);
+2025-10-12T19:57:41.4187721Z         : [35;1m                                   ^[0m
+2025-10-12T19:57:41.4188174Z      [2m43[0m |       
+2025-10-12T19:57:41.4188808Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4189688Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
+2025-10-12T19:57:41.4190313Z         `----
+2025-10-12T19:57:41.4190474Z 
+2025-10-12T19:57:41.4190481Z 
+2025-10-12T19:57:41.4190590Z     Caused by:
+2025-10-12T19:57:41.4191083Z         Syntax Error
+2025-10-12T19:57:41.4191276Z 
+2025-10-12T19:57:41.4191605Z       at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+2025-10-12T19:57:41.4192355Z       at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+2025-10-12T19:57:41.4193112Z       at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+2025-10-12T19:57:41.4194123Z       at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+2025-10-12T19:57:41.4195356Z       at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+2025-10-12T19:57:41.4196532Z       at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+2025-10-12T19:57:41.4197150Z 
+2025-10-12T19:57:41.5423701Z PASS tests/__tests__/clothing-selection.test.ts
+2025-10-12T19:57:41.5427041Z 
+2025-10-12T19:57:41.5438101Z Test Suites: 4 failed, 1 skipped, 1 passed, 5 of 6 total
+2025-10-12T19:57:41.5439067Z Tests:       16 failed, 1 skipped, 30 passed, 47 total
+2025-10-12T19:57:41.5439943Z Snapshots:   0 total
+2025-10-12T19:57:41.5440405Z Time:        1.575 s
+2025-10-12T19:57:41.5440893Z Ran all test suites.
+2025-10-12T19:57:41.6669691Z error: script "test" exited with code 1
+2025-10-12T19:57:41.6698004Z ##[error]Process completed with exit code 1.
+2025-10-12T19:57:41.6822307Z Post job cleanup.
+2025-10-12T19:57:41.7788969Z [command]/usr/bin/git version
+2025-10-12T19:57:41.7830308Z git version 2.51.0
+2025-10-12T19:57:41.7878314Z Temporarily overriding HOME='/home/runner/work/_temp/fd097ac7-89a9-4331-b9c7-ab2969ef551e' before making global git config changes
+2025-10-12T19:57:41.7881186Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T19:57:41.7886018Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T19:57:41.7933225Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T19:57:41.7970850Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T19:57:41.8216217Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T19:57:41.8243196Z http.https://github.com/.extraheader
+2025-10-12T19:57:41.8256184Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-12T19:57:41.8290615Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T19:57:41.8635778Z Cleaning up orphan processes

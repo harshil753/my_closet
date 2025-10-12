@@ -1,15 +1,7 @@
 import '@testing-library/jest-dom';
 
-// Polyfill for Request and Response (needed for Next.js server components)
-if (typeof global.Request === 'undefined') {
-  global.Request = class Request {};
-}
-if (typeof global.Response === 'undefined') {
-  global.Response = class Response {};
-}
-if (typeof global.Headers === 'undefined') {
-  global.Headers = class Headers {};
-}
+// Use whatwg-fetch to provide Request/Response/Headers compatible with Next
+import 'whatwg-fetch';
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -103,3 +95,25 @@ jest.mock('@supabase/ssr', () => ({
 process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
 process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
 process.env.GEMINI_API_KEY = 'test-gemini-key';
+
+// Mock Google GenAI packages to avoid ESM import issues in Jest
+jest.mock('@google/genai', () => ({
+  GoogleGenAI: jest.fn(() => ({
+    models: {
+      generateContentStream: jest.fn(async () => ({
+        // Async iterable that yields no image parts so code uses fallback
+        [Symbol.asyncIterator]: async function* () {},
+      })),
+    },
+  })),
+}));
+
+jest.mock('@google/generative-ai', () => ({
+  GoogleGenerativeAI: jest.fn(() => ({
+    getGenerativeModel: jest.fn(() => ({
+      generateContent: jest.fn(async () => ({ response: { candidates: [] } })),
+    })),
+  })),
+  HarmCategory: {},
+  HarmBlockThreshold: {},
+}));

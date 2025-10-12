@@ -1,0 +1,5 @@
+﻿2025-10-12T19:57:22.7069390Z ##[group]Run bun run type-check
+2025-10-12T19:57:22.7069872Z [36;1mbun run type-check[0m
+2025-10-12T19:57:22.7121630Z shell: /usr/bin/bash -e {0}
+2025-10-12T19:57:22.7122073Z ##[endgroup]
+2025-10-12T19:57:22.7221278Z $ tsc --noEmit
