@@ -176,6 +176,7 @@ export function ClothingItemCard({
           selectable ? 'cursor-pointer' : ''
         } ${selected ? 'ring-primary ring-2 ring-offset-2' : ''} ${className}`}
         onClick={handleCardClick}
+        data-testid="clothing-item-card"
       >
         {/* Selection indicator */}
         {selectable && (
@@ -212,6 +213,7 @@ export function ClothingItemCard({
               size="sm"
               onClick={handleEditClick}
               className="h-8 w-8 bg-white/80 p-0 hover:bg-white"
+              aria-label="Edit item"
             >
               <svg
                 className="h-4 w-4"
@@ -234,6 +236,7 @@ export function ClothingItemCard({
               size="sm"
               onClick={handleDeleteClick}
               className="h-8 w-8 bg-white/80 p-0 text-red-600 hover:bg-white hover:text-red-700"
+              aria-label="Delete item"
             >
               <svg
                 className="h-4 w-4"
@@ -254,7 +257,7 @@ export function ClothingItemCard({
 
         {/* Image */}
         <div className="relative aspect-square bg-gray-100">
-          {!imageError ? (
+          {!imageError && (item.thumbnail_url || item.image_url) ? (
             <Image
               src={item.thumbnail_url || item.image_url}
               alt={item.name}
@@ -352,6 +355,7 @@ export function ClothingItemCard({
         selectable ? 'cursor-pointer' : ''
       } ${selected ? 'ring-primary ring-2 ring-offset-2' : ''} ${className}`}
       onClick={handleCardClick}
+      data-testid="clothing-item-card"
     >
       <CardContent className="p-4">
         <div className="flex items-center space-x-4">
@@ -382,7 +386,7 @@ export function ClothingItemCard({
 
           {/* Image */}
           <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
-            {!imageError ? (
+            {!imageError && (item.thumbnail_url || item.image_url) ? (
               <Image
                 src={item.thumbnail_url || item.image_url}
                 alt={item.name}
@@ -443,6 +447,7 @@ export function ClothingItemCard({
                     size="sm"
                     onClick={handleEditClick}
                     className="h-8 w-8 p-0"
+                    aria-label="Edit item"
                   >
                     <svg
                       className="h-4 w-4"
@@ -465,6 +470,7 @@ export function ClothingItemCard({
                     size="sm"
                     onClick={handleDeleteClick}
                     className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                    aria-label="Delete item"
                   >
                     <svg
                       className="h-4 w-4"

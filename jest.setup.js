@@ -8,6 +8,26 @@ if (typeof global.fetch === 'undefined') {
   global.Headers = class Headers {};
 }
 
+// Mock Next.js Image component
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props) => {
+    const { src, alt, onLoad, onError, fill, ...otherProps } = props;
+    // Simulate successful image load
+    if (onLoad && src) {
+      setTimeout(() => onLoad(), 0);
+    }
+    // Don't render if src is empty
+    if (!src) {
+      if (onError) {
+        setTimeout(() => onError(new Error('Empty src')), 0);
+      }
+      return null;
+    }
+    return <img src={src} alt={alt} {...otherProps} data-testid="next-image" />;
+  },
+}));
+
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
   useRouter() {
@@ -73,12 +93,10 @@ jest.mock('@supabase/supabase-js', () => ({
         getPublicUrl: jest.fn(() => ({
           data: { publicUrl: 'https://example.com' },
         })),
-        createSignedUrl: jest
-          .fn()
-          .mockResolvedValue({
-            data: { signedUrl: 'https://example.com/signed' },
-            error: null,
-          }),
+        createSignedUrl: jest.fn().mockResolvedValue({
+          data: { signedUrl: 'https://example.com/signed' },
+          error: null,
+        }),
       })),
     },
   })),
