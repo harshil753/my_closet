@@ -1,407 +1,108 @@
-﻿2025-10-12T19:57:39.0155735Z ##[group]Run bun run test
-2025-10-12T19:57:39.0156024Z [36;1mbun run test[0m
-2025-10-12T19:57:39.0194464Z shell: /usr/bin/bash -e {0}
-2025-10-12T19:57:39.0194703Z ##[endgroup]
-2025-10-12T19:57:39.0266327Z $ jest --passWithNoTests
-2025-10-12T19:57:40.7766353Z FAIL tests/__tests__/try-on-result-generation.integration.test.ts
-2025-10-12T19:57:40.7781972Z   ● Test suite failed to run
-2025-10-12T19:57:40.7782317Z 
-2025-10-12T19:57:40.7782474Z     Jest encountered an unexpected token
-2025-10-12T19:57:40.7782772Z 
-2025-10-12T19:57:40.7783563Z     Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
-2025-10-12T19:57:40.7784484Z 
-2025-10-12T19:57:40.7785019Z     Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
-2025-10-12T19:57:40.7786316Z 
-2025-10-12T19:57:40.7786563Z     By default "node_modules" folder is ignored by transformers.
-2025-10-12T19:57:40.7787025Z 
-2025-10-12T19:57:40.7787154Z     Here's what you can do:
-2025-10-12T19:57:40.7788120Z      • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
-2025-10-12T19:57:40.7789354Z      • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
-2025-10-12T19:57:40.7790883Z      • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
-2025-10-12T19:57:40.7792095Z      • If you need a custom transformation specify a "transform" option in your config.
-2025-10-12T19:57:40.7793324Z      • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
-2025-10-12T19:57:40.7794003Z 
-2025-10-12T19:57:40.7794245Z     You'll find more details and examples of these config options in the docs:
-2025-10-12T19:57:40.7794813Z     https://jestjs.io/docs/configuration
-2025-10-12T19:57:40.7795226Z     For information about custom transformations, see:
-2025-10-12T19:57:40.7795701Z     https://jestjs.io/docs/code-transformation
-2025-10-12T19:57:40.7795990Z 
-2025-10-12T19:57:40.7796095Z     Details:
-2025-10-12T19:57:40.7796259Z 
-2025-10-12T19:57:40.7796651Z     /home/runner/work/my_closet/my_closet/node_modules/@google/genai/dist/web/index.mjs:15448
-2025-10-12T19:57:40.7850040Z     export { ActivityHandling, AdapterSize, ApiError, ApiSpec, AuthType, Batches, Behavior, BlockedReason, Caches, Chat, Chats, ComputeTokensResponse, ContentReferenceImage, ControlReferenceImage, ControlReferenceType, CountTokensResponse, CreateFileResponse, DeleteCachedContentResponse, DeleteFileResponse, DeleteModelResponse, DynamicRetrievalConfigMode, EditImageResponse, EditMode, EmbedContentResponse, EndSensitivity, Environment, FeatureSelectionPreference, FileSource, FileState, Files, FinishReason, FunctionCallingConfigMode, FunctionResponse, FunctionResponseBlob, FunctionResponseFileData, FunctionResponsePart, FunctionResponseScheduling, GenerateContentResponse, GenerateContentResponsePromptFeedback, GenerateContentResponseUsageMetadata, GenerateImagesResponse, GenerateVideosOperation, GenerateVideosResponse, GoogleGenAI, HarmBlockMethod, HarmBlockThreshold, HarmCategory, HarmProbability, HarmSeverity, HttpResponse, ImagePromptLanguage, InlinedEmbedContentResponse, InlinedResponse, JobState, Language, ListBatchJobsResponse, ListCachedContentsResponse, ListFilesResponse, ListModelsResponse, ListTuningJobsResponse, Live, LiveClientToolResponse, LiveMusicPlaybackControl, LiveMusicServerMessage, LiveSendToolResponseParameters, LiveServerMessage, MaskReferenceImage, MaskReferenceMode, MediaModality, MediaResolution, Modality, Mode, Models, MusicGenerationMode, Operations, Outcome, PagedItem, Pager, PersonGeneration, RawReferenceImage, RecontextImageResponse, ReplayResponse, SafetyFilterLevel, Scale, SegmentImageResponse, SegmentMode, Session, SingleEmbedContentResponse, StartSensitivity, StyleReferenceImage, SubjectReferenceImage, SubjectReferenceType, Tokens, TrafficType, TuningMode, TuningTask, TurnCompleteReason, TurnCoverage, Type, UpscaleImageResponse, UrlRetrievalStatus, VideoCompressionQuality, VideoGenerationMaskMode, VideoGenerationReferenceType, createFunctionResponsePartFromBase64, createFunctionResponsePartFromUri, createModelContent, createPartFromBase64, createPartFromCodeExecutionResult, createPartFromExecutableCode, createPartFromFunctionCall, createPartFromFunctionResponse, createPartFromText, createPartFromUri, createUserContent, mcpToTool, setDefaultBaseUrls };
-2025-10-12T19:57:40.7866023Z     ^^^^^^
-2025-10-12T19:57:40.7866223Z 
-2025-10-12T19:57:40.7866394Z     SyntaxError: Unexpected token 'export'
-2025-10-12T19:57:40.7866719Z 
-2025-10-12T19:57:40.7867590Z     [0m [90m 13 |[39m [36mexport[39m [36minterface[39m [33mTryOnRequest[39m {
-2025-10-12T19:57:40.7868337Z      [90m 14 |[39m   sessionId[33m:[39m string[33m;[39m
-2025-10-12T19:57:40.7869053Z     [31m[1m>[22m[39m[90m 15 |[39m   userId[33m:[39m string[33m;[39m
-2025-10-12T19:57:40.7869709Z      [90m    |[39m                [31m[1m^[22m[39m
-2025-10-12T19:57:40.7870322Z      [90m 16 |[39m   basePhotoUrl[33m:[39m string[33m;[39m
-2025-10-12T19:57:40.7871296Z      [90m 17 |[39m   clothingItems[33m:[39m [33mArray[39m[33m<[39m{
-2025-10-12T19:57:40.7871973Z      [90m 18 |[39m     id[33m:[39m string[33m;[39m[0m
-2025-10-12T19:57:40.7872298Z 
-2025-10-12T19:57:40.7872699Z       at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1505:14)
-2025-10-12T19:57:40.7873476Z       at Object.<anonymous> (lib/ai/try-on-processor.ts:15:16)
-2025-10-12T19:57:40.7874097Z       at Object.<anonymous> (app/api/try-on/process/route.ts:21:25)
-2025-10-12T19:57:40.7874897Z       at Object.<anonymous> (tests/__tests__/try-on-result-generation.integration.test.ts:9:16)
-2025-10-12T19:57:40.7875462Z 
-2025-10-12T19:57:41.1096353Z FAIL tests/__tests__/try-on-session.integration.test.ts
-2025-10-12T19:57:41.1141411Z   ● Console
-2025-10-12T19:57:41.1145385Z 
-2025-10-12T19:57:41.1149337Z     console.log
-2025-10-12T19:57:41.1185083Z       Creating new Supabase client instance
-2025-10-12T19:57:41.1189066Z 
-2025-10-12T19:57:41.1193106Z       at log (lib/supabase/client.ts:24:13)
-2025-10-12T19:57:41.1197061Z 
-2025-10-12T19:57:41.1200967Z     console.log
-2025-10-12T19:57:41.1205188Z       Creating new Supabase admin client instance
-2025-10-12T19:57:41.1209246Z 
-2025-10-12T19:57:41.1213257Z       at log (lib/supabase/client.ts:91:13)
-2025-10-12T19:57:41.1217072Z 
-2025-10-12T19:57:41.1221673Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should create a try-on session successfully
-2025-10-12T19:57:41.1225992Z 
-2025-10-12T19:57:41.1230160Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1234700Z 
-2025-10-12T19:57:41.1238902Z     [0m [90m 82 |[39m         [33m.[39m[36min[39m()
-2025-10-12T19:57:41.1243260Z      [90m 83 |[39m         [33m.[39meq()
-2025-10-12T19:57:41.1246206Z     [31m[1m>[22m[39m[90m 84 |[39m         [33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1248860Z      [90m    |[39m          [31m[1m^[22m[39m
-2025-10-12T19:57:41.1252365Z      [90m 85 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }[33m,[39m { id[33m:[39m [32m'item-2'[39m }][33m,[39m
-2025-10-12T19:57:41.1266672Z      [90m 86 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1267276Z      [90m 87 |[39m         })[33m;[39m[0m
-2025-10-12T19:57:41.1267557Z 
-2025-10-12T19:57:41.1267986Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:84:10)
-2025-10-12T19:57:41.1268556Z 
-2025-10-12T19:57:41.1269197Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should reject unauthenticated requests
-2025-10-12T19:57:41.1269804Z 
-2025-10-12T19:57:41.1270069Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1271122Z 
-2025-10-12T19:57:41.1271370Z     [0m [90m 146 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1271820Z      [90m 147 |[39m
-2025-10-12T19:57:41.1272529Z     [31m[1m>[22m[39m[90m 148 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1273323Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1274150Z      [90m 149 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1274791Z      [90m 150 |[39m         {
-2025-10-12T19:57:41.1275377Z      [90m 151 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1275771Z 
-2025-10-12T19:57:41.1276195Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1277420Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1278311Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:148:23)
-2025-10-12T19:57:41.1278848Z 
-2025-10-12T19:57:41.1279413Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should validate clothing item IDs
-2025-10-12T19:57:41.1279934Z 
-2025-10-12T19:57:41.1280204Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1280603Z 
-2025-10-12T19:57:41.1281098Z     [0m [90m 173 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1281585Z      [90m 174 |[39m
-2025-10-12T19:57:41.1282349Z     [31m[1m>[22m[39m[90m 175 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1283166Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1283976Z      [90m 176 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1284671Z      [90m 177 |[39m         {
-2025-10-12T19:57:41.1285215Z      [90m 178 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1285587Z 
-2025-10-12T19:57:41.1285978Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1286904Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1287748Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:175:23)
-2025-10-12T19:57:41.1288243Z 
-2025-10-12T19:57:41.1288785Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should enforce maximum item limit
-2025-10-12T19:57:41.1289353Z 
-2025-10-12T19:57:41.1289619Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1290037Z 
-2025-10-12T19:57:41.1290257Z     [0m [90m 200 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1290894Z      [90m 201 |[39m
-2025-10-12T19:57:41.1291600Z     [31m[1m>[22m[39m[90m 202 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1292404Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1293151Z      [90m 203 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1293797Z      [90m 204 |[39m         {
-2025-10-12T19:57:41.1294381Z      [90m 205 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1294772Z 
-2025-10-12T19:57:41.1295207Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1296199Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1297079Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:202:23)
-2025-10-12T19:57:41.1297600Z 
-2025-10-12T19:57:41.1298107Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should enforce tier limits
-2025-10-12T19:57:41.1298621Z 
-2025-10-12T19:57:41.1298890Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1299521Z 
-2025-10-12T19:57:41.1299743Z     [0m [90m 238 |[39m       )[33m;[39m
-2025-10-12T19:57:41.1300168Z      [90m 239 |[39m
-2025-10-12T19:57:41.1303563Z     [31m[1m>[22m[39m[90m 240 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1304488Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1305339Z      [90m 241 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1306041Z      [90m 242 |[39m         {
-2025-10-12T19:57:41.1306675Z      [90m 243 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1307073Z 
-2025-10-12T19:57:41.1307523Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1308779Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1309744Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:240:23)
-2025-10-12T19:57:41.1310289Z 
-2025-10-12T19:57:41.1311186Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should validate clothing items belong to user
-2025-10-12T19:57:41.1311860Z 
-2025-10-12T19:57:41.1312301Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1312912Z 
-2025-10-12T19:57:41.1313249Z     [0m [90m 271 |[39m         [33m.[39m[36min[39m()
-2025-10-12T19:57:41.1313821Z      [90m 272 |[39m         [33m.[39meq()
-2025-10-12T19:57:41.1314485Z     [31m[1m>[22m[39m[90m 273 |[39m         [33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1315142Z      [90m     |[39m          [31m[1m^[22m[39m
-2025-10-12T19:57:41.1315895Z      [90m 274 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
-2025-10-12T19:57:41.1316662Z      [90m 275 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1317290Z      [90m 276 |[39m         })[33m;[39m[0m
-2025-10-12T19:57:41.1317597Z 
-2025-10-12T19:57:41.1318028Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:273:10)
-2025-10-12T19:57:41.1318615Z 
-2025-10-12T19:57:41.1319357Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should handle database errors during session creation
-2025-10-12T19:57:41.1320073Z 
-2025-10-12T19:57:41.1320520Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1321274Z 
-2025-10-12T19:57:41.1321581Z     [0m [90m 309 |[39m         [33m.[39m[36min[39m()
-2025-10-12T19:57:41.1322085Z      [90m 310 |[39m         [33m.[39meq()
-2025-10-12T19:57:41.1322691Z     [31m[1m>[22m[39m[90m 311 |[39m         [33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1323271Z      [90m     |[39m          [31m[1m^[22m[39m
-2025-10-12T19:57:41.1323949Z      [90m 312 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
-2025-10-12T19:57:41.1324664Z      [90m 313 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1325221Z      [90m 314 |[39m         })[33m;[39m[0m
-2025-10-12T19:57:41.1325497Z 
-2025-10-12T19:57:41.1325894Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:311:10)
-2025-10-12T19:57:41.1326438Z 
-2025-10-12T19:57:41.1327139Z   ● Try-On Session API Integration › POST /api/try-on/sessions › should handle database errors during session items creation
-2025-10-12T19:57:41.1327856Z 
-2025-10-12T19:57:41.1328287Z     TypeError: mockSupabase.from(...).select(...).eq(...).in(...).eq(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1328884Z 
-2025-10-12T19:57:41.1329155Z     [0m [90m 357 |[39m         [33m.[39m[36min[39m()
-2025-10-12T19:57:41.1329672Z      [90m 358 |[39m         [33m.[39meq()
-2025-10-12T19:57:41.1330299Z     [31m[1m>[22m[39m[90m 359 |[39m         [33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1331396Z      [90m     |[39m          [31m[1m^[22m[39m
-2025-10-12T19:57:41.1332057Z      [90m 360 |[39m           data[33m:[39m [{ id[33m:[39m [32m'item-1'[39m }][33m,[39m
-2025-10-12T19:57:41.1332735Z      [90m 361 |[39m           error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1333334Z      [90m 362 |[39m         })[33m;[39m[0m
-2025-10-12T19:57:41.1333606Z 
-2025-10-12T19:57:41.1334005Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:359:10)
-2025-10-12T19:57:41.1334542Z 
-2025-10-12T19:57:41.1335122Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should retrieve user sessions successfully
-2025-10-12T19:57:41.1335719Z 
-2025-10-12T19:57:41.1336493Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1337121Z 
-2025-10-12T19:57:41.1337353Z     [0m [90m 430 |[39m       ][33m;[39m
-2025-10-12T19:57:41.1337815Z      [90m 431 |[39m
-2025-10-12T19:57:41.1338883Z     [31m[1m>[22m[39m[90m 432 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1340020Z      [90m     |[39m                                                         [31m[1m^[22m[39m
-2025-10-12T19:57:41.1340836Z      [90m 433 |[39m         data[33m:[39m mockSessions[33m,[39m
-2025-10-12T19:57:41.1341492Z      [90m 434 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1342152Z      [90m 435 |[39m         count[33m:[39m [35m2[39m[33m,[39m[0m
-2025-10-12T19:57:41.1342526Z 
-2025-10-12T19:57:41.1342949Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:432:57)
-2025-10-12T19:57:41.1343552Z 
-2025-10-12T19:57:41.1344134Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should filter sessions by status
-2025-10-12T19:57:41.1344743Z 
-2025-10-12T19:57:41.1345247Z     TypeError: mockSupabase.from(...).select(...).eq(...).eq(...).order(...).range(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1345922Z 
-2025-10-12T19:57:41.1346213Z     [0m [90m 463 |[39m       ][33m;[39m
-2025-10-12T19:57:41.1346670Z      [90m 464 |[39m
-2025-10-12T19:57:41.1347836Z     [31m[1m>[22m[39m[90m 465 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1349122Z      [90m     |[39m                                                              [31m[1m^[22m[39m
-2025-10-12T19:57:41.1349848Z      [90m 466 |[39m         data[33m:[39m mockSessions[33m,[39m
-2025-10-12T19:57:41.1350580Z      [90m 467 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1351494Z      [90m 468 |[39m         count[33m:[39m [35m1[39m[33m,[39m[0m
-2025-10-12T19:57:41.1351879Z 
-2025-10-12T19:57:41.1352329Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:465:62)
-2025-10-12T19:57:41.1352938Z 
-2025-10-12T19:57:41.1353502Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should handle pagination
-2025-10-12T19:57:41.1354068Z 
-2025-10-12T19:57:41.1354551Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1355177Z 
-2025-10-12T19:57:41.1355452Z     [0m [90m 486 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1355937Z      [90m 487 |[39m
-2025-10-12T19:57:41.1357014Z     [31m[1m>[22m[39m[90m 488 |[39m       mockSupabase[33m.[39m[36mfrom[39m()[33m.[39mselect()[33m.[39meq()[33m.[39morder()[33m.[39mrange()[33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1358217Z      [90m     |[39m                                                         [31m[1m^[22m[39m
-2025-10-12T19:57:41.1358869Z      [90m 489 |[39m         data[33m:[39m [][33m,[39m
-2025-10-12T19:57:41.1359802Z      [90m 490 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1360507Z      [90m 491 |[39m         count[33m:[39m [35m0[39m[33m,[39m[0m
-2025-10-12T19:57:41.1361080Z 
-2025-10-12T19:57:41.1361525Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:488:57)
-2025-10-12T19:57:41.1362118Z 
-2025-10-12T19:57:41.1362654Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should enforce maximum limit
-2025-10-12T19:57:41.1363190Z 
-2025-10-12T19:57:41.1363453Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1363860Z 
-2025-10-12T19:57:41.1364076Z     [0m [90m 510 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1364507Z      [90m 511 |[39m
-2025-10-12T19:57:41.1365455Z     [31m[1m>[22m[39m[90m 512 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1366236Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1366981Z      [90m 513 |[39m         [32m'http://localhost:3000/api/try-on/sessions?limit=150'[39m
-2025-10-12T19:57:41.1367614Z      [90m 514 |[39m       )[33m;[39m
-2025-10-12T19:57:41.1368363Z      [90m 515 |[39m       [36mconst[39m response [33m=[39m [36mawait[39m [33mGET[39m(request)[33m;[39m[0m
-2025-10-12T19:57:41.1368867Z 
-2025-10-12T19:57:41.1369271Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1370172Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1371171Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:512:23)
-2025-10-12T19:57:41.1371665Z 
-2025-10-12T19:57:41.1372215Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should reject unauthenticated requests
-2025-10-12T19:57:41.1372794Z 
-2025-10-12T19:57:41.1373063Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1373487Z 
-2025-10-12T19:57:41.1373714Z     [0m [90m 527 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1374151Z      [90m 528 |[39m
-2025-10-12T19:57:41.1374875Z     [31m[1m>[22m[39m[90m 529 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1375667Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1376356Z      [90m 530 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m
-2025-10-12T19:57:41.1376951Z      [90m 531 |[39m       )[33m;[39m
-2025-10-12T19:57:41.1377734Z      [90m 532 |[39m       [36mconst[39m response [33m=[39m [36mawait[39m [33mGET[39m(request)[33m;[39m[0m
-2025-10-12T19:57:41.1378263Z 
-2025-10-12T19:57:41.1378706Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1379659Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1380565Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:529:23)
-2025-10-12T19:57:41.1381241Z 
-2025-10-12T19:57:41.1381805Z   ● Try-On Session API Integration › GET /api/try-on/sessions › should handle database errors
-2025-10-12T19:57:41.1382366Z 
-2025-10-12T19:57:41.1382841Z     TypeError: mockSupabase.from(...).select(...).eq(...).order(...).range(...).mockResolvedValue is not a function
-2025-10-12T19:57:41.1383507Z 
-2025-10-12T19:57:41.1383877Z     [0m [90m 550 |[39m         [33m.[39morder()
-2025-10-12T19:57:41.1384411Z      [90m 551 |[39m         [33m.[39mrange()
-2025-10-12T19:57:41.1385096Z     [31m[1m>[22m[39m[90m 552 |[39m         [33m.[39mmockResolvedValue({
-2025-10-12T19:57:41.1385776Z      [90m     |[39m          [31m[1m^[22m[39m
-2025-10-12T19:57:41.1386430Z      [90m 553 |[39m           data[33m:[39m [36mnull[39m[33m,[39m
-2025-10-12T19:57:41.1387309Z      [90m 554 |[39m           error[33m:[39m { message[33m:[39m [32m'Database error'[39m }[33m,[39m
-2025-10-12T19:57:41.1388464Z      [90m 555 |[39m           count[33m:[39m [36mnull[39m[33m,[39m[0m
-2025-10-12T19:57:41.1388875Z 
-2025-10-12T19:57:41.1389311Z       at Object.mockResolvedValue (tests/__tests__/try-on-session.integration.test.ts:552:10)
-2025-10-12T19:57:41.1389906Z 
-2025-10-12T19:57:41.1390436Z   ● Try-On Session API Integration › Error Handling › should handle malformed JSON
-2025-10-12T19:57:41.1391181Z 
-2025-10-12T19:57:41.1391465Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1391890Z 
-2025-10-12T19:57:41.1392173Z     [0m [90m 575 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1392653Z      [90m 576 |[39m
-2025-10-12T19:57:41.1393417Z     [31m[1m>[22m[39m[90m 577 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1394496Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1395322Z      [90m 578 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1396041Z      [90m 579 |[39m         {
-2025-10-12T19:57:41.1396662Z      [90m 580 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1397073Z 
-2025-10-12T19:57:41.1397528Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1398514Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1399441Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:577:23)
-2025-10-12T19:57:41.1399983Z 
-2025-10-12T19:57:41.1400563Z   ● Try-On Session API Integration › Error Handling › should handle missing request body
-2025-10-12T19:57:41.1401324Z 
-2025-10-12T19:57:41.1401602Z     TypeError: Cannot read properties of undefined (reading 'get')
-2025-10-12T19:57:41.1402008Z 
-2025-10-12T19:57:41.1402250Z     [0m [90m 599 |[39m       })[33m;[39m
-2025-10-12T19:57:41.1402656Z      [90m 600 |[39m
-2025-10-12T19:57:41.1403310Z     [31m[1m>[22m[39m[90m 601 |[39m       [36mconst[39m request [33m=[39m [36mnew[39m [33mNextRequest[39m(
-2025-10-12T19:57:41.1403994Z      [90m     |[39m                       [31m[1m^[22m[39m
-2025-10-12T19:57:41.1404723Z      [90m 602 |[39m         [32m'http://localhost:3000/api/try-on/sessions'[39m[33m,[39m
-2025-10-12T19:57:41.1405368Z      [90m 603 |[39m         {
-2025-10-12T19:57:41.1405901Z      [90m 604 |[39m           method[33m:[39m [32m'POST'[39m[33m,[39m[0m
-2025-10-12T19:57:41.1406269Z 
-2025-10-12T19:57:41.1406696Z       at new RequestCookies (node_modules/next/dist/compiled/@edge-runtime/cookies/index.js:179:35)
-2025-10-12T19:57:41.1407656Z       at new NextRequest (node_modules/next/src/server/web/spec-extension/request.ts:46:16)
-2025-10-12T19:57:41.1408561Z       at Object.<anonymous> (tests/__tests__/try-on-session.integration.test.ts:601:23)
-2025-10-12T19:57:41.1409083Z 
-2025-10-12T19:57:41.2286328Z FAIL tests/__tests__/closet-view.integration.test.ts
-2025-10-12T19:57:41.2334727Z   ● Test suite failed to run
-2025-10-12T19:57:41.2335036Z 
-2025-10-12T19:57:41.2335271Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.2336218Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
-2025-10-12T19:57:41.2337031Z      [2m85[0m | 
-2025-10-12T19:57:41.2337510Z      [2m86[0m |   describe('Data Loading Integration', () => {
-2025-10-12T19:57:41.2338258Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
-2025-10-12T19:57:41.2338904Z      [2m88[0m |       render(<ClosetView />);
-2025-10-12T19:57:41.2339414Z         : [35;1m                         ^[0m
-2025-10-12T19:57:41.2339890Z      [2m89[0m |       
-2025-10-12T19:57:41.2340325Z      [2m90[0m |       await waitFor(() => {
-2025-10-12T19:57:41.2341233Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
-2025-10-12T19:57:41.2342238Z         `----
-2025-10-12T19:57:41.2342634Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.2343526Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
-2025-10-12T19:57:41.2344320Z      [2m85[0m | 
-2025-10-12T19:57:41.2344790Z      [2m86[0m |   describe('Data Loading Integration', () => {
-2025-10-12T19:57:41.2345527Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
-2025-10-12T19:57:41.2346173Z      [2m88[0m |       render(<ClosetView />);
-2025-10-12T19:57:41.2346673Z         : [35;1m                          ^[0m
-2025-10-12T19:57:41.2347120Z      [2m89[0m |       
-2025-10-12T19:57:41.2347528Z      [2m90[0m |       await waitFor(() => {
-2025-10-12T19:57:41.2349739Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
-2025-10-12T19:57:41.2350297Z         `----
-2025-10-12T19:57:41.2350859Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.2351767Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/closet-view.integration.test.ts[0m:88:1]
-2025-10-12T19:57:41.2352566Z      [2m85[0m | 
-2025-10-12T19:57:41.2353051Z      [2m86[0m |   describe('Data Loading Integration', () => {
-2025-10-12T19:57:41.2353766Z      [2m87[0m |     it('loads clothing items on component mount', async () => {
-2025-10-12T19:57:41.2354391Z      [2m88[0m |       render(<ClosetView />);
-2025-10-12T19:57:41.2354878Z         : [35;1m                           ^[0m
-2025-10-12T19:57:41.2355311Z      [2m89[0m |       
-2025-10-12T19:57:41.2355713Z      [2m90[0m |       await waitFor(() => {
-2025-10-12T19:57:41.2356393Z      [2m91[0m |         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
-2025-10-12T19:57:41.2356933Z         `----
-2025-10-12T19:57:41.2357101Z 
-2025-10-12T19:57:41.2357108Z 
-2025-10-12T19:57:41.2357212Z     Caused by:
-2025-10-12T19:57:41.2357482Z         Syntax Error
-2025-10-12T19:57:41.2357680Z 
-2025-10-12T19:57:41.2357994Z       at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
-2025-10-12T19:57:41.2358740Z       at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
-2025-10-12T19:57:41.2359487Z       at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
-2025-10-12T19:57:41.2360465Z       at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
-2025-10-12T19:57:41.2361883Z       at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
-2025-10-12T19:57:41.2363062Z       at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
-2025-10-12T19:57:41.2363681Z 
-2025-10-12T19:57:41.4147259Z FAIL tests/__tests__/clothing-upload.test.ts
-2025-10-12T19:57:41.4154821Z   ● Test suite failed to run
-2025-10-12T19:57:41.4155117Z 
-2025-10-12T19:57:41.4155341Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.4156207Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
-2025-10-12T19:57:41.4156955Z      [2m39[0m | 
-2025-10-12T19:57:41.4157395Z      [2m40[0m |   describe('Form Rendering', () => {
-2025-10-12T19:57:41.4159259Z      [2m41[0m |     it('renders all form fields correctly', () => {
-2025-10-12T19:57:41.4161135Z      [2m42[0m |       render(<ClothingUploadForm />);
-2025-10-12T19:57:41.4162842Z         : [35;1m                                 ^[0m
-2025-10-12T19:57:41.4164632Z      [2m43[0m |       
-2025-10-12T19:57:41.4166647Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4168857Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4170971Z         `----
-2025-10-12T19:57:41.4172658Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.4174683Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
-2025-10-12T19:57:41.4176237Z      [2m39[0m | 
-2025-10-12T19:57:41.4176774Z      [2m40[0m |   describe('Form Rendering', () => {
-2025-10-12T19:57:41.4177575Z      [2m41[0m |     it('renders all form fields correctly', () => {
-2025-10-12T19:57:41.4178394Z      [2m42[0m |       render(<ClothingUploadForm />);
-2025-10-12T19:57:41.4179180Z         : [35;1m                                  ^[0m
-2025-10-12T19:57:41.4180961Z      [2m43[0m |       
-2025-10-12T19:57:41.4181740Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4182658Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4183229Z         `----
-2025-10-12T19:57:41.4183885Z       [31mx[0m Expression expected
-2025-10-12T19:57:41.4184736Z         ,-[[36;1;4m/home/runner/work/my_closet/my_closet/tests/__tests__/clothing-upload.test.ts[0m:42:1]
-2025-10-12T19:57:41.4185467Z      [2m39[0m | 
-2025-10-12T19:57:41.4185917Z      [2m40[0m |   describe('Form Rendering', () => {
-2025-10-12T19:57:41.4186539Z      [2m41[0m |     it('renders all form fields correctly', () => {
-2025-10-12T19:57:41.4187167Z      [2m42[0m |       render(<ClothingUploadForm />);
-2025-10-12T19:57:41.4187717Z         : [35;1m                                   ^[0m
-2025-10-12T19:57:41.4188170Z      [2m43[0m |       
-2025-10-12T19:57:41.4188803Z      [2m44[0m |       expect(screen.getByLabelText(/item name/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4189684Z      [2m45[0m |       expect(screen.getByLabelText(/category/i)).toBeInTheDocument();
-2025-10-12T19:57:41.4190309Z         `----
-2025-10-12T19:57:41.4190469Z 
-2025-10-12T19:57:41.4190478Z 
-2025-10-12T19:57:41.4190586Z     Caused by:
-2025-10-12T19:57:41.4191077Z         Syntax Error
-2025-10-12T19:57:41.4191272Z 
-2025-10-12T19:57:41.4191601Z       at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
-2025-10-12T19:57:41.4192341Z       at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
-2025-10-12T19:57:41.4193108Z       at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
-2025-10-12T19:57:41.4194117Z       at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
-2025-10-12T19:57:41.4195350Z       at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
-2025-10-12T19:57:41.4196519Z       at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
-2025-10-12T19:57:41.4197146Z 
-2025-10-12T19:57:41.5423659Z PASS tests/__tests__/clothing-selection.test.ts
-2025-10-12T19:57:41.5427028Z 
-2025-10-12T19:57:41.5438088Z Test Suites: 4 failed, 1 skipped, 1 passed, 5 of 6 total
-2025-10-12T19:57:41.5439058Z Tests:       16 failed, 1 skipped, 30 passed, 47 total
-2025-10-12T19:57:41.5439934Z Snapshots:   0 total
-2025-10-12T19:57:41.5440396Z Time:        1.575 s
-2025-10-12T19:57:41.5440869Z Ran all test suites.
-2025-10-12T19:57:41.6669656Z error: script "test" exited with code 1
-2025-10-12T19:57:41.6697987Z ##[error]Process completed with exit code 1.
+﻿2025-10-12T20:13:15.6624700Z ##[group]Run bun run test
+2025-10-12T20:13:15.6624979Z [36;1mbun run test[0m
+2025-10-12T20:13:15.6659398Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:13:15.6659653Z ##[endgroup]
+2025-10-12T20:13:15.6731036Z $ jest --passWithNoTests
+2025-10-12T20:13:17.3565771Z FAIL tests/__tests__/try-on-result-generation.integration.test.ts
+2025-10-12T20:13:17.3567487Z   ● Test suite failed to run
+2025-10-12T20:13:17.3567969Z 
+2025-10-12T20:13:17.3568382Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.3568949Z 
+2025-10-12T20:13:17.3569729Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.3584622Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.3587173Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.3588154Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.3589405Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.3590290Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.3591642Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.3592564Z 
+2025-10-12T20:13:17.3593635Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.3595931Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.3597305Z 
+2025-10-12T20:13:17.4674290Z FAIL tests/__tests__/try-on-session.integration.test.ts
+2025-10-12T20:13:17.4675617Z   ● Test suite failed to run
+2025-10-12T20:13:17.4692752Z 
+2025-10-12T20:13:17.4714136Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.4733386Z 
+2025-10-12T20:13:17.4734321Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.4736486Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.4738023Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.4739455Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.4763024Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.4764568Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.4765862Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.4767114Z 
+2025-10-12T20:13:17.4767960Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.4769519Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.4771425Z 
+2025-10-12T20:13:17.6004800Z FAIL tests/__tests__/closet-view.integration.test.tsx
+2025-10-12T20:13:17.6007581Z   ● Test suite failed to run
+2025-10-12T20:13:17.6009152Z 
+2025-10-12T20:13:17.6010086Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.6010750Z 
+2025-10-12T20:13:17.6011433Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.6013055Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.6014357Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.6015041Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.6015634Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.6016345Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.6017210Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.6017713Z 
+2025-10-12T20:13:17.6018197Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.6019509Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.6019906Z 
+2025-10-12T20:13:17.6865729Z FAIL tests/__tests__/ai-processor.test.ts
+2025-10-12T20:13:17.6871392Z   ● Test suite failed to run
+2025-10-12T20:13:17.6871890Z 
+2025-10-12T20:13:17.6872231Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.6872995Z 
+2025-10-12T20:13:17.6873625Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.6875079Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.6876702Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.6877348Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.6877900Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.6878627Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.6879509Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.6880016Z 
+2025-10-12T20:13:17.6880507Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.6881339Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.6881749Z 
+2025-10-12T20:13:17.7813258Z FAIL tests/__tests__/clothing-upload.test.tsx
+2025-10-12T20:13:17.7814548Z   ● Test suite failed to run
+2025-10-12T20:13:17.7814966Z 
+2025-10-12T20:13:17.7815297Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.7815804Z 
+2025-10-12T20:13:17.7816415Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.7817861Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.7820058Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.7820632Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.7821123Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.7821695Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.7822621Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.7823034Z 
+2025-10-12T20:13:17.7823443Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.7824116Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.7824439Z 
+2025-10-12T20:13:17.8765774Z FAIL tests/__tests__/clothing-selection.test.ts
+2025-10-12T20:13:17.8766726Z   ● Test suite failed to run
+2025-10-12T20:13:17.8767008Z 
+2025-10-12T20:13:17.8767239Z     Cannot find module 'whatwg-fetch' from 'jest.setup.js'
+2025-10-12T20:13:17.8767618Z 
+2025-10-12T20:13:17.8768140Z     [0m [90m 113 |[39m     getGenerativeModel[33m:[39m jest[33m.[39mfn(() [33m=>[39m ({
+2025-10-12T20:13:17.8769491Z      [90m 114 |[39m       generateContent[33m:[39m jest[33m.[39mfn([36masync[39m () [33m=>[39m ({ response[33m:[39m { candidates[33m:[39m [] } }))[33m,[39m
+2025-10-12T20:13:17.8770544Z     [31m[1m>[22m[39m[90m 115 |[39m     }))[33m,[39m
+2025-10-12T20:13:17.8771100Z      [90m     |[39m [31m[1m^[22m[39m
+2025-10-12T20:13:17.8771566Z      [90m 116 |[39m   }))[33m,[39m
+2025-10-12T20:13:17.8772097Z      [90m 117 |[39m   [33mHarmCategory[39m[33m:[39m {}[33m,[39m
+2025-10-12T20:13:17.8773090Z      [90m 118 |[39m   [33mHarmBlockThreshold[39m[33m:[39m {}[33m,[39m[0m
+2025-10-12T20:13:17.8773561Z 
+2025-10-12T20:13:17.8773947Z       at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/resolver.js:427:11)
+2025-10-12T20:13:17.8774694Z       at Object.<anonymous> (jest.setup.js:115:1)
+2025-10-12T20:13:17.8775027Z 
+2025-10-12T20:13:17.8775181Z Test Suites: 6 failed, 6 total
+2025-10-12T20:13:17.8775916Z Tests:       0 total
+2025-10-12T20:13:17.8776123Z Snapshots:   0 total
+2025-10-12T20:13:17.8776314Z Time:        1.228 s
+2025-10-12T20:13:17.8776496Z Ran all test suites.
+2025-10-12T20:13:17.9041436Z error: script "test" exited with code 1
+2025-10-12T20:13:17.9061333Z ##[error]Process completed with exit code 1.

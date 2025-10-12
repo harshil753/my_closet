@@ -1,283 +1,285 @@
-﻿2025-10-12T19:57:16.8025970Z ##[group]Run bun install --frozen-lockfile
-2025-10-12T19:57:16.8026448Z [36;1mbun install --frozen-lockfile[0m
-2025-10-12T19:57:16.8027105Z [36;1mpip install -r requirements.txt[0m
-2025-10-12T19:57:16.8075243Z shell: /usr/bin/bash -e {0}
-2025-10-12T19:57:16.8075559Z env:
-2025-10-12T19:57:16.8075842Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:16.8076306Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
-2025-10-12T19:57:16.8077109Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:16.8077518Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:16.8077919Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:16.8078344Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
-2025-10-12T19:57:16.8078673Z ##[endgroup]
-2025-10-12T19:57:16.8207508Z bun install v1.3.0 (b0a6feca)
-2025-10-12T19:57:23.3777826Z 
-2025-10-12T19:57:23.3779220Z + @eslint/eslintrc@3.3.1
-2025-10-12T19:57:23.3877761Z + @playwright/test@1.56.0
-2025-10-12T19:57:23.3878328Z + @tailwindcss/postcss@4.1.14
-2025-10-12T19:57:23.3880292Z + @testing-library/jest-dom@6.9.1
-2025-10-12T19:57:23.3880849Z + @testing-library/react@16.3.0
-2025-10-12T19:57:23.3881251Z + @types/aria-query@5.0.4
-2025-10-12T19:57:23.3881605Z + @types/estree@1.0.8
-2025-10-12T19:57:23.3881970Z + @types/json-schema@7.0.15
-2025-10-12T19:57:23.3882339Z + @types/node@22.18.10
-2025-10-12T19:57:23.3882688Z + @types/phoenix@1.6.6
-2025-10-12T19:57:23.3883015Z + @types/react@19.2.2
-2025-10-12T19:57:23.3883351Z + @types/react-dom@19.2.1
-2025-10-12T19:57:23.3883752Z + @typescript-eslint/eslint-plugin@8.46.0
-2025-10-12T19:57:23.3884247Z + @typescript-eslint/parser@8.46.0
-2025-10-12T19:57:23.3884635Z + eslint@9.37.0
-2025-10-12T19:57:23.3884966Z + eslint-config-next@15.5.4
-2025-10-12T19:57:23.3885312Z + glob@11.0.3
-2025-10-12T19:57:23.3885606Z + ignore@7.0.5
-2025-10-12T19:57:23.3885922Z + jest@29.7.0
-2025-10-12T19:57:23.3886244Z + jest-environment-jsdom@29.7.0
-2025-10-12T19:57:23.3886947Z + prettier@3.6.2
-2025-10-12T19:57:23.3887331Z + prettier-plugin-tailwindcss@0.6.14
-2025-10-12T19:57:23.3887782Z + tailwindcss@4.1.14
-2025-10-12T19:57:23.3888114Z + typescript@5.9.3
-2025-10-12T19:57:23.3888440Z + @google/genai@1.24.0
-2025-10-12T19:57:23.3888785Z + @google/generative-ai@0.24.1
-2025-10-12T19:57:23.3889178Z + @radix-ui/react-label@2.1.7
-2025-10-12T19:57:23.3889565Z + @radix-ui/react-separator@1.1.7
-2025-10-12T19:57:23.3889996Z + @radix-ui/react-switch@1.2.6
-2025-10-12T19:57:23.3890497Z + @supabase/ssr@0.7.0
-2025-10-12T19:57:23.3890849Z + @supabase/supabase-js@2.75.0
-2025-10-12T19:57:23.3891250Z + class-variance-authority@0.7.1
-2025-10-12T19:57:23.3891634Z + clsx@2.1.1
-2025-10-12T19:57:23.3891928Z + dotenv@17.2.3
-2025-10-12T19:57:23.3892235Z + hasown@2.0.2
-2025-10-12T19:57:23.3892531Z + lru-cache@10.4.3
-2025-10-12T19:57:23.3892843Z + lucide-react@0.545.0
-2025-10-12T19:57:23.3893166Z + mime@4.1.0
-2025-10-12T19:57:23.3893444Z + next@15.5.4
-2025-10-12T19:57:23.3893733Z + react@19.2.0
-2025-10-12T19:57:23.3894036Z + react-dom@19.2.0
-2025-10-12T19:57:23.3894357Z + react-dropzone@14.3.8
-2025-10-12T19:57:23.3894713Z + tailwind-merge@3.3.1
-2025-10-12T19:57:23.3894926Z 
-2025-10-12T19:57:23.3895089Z 680 packages installed [6.56s]
-2025-10-12T19:57:24.8298670Z Collecting google-generativeai==0.8.3 (from -r requirements.txt (line 2))
-2025-10-12T19:57:24.8713172Z   Downloading google_generativeai-0.8.3-py3-none-any.whl.metadata (3.9 kB)
-2025-10-12T19:57:25.0491503Z Collecting pillow==11.0.0 (from -r requirements.txt (line 3))
-2025-10-12T19:57:25.0562625Z   Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.1 kB)
-2025-10-12T19:57:25.1049565Z Collecting supabase==2.8.0 (from -r requirements.txt (line 4))
-2025-10-12T19:57:25.1113049Z   Downloading supabase-2.8.0-py3-none-any.whl.metadata (10 kB)
-2025-10-12T19:57:25.1347136Z Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 5))
-2025-10-12T19:57:25.1394057Z   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
-2025-10-12T19:57:25.1688124Z Collecting requests==2.32.3 (from -r requirements.txt (line 6))
-2025-10-12T19:57:25.1727179Z   Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
-2025-10-12T19:57:25.3445590Z Collecting numpy==2.1.3 (from -r requirements.txt (line 7))
-2025-10-12T19:57:25.3513124Z   Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
-2025-10-12T19:57:25.4340694Z Collecting opencv-python==4.10.0.84 (from -r requirements.txt (line 8))
-2025-10-12T19:57:25.4391345Z   Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
-2025-10-12T19:57:25.4784104Z Collecting pytest==8.3.4 (from -r requirements.txt (line 11))
-2025-10-12T19:57:25.4836459Z   Downloading pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
-2025-10-12T19:57:25.5065670Z Collecting pytest-asyncio==0.24.0 (from -r requirements.txt (line 12))
-2025-10-12T19:57:25.5112390Z   Downloading pytest_asyncio-0.24.0-py3-none-any.whl.metadata (3.9 kB)
-2025-10-12T19:57:25.5784766Z Collecting black==24.10.0 (from -r requirements.txt (line 13))
-2025-10-12T19:57:25.5842104Z   Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
-2025-10-12T19:57:25.6115637Z Collecting flake8==7.1.1 (from -r requirements.txt (line 14))
-2025-10-12T19:57:25.6167065Z   Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
-2025-10-12T19:57:25.7148489Z Collecting mypy==1.13.0 (from -r requirements.txt (line 15))
-2025-10-12T19:57:25.7231403Z   Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
-2025-10-12T19:57:25.7407234Z Collecting google-ai-generativelanguage==0.6.10 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:25.7452205Z   Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl.metadata (5.6 kB)
-2025-10-12T19:57:25.7801855Z Collecting google-api-core (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:25.7835731Z   Downloading google_api_core-2.26.0-py3-none-any.whl.metadata (3.2 kB)
-2025-10-12T19:57:25.8412332Z Collecting google-api-python-client (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:25.8449960Z   Downloading google_api_python_client-2.184.0-py3-none-any.whl.metadata (7.0 kB)
-2025-10-12T19:57:25.8854175Z Collecting google-auth>=2.15.0 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:25.8892863Z   Downloading google_auth-2.41.1-py2.py3-none-any.whl.metadata (6.6 kB)
-2025-10-12T19:57:26.0591413Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:26.0629302Z   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
-2025-10-12T19:57:26.2048883Z Collecting pydantic (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:26.2089499Z   Downloading pydantic-2.12.0-py3-none-any.whl.metadata (83 kB)
-2025-10-12T19:57:26.2484404Z Collecting tqdm (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:26.2525560Z   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
-2025-10-12T19:57:26.2801562Z Collecting typing-extensions (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:26.2835254Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
-2025-10-12T19:57:26.3063753Z Collecting gotrue<3.0,>=1.3 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.3116175Z   Downloading gotrue-2.12.4-py3-none-any.whl.metadata (2.0 kB)
-2025-10-12T19:57:26.3321757Z Collecting httpx<0.28,>=0.24 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.3369598Z   Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
-2025-10-12T19:57:26.3575963Z Collecting postgrest<0.18.0,>=0.14 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.3636120Z   Downloading postgrest-0.17.2-py3-none-any.whl.metadata (3.4 kB)
-2025-10-12T19:57:26.3812443Z Collecting realtime<3.0.0,>=2.0.0 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.3868598Z   Downloading realtime-2.22.0-py3-none-any.whl.metadata (7.0 kB)
-2025-10-12T19:57:26.4068095Z Collecting storage3<0.9.0,>=0.5.3 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.4114584Z   Downloading storage3-0.8.2-py3-none-any.whl.metadata (1.8 kB)
-2025-10-12T19:57:26.4322853Z Collecting supafunc<0.7.0,>=0.3.1 (from supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:26.4364708Z   Downloading supafunc-0.6.2-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:26.5203961Z Collecting charset-normalizer<4,>=2 (from requests==2.32.3->-r requirements.txt (line 6))
-2025-10-12T19:57:26.5252721Z   Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
-2025-10-12T19:57:26.5424838Z Collecting idna<4,>=2.5 (from requests==2.32.3->-r requirements.txt (line 6))
-2025-10-12T19:57:26.5461544Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
-2025-10-12T19:57:26.5762098Z Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->-r requirements.txt (line 6))
-2025-10-12T19:57:26.5801785Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
-2025-10-12T19:57:26.6017650Z Collecting certifi>=2017.4.17 (from requests==2.32.3->-r requirements.txt (line 6))
-2025-10-12T19:57:26.6056166Z   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
-2025-10-12T19:57:26.6404077Z Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 11))
-2025-10-12T19:57:26.6444505Z   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
-2025-10-12T19:57:26.6614400Z Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 11))
-2025-10-12T19:57:26.6649810Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
-2025-10-12T19:57:26.6783283Z Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 11))
-2025-10-12T19:57:26.6821434Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
-2025-10-12T19:57:26.7103953Z Collecting click>=8.0.0 (from black==24.10.0->-r requirements.txt (line 13))
-2025-10-12T19:57:26.7186466Z   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
-2025-10-12T19:57:26.7308273Z Collecting mypy-extensions>=0.4.3 (from black==24.10.0->-r requirements.txt (line 13))
-2025-10-12T19:57:26.7341206Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:26.7492614Z Collecting pathspec>=0.9.0 (from black==24.10.0->-r requirements.txt (line 13))
-2025-10-12T19:57:26.7528243Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
-2025-10-12T19:57:26.7733287Z Collecting platformdirs>=2 (from black==24.10.0->-r requirements.txt (line 13))
-2025-10-12T19:57:26.7768883Z   Downloading platformdirs-4.5.0-py3-none-any.whl.metadata (12 kB)
-2025-10-12T19:57:26.7902561Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.1.1->-r requirements.txt (line 14))
-2025-10-12T19:57:26.7938104Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
-2025-10-12T19:57:26.8088024Z Collecting pycodestyle<2.13.0,>=2.12.0 (from flake8==7.1.1->-r requirements.txt (line 14))
-2025-10-12T19:57:26.8135903Z   Downloading pycodestyle-2.12.1-py2.py3-none-any.whl.metadata (4.5 kB)
-2025-10-12T19:57:26.8291088Z Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.1.1->-r requirements.txt (line 14))
-2025-10-12T19:57:26.8327284Z   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
-2025-10-12T19:57:26.9630587Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:26.9695099Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
-2025-10-12T19:57:27.0612494Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:27.0673740Z   Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
-2025-10-12T19:57:27.2579577Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:27.2619903Z   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
-2025-10-12T19:57:27.8997562Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:27.9051319Z   Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
-2025-10-12T19:57:27.9586355Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:27.9677513Z   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.0048343Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:28.0082017Z   Downloading cachetools-6.2.1-py3-none-any.whl.metadata (5.5 kB)
-2025-10-12T19:57:28.0344222Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:28.0380043Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
-2025-10-12T19:57:28.0560451Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:28.0605076Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
-2025-10-12T19:57:28.1091470Z Collecting pyjwt<3.0.0,>=2.10.1 (from gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.1128671Z   Downloading PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
-2025-10-12T19:57:28.1461513Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
-2025-10-12T19:57:28.1468280Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:28.1505162Z   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.1638349Z   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.1757919Z   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.2352102Z   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.2438448Z   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.2520951Z   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.2601621Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
-2025-10-12T19:57:28.3734564Z Collecting anyio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.3771309Z   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
-2025-10-12T19:57:28.3967654Z Collecting httpcore==1.* (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4002135Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
-2025-10-12T19:57:28.4123356Z Collecting sniffio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4159621Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
-2025-10-12T19:57:28.4288927Z Collecting h11>=0.16 (from httpcore==1.*->httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4324265Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
-2025-10-12T19:57:28.4541838Z Collecting h2<5,>=3 (from httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4577691Z   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
-2025-10-12T19:57:28.4734206Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4778283Z   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
-2025-10-12T19:57:28.4898547Z Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.4934829Z   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
-2025-10-12T19:57:28.5668889Z Collecting deprecation<3.0.0,>=2.1.0 (from postgrest<0.18.0,>=0.14->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:28.5704946Z   Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
-2025-10-12T19:57:28.6899154Z Collecting annotated-types>=0.6.0 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:28.6939789Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
-2025-10-12T19:57:29.3835679Z Collecting pydantic-core==2.41.1 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.3880622Z   Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
-2025-10-12T19:57:29.4055344Z Collecting typing-inspection>=0.4.2 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.4092290Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
-2025-10-12T19:57:29.5181925Z Collecting websockets<16,>=11 (from realtime<3.0.0,>=2.0.0->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:29.5220555Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
-2025-10-12T19:57:29.5498469Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.5533266Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
-2025-10-12T19:57:29.5719983Z Collecting python-dateutil<3.0.0,>=2.8.2 (from storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:29.5759639Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
-2025-10-12T19:57:29.5997646Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
-2025-10-12T19:57:29.6035270Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
-2025-10-12T19:57:29.6658310Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.6693088Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
-2025-10-12T19:57:29.7022524Z Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.7060574Z   Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl.metadata (2.2 kB)
-2025-10-12T19:57:29.7189667Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.7227162Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
-2025-10-12T19:57:29.7532203Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
-2025-10-12T19:57:29.7573712Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
-2025-10-12T19:57:29.7749353Z Downloading google_generativeai-0.8.3-py3-none-any.whl (160 kB)
-2025-10-12T19:57:29.7877511Z Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.4 MB)
-2025-10-12T19:57:29.8254732Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 118.5 MB/s  0:00:00
-2025-10-12T19:57:29.8304177Z Downloading supabase-2.8.0-py3-none-any.whl (16 kB)
-2025-10-12T19:57:29.8366464Z Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
-2025-10-12T19:57:29.8429530Z Downloading requests-2.32.3-py3-none-any.whl (64 kB)
-2025-10-12T19:57:29.8525400Z Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
-2025-10-12T19:57:30.0217646Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 99.2 MB/s  0:00:00
-2025-10-12T19:57:30.0272019Z Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
-2025-10-12T19:57:30.7568663Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 85.7 MB/s  0:00:00
-2025-10-12T19:57:30.7610249Z Downloading pytest-8.3.4-py3-none-any.whl (343 kB)
-2025-10-12T19:57:30.7712938Z Downloading pytest_asyncio-0.24.0-py3-none-any.whl (18 kB)
-2025-10-12T19:57:30.7802857Z Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
-2025-10-12T19:57:30.7933190Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 140.3 MB/s  0:00:00
-2025-10-12T19:57:30.7978514Z Downloading flake8-7.1.1-py2.py3-none-any.whl (57 kB)
-2025-10-12T19:57:30.8054488Z Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (12.5 MB)
-2025-10-12T19:57:31.0260057Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.5/12.5 MB 56.8 MB/s  0:00:00
-2025-10-12T19:57:31.0323558Z Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl (760 kB)
-2025-10-12T19:57:31.0430578Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.0/760.0 kB 98.4 MB/s  0:00:00
-2025-10-12T19:57:31.0483207Z Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (150 kB)
-2025-10-12T19:57:31.0595829Z Downloading google_api_core-2.26.0-py3-none-any.whl (162 kB)
-2025-10-12T19:57:31.0678907Z Downloading google_auth-2.41.1-py2.py3-none-any.whl (221 kB)
-2025-10-12T19:57:31.0759148Z Downloading cachetools-6.2.1-py3-none-any.whl (11 kB)
-2025-10-12T19:57:31.0831322Z Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
-2025-10-12T19:57:31.0908765Z Downloading gotrue-2.12.4-py3-none-any.whl (42 kB)
-2025-10-12T19:57:31.1321643Z Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.5 MB)
-2025-10-12T19:57:31.1709031Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.5/6.5 MB 174.6 MB/s  0:00:00
-2025-10-12T19:57:31.1756030Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
-2025-10-12T19:57:31.1818688Z Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
-2025-10-12T19:57:31.1948095Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
-2025-10-12T19:57:31.2011291Z Downloading h2-4.3.0-py3-none-any.whl (61 kB)
-2025-10-12T19:57:31.2069621Z Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
-2025-10-12T19:57:31.2127142Z Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
-2025-10-12T19:57:31.2188055Z Downloading idna-3.11-py3-none-any.whl (71 kB)
-2025-10-12T19:57:31.2247146Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
-2025-10-12T19:57:31.2317338Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
-2025-10-12T19:57:31.2383478Z Downloading postgrest-0.17.2-py3-none-any.whl (21 kB)
-2025-10-12T19:57:31.2452033Z Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
-2025-10-12T19:57:31.2510589Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
-2025-10-12T19:57:31.2583183Z Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
-2025-10-12T19:57:31.2701634Z Downloading pycodestyle-2.12.1-py2.py3-none-any.whl (31 kB)
-2025-10-12T19:57:31.2779633Z Downloading pydantic-2.12.0-py3-none-any.whl (459 kB)
-2025-10-12T19:57:31.2864562Z Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
-2025-10-12T19:57:31.3067806Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 118.8 MB/s  0:00:00
-2025-10-12T19:57:31.3105534Z Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
-2025-10-12T19:57:31.3176082Z Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
-2025-10-12T19:57:31.3276058Z Downloading realtime-2.22.0-py3-none-any.whl (22 kB)
-2025-10-12T19:57:31.3340573Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
-2025-10-12T19:57:31.3421948Z Downloading storage3-0.8.2-py3-none-any.whl (16 kB)
-2025-10-12T19:57:31.3485880Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
-2025-10-12T19:57:31.3561207Z Downloading supafunc-0.6.2-py3-none-any.whl (6.6 kB)
-2025-10-12T19:57:31.3619296Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
-2025-10-12T19:57:31.3684092Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
-2025-10-12T19:57:31.3749695Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
-2025-10-12T19:57:31.3843770Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
-2025-10-12T19:57:31.3913459Z Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
-2025-10-12T19:57:31.3979566Z Downloading click-8.3.0-py3-none-any.whl (107 kB)
-2025-10-12T19:57:31.4050021Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
-2025-10-12T19:57:31.4140304Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
-2025-10-12T19:57:31.4197012Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
-2025-10-12T19:57:31.4262854Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
-2025-10-12T19:57:31.4323221Z Downloading platformdirs-4.5.0-py3-none-any.whl (18 kB)
-2025-10-12T19:57:31.4379942Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
-2025-10-12T19:57:31.4444120Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
-2025-10-12T19:57:31.4517118Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
-2025-10-12T19:57:31.4578148Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
-2025-10-12T19:57:31.4641961Z Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
-2025-10-12T19:57:31.4713884Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
-2025-10-12T19:57:31.4781883Z Downloading google_api_python_client-2.184.0-py3-none-any.whl (14.3 MB)
-2025-10-12T19:57:31.5972902Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 124.4 MB/s  0:00:00
-2025-10-12T19:57:31.6010776Z Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl (9.3 kB)
-2025-10-12T19:57:31.6070844Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
-2025-10-12T19:57:31.6134085Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
-2025-10-12T19:57:31.6192949Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
-2025-10-12T19:57:31.6252519Z Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
-2025-10-12T19:57:31.6310717Z Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
-2025-10-12T19:57:31.8880255Z Installing collected packages: websockets, urllib3, uritemplate, typing-extensions, tqdm, sniffio, six, python-dotenv, pyparsing, pyjwt, pyflakes, pycodestyle, pyasn1, protobuf, pluggy, platformdirs, pillow, pathspec, packaging, numpy, mypy-extensions, mccabe, iniconfig, idna, hyperframe, hpack, h11, click, charset-normalizer, certifi, cachetools, annotated-types, typing-inspection, rsa, requests, python-dateutil, pytest, pydantic-core, pyasn1-modules, proto-plus, opencv-python, mypy, httplib2, httpcore, h2, grpcio, googleapis-common-protos, flake8, deprecation, black, anyio, pytest-asyncio, pydantic, httpx, grpcio-status, google-auth, realtime, google-auth-httplib2, google-api-core, supafunc, storage3, postgrest, gotrue, google-api-python-client, supabase, google-ai-generativelanguage, google-generativeai
-2025-10-12T19:57:40.7278980Z 
-2025-10-12T19:57:40.7317620Z Successfully installed annotated-types-0.7.0 anyio-4.11.0 black-24.10.0 cachetools-6.2.1 certifi-2025.10.5 charset-normalizer-3.4.3 click-8.3.0 deprecation-2.1.0 flake8-7.1.1 google-ai-generativelanguage-0.6.10 google-api-core-2.26.0 google-api-python-client-2.184.0 google-auth-2.41.1 google-auth-httplib2-0.2.0 google-generativeai-0.8.3 googleapis-common-protos-1.70.0 gotrue-2.12.4 grpcio-1.75.1 grpcio-status-1.71.2 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httplib2-0.31.0 httpx-0.27.2 hyperframe-6.1.0 idna-3.11 iniconfig-2.1.0 mccabe-0.7.0 mypy-1.13.0 mypy-extensions-1.1.0 numpy-2.1.3 opencv-python-4.10.0.84 packaging-25.0 pathspec-0.12.1 pillow-11.0.0 platformdirs-4.5.0 pluggy-1.6.0 postgrest-0.17.2 proto-plus-1.26.1 protobuf-5.29.5 pyasn1-0.6.1 pyasn1-modules-0.4.2 pycodestyle-2.12.1 pydantic-2.12.0 pydantic-core-2.41.1 pyflakes-3.2.0 pyjwt-2.10.1 pyparsing-3.2.5 pytest-8.3.4 pytest-asyncio-0.24.0 python-dateutil-2.9.0.post0 python-dotenv-1.0.1 realtime-2.22.0 requests-2.32.3 rsa-4.9.1 six-1.17.0 sniffio-1.3.1 storage3-0.8.2 supabase-2.8.0 supafunc-0.6.2 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 uritemplate-4.2.0 urllib3-2.5.0 websockets-15.0.1
+﻿2025-10-12T20:12:53.2495651Z ##[group]Run bun install --frozen-lockfile
+2025-10-12T20:12:53.2496031Z [36;1mbun install --frozen-lockfile[0m
+2025-10-12T20:12:53.2496332Z [36;1mpip install -r requirements.txt[0m
+2025-10-12T20:12:53.2673331Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:12:53.2673606Z env:
+2025-10-12T20:12:53.2673873Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:53.2674331Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:12:53.2674765Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:53.2675156Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:53.2675550Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:53.2675951Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:12:53.2676280Z ##[endgroup]
+2025-10-12T20:12:53.2822565Z bun install v1.3.0 (b0a6feca)
+2025-10-12T20:12:59.0353173Z 
+2025-10-12T20:12:59.0361159Z + @eslint/eslintrc@3.3.1
+2025-10-12T20:12:59.0361981Z + @playwright/test@1.56.0
+2025-10-12T20:12:59.0362438Z + @tailwindcss/postcss@4.1.14
+2025-10-12T20:12:59.0362924Z + @testing-library/jest-dom@6.9.1
+2025-10-12T20:12:59.0363393Z + @testing-library/react@16.3.0
+2025-10-12T20:12:59.0363853Z + @types/aria-query@5.0.4
+2025-10-12T20:12:59.0365103Z + @types/estree@1.0.8
+2025-10-12T20:12:59.0365459Z + @types/json-schema@7.0.15
+2025-10-12T20:12:59.0365819Z + @types/node@22.18.10
+2025-10-12T20:12:59.0366144Z + @types/phoenix@1.6.6
+2025-10-12T20:12:59.0366471Z + @types/react@19.2.2
+2025-10-12T20:12:59.0366803Z + @types/react-dom@19.2.1
+2025-10-12T20:12:59.0367206Z + @typescript-eslint/eslint-plugin@8.46.0
+2025-10-12T20:12:59.0367671Z + @typescript-eslint/parser@8.46.0
+2025-10-12T20:12:59.0368038Z + eslint@9.37.0
+2025-10-12T20:12:59.0368340Z + eslint-config-next@15.5.4
+2025-10-12T20:12:59.0368666Z + find-up@8.0.0
+2025-10-12T20:12:59.0368927Z + glob@11.0.3
+2025-10-12T20:12:59.0369217Z + ignore@7.0.5
+2025-10-12T20:12:59.0369502Z + jest@29.7.0
+2025-10-12T20:12:59.0369828Z + jest-environment-jsdom@29.7.0
+2025-10-12T20:12:59.0370211Z + prettier@3.6.2
+2025-10-12T20:12:59.0370731Z + prettier-plugin-tailwindcss@0.6.14
+2025-10-12T20:12:59.0371167Z + resolve-from@5.0.0
+2025-10-12T20:12:59.0371488Z + tailwindcss@4.1.14
+2025-10-12T20:12:59.0371806Z + typescript@5.9.3
+2025-10-12T20:12:59.0372115Z + @google/genai@1.24.0
+2025-10-12T20:12:59.0372495Z + @google/generative-ai@0.24.1
+2025-10-12T20:12:59.0372871Z + @radix-ui/react-label@2.1.7
+2025-10-12T20:12:59.0373263Z + @radix-ui/react-separator@1.1.7
+2025-10-12T20:12:59.0373662Z + @radix-ui/react-switch@1.2.6
+2025-10-12T20:12:59.0374032Z + @supabase/ssr@0.7.0
+2025-10-12T20:12:59.0374378Z + @supabase/supabase-js@2.75.0
+2025-10-12T20:12:59.0374778Z + class-variance-authority@0.7.1
+2025-10-12T20:12:59.0375156Z + clsx@2.1.1
+2025-10-12T20:12:59.0375433Z + dotenv@17.2.3
+2025-10-12T20:12:59.0375725Z + hasown@2.0.2
+2025-10-12T20:12:59.0376017Z + lru-cache@10.4.3
+2025-10-12T20:12:59.0376332Z + lucide-react@0.545.0
+2025-10-12T20:12:59.0376649Z + mime@4.1.0
+2025-10-12T20:12:59.0376928Z + next@15.5.4
+2025-10-12T20:12:59.0377214Z + react@19.2.0
+2025-10-12T20:12:59.0377519Z + react-dom@19.2.0
+2025-10-12T20:12:59.0377842Z + react-dropzone@14.3.8
+2025-10-12T20:12:59.0378179Z + tailwind-merge@3.3.1
+2025-10-12T20:12:59.0378386Z 
+2025-10-12T20:12:59.0378542Z 686 packages installed [5.75s]
+2025-10-12T20:13:02.9337281Z Collecting google-generativeai==0.8.3 (from -r requirements.txt (line 2))
+2025-10-12T20:13:02.9888289Z   Downloading google_generativeai-0.8.3-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:13:03.2032991Z Collecting pillow==11.0.0 (from -r requirements.txt (line 3))
+2025-10-12T20:13:03.2161847Z   Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2025-10-12T20:13:03.2556543Z Collecting supabase==2.8.0 (from -r requirements.txt (line 4))
+2025-10-12T20:13:03.2667158Z   Downloading supabase-2.8.0-py3-none-any.whl.metadata (10 kB)
+2025-10-12T20:13:03.2950964Z Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 5))
+2025-10-12T20:13:03.3058708Z   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+2025-10-12T20:13:03.3502454Z Collecting requests==2.32.3 (from -r requirements.txt (line 6))
+2025-10-12T20:13:03.3611858Z   Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:13:03.6276273Z Collecting numpy==2.1.3 (from -r requirements.txt (line 7))
+2025-10-12T20:13:03.6399601Z   Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2025-10-12T20:13:04.2934513Z Collecting opencv-python==4.10.0.84 (from -r requirements.txt (line 8))
+2025-10-12T20:13:04.3111222Z   Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+2025-10-12T20:13:04.3543194Z Collecting pytest==8.3.4 (from -r requirements.txt (line 11))
+2025-10-12T20:13:04.3655524Z   Downloading pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
+2025-10-12T20:13:04.3930095Z Collecting pytest-asyncio==0.24.0 (from -r requirements.txt (line 12))
+2025-10-12T20:13:04.4052669Z   Downloading pytest_asyncio-0.24.0-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:13:04.4754300Z Collecting black==24.10.0 (from -r requirements.txt (line 13))
+2025-10-12T20:13:04.4894809Z   Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2025-10-12T20:13:04.8260237Z Collecting flake8==7.1.1 (from -r requirements.txt (line 14))
+2025-10-12T20:13:04.8371549Z   Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-10-12T20:13:04.9483157Z Collecting mypy==1.13.0 (from -r requirements.txt (line 15))
+2025-10-12T20:13:04.9597618Z   Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+2025-10-12T20:13:04.9843853Z Collecting google-ai-generativelanguage==0.6.10 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:04.9958680Z   Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T20:13:05.0377334Z Collecting google-api-core (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.0481509Z   Downloading google_api_core-2.26.0-py3-none-any.whl.metadata (3.2 kB)
+2025-10-12T20:13:05.1123947Z Collecting google-api-python-client (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.1248594Z   Downloading google_api_python_client-2.184.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T20:13:05.1707291Z Collecting google-auth>=2.15.0 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.1812716Z   Downloading google_auth-2.41.1-py2.py3-none-any.whl.metadata (6.6 kB)
+2025-10-12T20:13:05.3667041Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.3776793Z   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2025-10-12T20:13:05.5333536Z Collecting pydantic (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.5448219Z   Downloading pydantic-2.12.0-py3-none-any.whl.metadata (83 kB)
+2025-10-12T20:13:05.5909763Z Collecting tqdm (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.6015910Z   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+2025-10-12T20:13:05.6312964Z Collecting typing-extensions (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:05.6416843Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T20:13:05.6716229Z Collecting gotrue<3.0,>=1.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.6833893Z   Downloading gotrue-2.12.4-py3-none-any.whl.metadata (2.0 kB)
+2025-10-12T20:13:05.7105339Z Collecting httpx<0.28,>=0.24 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.7207535Z   Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+2025-10-12T20:13:05.7468475Z Collecting postgrest<0.18.0,>=0.14 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.7579111Z   Downloading postgrest-0.17.2-py3-none-any.whl.metadata (3.4 kB)
+2025-10-12T20:13:05.7840153Z Collecting realtime<3.0.0,>=2.0.0 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.7951601Z   Downloading realtime-2.22.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T20:13:05.8228671Z Collecting storage3<0.9.0,>=0.5.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.8346132Z   Downloading storage3-0.8.2-py3-none-any.whl.metadata (1.8 kB)
+2025-10-12T20:13:05.8579765Z Collecting supafunc<0.7.0,>=0.3.1 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:05.8688096Z   Downloading supafunc-0.6.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:05.9630098Z Collecting charset-normalizer<4,>=2 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:05.9730120Z   Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+2025-10-12T20:13:05.9973952Z Collecting idna<4,>=2.5 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:06.0094605Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:06.0456756Z Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:06.0558225Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-10-12T20:13:06.0849260Z Collecting certifi>=2017.4.17 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:06.0953782Z   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+2025-10-12T20:13:06.1498167Z Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:06.1601083Z   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+2025-10-12T20:13:06.1840117Z Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:06.1946443Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T20:13:06.2154952Z Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:06.2261556Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2025-10-12T20:13:06.2605041Z Collecting click>=8.0.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:06.2709133Z   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:06.2880965Z Collecting mypy-extensions>=0.4.3 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:06.2991018Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:06.3220606Z Collecting pathspec>=0.9.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:06.3327127Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-10-12T20:13:06.3629987Z Collecting platformdirs>=2 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:06.3732838Z   Downloading platformdirs-4.5.0-py3-none-any.whl.metadata (12 kB)
+2025-10-12T20:13:06.3948785Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:06.4050983Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T20:13:06.4263322Z Collecting pycodestyle<2.13.0,>=2.12.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:06.4483740Z   Downloading pycodestyle-2.12.1-py2.py3-none-any.whl.metadata (4.5 kB)
+2025-10-12T20:13:06.4724217Z Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:06.4847642Z   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T20:13:06.6188024Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:06.6368889Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:06.7104131Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:06.7225181Z   Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+2025-10-12T20:13:06.7548799Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:06.7653083Z   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
+2025-10-12T20:13:07.4543809Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.4662993Z   Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+2025-10-12T20:13:07.5271652Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.5393946Z   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.5851670Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.5966403Z   Downloading cachetools-6.2.1-py3-none-any.whl.metadata (5.5 kB)
+2025-10-12T20:13:07.6226395Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.6330998Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T20:13:07.6555772Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.6662222Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T20:13:07.7159352Z Collecting pyjwt<3.0.0,>=2.10.1 (from gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:07.7264939Z   Downloading PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+2025-10-12T20:13:07.8166686Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+2025-10-12T20:13:07.8174156Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:07.8281453Z   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.8442957Z   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.8600554Z   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.9114911Z   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.9267321Z   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.9431314Z   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:07.9582084Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:08.0896375Z Collecting anyio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.1003080Z   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+2025-10-12T20:13:08.1284613Z Collecting httpcore==1.* (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.1389041Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2025-10-12T20:13:08.1584720Z Collecting sniffio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.1687892Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:13:08.1881393Z Collecting h11>=0.16 (from httpcore==1.*->httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.1984353Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-10-12T20:13:08.2314469Z Collecting h2<5,>=3 (from httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.2429776Z   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+2025-10-12T20:13:08.2670252Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.2796436Z   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+2025-10-12T20:13:08.3002090Z Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.3119098Z   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:13:08.3880039Z Collecting deprecation<3.0.0,>=2.1.0 (from postgrest<0.18.0,>=0.14->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:08.3987821Z   Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:13:08.5357871Z Collecting annotated-types>=0.6.0 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:08.5473242Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2025-10-12T20:13:09.2582054Z Collecting pydantic-core==2.41.1 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.2689849Z   Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2025-10-12T20:13:09.2944889Z Collecting typing-inspection>=0.4.2 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.3047778Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:09.4245028Z Collecting websockets<16,>=11 (from realtime<3.0.0,>=2.0.0->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:09.4351400Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2025-10-12T20:13:09.4674353Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.4808978Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:09.5054030Z Collecting python-dateutil<3.0.0,>=2.8.2 (from storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:09.5158339Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:09.5451396Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:09.5566469Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-10-12T20:13:09.6281974Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.6393677Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:09.6821129Z Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.6935448Z   Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:09.7128736Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.7237713Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:09.7596449Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:09.7706950Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T20:13:09.7949208Z Downloading google_generativeai-0.8.3-py3-none-any.whl (160 kB)
+2025-10-12T20:13:09.8107582Z Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.4 MB)
+2025-10-12T20:13:09.8650650Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 84.2 MB/s  0:00:00
+2025-10-12T20:13:09.8777372Z Downloading supabase-2.8.0-py3-none-any.whl (16 kB)
+2025-10-12T20:13:09.8903979Z Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
+2025-10-12T20:13:09.9029218Z Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+2025-10-12T20:13:09.9227189Z Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
+2025-10-12T20:13:10.0489586Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 130.6 MB/s  0:00:00
+2025-10-12T20:13:10.0608756Z Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
+2025-10-12T20:13:10.4065335Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 182.4 MB/s  0:00:00
+2025-10-12T20:13:10.4180262Z Downloading pytest-8.3.4-py3-none-any.whl (343 kB)
+2025-10-12T20:13:10.4335979Z Downloading pytest_asyncio-0.24.0-py3-none-any.whl (18 kB)
+2025-10-12T20:13:10.4495062Z Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+2025-10-12T20:13:10.4647815Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 117.0 MB/s  0:00:00
+2025-10-12T20:13:10.4770244Z Downloading flake8-7.1.1-py2.py3-none-any.whl (57 kB)
+2025-10-12T20:13:10.4903451Z Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (12.5 MB)
+2025-10-12T20:13:10.5716544Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.5/12.5 MB 156.9 MB/s  0:00:00
+2025-10-12T20:13:10.5843264Z Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl (760 kB)
+2025-10-12T20:13:10.5919686Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.0/760.0 kB 99.7 MB/s  0:00:00
+2025-10-12T20:13:10.6023641Z Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (150 kB)
+2025-10-12T20:13:10.6157615Z Downloading google_api_core-2.26.0-py3-none-any.whl (162 kB)
+2025-10-12T20:13:10.6292035Z Downloading google_auth-2.41.1-py2.py3-none-any.whl (221 kB)
+2025-10-12T20:13:10.6429258Z Downloading cachetools-6.2.1-py3-none-any.whl (11 kB)
+2025-10-12T20:13:10.6563653Z Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
+2025-10-12T20:13:10.6711018Z Downloading gotrue-2.12.4-py3-none-any.whl (42 kB)
+2025-10-12T20:13:10.6876547Z Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.5 MB)
+2025-10-12T20:13:10.7276002Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.5/6.5 MB 168.6 MB/s  0:00:00
+2025-10-12T20:13:10.7388435Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+2025-10-12T20:13:10.7519682Z Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+2025-10-12T20:13:10.7654286Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2025-10-12T20:13:10.7798213Z Downloading h2-4.3.0-py3-none-any.whl (61 kB)
+2025-10-12T20:13:10.7930986Z Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
+2025-10-12T20:13:10.8116035Z Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
+2025-10-12T20:13:10.8241349Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-10-12T20:13:10.8368986Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2025-10-12T20:13:10.8501332Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2025-10-12T20:13:10.8637030Z Downloading postgrest-0.17.2-py3-none-any.whl (21 kB)
+2025-10-12T20:13:10.8761715Z Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T20:13:10.8886681Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
+2025-10-12T20:13:10.9013530Z Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+2025-10-12T20:13:10.9186775Z Downloading pycodestyle-2.12.1-py2.py3-none-any.whl (31 kB)
+2025-10-12T20:13:10.9317752Z Downloading pydantic-2.12.0-py3-none-any.whl (459 kB)
+2025-10-12T20:13:10.9473879Z Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2025-10-12T20:13:10.9770314Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 72.7 MB/s  0:00:00
+2025-10-12T20:13:10.9886992Z Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+2025-10-12T20:13:11.0022589Z Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
+2025-10-12T20:13:11.0158250Z Downloading realtime-2.22.0-py3-none-any.whl (22 kB)
+2025-10-12T20:13:11.0285284Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+2025-10-12T20:13:11.0430751Z Downloading storage3-0.8.2-py3-none-any.whl (16 kB)
+2025-10-12T20:13:11.0557629Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2025-10-12T20:13:11.0738866Z Downloading supafunc-0.6.2-py3-none-any.whl (6.6 kB)
+2025-10-12T20:13:11.0876251Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-10-12T20:13:11.1013061Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-10-12T20:13:11.1146664Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+2025-10-12T20:13:11.1286659Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2025-10-12T20:13:11.1411577Z Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+2025-10-12T20:13:11.1565714Z Downloading click-8.3.0-py3-none-any.whl (107 kB)
+2025-10-12T20:13:11.1703747Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-10-12T20:13:11.1834701Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2025-10-12T20:13:11.1965407Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-10-12T20:13:11.2098391Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-10-12T20:13:11.2237127Z Downloading platformdirs-4.5.0-py3-none-any.whl (18 kB)
+2025-10-12T20:13:11.2373902Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+2025-10-12T20:13:11.2557331Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2025-10-12T20:13:11.2702577Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T20:13:11.2833592Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2025-10-12T20:13:11.2985552Z Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+2025-10-12T20:13:11.3122623Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2025-10-12T20:13:11.3267108Z Downloading google_api_python_client-2.184.0-py3-none-any.whl (14.3 MB)
+2025-10-12T20:13:11.4266029Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 144.5 MB/s  0:00:00
+2025-10-12T20:13:11.4373692Z Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl (9.3 kB)
+2025-10-12T20:13:11.4499472Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
+2025-10-12T20:13:11.4636572Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
+2025-10-12T20:13:11.4768517Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+2025-10-12T20:13:11.4899767Z Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+2025-10-12T20:13:11.5023600Z Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+2025-10-12T20:13:11.7799957Z Installing collected packages: websockets, urllib3, uritemplate, typing-extensions, tqdm, sniffio, six, python-dotenv, pyparsing, pyjwt, pyflakes, pycodestyle, pyasn1, protobuf, pluggy, platformdirs, pillow, pathspec, packaging, numpy, mypy-extensions, mccabe, iniconfig, idna, hyperframe, hpack, h11, click, charset-normalizer, certifi, cachetools, annotated-types, typing-inspection, rsa, requests, python-dateutil, pytest, pydantic-core, pyasn1-modules, proto-plus, opencv-python, mypy, httplib2, httpcore, h2, grpcio, googleapis-common-protos, flake8, deprecation, black, anyio, pytest-asyncio, pydantic, httpx, grpcio-status, google-auth, realtime, google-auth-httplib2, google-api-core, supafunc, storage3, postgrest, gotrue, google-api-python-client, supabase, google-ai-generativelanguage, google-generativeai
+2025-10-12T20:13:19.3257967Z 
+2025-10-12T20:13:19.3296578Z Successfully installed annotated-types-0.7.0 anyio-4.11.0 black-24.10.0 cachetools-6.2.1 certifi-2025.10.5 charset-normalizer-3.4.3 click-8.3.0 deprecation-2.1.0 flake8-7.1.1 google-ai-generativelanguage-0.6.10 google-api-core-2.26.0 google-api-python-client-2.184.0 google-auth-2.41.1 google-auth-httplib2-0.2.0 google-generativeai-0.8.3 googleapis-common-protos-1.70.0 gotrue-2.12.4 grpcio-1.75.1 grpcio-status-1.71.2 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httplib2-0.31.0 httpx-0.27.2 hyperframe-6.1.0 idna-3.11 iniconfig-2.1.0 mccabe-0.7.0 mypy-1.13.0 mypy-extensions-1.1.0 numpy-2.1.3 opencv-python-4.10.0.84 packaging-25.0 pathspec-0.12.1 pillow-11.0.0 platformdirs-4.5.0 pluggy-1.6.0 postgrest-0.17.2 proto-plus-1.26.1 protobuf-5.29.5 pyasn1-0.6.1 pyasn1-modules-0.4.2 pycodestyle-2.12.1 pydantic-2.12.0 pydantic-core-2.41.1 pyflakes-3.2.0 pyjwt-2.10.1 pyparsing-3.2.5 pytest-8.3.4 pytest-asyncio-0.24.0 python-dateutil-2.9.0.post0 python-dotenv-1.0.1 realtime-2.22.0 requests-2.32.3 rsa-4.9.1 six-1.17.0 sniffio-1.3.1 storage3-0.8.2 supabase-2.8.0 supafunc-0.6.2 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 uritemplate-4.2.0 urllib3-2.5.0 websockets-15.0.1

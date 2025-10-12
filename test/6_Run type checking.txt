@@ -1,12 +1,12 @@
-﻿2025-10-12T19:57:41.2344103Z ##[group]Run bun run type-check
-2025-10-12T19:57:41.2344408Z [36;1mbun run type-check[0m
-2025-10-12T19:57:41.2378044Z shell: /usr/bin/bash -e {0}
-2025-10-12T19:57:41.2378279Z env:
-2025-10-12T19:57:41.2378523Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:41.2378955Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
-2025-10-12T19:57:41.2379375Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:41.2379739Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:41.2380100Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:41.2380451Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
-2025-10-12T19:57:41.2380752Z ##[endgroup]
-2025-10-12T19:57:41.2457881Z $ tsc --noEmit
+﻿2025-10-12T20:13:19.8576032Z ##[group]Run bun run type-check
+2025-10-12T20:13:19.8576335Z [36;1mbun run type-check[0m
+2025-10-12T20:13:19.8609709Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:13:19.8609940Z env:
+2025-10-12T20:13:19.8610179Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:19.8610865Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:13:19.8611286Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:19.8611636Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:19.8611990Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:19.8612337Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:13:19.8612637Z ##[endgroup]
+2025-10-12T20:13:19.8687728Z $ tsc --noEmit

@@ -1,306 +1,306 @@
-﻿2025-10-12T19:57:37.0225350Z ##[group]Run flake8 services/
-2025-10-12T19:57:37.0225653Z [36;1mflake8 services/[0m
-2025-10-12T19:57:37.0225877Z [36;1mblack --check services/[0m
-2025-10-12T19:57:37.0226108Z [36;1mmypy services/[0m
-2025-10-12T19:57:37.0258387Z shell: /usr/bin/bash -e {0}
-2025-10-12T19:57:37.0258626Z env:
-2025-10-12T19:57:37.0258870Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:37.0259275Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
-2025-10-12T19:57:37.0259660Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:37.0260006Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:37.0260352Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
-2025-10-12T19:57:37.0260707Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
-2025-10-12T19:57:37.0260997Z ##[endgroup]
-2025-10-12T19:57:37.5581397Z services/ai_processor.py:10:1: F401 'time' imported but unused
-2025-10-12T19:57:37.5586224Z services/ai_processor.py:12:1: F401 'typing.Tuple' imported but unused
-2025-10-12T19:57:37.5593104Z services/ai_processor.py:16:1: F401 'google.generativeai as genai' imported but unused
-2025-10-12T19:57:37.5597749Z services/ai_processor.py:89:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5602571Z services/ai_processor.py:95:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5603471Z services/ai_processor.py:99:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5605711Z services/ai_processor.py:103:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5606387Z services/ai_processor.py:125:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5606998Z services/ai_processor.py:127:14: W291 trailing whitespace
-2025-10-12T19:57:37.5607610Z services/ai_processor.py:132:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5613142Z services/ai_processor.py:135:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5613890Z services/ai_processor.py:140:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5614588Z services/ai_processor.py:149:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5615244Z services/ai_processor.py:152:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5615889Z services/ai_processor.py:158:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5616535Z services/ai_processor.py:160:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5617186Z services/ai_processor.py:172:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5617830Z services/ai_processor.py:175:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5618807Z services/ai_processor.py:178:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5619467Z services/ai_processor.py:191:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5620054Z services/ai_processor.py:193:14: W291 trailing whitespace
-2025-10-12T19:57:37.5620655Z services/ai_processor.py:198:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5621297Z services/ai_processor.py:201:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5621965Z services/ai_processor.py:207:80: E501 line too long (94 > 79 characters)
-2025-10-12T19:57:37.5622631Z services/ai_processor.py:216:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5623294Z services/ai_processor.py:218:80: E501 line too long (96 > 79 characters)
-2025-10-12T19:57:37.5623953Z services/ai_processor.py:219:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5624577Z services/ai_processor.py:222:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5625213Z services/ai_processor.py:224:80: E501 line too long (84 > 79 characters)
-2025-10-12T19:57:37.5625852Z services/ai_processor.py:225:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5626804Z services/ai_processor.py:227:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5627439Z services/ai_processor.py:228:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5628208Z services/ai_processor.py:230:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5629250Z services/ai_processor.py:240:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5629938Z services/ai_processor.py:241:80: E501 line too long (97 > 79 characters)
-2025-10-12T19:57:37.5630588Z services/ai_processor.py:245:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5631253Z services/ai_processor.py:249:80: E501 line too long (90 > 79 characters)
-2025-10-12T19:57:37.5631879Z services/ai_processor.py:252:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5632589Z services/ai_processor.py:254:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5633198Z services/ai_processor.py:258:80: E501 line too long (93 > 79 characters)
-2025-10-12T19:57:37.5633836Z services/ai_processor.py:261:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5634441Z services/ai_processor.py:263:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5635033Z services/ai_processor.py:268:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5635586Z services/ai_processor.py:270:14: W291 trailing whitespace
-2025-10-12T19:57:37.5636086Z services/ai_processor.py:271:32: W291 trailing whitespace
-2025-10-12T19:57:37.5636610Z services/ai_processor.py:275:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5637214Z services/ai_processor.py:277:80: E501 line too long (90 > 79 characters)
-2025-10-12T19:57:37.5637813Z services/ai_processor.py:278:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5638710Z services/ai_processor.py:281:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5639300Z services/ai_processor.py:290:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5639880Z services/ai_processor.py:299:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5640494Z services/ai_processor.py:301:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5641108Z services/ai_processor.py:302:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5641694Z services/ai_processor.py:305:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5642284Z services/ai_processor.py:307:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5642810Z services/ai_processor.py:309:14: W291 trailing whitespace
-2025-10-12T19:57:37.5643303Z services/ai_processor.py:310:21: W291 trailing whitespace
-2025-10-12T19:57:37.5643828Z services/ai_processor.py:317:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5644415Z services/ai_processor.py:320:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5644980Z services/ai_processor.py:334:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5645559Z services/ai_processor.py:336:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5646143Z services/ai_processor.py:340:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5646720Z services/ai_processor.py:349:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5647311Z services/ai_processor.py:353:80: E501 line too long (115 > 79 characters)
-2025-10-12T19:57:37.5647914Z services/ai_processor.py:357:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5648679Z services/ai_processor.py:358:80: E501 line too long (96 > 79 characters)
-2025-10-12T19:57:37.5649282Z services/ai_processor.py:361:80: E501 line too long (132 > 79 characters)
-2025-10-12T19:57:37.5649896Z services/ai_processor.py:364:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5650506Z services/ai_processor.py:365:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5651101Z services/ai_processor.py:372:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5651691Z services/ai_processor.py:374:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5652268Z services/ai_processor.py:376:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5653074Z services/ai_processor.py:380:80: E501 line too long (93 > 79 characters)
-2025-10-12T19:57:37.5653663Z services/ai_processor.py:383:80: E501 line too long (87 > 79 characters)
-2025-10-12T19:57:37.5654255Z services/ai_processor.py:395:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5655076Z services/ai_processor.py:396:80: E501 line too long (91 > 79 characters)
-2025-10-12T19:57:37.5655698Z services/ai_processor.py:402:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5656311Z services/ai_processor.py:406:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5656928Z services/ai_processor.py:417:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5657511Z services/ai_processor.py:427:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5658277Z services/ai_processor.py:428:80: E501 line too long (82 > 79 characters)
-2025-10-12T19:57:37.5658883Z services/ai_processor.py:431:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5659545Z services/ai_processor.py:432:80: E501 line too long (110 > 79 characters)
-2025-10-12T19:57:37.5660155Z services/ai_processor.py:437:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5660750Z services/ai_processor.py:445:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5661339Z services/ai_processor.py:448:80: E501 line too long (96 > 79 characters)
-2025-10-12T19:57:37.5661966Z services/ai_processor.py:450:80: E501 line too long (424 > 79 characters)
-2025-10-12T19:57:37.5662584Z services/ai_processor.py:451:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5663196Z services/ai_processor.py:452:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5663808Z services/ai_processor.py:456:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5664388Z services/ai_processor.py:459:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5664980Z services/ai_processor.py:461:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5665590Z services/ai_processor.py:462:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5666161Z services/ai_processor.py:465:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5666734Z services/ai_processor.py:467:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5667311Z services/ai_processor.py:471:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5667899Z services/ai_processor.py:474:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5668653Z services/ai_processor.py:480:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5669224Z services/ai_processor.py:485:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5669840Z services/ai_processor.py:490:80: E501 line too long (83 > 79 characters)
-2025-10-12T19:57:37.5670441Z services/ai_processor.py:492:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5671040Z services/ai_processor.py:493:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5671623Z services/ai_processor.py:496:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5672218Z services/ai_processor.py:497:80: E501 line too long (99 > 79 characters)
-2025-10-12T19:57:37.5672803Z services/ai_processor.py:499:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5673386Z services/ai_processor.py:502:80: E501 line too long (106 > 79 characters)
-2025-10-12T19:57:37.5673995Z services/ai_processor.py:503:80: E501 line too long (97 > 79 characters)
-2025-10-12T19:57:37.5674590Z services/ai_processor.py:508:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5675198Z services/ai_processor.py:514:80: E501 line too long (100 > 79 characters)
-2025-10-12T19:57:37.5675811Z services/ai_processor.py:515:80: E501 line too long (93 > 79 characters)
-2025-10-12T19:57:37.5676410Z services/ai_processor.py:520:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5677003Z services/ai_processor.py:521:80: E501 line too long (92 > 79 characters)
-2025-10-12T19:57:37.5677602Z services/ai_processor.py:526:80: E501 line too long (94 > 79 characters)
-2025-10-12T19:57:37.5678555Z services/ai_processor.py:532:80: E501 line too long (99 > 79 characters)
-2025-10-12T19:57:37.5679154Z services/ai_processor.py:533:80: E501 line too long (99 > 79 characters)
-2025-10-12T19:57:37.5679751Z services/ai_processor.py:538:80: E501 line too long (90 > 79 characters)
-2025-10-12T19:57:37.5680528Z services/ai_processor.py:539:80: E501 line too long (104 > 79 characters)
-2025-10-12T19:57:37.5681157Z services/ai_processor.py:544:80: E501 line too long (91 > 79 characters)
-2025-10-12T19:57:37.5681786Z services/ai_processor.py:545:80: E501 line too long (99 > 79 characters)
-2025-10-12T19:57:37.5682403Z services/ai_processor.py:550:80: E501 line too long (82 > 79 characters)
-2025-10-12T19:57:37.5683050Z services/ai_processor.py:551:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5683665Z services/ai_processor.py:556:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5684279Z services/ai_processor.py:557:80: E501 line too long (98 > 79 characters)
-2025-10-12T19:57:37.5684924Z services/ai_processor.py:558:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5685516Z services/ai_processor.py:567:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5686104Z services/ai_processor.py:571:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5686648Z services/ai_processor.py:574:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5687184Z services/ai_processor.py:580:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5687725Z services/ai_processor.py:581:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5688439Z services/ai_processor.py:582:80: E501 line too long (102 > 79 characters)
-2025-10-12T19:57:37.5689001Z services/ai_processor.py:583:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5689572Z services/ai_processor.py:586:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5690251Z services/ai_processor.py:591:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5690917Z services/image_processor.py:4:80: E501 line too long (87 > 79 characters)
-2025-10-12T19:57:37.5691658Z services/image_processor.py:19:1: F401 'typing.Optional' imported but unused
-2025-10-12T19:57:37.5692400Z services/image_processor.py:19:1: F401 'typing.Tuple' imported but unused
-2025-10-12T19:57:37.5693146Z services/image_processor.py:21:1: F401 'PIL.ExifTags' imported but unused
-2025-10-12T19:57:37.5693827Z services/image_processor.py:23:1: F401 'json' imported but unused
-2025-10-12T19:57:37.5694481Z services/image_processor.py:30:1: E302 expected 2 blank lines, found 1
-2025-10-12T19:57:37.5695154Z services/image_processor.py:32:80: E501 line too long (84 > 79 characters)
-2025-10-12T19:57:37.5695848Z services/image_processor.py:34:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5696530Z services/image_processor.py:42:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5697204Z services/image_processor.py:45:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5697846Z services/image_processor.py:52:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5698642Z services/image_processor.py:57:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5699246Z services/image_processor.py:59:14: W291 trailing whitespace
-2025-10-12T19:57:37.5699791Z services/image_processor.py:60:38: W291 trailing whitespace
-2025-10-12T19:57:37.5700397Z services/image_processor.py:66:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5701029Z services/image_processor.py:71:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5701674Z services/image_processor.py:79:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5702341Z services/image_processor.py:85:80: E501 line too long (121 > 79 characters)
-2025-10-12T19:57:37.5703003Z services/image_processor.py:86:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5703636Z services/image_processor.py:89:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5704254Z services/image_processor.py:94:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5705091Z services/image_processor.py:99:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5705725Z services/image_processor.py:104:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5706377Z services/image_processor.py:113:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5707219Z services/image_processor.py:115:80: E501 line too long (83 > 79 characters)
-2025-10-12T19:57:37.5707884Z services/image_processor.py:117:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5708652Z services/image_processor.py:119:14: W291 trailing whitespace
-2025-10-12T19:57:37.5709213Z services/image_processor.py:120:38: W291 trailing whitespace
-2025-10-12T19:57:37.5709824Z services/image_processor.py:127:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5710446Z services/image_processor.py:133:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5711073Z services/image_processor.py:141:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5711719Z services/image_processor.py:147:80: E501 line too long (123 > 79 characters)
-2025-10-12T19:57:37.5712391Z services/image_processor.py:148:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5713099Z services/image_processor.py:151:80: E501 line too long (106 > 79 characters)
-2025-10-12T19:57:37.5713788Z services/image_processor.py:152:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5714488Z services/image_processor.py:155:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5715189Z services/image_processor.py:160:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5715864Z services/image_processor.py:165:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5716570Z services/image_processor.py:174:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5717256Z services/image_processor.py:178:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5717919Z services/image_processor.py:180:14: W291 trailing whitespace
-2025-10-12T19:57:37.5718664Z services/image_processor.py:181:26: W291 trailing whitespace
-2025-10-12T19:57:37.5719273Z services/image_processor.py:182:26: W291 trailing whitespace
-2025-10-12T19:57:37.5719841Z services/image_processor.py:183:23: W291 trailing whitespace
-2025-10-12T19:57:37.5720477Z services/image_processor.py:188:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5721183Z services/image_processor.py:194:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5721775Z services/image_processor.py:199:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5722411Z services/image_processor.py:206:80: E501 line too long (87 > 79 characters)
-2025-10-12T19:57:37.5723066Z services/image_processor.py:210:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5723775Z services/image_processor.py:212:80: E501 line too long (90 > 79 characters)
-2025-10-12T19:57:37.5724506Z services/image_processor.py:214:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5725224Z services/image_processor.py:217:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5726005Z services/image_processor.py:220:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5726678Z services/image_processor.py:221:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5727310Z services/image_processor.py:223:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5727935Z services/image_processor.py:225:14: W291 trailing whitespace
-2025-10-12T19:57:37.5728658Z services/image_processor.py:226:26: W291 trailing whitespace
-2025-10-12T19:57:37.5729277Z services/image_processor.py:227:26: W291 trailing whitespace
-2025-10-12T19:57:37.5729944Z services/image_processor.py:232:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5730670Z services/image_processor.py:237:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5731387Z services/image_processor.py:242:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5732125Z services/image_processor.py:246:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5732859Z services/image_processor.py:249:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5733780Z services/image_processor.py:252:80: E501 line too long (90 > 79 characters)
-2025-10-12T19:57:37.5734515Z services/image_processor.py:253:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5735178Z services/image_processor.py:255:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5736013Z services/image_processor.py:257:14: W291 trailing whitespace
-2025-10-12T19:57:37.5736533Z services/image_processor.py:258:26: W291 trailing whitespace
-2025-10-12T19:57:37.5737047Z services/image_processor.py:259:26: W291 trailing whitespace
-2025-10-12T19:57:37.5737597Z services/image_processor.py:264:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5738324Z services/image_processor.py:269:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5739046Z services/image_processor.py:274:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5739746Z services/image_processor.py:278:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5740455Z services/image_processor.py:281:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5741155Z services/image_processor.py:284:80: E501 line too long (86 > 79 characters)
-2025-10-12T19:57:37.5741875Z services/image_processor.py:285:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5742585Z services/image_processor.py:287:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5743282Z services/image_processor.py:291:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5743960Z services/image_processor.py:294:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5744622Z services/image_processor.py:306:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5745291Z services/image_processor.py:315:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5745977Z services/image_processor.py:317:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5746692Z services/image_processor.py:318:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5747415Z services/image_processor.py:321:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5748235Z services/image_processor.py:324:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5748930Z services/image_processor.py:331:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5749643Z services/image_processor.py:334:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5750293Z services/image_processor.py:339:40: W291 trailing whitespace
-2025-10-12T19:57:37.5750949Z services/image_processor.py:340:80: E501 line too long (116 > 79 characters)
-2025-10-12T19:57:37.5751652Z services/image_processor.py:342:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5752336Z services/image_processor.py:347:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5753019Z services/image_processor.py:349:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5753731Z services/image_processor.py:358:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5754422Z services/image_processor.py:367:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5755118Z services/image_processor.py:370:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5755765Z services/image_processor.py:372:14: W291 trailing whitespace
-2025-10-12T19:57:37.5756355Z services/image_processor.py:373:45: W291 trailing whitespace
-2025-10-12T19:57:37.5756992Z services/image_processor.py:379:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5757687Z services/image_processor.py:384:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5758513Z services/image_processor.py:389:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5759245Z services/image_processor.py:402:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5759950Z services/image_processor.py:408:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5760636Z services/image_processor.py:416:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5761316Z services/image_processor.py:418:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5762237Z services/image_processor.py:431:80: E501 line too long (108 > 79 characters)
-2025-10-12T19:57:37.5762974Z services/image_processor.py:435:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5763691Z services/image_processor.py:444:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5764581Z services/image_processor.py:451:80: E501 line too long (98 > 79 characters)
-2025-10-12T19:57:37.5765289Z services/image_processor.py:452:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5765992Z services/image_processor.py:457:80: E501 line too long (84 > 79 characters)
-2025-10-12T19:57:37.5766703Z services/image_processor.py:460:80: E501 line too long (89 > 79 characters)
-2025-10-12T19:57:37.5767414Z services/image_processor.py:462:80: E501 line too long (104 > 79 characters)
-2025-10-12T19:57:37.5768300Z services/image_processor.py:472:80: E501 line too long (124 > 79 characters)
-2025-10-12T19:57:37.5769032Z services/image_processor.py:479:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5769745Z services/image_processor.py:486:80: E501 line too long (98 > 79 characters)
-2025-10-12T19:57:37.5770475Z services/image_processor.py:487:80: E501 line too long (81 > 79 characters)
-2025-10-12T19:57:37.5771195Z services/image_processor.py:492:80: E501 line too long (84 > 79 characters)
-2025-10-12T19:57:37.5771918Z services/image_processor.py:495:80: E501 line too long (85 > 79 characters)
-2025-10-12T19:57:37.5772608Z services/image_processor.py:499:80: E501 line too long (95 > 79 characters)
-2025-10-12T19:57:37.5773328Z services/image_processor.py:502:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5774038Z services/image_processor.py:507:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5774749Z services/image_processor.py:515:80: E501 line too long (106 > 79 characters)
-2025-10-12T19:57:37.5775506Z services/image_processor.py:518:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5776210Z services/image_processor.py:524:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5776937Z services/image_processor.py:529:80: E501 line too long (84 > 79 characters)
-2025-10-12T19:57:37.5777648Z services/image_processor.py:535:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5778455Z services/image_processor.py:538:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5779164Z services/image_processor.py:553:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5779801Z services/image_processor.py:557:35: W291 trailing whitespace
-2025-10-12T19:57:37.5780408Z services/image_processor.py:558:22: W291 trailing whitespace
-2025-10-12T19:57:37.5781044Z services/image_processor.py:564:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5781718Z services/image_processor.py:566:35: W292 no newline at end of file
-2025-10-12T19:57:37.5782351Z services/utils.py:11:1: F401 'typing.List' imported but unused
-2025-10-12T19:57:37.5782942Z services/utils.py:25:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5783523Z services/utils.py:32:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5784090Z services/utils.py:40:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5784665Z services/utils.py:44:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5785228Z services/utils.py:52:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5785787Z services/utils.py:56:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5786365Z services/utils.py:60:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5786925Z services/utils.py:64:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5787513Z services/utils.py:70:80: E501 line too long (80 > 79 characters)
-2025-10-12T19:57:37.5788245Z services/utils.py:74:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5788815Z services/utils.py:78:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5789398Z services/utils.py:93:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5789974Z services/utils.py:97:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5790765Z services/utils.py:101:80: E501 line too long (101 > 79 characters)
-2025-10-12T19:57:37.5791375Z services/utils.py:102:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5791960Z services/utils.py:104:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5792679Z services/utils.py:118:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5793241Z services/utils.py:124:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5793831Z services/utils.py:140:80: E501 line too long (117 > 79 characters)
-2025-10-12T19:57:37.5794440Z services/utils.py:148:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5795028Z services/utils.py:151:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5795627Z services/utils.py:155:80: E501 line too long (100 > 79 characters)
-2025-10-12T19:57:37.5796229Z services/utils.py:161:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5796806Z services/utils.py:164:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5797389Z services/utils.py:175:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5798118Z services/utils.py:180:1: W293 blank line contains whitespace
-2025-10-12T19:57:37.5861088Z ##[error]Process completed with exit code 1.
+﻿2025-10-12T20:13:16.9919530Z ##[group]Run flake8 services/
+2025-10-12T20:13:16.9919827Z [36;1mflake8 services/[0m
+2025-10-12T20:13:16.9920053Z [36;1mblack --check services/[0m
+2025-10-12T20:13:16.9920279Z [36;1mmypy services/[0m
+2025-10-12T20:13:16.9953742Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:13:16.9953966Z env:
+2025-10-12T20:13:16.9954196Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9954598Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:13:16.9954970Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9955328Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9955690Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9956046Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:13:16.9956342Z ##[endgroup]
+2025-10-12T20:13:17.4515954Z services/ai_processor.py:10:1: F401 'time' imported but unused
+2025-10-12T20:13:17.4520835Z services/ai_processor.py:12:1: F401 'typing.Tuple' imported but unused
+2025-10-12T20:13:17.4525306Z services/ai_processor.py:16:1: F401 'google.generativeai as genai' imported but unused
+2025-10-12T20:13:17.4528348Z services/ai_processor.py:89:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4530877Z services/ai_processor.py:95:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4538848Z services/ai_processor.py:99:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4539591Z services/ai_processor.py:103:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4540249Z services/ai_processor.py:125:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4540850Z services/ai_processor.py:127:14: W291 trailing whitespace
+2025-10-12T20:13:17.4541490Z services/ai_processor.py:132:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4542429Z services/ai_processor.py:135:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4543152Z services/ai_processor.py:140:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4543903Z services/ai_processor.py:149:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4544614Z services/ai_processor.py:152:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4545289Z services/ai_processor.py:158:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4545927Z services/ai_processor.py:160:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4546580Z services/ai_processor.py:172:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4547212Z services/ai_processor.py:175:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4547855Z services/ai_processor.py:178:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4548541Z services/ai_processor.py:191:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4549155Z services/ai_processor.py:193:14: W291 trailing whitespace
+2025-10-12T20:13:17.4549772Z services/ai_processor.py:198:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4550433Z services/ai_processor.py:201:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4551122Z services/ai_processor.py:207:80: E501 line too long (94 > 79 characters)
+2025-10-12T20:13:17.4551790Z services/ai_processor.py:216:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4558980Z services/ai_processor.py:218:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4559685Z services/ai_processor.py:219:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4560336Z services/ai_processor.py:222:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4561003Z services/ai_processor.py:224:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4561672Z services/ai_processor.py:225:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4563002Z services/ai_processor.py:227:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4563680Z services/ai_processor.py:228:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4564319Z services/ai_processor.py:230:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4565295Z services/ai_processor.py:240:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4565906Z services/ai_processor.py:241:80: E501 line too long (97 > 79 characters)
+2025-10-12T20:13:17.4566553Z services/ai_processor.py:245:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4567194Z services/ai_processor.py:249:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4567858Z services/ai_processor.py:252:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4568479Z services/ai_processor.py:254:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4569098Z services/ai_processor.py:258:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4569731Z services/ai_processor.py:261:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4570326Z services/ai_processor.py:263:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4570923Z services/ai_processor.py:268:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4571505Z services/ai_processor.py:270:14: W291 trailing whitespace
+2025-10-12T20:13:17.4572014Z services/ai_processor.py:271:32: W291 trailing whitespace
+2025-10-12T20:13:17.4572818Z services/ai_processor.py:275:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4573428Z services/ai_processor.py:277:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4574038Z services/ai_processor.py:278:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4574627Z services/ai_processor.py:281:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4575228Z services/ai_processor.py:290:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4575815Z services/ai_processor.py:299:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4576426Z services/ai_processor.py:301:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4577017Z services/ai_processor.py:302:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4577609Z services/ai_processor.py:305:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4578201Z services/ai_processor.py:307:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4578737Z services/ai_processor.py:309:14: W291 trailing whitespace
+2025-10-12T20:13:17.4579233Z services/ai_processor.py:310:21: W291 trailing whitespace
+2025-10-12T20:13:17.4579761Z services/ai_processor.py:317:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4580350Z services/ai_processor.py:320:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4580918Z services/ai_processor.py:334:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4581498Z services/ai_processor.py:336:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4582226Z services/ai_processor.py:340:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4582830Z services/ai_processor.py:349:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4583435Z services/ai_processor.py:353:80: E501 line too long (115 > 79 characters)
+2025-10-12T20:13:17.4584042Z services/ai_processor.py:357:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4584688Z services/ai_processor.py:358:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4585383Z services/ai_processor.py:361:80: E501 line too long (132 > 79 characters)
+2025-10-12T20:13:17.4585986Z services/ai_processor.py:364:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4586586Z services/ai_processor.py:365:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4587182Z services/ai_processor.py:372:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4587779Z services/ai_processor.py:374:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4588380Z services/ai_processor.py:376:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4589207Z services/ai_processor.py:380:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4589866Z services/ai_processor.py:383:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4590500Z services/ai_processor.py:395:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4591647Z services/ai_processor.py:396:80: E501 line too long (91 > 79 characters)
+2025-10-12T20:13:17.4592631Z services/ai_processor.py:402:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4593328Z services/ai_processor.py:406:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4593937Z services/ai_processor.py:417:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4594537Z services/ai_processor.py:427:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4595420Z services/ai_processor.py:428:80: E501 line too long (82 > 79 characters)
+2025-10-12T20:13:17.4596203Z services/ai_processor.py:431:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4596947Z services/ai_processor.py:432:80: E501 line too long (110 > 79 characters)
+2025-10-12T20:13:17.4597599Z services/ai_processor.py:437:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4598226Z services/ai_processor.py:445:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4598863Z services/ai_processor.py:448:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4599494Z services/ai_processor.py:450:80: E501 line too long (424 > 79 characters)
+2025-10-12T20:13:17.4600122Z services/ai_processor.py:451:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4600733Z services/ai_processor.py:452:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4601356Z services/ai_processor.py:456:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4601975Z services/ai_processor.py:459:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4602792Z services/ai_processor.py:461:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4603410Z services/ai_processor.py:462:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4603995Z services/ai_processor.py:465:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4604582Z services/ai_processor.py:467:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4605159Z services/ai_processor.py:471:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4605737Z services/ai_processor.py:474:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4606338Z services/ai_processor.py:480:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4606915Z services/ai_processor.py:485:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4607513Z services/ai_processor.py:490:80: E501 line too long (83 > 79 characters)
+2025-10-12T20:13:17.4608131Z services/ai_processor.py:492:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4608747Z services/ai_processor.py:493:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4609328Z services/ai_processor.py:496:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4609941Z services/ai_processor.py:497:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4610550Z services/ai_processor.py:499:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4611144Z services/ai_processor.py:502:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4611775Z services/ai_processor.py:503:80: E501 line too long (97 > 79 characters)
+2025-10-12T20:13:17.4612525Z services/ai_processor.py:508:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4613135Z services/ai_processor.py:514:80: E501 line too long (100 > 79 characters)
+2025-10-12T20:13:17.4613756Z services/ai_processor.py:515:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4614380Z services/ai_processor.py:520:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4614991Z services/ai_processor.py:521:80: E501 line too long (92 > 79 characters)
+2025-10-12T20:13:17.4615581Z services/ai_processor.py:526:80: E501 line too long (94 > 79 characters)
+2025-10-12T20:13:17.4616680Z services/ai_processor.py:532:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4617286Z services/ai_processor.py:533:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4617908Z services/ai_processor.py:538:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4618768Z services/ai_processor.py:539:80: E501 line too long (104 > 79 characters)
+2025-10-12T20:13:17.4619413Z services/ai_processor.py:544:80: E501 line too long (91 > 79 characters)
+2025-10-12T20:13:17.4620058Z services/ai_processor.py:545:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4620696Z services/ai_processor.py:550:80: E501 line too long (82 > 79 characters)
+2025-10-12T20:13:17.4621344Z services/ai_processor.py:551:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4621994Z services/ai_processor.py:556:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4622756Z services/ai_processor.py:557:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4623332Z services/ai_processor.py:558:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4623888Z services/ai_processor.py:567:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4624472Z services/ai_processor.py:571:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4625160Z services/ai_processor.py:574:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4625801Z services/ai_processor.py:580:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4626465Z services/ai_processor.py:581:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4627168Z services/ai_processor.py:582:80: E501 line too long (102 > 79 characters)
+2025-10-12T20:13:17.4627858Z services/ai_processor.py:583:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4628494Z services/ai_processor.py:586:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4629119Z services/ai_processor.py:591:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4629801Z services/image_processor.py:4:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4630537Z services/image_processor.py:19:1: F401 'typing.Optional' imported but unused
+2025-10-12T20:13:17.4631258Z services/image_processor.py:19:1: F401 'typing.Tuple' imported but unused
+2025-10-12T20:13:17.4631950Z services/image_processor.py:21:1: F401 'PIL.ExifTags' imported but unused
+2025-10-12T20:13:17.4632778Z services/image_processor.py:23:1: F401 'json' imported but unused
+2025-10-12T20:13:17.4633418Z services/image_processor.py:30:1: E302 expected 2 blank lines, found 1
+2025-10-12T20:13:17.4634091Z services/image_processor.py:32:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4634760Z services/image_processor.py:34:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4635421Z services/image_processor.py:42:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4636083Z services/image_processor.py:45:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4636755Z services/image_processor.py:52:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4637400Z services/image_processor.py:57:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4637997Z services/image_processor.py:59:14: W291 trailing whitespace
+2025-10-12T20:13:17.4638544Z services/image_processor.py:60:38: W291 trailing whitespace
+2025-10-12T20:13:17.4639159Z services/image_processor.py:66:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4639806Z services/image_processor.py:71:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4640474Z services/image_processor.py:79:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4641179Z services/image_processor.py:85:80: E501 line too long (121 > 79 characters)
+2025-10-12T20:13:17.4641922Z services/image_processor.py:86:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4642754Z services/image_processor.py:89:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4643478Z services/image_processor.py:94:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4644387Z services/image_processor.py:99:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4645109Z services/image_processor.py:104:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4645817Z services/image_processor.py:113:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4646691Z services/image_processor.py:115:80: E501 line too long (83 > 79 characters)
+2025-10-12T20:13:17.4647470Z services/image_processor.py:117:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4648166Z services/image_processor.py:119:14: W291 trailing whitespace
+2025-10-12T20:13:17.4648814Z services/image_processor.py:120:38: W291 trailing whitespace
+2025-10-12T20:13:17.4649474Z services/image_processor.py:127:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4650144Z services/image_processor.py:133:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4650859Z services/image_processor.py:141:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4651542Z services/image_processor.py:147:80: E501 line too long (123 > 79 characters)
+2025-10-12T20:13:17.4652310Z services/image_processor.py:148:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4652967Z services/image_processor.py:151:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4653652Z services/image_processor.py:152:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4654393Z services/image_processor.py:155:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4655113Z services/image_processor.py:160:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4655903Z services/image_processor.py:165:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4656676Z services/image_processor.py:174:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4657317Z services/image_processor.py:178:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4657919Z services/image_processor.py:180:14: W291 trailing whitespace
+2025-10-12T20:13:17.4658500Z services/image_processor.py:181:26: W291 trailing whitespace
+2025-10-12T20:13:17.4659115Z services/image_processor.py:182:26: W291 trailing whitespace
+2025-10-12T20:13:17.4659745Z services/image_processor.py:183:23: W291 trailing whitespace
+2025-10-12T20:13:17.4660440Z services/image_processor.py:188:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4661197Z services/image_processor.py:194:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4661947Z services/image_processor.py:199:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4662855Z services/image_processor.py:206:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4663634Z services/image_processor.py:210:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4664395Z services/image_processor.py:212:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4665085Z services/image_processor.py:214:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4665749Z services/image_processor.py:217:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4666376Z services/image_processor.py:220:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4666996Z services/image_processor.py:221:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4667578Z services/image_processor.py:223:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4668136Z services/image_processor.py:225:14: W291 trailing whitespace
+2025-10-12T20:13:17.4668763Z services/image_processor.py:226:26: W291 trailing whitespace
+2025-10-12T20:13:17.4669365Z services/image_processor.py:227:26: W291 trailing whitespace
+2025-10-12T20:13:17.4670020Z services/image_processor.py:232:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4670707Z services/image_processor.py:237:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4671422Z services/image_processor.py:242:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4672274Z services/image_processor.py:246:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4673001Z services/image_processor.py:249:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4673909Z services/image_processor.py:252:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4674625Z services/image_processor.py:253:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4675286Z services/image_processor.py:255:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4676117Z services/image_processor.py:257:14: W291 trailing whitespace
+2025-10-12T20:13:17.4676729Z services/image_processor.py:258:26: W291 trailing whitespace
+2025-10-12T20:13:17.4677327Z services/image_processor.py:259:26: W291 trailing whitespace
+2025-10-12T20:13:17.4677969Z services/image_processor.py:264:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4678660Z services/image_processor.py:269:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4679392Z services/image_processor.py:274:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4680099Z services/image_processor.py:278:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4680807Z services/image_processor.py:281:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4681510Z services/image_processor.py:284:80: E501 line too long (86 > 79 characters)
+2025-10-12T20:13:17.4682361Z services/image_processor.py:285:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4683060Z services/image_processor.py:287:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4683743Z services/image_processor.py:291:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4684434Z services/image_processor.py:294:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4685111Z services/image_processor.py:306:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4685824Z services/image_processor.py:315:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4686527Z services/image_processor.py:317:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4687230Z services/image_processor.py:318:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4687963Z services/image_processor.py:321:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4688655Z services/image_processor.py:324:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4689355Z services/image_processor.py:331:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4690057Z services/image_processor.py:334:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4690710Z services/image_processor.py:339:40: W291 trailing whitespace
+2025-10-12T20:13:17.4691374Z services/image_processor.py:340:80: E501 line too long (116 > 79 characters)
+2025-10-12T20:13:17.4692219Z services/image_processor.py:342:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4692953Z services/image_processor.py:347:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4693686Z services/image_processor.py:349:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4694381Z services/image_processor.py:358:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4695080Z services/image_processor.py:367:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4695776Z services/image_processor.py:370:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4696430Z services/image_processor.py:372:14: W291 trailing whitespace
+2025-10-12T20:13:17.4697028Z services/image_processor.py:373:45: W291 trailing whitespace
+2025-10-12T20:13:17.4697686Z services/image_processor.py:379:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4698381Z services/image_processor.py:384:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4699087Z services/image_processor.py:389:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4699927Z services/image_processor.py:402:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4700647Z services/image_processor.py:408:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4701353Z services/image_processor.py:416:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4702048Z services/image_processor.py:418:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4703130Z services/image_processor.py:431:80: E501 line too long (108 > 79 characters)
+2025-10-12T20:13:17.4703901Z services/image_processor.py:435:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4704661Z services/image_processor.py:444:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4705602Z services/image_processor.py:451:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4706357Z services/image_processor.py:452:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4707066Z services/image_processor.py:457:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4707851Z services/image_processor.py:460:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4708640Z services/image_processor.py:462:80: E501 line too long (104 > 79 characters)
+2025-10-12T20:13:17.4709425Z services/image_processor.py:472:80: E501 line too long (124 > 79 characters)
+2025-10-12T20:13:17.4710236Z services/image_processor.py:479:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4711065Z services/image_processor.py:486:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4711888Z services/image_processor.py:487:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4712913Z services/image_processor.py:492:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4713741Z services/image_processor.py:495:80: E501 line too long (85 > 79 characters)
+2025-10-12T20:13:17.4714550Z services/image_processor.py:499:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4715358Z services/image_processor.py:502:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4716147Z services/image_processor.py:507:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4717021Z services/image_processor.py:515:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4717823Z services/image_processor.py:518:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4718638Z services/image_processor.py:524:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4719476Z services/image_processor.py:529:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4720301Z services/image_processor.py:535:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4721096Z services/image_processor.py:538:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4721894Z services/image_processor.py:553:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4722946Z services/image_processor.py:557:35: W291 trailing whitespace
+2025-10-12T20:13:17.4723634Z services/image_processor.py:558:22: W291 trailing whitespace
+2025-10-12T20:13:17.4724368Z services/image_processor.py:564:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4725149Z services/image_processor.py:566:35: W292 no newline at end of file
+2025-10-12T20:13:17.4725863Z services/utils.py:11:1: F401 'typing.List' imported but unused
+2025-10-12T20:13:17.4726547Z services/utils.py:25:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4727199Z services/utils.py:32:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4727808Z services/utils.py:40:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4728412Z services/utils.py:44:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4728967Z services/utils.py:52:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4729550Z services/utils.py:56:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4730128Z services/utils.py:60:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4730709Z services/utils.py:64:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4731311Z services/utils.py:70:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4731920Z services/utils.py:74:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4732707Z services/utils.py:78:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4733280Z services/utils.py:93:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4733860Z services/utils.py:97:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4734684Z services/utils.py:101:80: E501 line too long (101 > 79 characters)
+2025-10-12T20:13:17.4735302Z services/utils.py:102:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4735894Z services/utils.py:104:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4736648Z services/utils.py:118:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4737244Z services/utils.py:124:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4737849Z services/utils.py:140:80: E501 line too long (117 > 79 characters)
+2025-10-12T20:13:17.4738466Z services/utils.py:148:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4739052Z services/utils.py:151:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4739661Z services/utils.py:155:80: E501 line too long (100 > 79 characters)
+2025-10-12T20:13:17.4740285Z services/utils.py:161:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4740890Z services/utils.py:164:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4741477Z services/utils.py:175:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4742231Z services/utils.py:180:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4812761Z ##[error]Process completed with exit code 1.

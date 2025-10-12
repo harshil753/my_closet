@@ -1,0 +1,691 @@
+﻿2025-10-12T20:12:48.0935222Z Current runner version: '2.328.0'
+2025-10-12T20:12:48.0988999Z ##[group]Runner Image Provisioner
+2025-10-12T20:12:48.0990234Z Hosted Compute Agent
+2025-10-12T20:12:48.0991130Z Version: 20250912.392
+2025-10-12T20:12:48.1012715Z Commit: d921fda672a98b64f4f82364647e2f10b2267d0b
+2025-10-12T20:12:48.1013946Z Build Date: 2025-09-12T15:23:14Z
+2025-10-12T20:12:48.1014902Z ##[endgroup]
+2025-10-12T20:12:48.1015854Z ##[group]Operating System
+2025-10-12T20:12:48.1016804Z Ubuntu
+2025-10-12T20:12:48.1017634Z 24.04.3
+2025-10-12T20:12:48.1018563Z LTS
+2025-10-12T20:12:48.1019325Z ##[endgroup]
+2025-10-12T20:12:48.1020234Z ##[group]Runner Image
+2025-10-12T20:12:48.1021339Z Image: ubuntu-24.04
+2025-10-12T20:12:48.1022378Z Version: 20250929.60.1
+2025-10-12T20:12:48.1024268Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250929.60/images/ubuntu/Ubuntu2404-Readme.md
+2025-10-12T20:12:48.1027183Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250929.60
+2025-10-12T20:12:48.1028920Z ##[endgroup]
+2025-10-12T20:12:48.1030877Z ##[group]GITHUB_TOKEN Permissions
+2025-10-12T20:12:48.1053888Z Contents: read
+2025-10-12T20:12:48.1054768Z Metadata: read
+2025-10-12T20:12:48.1055489Z Packages: read
+2025-10-12T20:12:48.1056206Z ##[endgroup]
+2025-10-12T20:12:48.1058752Z Secret source: Actions
+2025-10-12T20:12:48.1060157Z Prepare workflow directory
+2025-10-12T20:12:48.1664635Z Prepare all required actions
+2025-10-12T20:12:48.1770857Z Getting action download info
+2025-10-12T20:12:48.6260328Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-10-12T20:12:48.8057079Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2025-10-12T20:12:49.0065600Z Complete job name: python-test
+2025-10-12T20:12:49.0795226Z ##[group]Run actions/checkout@v4
+2025-10-12T20:12:49.0796161Z with:
+2025-10-12T20:12:49.0796569Z   repository: harshil753/my_closet
+2025-10-12T20:12:49.0797224Z   token: ***
+2025-10-12T20:12:49.0797625Z   ssh-strict: true
+2025-10-12T20:12:49.0798027Z   ssh-user: git
+2025-10-12T20:12:49.0798418Z   persist-credentials: true
+2025-10-12T20:12:49.0798867Z   clean: true
+2025-10-12T20:12:49.0799253Z   sparse-checkout-cone-mode: true
+2025-10-12T20:12:49.0799728Z   fetch-depth: 1
+2025-10-12T20:12:49.0800104Z   fetch-tags: false
+2025-10-12T20:12:49.0800498Z   show-progress: true
+2025-10-12T20:12:49.0800896Z   lfs: false
+2025-10-12T20:12:49.0801257Z   submodules: false
+2025-10-12T20:12:49.0801656Z   set-safe-directory: true
+2025-10-12T20:12:49.0802479Z ##[endgroup]
+2025-10-12T20:12:49.2280347Z Syncing repository: harshil753/my_closet
+2025-10-12T20:12:49.2282427Z ##[group]Getting Git version info
+2025-10-12T20:12:49.2283593Z Working directory is '/home/runner/work/my_closet/my_closet'
+2025-10-12T20:12:49.2305318Z [command]/usr/bin/git version
+2025-10-12T20:12:49.2327374Z git version 2.51.0
+2025-10-12T20:12:49.2356061Z ##[endgroup]
+2025-10-12T20:12:49.2372968Z Temporarily overriding HOME='/home/runner/work/_temp/1d2af5bb-9468-44a8-b0a3-749bd434504b' before making global git config changes
+2025-10-12T20:12:49.2376428Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T20:12:49.2391026Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T20:12:49.2431164Z Deleting the contents of '/home/runner/work/my_closet/my_closet'
+2025-10-12T20:12:49.2435102Z ##[group]Initializing the repository
+2025-10-12T20:12:49.2440070Z [command]/usr/bin/git init /home/runner/work/my_closet/my_closet
+2025-10-12T20:12:49.2546898Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-12T20:12:49.2549682Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-12T20:12:49.2551236Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-12T20:12:49.2552657Z hint:
+2025-10-12T20:12:49.2553415Z hint: 	git config --global init.defaultBranch <name>
+2025-10-12T20:12:49.2555305Z hint:
+2025-10-12T20:12:49.2556300Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-12T20:12:49.2557918Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-12T20:12:49.2559184Z hint:
+2025-10-12T20:12:49.2559887Z hint: 	git branch -m <name>
+2025-10-12T20:12:49.2560689Z hint:
+2025-10-12T20:12:49.2561673Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-12T20:12:49.2564387Z Initialized empty Git repository in /home/runner/work/my_closet/my_closet/.git/
+2025-10-12T20:12:49.2567694Z [command]/usr/bin/git remote add origin https://github.com/harshil753/my_closet
+2025-10-12T20:12:49.2609260Z ##[endgroup]
+2025-10-12T20:12:49.2610474Z ##[group]Disabling automatic garbage collection
+2025-10-12T20:12:49.2613439Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-12T20:12:49.2645980Z ##[endgroup]
+2025-10-12T20:12:49.2647175Z ##[group]Setting up auth
+2025-10-12T20:12:49.2653031Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T20:12:49.2686304Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T20:12:49.3024458Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T20:12:49.3073544Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T20:12:49.3297067Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-12T20:12:49.3346661Z ##[endgroup]
+2025-10-12T20:12:49.3349600Z ##[group]Fetching the repository
+2025-10-12T20:12:49.3357565Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +68502338c1fef4f101d8de2872b7d840292bd3d5:refs/remotes/origin/main
+2025-10-12T20:12:50.2362956Z From https://github.com/harshil753/my_closet
+2025-10-12T20:12:50.2370111Z  * [new ref]         68502338c1fef4f101d8de2872b7d840292bd3d5 -> origin/main
+2025-10-12T20:12:50.2402922Z ##[endgroup]
+2025-10-12T20:12:50.2404904Z ##[group]Determining the checkout info
+2025-10-12T20:12:50.2407442Z ##[endgroup]
+2025-10-12T20:12:50.2412703Z [command]/usr/bin/git sparse-checkout disable
+2025-10-12T20:12:50.2451906Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-12T20:12:50.2484861Z ##[group]Checking out the ref
+2025-10-12T20:12:50.2489062Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-12T20:12:50.3038914Z Switched to a new branch 'main'
+2025-10-12T20:12:50.3044101Z branch 'main' set up to track 'origin/main'.
+2025-10-12T20:12:50.3053712Z ##[endgroup]
+2025-10-12T20:12:50.3093236Z [command]/usr/bin/git log -1 --format=%H
+2025-10-12T20:12:50.3117572Z 68502338c1fef4f101d8de2872b7d840292bd3d5
+2025-10-12T20:12:50.3372487Z ##[group]Run actions/setup-python@v5
+2025-10-12T20:12:50.3373104Z with:
+2025-10-12T20:12:50.3373503Z   python-version: 3.11
+2025-10-12T20:12:50.3373953Z   check-latest: false
+2025-10-12T20:12:50.3374556Z   token: ***
+2025-10-12T20:12:50.3374978Z   update-environment: true
+2025-10-12T20:12:50.3375500Z   allow-prereleases: false
+2025-10-12T20:12:50.3375967Z   freethreaded: false
+2025-10-12T20:12:50.3376393Z ##[endgroup]
+2025-10-12T20:12:50.5050022Z ##[group]Installed versions
+2025-10-12T20:12:50.5768763Z Successfully set up CPython (3.11.13)
+2025-10-12T20:12:50.5771721Z ##[endgroup]
+2025-10-12T20:12:50.5906504Z ##[group]Run python -m pip install --upgrade pip
+2025-10-12T20:12:50.5907370Z [36;1mpython -m pip install --upgrade pip[0m
+2025-10-12T20:12:50.5908082Z [36;1mpip install -r requirements.txt[0m
+2025-10-12T20:12:50.6075556Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:12:50.6076176Z env:
+2025-10-12T20:12:50.6076749Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:50.6077923Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:12:50.6078827Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:50.6079640Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:50.6080481Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:12:50.6081316Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:12:50.6082029Z ##[endgroup]
+2025-10-12T20:12:56.1708682Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages (25.2)
+2025-10-12T20:12:57.3671037Z Collecting google-generativeai==0.8.3 (from -r requirements.txt (line 2))
+2025-10-12T20:12:57.4513044Z   Downloading google_generativeai-0.8.3-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:12:57.6814111Z Collecting pillow==11.0.0 (from -r requirements.txt (line 3))
+2025-10-12T20:12:57.7020110Z   Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2025-10-12T20:12:57.7439748Z Collecting supabase==2.8.0 (from -r requirements.txt (line 4))
+2025-10-12T20:12:57.7650654Z   Downloading supabase-2.8.0-py3-none-any.whl.metadata (10 kB)
+2025-10-12T20:12:57.8017705Z Collecting python-dotenv==1.0.1 (from -r requirements.txt (line 5))
+2025-10-12T20:12:57.8209419Z   Downloading python_dotenv-1.0.1-py3-none-any.whl.metadata (23 kB)
+2025-10-12T20:12:57.8673381Z Collecting requests==2.32.3 (from -r requirements.txt (line 6))
+2025-10-12T20:12:57.8865639Z   Downloading requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:12:58.0653653Z Collecting numpy==2.1.3 (from -r requirements.txt (line 7))
+2025-10-12T20:12:58.0886667Z   Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2025-10-12T20:12:58.1951513Z Collecting opencv-python==4.10.0.84 (from -r requirements.txt (line 8))
+2025-10-12T20:12:58.2155661Z   Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+2025-10-12T20:12:58.2657693Z Collecting pytest==8.3.4 (from -r requirements.txt (line 11))
+2025-10-12T20:12:58.2873243Z   Downloading pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
+2025-10-12T20:12:58.3269276Z Collecting pytest-asyncio==0.24.0 (from -r requirements.txt (line 12))
+2025-10-12T20:12:58.3516556Z   Downloading pytest_asyncio-0.24.0-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:12:58.4280634Z Collecting black==24.10.0 (from -r requirements.txt (line 13))
+2025-10-12T20:12:58.4487735Z   Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2025-10-12T20:12:58.4968769Z Collecting flake8==7.1.1 (from -r requirements.txt (line 14))
+2025-10-12T20:12:58.5171999Z   Downloading flake8-7.1.1-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-10-12T20:12:58.6326660Z Collecting mypy==1.13.0 (from -r requirements.txt (line 15))
+2025-10-12T20:12:58.6530888Z   Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+2025-10-12T20:12:58.6869063Z Collecting google-ai-generativelanguage==0.6.10 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:58.7081823Z   Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T20:12:58.7581524Z Collecting google-api-core (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:58.7771485Z   Downloading google_api_core-2.26.0-py3-none-any.whl.metadata (3.2 kB)
+2025-10-12T20:12:58.8473095Z Collecting google-api-python-client (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:58.8665338Z   Downloading google_api_python_client-2.184.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T20:12:58.9201750Z Collecting google-auth>=2.15.0 (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:58.9390647Z   Downloading google_auth-2.41.1-py2.py3-none-any.whl.metadata (6.6 kB)
+2025-10-12T20:12:59.1268822Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:59.1460613Z   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+2025-10-12T20:12:59.3027731Z Collecting pydantic (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:59.3221535Z   Downloading pydantic-2.12.0-py3-none-any.whl.metadata (83 kB)
+2025-10-12T20:12:59.3784888Z Collecting tqdm (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:59.3977647Z   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+2025-10-12T20:12:59.4386237Z Collecting typing-extensions (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:12:59.4588760Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T20:12:59.5026814Z Collecting gotrue<3.0,>=1.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.5227089Z   Downloading gotrue-2.12.4-py3-none-any.whl.metadata (2.0 kB)
+2025-10-12T20:12:59.5655174Z Collecting httpx<0.28,>=0.24 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.5867463Z   Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+2025-10-12T20:12:59.6207198Z Collecting postgrest<0.18.0,>=0.14 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.6420017Z   Downloading postgrest-0.17.2-py3-none-any.whl.metadata (3.4 kB)
+2025-10-12T20:12:59.6758346Z Collecting realtime<3.0.0,>=2.0.0 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.6951876Z   Downloading realtime-2.22.0-py3-none-any.whl.metadata (7.0 kB)
+2025-10-12T20:12:59.7286833Z Collecting storage3<0.9.0,>=0.5.3 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.7503968Z   Downloading storage3-0.8.2-py3-none-any.whl.metadata (1.8 kB)
+2025-10-12T20:12:59.7842580Z Collecting supafunc<0.7.0,>=0.3.1 (from supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:12:59.8105022Z   Downloading supafunc-0.6.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:12:59.9082013Z Collecting charset-normalizer<4,>=2 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:12:59.9270911Z   Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (36 kB)
+2025-10-12T20:12:59.9593415Z Collecting idna<4,>=2.5 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:12:59.9782370Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:00.0226911Z Collecting urllib3<3,>=1.21.1 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:00.0421098Z   Downloading urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-10-12T20:13:00.0801317Z Collecting certifi>=2017.4.17 (from requests==2.32.3->-r requirements.txt (line 6))
+2025-10-12T20:13:00.0997094Z   Downloading certifi-2025.10.5-py3-none-any.whl.metadata (2.5 kB)
+2025-10-12T20:13:00.1661416Z Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:00.1851686Z   Downloading iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+2025-10-12T20:13:00.2174164Z Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:00.2363452Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-10-12T20:13:00.2648018Z Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 11))
+2025-10-12T20:13:00.2847687Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2025-10-12T20:13:00.3293348Z Collecting click>=8.0.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:00.3482933Z   Downloading click-8.3.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:00.3742289Z Collecting mypy-extensions>=0.4.3 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:00.3929281Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:00.4239983Z Collecting pathspec>=0.9.0 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:00.4441509Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-10-12T20:13:00.4796700Z Collecting platformdirs>=2 (from black==24.10.0->-r requirements.txt (line 13))
+2025-10-12T20:13:00.4989901Z   Downloading platformdirs-4.5.0-py3-none-any.whl.metadata (12 kB)
+2025-10-12T20:13:00.5297102Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:00.5486379Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T20:13:00.5789185Z Collecting pycodestyle<2.13.0,>=2.12.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:00.5982919Z   Downloading pycodestyle-2.12.1-py2.py3-none-any.whl.metadata (4.5 kB)
+2025-10-12T20:13:00.6285602Z Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.1.1->-r requirements.txt (line 14))
+2025-10-12T20:13:00.6476410Z   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T20:13:00.8187417Z Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:00.8377257Z   Downloading proto_plus-1.26.1-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:00.9185194Z Collecting protobuf (from google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:00.9374256Z   Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+2025-10-12T20:13:00.9738899Z Collecting googleapis-common-protos<2.0.0,>=1.56.2 (from google-api-core->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:00.9930824Z   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
+2025-10-12T20:13:01.6476459Z Collecting grpcio<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:01.6671166Z   Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+2025-10-12T20:13:01.7365332Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:01.7560117Z   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:01.8051239Z Collecting cachetools<7.0,>=2.0.0 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:01.8240002Z   Downloading cachetools-6.2.1-py3-none-any.whl.metadata (5.5 kB)
+2025-10-12T20:13:01.8604274Z Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:01.8808988Z   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+2025-10-12T20:13:01.9129621Z Collecting rsa<5,>=3.1.4 (from google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:01.9319910Z   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2025-10-12T20:13:01.9911179Z Collecting pyjwt<3.0.0,>=2.10.1 (from gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.0101771Z   Downloading PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+2025-10-12T20:13:02.0809768Z INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+2025-10-12T20:13:02.0817141Z Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.10->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:02.1010693Z   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.1249895Z   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.1485178Z   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.2358074Z   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.2604884Z   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.2836174Z   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.3070357Z   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+2025-10-12T20:13:02.4187456Z Collecting anyio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.4379458Z   Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+2025-10-12T20:13:02.4732487Z Collecting httpcore==1.* (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.4936487Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2025-10-12T20:13:02.5208772Z Collecting sniffio (from httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.5399652Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2025-10-12T20:13:02.5684573Z Collecting h11>=0.16 (from httpcore==1.*->httpx<0.28,>=0.24->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.5875967Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-10-12T20:13:02.6726633Z Collecting h2<5,>=3 (from httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.6920509Z   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+2025-10-12T20:13:02.7222419Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.7409913Z   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+2025-10-12T20:13:02.7674527Z Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]<0.29,>=0.26->gotrue<3.0,>=1.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.7864510Z   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:13:02.8242540Z Collecting deprecation<3.0.0,>=2.1.0 (from postgrest<0.18.0,>=0.14->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:02.8434790Z   Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+2025-10-12T20:13:02.9578501Z Collecting annotated-types>=0.6.0 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:02.9769876Z   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2025-10-12T20:13:03.6809758Z Collecting pydantic-core==2.41.1 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:03.7003240Z   Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+2025-10-12T20:13:03.7297262Z Collecting typing-inspection>=0.4.2 (from pydantic->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:03.7488674Z   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:03.8679965Z Collecting websockets<16,>=11 (from realtime<3.0.0,>=2.0.0->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:03.8871872Z   Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+2025-10-12T20:13:03.9254325Z Collecting pyasn1>=0.1.3 (from rsa<5,>=3.1.4->google-auth>=2.15.0->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:03.9445228Z   Downloading pyasn1-0.6.1-py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:03.9764728Z Collecting python-dateutil<3.0.0,>=2.8.2 (from storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:03.9954833Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2025-10-12T20:13:04.0298540Z Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->storage3<0.9.0,>=0.5.3->supabase==2.8.0->-r requirements.txt (line 4))
+2025-10-12T20:13:04.0488506Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-10-12T20:13:04.1249238Z Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:04.1450298Z   Downloading httplib2-0.31.0-py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:04.2003071Z Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:04.2191697Z   Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl.metadata (2.2 kB)
+2025-10-12T20:13:04.2459866Z Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:04.2653235Z   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+2025-10-12T20:13:04.3086035Z Collecting pyparsing<4,>=3.0.4 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->google-generativeai==0.8.3->-r requirements.txt (line 2))
+2025-10-12T20:13:04.3278754Z   Downloading pyparsing-3.2.5-py3-none-any.whl.metadata (5.0 kB)
+2025-10-12T20:13:04.3623986Z Downloading google_generativeai-0.8.3-py3-none-any.whl (160 kB)
+2025-10-12T20:13:04.3908242Z Downloading pillow-11.0.0-cp311-cp311-manylinux_2_28_x86_64.whl (4.4 MB)
+2025-10-12T20:13:04.4611967Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 65.6 MB/s  0:00:00
+2025-10-12T20:13:04.4819272Z Downloading supabase-2.8.0-py3-none-any.whl (16 kB)
+2025-10-12T20:13:04.5029540Z Downloading python_dotenv-1.0.1-py3-none-any.whl (19 kB)
+2025-10-12T20:13:04.5240032Z Downloading requests-2.32.3-py3-none-any.whl (64 kB)
+2025-10-12T20:13:04.5459776Z Downloading numpy-2.1.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.3 MB)
+2025-10-12T20:13:04.6447143Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.3/16.3 MB 167.6 MB/s  0:00:00
+2025-10-12T20:13:04.6685933Z Downloading opencv_python-4.10.0.84-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (62.5 MB)
+2025-10-12T20:13:05.1323001Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.5/62.5 MB 135.1 MB/s  0:00:00
+2025-10-12T20:13:05.1516365Z Downloading pytest-8.3.4-py3-none-any.whl (343 kB)
+2025-10-12T20:13:05.1816032Z Downloading pytest_asyncio-0.24.0-py3-none-any.whl (18 kB)
+2025-10-12T20:13:05.2081868Z Downloading black-24.10.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (1.7 MB)
+2025-10-12T20:13:05.2193278Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 178.7 MB/s  0:00:00
+2025-10-12T20:13:05.2573426Z Downloading flake8-7.1.1-py2.py3-none-any.whl (57 kB)
+2025-10-12T20:13:05.2828901Z Downloading mypy-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (12.5 MB)
+2025-10-12T20:13:05.3965428Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.5/12.5 MB 110.0 MB/s  0:00:00
+2025-10-12T20:13:05.4175396Z Downloading google_ai_generativelanguage-0.6.10-py3-none-any.whl (760 kB)
+2025-10-12T20:13:05.4243278Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.0/760.0 kB 121.3 MB/s  0:00:00
+2025-10-12T20:13:05.4445337Z Downloading charset_normalizer-3.4.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (150 kB)
+2025-10-12T20:13:05.4664321Z Downloading google_api_core-2.26.0-py3-none-any.whl (162 kB)
+2025-10-12T20:13:05.4881605Z Downloading google_auth-2.41.1-py2.py3-none-any.whl (221 kB)
+2025-10-12T20:13:05.5112720Z Downloading cachetools-6.2.1-py3-none-any.whl (11 kB)
+2025-10-12T20:13:05.5324959Z Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
+2025-10-12T20:13:05.5546336Z Downloading gotrue-2.12.4-py3-none-any.whl (42 kB)
+2025-10-12T20:13:05.5761072Z Downloading grpcio-1.75.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.5 MB)
+2025-10-12T20:13:05.6378991Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.5/6.5 MB 106.5 MB/s  0:00:00
+2025-10-12T20:13:05.6571043Z Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+2025-10-12T20:13:05.6782651Z Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+2025-10-12T20:13:05.6998455Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2025-10-12T20:13:05.7210757Z Downloading h2-4.3.0-py3-none-any.whl (61 kB)
+2025-10-12T20:13:05.7429265Z Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
+2025-10-12T20:13:05.7665962Z Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
+2025-10-12T20:13:05.7878825Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-10-12T20:13:05.8100336Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2025-10-12T20:13:05.8315086Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2025-10-12T20:13:05.8544378Z Downloading postgrest-0.17.2-py3-none-any.whl (21 kB)
+2025-10-12T20:13:05.8872042Z Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T20:13:05.9125725Z Downloading proto_plus-1.26.1-py3-none-any.whl (50 kB)
+2025-10-12T20:13:05.9338807Z Downloading protobuf-5.29.5-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+2025-10-12T20:13:05.9601517Z Downloading pycodestyle-2.12.1-py2.py3-none-any.whl (31 kB)
+2025-10-12T20:13:05.9816092Z Downloading pydantic-2.12.0-py3-none-any.whl (459 kB)
+2025-10-12T20:13:06.0113305Z Downloading pydantic_core-2.41.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2025-10-12T20:13:06.0268590Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 148.2 MB/s  0:00:00
+2025-10-12T20:13:06.0459297Z Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+2025-10-12T20:13:06.0708619Z Downloading PyJWT-2.10.1-py3-none-any.whl (22 kB)
+2025-10-12T20:13:06.0924258Z Downloading realtime-2.22.0-py3-none-any.whl (22 kB)
+2025-10-12T20:13:06.1135608Z Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+2025-10-12T20:13:06.1355340Z Downloading storage3-0.8.2-py3-none-any.whl (16 kB)
+2025-10-12T20:13:06.1571324Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2025-10-12T20:13:06.1833508Z Downloading supafunc-0.6.2-py3-none-any.whl (6.6 kB)
+2025-10-12T20:13:06.2050872Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-10-12T20:13:06.2266425Z Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-10-12T20:13:06.2488432Z Downloading websockets-15.0.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+2025-10-12T20:13:06.2765105Z Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2025-10-12T20:13:06.2975234Z Downloading certifi-2025.10.5-py3-none-any.whl (163 kB)
+2025-10-12T20:13:06.3196695Z Downloading click-8.3.0-py3-none-any.whl (107 kB)
+2025-10-12T20:13:06.3413656Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-10-12T20:13:06.3624421Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2025-10-12T20:13:06.3832808Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-10-12T20:13:06.4044672Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-10-12T20:13:06.4251671Z Downloading platformdirs-4.5.0-py3-none-any.whl (18 kB)
+2025-10-12T20:13:06.4478981Z Downloading pyasn1-0.6.1-py3-none-any.whl (83 kB)
+2025-10-12T20:13:06.4690427Z Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+2025-10-12T20:13:06.4909374Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-10-12T20:13:06.5124983Z Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+2025-10-12T20:13:06.5335177Z Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+2025-10-12T20:13:06.5548574Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2025-10-12T20:13:06.5773629Z Downloading google_api_python_client-2.184.0-py3-none-any.whl (14.3 MB)
+2025-10-12T20:13:06.6603066Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.3/14.3 MB 179.8 MB/s  0:00:00
+2025-10-12T20:13:06.6797365Z Downloading google_auth_httplib2-0.2.0-py2.py3-none-any.whl (9.3 kB)
+2025-10-12T20:13:06.7009424Z Downloading httplib2-0.31.0-py3-none-any.whl (91 kB)
+2025-10-12T20:13:06.7222381Z Downloading pyparsing-3.2.5-py3-none-any.whl (113 kB)
+2025-10-12T20:13:06.7435381Z Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+2025-10-12T20:13:06.7647167Z Downloading iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+2025-10-12T20:13:06.7863153Z Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+2025-10-12T20:13:07.0450012Z Installing collected packages: websockets, urllib3, uritemplate, typing-extensions, tqdm, sniffio, six, python-dotenv, pyparsing, pyjwt, pyflakes, pycodestyle, pyasn1, protobuf, pluggy, platformdirs, pillow, pathspec, packaging, numpy, mypy-extensions, mccabe, iniconfig, idna, hyperframe, hpack, h11, click, charset-normalizer, certifi, cachetools, annotated-types, typing-inspection, rsa, requests, python-dateutil, pytest, pydantic-core, pyasn1-modules, proto-plus, opencv-python, mypy, httplib2, httpcore, h2, grpcio, googleapis-common-protos, flake8, deprecation, black, anyio, pytest-asyncio, pydantic, httpx, grpcio-status, google-auth, realtime, google-auth-httplib2, google-api-core, supafunc, storage3, postgrest, gotrue, google-api-python-client, supabase, google-ai-generativelanguage, google-generativeai
+2025-10-12T20:13:15.4403661Z 
+2025-10-12T20:13:15.4442328Z Successfully installed annotated-types-0.7.0 anyio-4.11.0 black-24.10.0 cachetools-6.2.1 certifi-2025.10.5 charset-normalizer-3.4.3 click-8.3.0 deprecation-2.1.0 flake8-7.1.1 google-ai-generativelanguage-0.6.10 google-api-core-2.26.0 google-api-python-client-2.184.0 google-auth-2.41.1 google-auth-httplib2-0.2.0 google-generativeai-0.8.3 googleapis-common-protos-1.70.0 gotrue-2.12.4 grpcio-1.75.1 grpcio-status-1.71.2 h11-0.16.0 h2-4.3.0 hpack-4.1.0 httpcore-1.0.9 httplib2-0.31.0 httpx-0.27.2 hyperframe-6.1.0 idna-3.11 iniconfig-2.1.0 mccabe-0.7.0 mypy-1.13.0 mypy-extensions-1.1.0 numpy-2.1.3 opencv-python-4.10.0.84 packaging-25.0 pathspec-0.12.1 pillow-11.0.0 platformdirs-4.5.0 pluggy-1.6.0 postgrest-0.17.2 proto-plus-1.26.1 protobuf-5.29.5 pyasn1-0.6.1 pyasn1-modules-0.4.2 pycodestyle-2.12.1 pydantic-2.12.0 pydantic-core-2.41.1 pyflakes-3.2.0 pyjwt-2.10.1 pyparsing-3.2.5 pytest-8.3.4 pytest-asyncio-0.24.0 python-dateutil-2.9.0.post0 python-dotenv-1.0.1 realtime-2.22.0 requests-2.32.3 rsa-4.9.1 six-1.17.0 sniffio-1.3.1 storage3-0.8.2 supabase-2.8.0 supafunc-0.6.2 tqdm-4.67.1 typing-extensions-4.15.0 typing-inspection-0.4.2 uritemplate-4.2.0 urllib3-2.5.0 websockets-15.0.1
+2025-10-12T20:13:15.9030813Z ##[group]Run pytest services/ || true
+2025-10-12T20:13:15.9031142Z [36;1mpytest services/ || true[0m
+2025-10-12T20:13:15.9065947Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:13:15.9066179Z env:
+2025-10-12T20:13:15.9066424Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:15.9066839Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:13:15.9067228Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:15.9067582Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:15.9067924Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:15.9068258Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:13:15.9068537Z ##[endgroup]
+2025-10-12T20:13:16.7527539Z /opt/hostedtoolcache/Python/3.11.13/x64/lib/python3.11/site-packages/pytest_asyncio/plugin.py:208: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+2025-10-12T20:13:16.7531393Z The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+2025-10-12T20:13:16.7534672Z 
+2025-10-12T20:13:16.7535104Z   warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+2025-10-12T20:13:16.9619337Z ============================= test session starts ==============================
+2025-10-12T20:13:16.9620483Z platform linux -- Python 3.11.13, pytest-8.3.4, pluggy-1.6.0
+2025-10-12T20:13:16.9621345Z rootdir: /home/runner/work/my_closet/my_closet
+2025-10-12T20:13:16.9629739Z plugins: asyncio-0.24.0, anyio-4.11.0
+2025-10-12T20:13:16.9630559Z asyncio: mode=Mode.STRICT, default_loop_scope=None
+2025-10-12T20:13:16.9631005Z collected 0 items
+2025-10-12T20:13:16.9631170Z 
+2025-10-12T20:13:16.9631338Z ============================ no tests ran in 0.01s =============================
+2025-10-12T20:13:16.9919548Z ##[group]Run flake8 services/
+2025-10-12T20:13:16.9919830Z [36;1mflake8 services/[0m
+2025-10-12T20:13:16.9920056Z [36;1mblack --check services/[0m
+2025-10-12T20:13:16.9920281Z [36;1mmypy services/[0m
+2025-10-12T20:13:16.9953748Z shell: /usr/bin/bash -e {0}
+2025-10-12T20:13:16.9953969Z env:
+2025-10-12T20:13:16.9954199Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9954600Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib/pkgconfig
+2025-10-12T20:13:16.9954973Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9955330Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9955693Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.13/x64
+2025-10-12T20:13:16.9956049Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.13/x64/lib
+2025-10-12T20:13:16.9956345Z ##[endgroup]
+2025-10-12T20:13:17.4515996Z services/ai_processor.py:10:1: F401 'time' imported but unused
+2025-10-12T20:13:17.4520918Z services/ai_processor.py:12:1: F401 'typing.Tuple' imported but unused
+2025-10-12T20:13:17.4525316Z services/ai_processor.py:16:1: F401 'google.generativeai as genai' imported but unused
+2025-10-12T20:13:17.4528355Z services/ai_processor.py:89:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4530886Z services/ai_processor.py:95:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4538864Z services/ai_processor.py:99:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4539596Z services/ai_processor.py:103:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4540253Z services/ai_processor.py:125:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4540854Z services/ai_processor.py:127:14: W291 trailing whitespace
+2025-10-12T20:13:17.4541493Z services/ai_processor.py:132:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4542435Z services/ai_processor.py:135:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4543171Z services/ai_processor.py:140:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4543910Z services/ai_processor.py:149:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4544620Z services/ai_processor.py:152:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4545293Z services/ai_processor.py:158:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4545930Z services/ai_processor.py:160:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4546583Z services/ai_processor.py:172:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4547215Z services/ai_processor.py:175:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4547858Z services/ai_processor.py:178:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4548544Z services/ai_processor.py:191:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4549158Z services/ai_processor.py:193:14: W291 trailing whitespace
+2025-10-12T20:13:17.4549776Z services/ai_processor.py:198:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4550448Z services/ai_processor.py:201:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4551125Z services/ai_processor.py:207:80: E501 line too long (94 > 79 characters)
+2025-10-12T20:13:17.4551793Z services/ai_processor.py:216:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4558994Z services/ai_processor.py:218:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4559695Z services/ai_processor.py:219:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4560340Z services/ai_processor.py:222:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4561006Z services/ai_processor.py:224:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4561675Z services/ai_processor.py:225:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4563010Z services/ai_processor.py:227:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4563683Z services/ai_processor.py:228:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4564624Z services/ai_processor.py:230:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4565298Z services/ai_processor.py:240:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4565909Z services/ai_processor.py:241:80: E501 line too long (97 > 79 characters)
+2025-10-12T20:13:17.4566557Z services/ai_processor.py:245:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4567198Z services/ai_processor.py:249:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4567861Z services/ai_processor.py:252:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4568482Z services/ai_processor.py:254:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4569102Z services/ai_processor.py:258:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4569735Z services/ai_processor.py:261:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4570329Z services/ai_processor.py:263:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4570935Z services/ai_processor.py:268:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4571509Z services/ai_processor.py:270:14: W291 trailing whitespace
+2025-10-12T20:13:17.4572017Z services/ai_processor.py:271:32: W291 trailing whitespace
+2025-10-12T20:13:17.4572822Z services/ai_processor.py:275:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4573432Z services/ai_processor.py:277:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4574042Z services/ai_processor.py:278:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4574631Z services/ai_processor.py:281:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4575232Z services/ai_processor.py:290:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4575818Z services/ai_processor.py:299:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4576429Z services/ai_processor.py:301:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4577021Z services/ai_processor.py:302:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4577619Z services/ai_processor.py:305:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4578204Z services/ai_processor.py:307:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4578740Z services/ai_processor.py:309:14: W291 trailing whitespace
+2025-10-12T20:13:17.4579236Z services/ai_processor.py:310:21: W291 trailing whitespace
+2025-10-12T20:13:17.4579765Z services/ai_processor.py:317:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4580353Z services/ai_processor.py:320:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4580927Z services/ai_processor.py:334:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4581501Z services/ai_processor.py:336:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4582231Z services/ai_processor.py:340:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4582834Z services/ai_processor.py:349:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4583438Z services/ai_processor.py:353:80: E501 line too long (115 > 79 characters)
+2025-10-12T20:13:17.4584052Z services/ai_processor.py:357:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4584691Z services/ai_processor.py:358:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4585387Z services/ai_processor.py:361:80: E501 line too long (132 > 79 characters)
+2025-10-12T20:13:17.4585989Z services/ai_processor.py:364:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4586590Z services/ai_processor.py:365:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4587185Z services/ai_processor.py:372:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4587782Z services/ai_processor.py:374:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4588383Z services/ai_processor.py:376:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4589212Z services/ai_processor.py:380:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4589870Z services/ai_processor.py:383:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4590854Z services/ai_processor.py:395:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4591655Z services/ai_processor.py:396:80: E501 line too long (91 > 79 characters)
+2025-10-12T20:13:17.4592640Z services/ai_processor.py:402:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4593333Z services/ai_processor.py:406:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4593941Z services/ai_processor.py:417:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4594541Z services/ai_processor.py:427:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4595429Z services/ai_processor.py:428:80: E501 line too long (82 > 79 characters)
+2025-10-12T20:13:17.4596209Z services/ai_processor.py:431:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4596953Z services/ai_processor.py:432:80: E501 line too long (110 > 79 characters)
+2025-10-12T20:13:17.4597603Z services/ai_processor.py:437:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4598237Z services/ai_processor.py:445:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4598867Z services/ai_processor.py:448:80: E501 line too long (96 > 79 characters)
+2025-10-12T20:13:17.4599499Z services/ai_processor.py:450:80: E501 line too long (424 > 79 characters)
+2025-10-12T20:13:17.4600125Z services/ai_processor.py:451:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4600743Z services/ai_processor.py:452:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4601360Z services/ai_processor.py:456:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4601979Z services/ai_processor.py:459:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4602797Z services/ai_processor.py:461:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4603414Z services/ai_processor.py:462:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4603998Z services/ai_processor.py:465:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4604586Z services/ai_processor.py:467:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4605169Z services/ai_processor.py:471:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4605740Z services/ai_processor.py:474:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4606341Z services/ai_processor.py:480:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4606918Z services/ai_processor.py:485:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4607517Z services/ai_processor.py:490:80: E501 line too long (83 > 79 characters)
+2025-10-12T20:13:17.4608134Z services/ai_processor.py:492:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4608751Z services/ai_processor.py:493:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4609331Z services/ai_processor.py:496:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4609945Z services/ai_processor.py:497:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4610554Z services/ai_processor.py:499:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4611157Z services/ai_processor.py:502:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4611778Z services/ai_processor.py:503:80: E501 line too long (97 > 79 characters)
+2025-10-12T20:13:17.4612529Z services/ai_processor.py:508:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4613138Z services/ai_processor.py:514:80: E501 line too long (100 > 79 characters)
+2025-10-12T20:13:17.4613760Z services/ai_processor.py:515:80: E501 line too long (93 > 79 characters)
+2025-10-12T20:13:17.4614384Z services/ai_processor.py:520:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4614995Z services/ai_processor.py:521:80: E501 line too long (92 > 79 characters)
+2025-10-12T20:13:17.4615585Z services/ai_processor.py:526:80: E501 line too long (94 > 79 characters)
+2025-10-12T20:13:17.4616685Z services/ai_processor.py:532:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4617289Z services/ai_processor.py:533:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4618085Z services/ai_processor.py:538:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4618773Z services/ai_processor.py:539:80: E501 line too long (104 > 79 characters)
+2025-10-12T20:13:17.4619417Z services/ai_processor.py:544:80: E501 line too long (91 > 79 characters)
+2025-10-12T20:13:17.4620062Z services/ai_processor.py:545:80: E501 line too long (99 > 79 characters)
+2025-10-12T20:13:17.4620700Z services/ai_processor.py:550:80: E501 line too long (82 > 79 characters)
+2025-10-12T20:13:17.4621348Z services/ai_processor.py:551:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4621998Z services/ai_processor.py:556:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4622761Z services/ai_processor.py:557:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4623336Z services/ai_processor.py:558:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4623892Z services/ai_processor.py:567:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4624483Z services/ai_processor.py:571:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4625163Z services/ai_processor.py:574:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4625804Z services/ai_processor.py:580:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4626470Z services/ai_processor.py:581:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4627173Z services/ai_processor.py:582:80: E501 line too long (102 > 79 characters)
+2025-10-12T20:13:17.4627862Z services/ai_processor.py:583:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4628499Z services/ai_processor.py:586:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4629123Z services/ai_processor.py:591:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4629807Z services/image_processor.py:4:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4630548Z services/image_processor.py:19:1: F401 'typing.Optional' imported but unused
+2025-10-12T20:13:17.4631262Z services/image_processor.py:19:1: F401 'typing.Tuple' imported but unused
+2025-10-12T20:13:17.4631960Z services/image_processor.py:21:1: F401 'PIL.ExifTags' imported but unused
+2025-10-12T20:13:17.4632782Z services/image_processor.py:23:1: F401 'json' imported but unused
+2025-10-12T20:13:17.4633422Z services/image_processor.py:30:1: E302 expected 2 blank lines, found 1
+2025-10-12T20:13:17.4634095Z services/image_processor.py:32:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4634764Z services/image_processor.py:34:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4635425Z services/image_processor.py:42:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4636087Z services/image_processor.py:45:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4636759Z services/image_processor.py:52:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4637404Z services/image_processor.py:57:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4638001Z services/image_processor.py:59:14: W291 trailing whitespace
+2025-10-12T20:13:17.4638554Z services/image_processor.py:60:38: W291 trailing whitespace
+2025-10-12T20:13:17.4639162Z services/image_processor.py:66:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4639810Z services/image_processor.py:71:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4640478Z services/image_processor.py:79:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4641183Z services/image_processor.py:85:80: E501 line too long (121 > 79 characters)
+2025-10-12T20:13:17.4641927Z services/image_processor.py:86:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4642759Z services/image_processor.py:89:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4643482Z services/image_processor.py:94:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4644392Z services/image_processor.py:99:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4645114Z services/image_processor.py:104:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4645980Z services/image_processor.py:113:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4646695Z services/image_processor.py:115:80: E501 line too long (83 > 79 characters)
+2025-10-12T20:13:17.4647475Z services/image_processor.py:117:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4648172Z services/image_processor.py:119:14: W291 trailing whitespace
+2025-10-12T20:13:17.4648819Z services/image_processor.py:120:38: W291 trailing whitespace
+2025-10-12T20:13:17.4649478Z services/image_processor.py:127:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4650149Z services/image_processor.py:133:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4650864Z services/image_processor.py:141:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4651547Z services/image_processor.py:147:80: E501 line too long (123 > 79 characters)
+2025-10-12T20:13:17.4652315Z services/image_processor.py:148:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4652971Z services/image_processor.py:151:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4653663Z services/image_processor.py:152:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4654398Z services/image_processor.py:155:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4655118Z services/image_processor.py:160:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4655908Z services/image_processor.py:165:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4656681Z services/image_processor.py:174:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4657322Z services/image_processor.py:178:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4657923Z services/image_processor.py:180:14: W291 trailing whitespace
+2025-10-12T20:13:17.4658504Z services/image_processor.py:181:26: W291 trailing whitespace
+2025-10-12T20:13:17.4659120Z services/image_processor.py:182:26: W291 trailing whitespace
+2025-10-12T20:13:17.4659749Z services/image_processor.py:183:23: W291 trailing whitespace
+2025-10-12T20:13:17.4660450Z services/image_processor.py:188:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4661201Z services/image_processor.py:194:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4661952Z services/image_processor.py:199:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4662861Z services/image_processor.py:206:80: E501 line too long (87 > 79 characters)
+2025-10-12T20:13:17.4663639Z services/image_processor.py:210:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4664399Z services/image_processor.py:212:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4665090Z services/image_processor.py:214:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4665754Z services/image_processor.py:217:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4666380Z services/image_processor.py:220:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4667000Z services/image_processor.py:221:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4667593Z services/image_processor.py:223:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4668140Z services/image_processor.py:225:14: W291 trailing whitespace
+2025-10-12T20:13:17.4668767Z services/image_processor.py:226:26: W291 trailing whitespace
+2025-10-12T20:13:17.4669369Z services/image_processor.py:227:26: W291 trailing whitespace
+2025-10-12T20:13:17.4670022Z services/image_processor.py:232:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4670711Z services/image_processor.py:237:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4671425Z services/image_processor.py:242:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4672278Z services/image_processor.py:246:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4673005Z services/image_processor.py:249:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4673914Z services/image_processor.py:252:80: E501 line too long (90 > 79 characters)
+2025-10-12T20:13:17.4674629Z services/image_processor.py:253:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4675451Z services/image_processor.py:255:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4676121Z services/image_processor.py:257:14: W291 trailing whitespace
+2025-10-12T20:13:17.4676740Z services/image_processor.py:258:26: W291 trailing whitespace
+2025-10-12T20:13:17.4677331Z services/image_processor.py:259:26: W291 trailing whitespace
+2025-10-12T20:13:17.4677974Z services/image_processor.py:264:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4678664Z services/image_processor.py:269:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4679397Z services/image_processor.py:274:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4680103Z services/image_processor.py:278:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4680810Z services/image_processor.py:281:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4681514Z services/image_processor.py:284:80: E501 line too long (86 > 79 characters)
+2025-10-12T20:13:17.4682372Z services/image_processor.py:285:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4683064Z services/image_processor.py:287:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4683747Z services/image_processor.py:291:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4684438Z services/image_processor.py:294:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4685115Z services/image_processor.py:306:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4685827Z services/image_processor.py:315:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4686531Z services/image_processor.py:317:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4687234Z services/image_processor.py:318:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4687966Z services/image_processor.py:321:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4688660Z services/image_processor.py:324:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4689364Z services/image_processor.py:331:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4690068Z services/image_processor.py:334:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4690714Z services/image_processor.py:339:40: W291 trailing whitespace
+2025-10-12T20:13:17.4691378Z services/image_processor.py:340:80: E501 line too long (116 > 79 characters)
+2025-10-12T20:13:17.4692224Z services/image_processor.py:342:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4692956Z services/image_processor.py:347:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4693690Z services/image_processor.py:349:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4694385Z services/image_processor.py:358:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4695083Z services/image_processor.py:367:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4695780Z services/image_processor.py:370:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4696434Z services/image_processor.py:372:14: W291 trailing whitespace
+2025-10-12T20:13:17.4697038Z services/image_processor.py:373:45: W291 trailing whitespace
+2025-10-12T20:13:17.4697690Z services/image_processor.py:379:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4698384Z services/image_processor.py:384:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4699090Z services/image_processor.py:389:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4699931Z services/image_processor.py:402:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4700652Z services/image_processor.py:408:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4701356Z services/image_processor.py:416:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4702052Z services/image_processor.py:418:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4703136Z services/image_processor.py:431:80: E501 line too long (108 > 79 characters)
+2025-10-12T20:13:17.4703906Z services/image_processor.py:435:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4704823Z services/image_processor.py:444:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4705607Z services/image_processor.py:451:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4706362Z services/image_processor.py:452:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4707071Z services/image_processor.py:457:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4707859Z services/image_processor.py:460:80: E501 line too long (89 > 79 characters)
+2025-10-12T20:13:17.4708648Z services/image_processor.py:462:80: E501 line too long (104 > 79 characters)
+2025-10-12T20:13:17.4709431Z services/image_processor.py:472:80: E501 line too long (124 > 79 characters)
+2025-10-12T20:13:17.4710241Z services/image_processor.py:479:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4711071Z services/image_processor.py:486:80: E501 line too long (98 > 79 characters)
+2025-10-12T20:13:17.4711893Z services/image_processor.py:487:80: E501 line too long (81 > 79 characters)
+2025-10-12T20:13:17.4712928Z services/image_processor.py:492:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4713745Z services/image_processor.py:495:80: E501 line too long (85 > 79 characters)
+2025-10-12T20:13:17.4714554Z services/image_processor.py:499:80: E501 line too long (95 > 79 characters)
+2025-10-12T20:13:17.4715365Z services/image_processor.py:502:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4716151Z services/image_processor.py:507:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4717027Z services/image_processor.py:515:80: E501 line too long (106 > 79 characters)
+2025-10-12T20:13:17.4717840Z services/image_processor.py:518:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4718644Z services/image_processor.py:524:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4719482Z services/image_processor.py:529:80: E501 line too long (84 > 79 characters)
+2025-10-12T20:13:17.4720307Z services/image_processor.py:535:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4721111Z services/image_processor.py:538:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4721899Z services/image_processor.py:553:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4722954Z services/image_processor.py:557:35: W291 trailing whitespace
+2025-10-12T20:13:17.4723638Z services/image_processor.py:558:22: W291 trailing whitespace
+2025-10-12T20:13:17.4724373Z services/image_processor.py:564:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4725154Z services/image_processor.py:566:35: W292 no newline at end of file
+2025-10-12T20:13:17.4725870Z services/utils.py:11:1: F401 'typing.List' imported but unused
+2025-10-12T20:13:17.4726556Z services/utils.py:25:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4727205Z services/utils.py:32:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4727812Z services/utils.py:40:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4728416Z services/utils.py:44:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4728976Z services/utils.py:52:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4729554Z services/utils.py:56:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4730132Z services/utils.py:60:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4730713Z services/utils.py:64:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4731315Z services/utils.py:70:80: E501 line too long (80 > 79 characters)
+2025-10-12T20:13:17.4731923Z services/utils.py:74:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4732712Z services/utils.py:78:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4733284Z services/utils.py:93:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4733863Z services/utils.py:97:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4734688Z services/utils.py:101:80: E501 line too long (101 > 79 characters)
+2025-10-12T20:13:17.4735305Z services/utils.py:102:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4736051Z services/utils.py:104:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4736651Z services/utils.py:118:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4737249Z services/utils.py:124:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4737853Z services/utils.py:140:80: E501 line too long (117 > 79 characters)
+2025-10-12T20:13:17.4738470Z services/utils.py:148:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4739055Z services/utils.py:151:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4739665Z services/utils.py:155:80: E501 line too long (100 > 79 characters)
+2025-10-12T20:13:17.4740290Z services/utils.py:161:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4740893Z services/utils.py:164:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4741481Z services/utils.py:175:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4742236Z services/utils.py:180:1: W293 blank line contains whitespace
+2025-10-12T20:13:17.4812784Z ##[error]Process completed with exit code 1.
+2025-10-12T20:13:17.4891995Z Post job cleanup.
+2025-10-12T20:13:17.6542359Z Post job cleanup.
+2025-10-12T20:13:17.7793938Z [command]/usr/bin/git version
+2025-10-12T20:13:17.7862685Z git version 2.51.0
+2025-10-12T20:13:17.7930653Z Temporarily overriding HOME='/home/runner/work/_temp/f5d81476-2871-4320-974c-f3d1e32964ff' before making global git config changes
+2025-10-12T20:13:17.7935196Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T20:13:17.7944693Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T20:13:17.8069598Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T20:13:17.8105584Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T20:13:18.2138231Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T20:13:18.2179696Z http.https://github.com/.extraheader
+2025-10-12T20:13:18.2193308Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-10-12T20:13:18.2611074Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T20:13:18.3024224Z Cleaning up orphan processes

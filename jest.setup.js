@@ -23,6 +23,32 @@ jest.mock('next/navigation', () => ({
   },
 }));
 
+// Helper to build a chainable query mock that supports awaiting and mockResolvedValue
+const buildQueryable = () => {
+  const query = {
+    select: jest.fn().mockReturnThis(),
+    insert: jest.fn().mockReturnThis(),
+    update: jest.fn().mockReturnThis(),
+    delete: jest.fn().mockReturnThis(),
+    eq: jest.fn().mockReturnThis(),
+    in: jest.fn().mockReturnThis(),
+    order: jest.fn().mockReturnThis(),
+    range: jest.fn().mockReturnThis(),
+    // Allow directly awaiting the chain
+    then: undefined as any,
+    mockResolvedValue: undefined as any,
+  } as any;
+  // Implement promise-like behavior used in some tests
+  query.mockResolvedValue = (value: unknown) => {
+    query.then = (onFulfilled: (v: unknown) => unknown) => {
+      onFulfilled(value);
+      return Promise.resolve(value) as any;
+    };
+    return query;
+  };
+  return query;
+};
+
 // Mock Supabase client
 jest.mock('@supabase/supabase-js', () => ({
   createClient: jest.fn(() => ({
@@ -31,17 +57,14 @@ jest.mock('@supabase/supabase-js', () => ({
       signIn: jest.fn(),
       signOut: jest.fn(),
     },
-    from: jest.fn(() => ({
-      select: jest.fn().mockReturnThis(),
-      insert: jest.fn().mockReturnThis(),
-      update: jest.fn().mockReturnThis(),
-      delete: jest.fn().mockReturnThis(),
-    })),
+    from: jest.fn(() => buildQueryable()),
     storage: {
       from: jest.fn(() => ({
-        upload: jest.fn(),
+        upload: jest.fn().mockResolvedValue({ data: { path: 'path' }, error: null }),
         download: jest.fn(),
         remove: jest.fn(),
+        getPublicUrl: jest.fn(() => ({ data: { publicUrl: 'https://example.com' } })),
+        createSignedUrl: jest.fn().mockResolvedValue({ data: { signedUrl: 'https://example.com/signed' }, error: null }),
       })),
     },
   })),
@@ -55,12 +78,7 @@ jest.mock('@supabase/ssr', () => ({
       signIn: jest.fn(),
       signOut: jest.fn(),
     },
-    from: jest.fn(() => ({
-      select: jest.fn().mockReturnThis(),
-      insert: jest.fn().mockReturnThis(),
-      update: jest.fn().mockReturnThis(),
-      delete: jest.fn().mockReturnThis(),
-    })),
+    from: jest.fn(() => buildQueryable()),
     storage: {
       from: jest.fn(() => ({
         upload: jest.fn(),
@@ -75,12 +93,7 @@ jest.mock('@supabase/ssr', () => ({
       signIn: jest.fn(),
       signOut: jest.fn(),
     },
-    from: jest.fn(() => ({
-      select: jest.fn().mockReturnThis(),
-      insert: jest.fn().mockReturnThis(),
-      update: jest.fn().mockReturnThis(),
-      delete: jest.fn().mockReturnThis(),
-    })),
+    from: jest.fn(() => buildQueryable()),
     storage: {
       from: jest.fn(() => ({
         upload: jest.fn(),

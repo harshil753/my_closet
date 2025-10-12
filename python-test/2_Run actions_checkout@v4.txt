@@ -1,69 +1,69 @@
-﻿2025-10-12T19:57:12.3969706Z ##[group]Run actions/checkout@v4
-2025-10-12T19:57:12.3970686Z with:
-2025-10-12T19:57:12.3971152Z   repository: harshil753/my_closet
-2025-10-12T19:57:12.3972038Z   token: ***
-2025-10-12T19:57:12.3972560Z   ssh-strict: true
-2025-10-12T19:57:12.3972997Z   ssh-user: git
-2025-10-12T19:57:12.3973459Z   persist-credentials: true
-2025-10-12T19:57:12.3973952Z   clean: true
-2025-10-12T19:57:12.3974397Z   sparse-checkout-cone-mode: true
-2025-10-12T19:57:12.3974916Z   fetch-depth: 1
-2025-10-12T19:57:12.3975340Z   fetch-tags: false
-2025-10-12T19:57:12.3975791Z   show-progress: true
-2025-10-12T19:57:12.3976260Z   lfs: false
-2025-10-12T19:57:12.3976688Z   submodules: false
-2025-10-12T19:57:12.3977146Z   set-safe-directory: true
-2025-10-12T19:57:12.3977882Z ##[endgroup]
-2025-10-12T19:57:12.5100288Z Syncing repository: harshil753/my_closet
-2025-10-12T19:57:12.5102160Z ##[group]Getting Git version info
-2025-10-12T19:57:12.5102954Z Working directory is '/home/runner/work/my_closet/my_closet'
-2025-10-12T19:57:12.5104933Z [command]/usr/bin/git version
-2025-10-12T19:57:12.6230270Z git version 2.51.0
-2025-10-12T19:57:12.6261243Z ##[endgroup]
-2025-10-12T19:57:12.6277865Z Temporarily overriding HOME='/home/runner/work/_temp/ecb34554-edd7-4f9a-9e7a-4b1e5352888b' before making global git config changes
-2025-10-12T19:57:12.6282242Z Adding repository directory to the temporary git global config as a safe directory
-2025-10-12T19:57:12.6296478Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
-2025-10-12T19:57:12.6373118Z Deleting the contents of '/home/runner/work/my_closet/my_closet'
-2025-10-12T19:57:12.6378159Z ##[group]Initializing the repository
-2025-10-12T19:57:12.6383124Z [command]/usr/bin/git init /home/runner/work/my_closet/my_closet
-2025-10-12T19:57:12.7344245Z hint: Using 'master' as the name for the initial branch. This default branch name
-2025-10-12T19:57:12.7346017Z hint: is subject to change. To configure the initial branch name to use in all
-2025-10-12T19:57:12.7347558Z hint: of your new repositories, which will suppress this warning, call:
-2025-10-12T19:57:12.7349092Z hint:
-2025-10-12T19:57:12.7350235Z hint: 	git config --global init.defaultBranch <name>
-2025-10-12T19:57:12.7351621Z hint:
-2025-10-12T19:57:12.7352891Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-2025-10-12T19:57:12.7354470Z hint: 'development'. The just-created branch can be renamed via this command:
-2025-10-12T19:57:12.7355641Z hint:
-2025-10-12T19:57:12.7356546Z hint: 	git branch -m <name>
-2025-10-12T19:57:12.7357508Z hint:
-2025-10-12T19:57:12.7358954Z hint: Disable this message with "git config set advice.defaultBranchName false"
-2025-10-12T19:57:12.7376224Z Initialized empty Git repository in /home/runner/work/my_closet/my_closet/.git/
-2025-10-12T19:57:12.7392603Z [command]/usr/bin/git remote add origin https://github.com/harshil753/my_closet
-2025-10-12T19:57:12.7516067Z ##[endgroup]
-2025-10-12T19:57:12.7519053Z ##[group]Disabling automatic garbage collection
-2025-10-12T19:57:12.7521309Z [command]/usr/bin/git config --local gc.auto 0
-2025-10-12T19:57:12.7558440Z ##[endgroup]
-2025-10-12T19:57:12.7561273Z ##[group]Setting up auth
-2025-10-12T19:57:12.7569993Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-2025-10-12T19:57:12.7601695Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-2025-10-12T19:57:12.9101407Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-2025-10-12T19:57:12.9140206Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-2025-10-12T19:57:12.9481093Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-2025-10-12T19:57:12.9519576Z ##[endgroup]
-2025-10-12T19:57:12.9523716Z ##[group]Fetching the repository
-2025-10-12T19:57:12.9542097Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +888e0beae63d64c5034d57f94570c2a37232146b:refs/remotes/origin/main
-2025-10-12T19:57:13.7605678Z From https://github.com/harshil753/my_closet
-2025-10-12T19:57:13.7607809Z  * [new ref]         888e0beae63d64c5034d57f94570c2a37232146b -> origin/main
-2025-10-12T19:57:13.7685197Z ##[endgroup]
-2025-10-12T19:57:13.7689069Z ##[group]Determining the checkout info
-2025-10-12T19:57:13.7691316Z ##[endgroup]
-2025-10-12T19:57:13.7692590Z [command]/usr/bin/git sparse-checkout disable
-2025-10-12T19:57:13.7774083Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-2025-10-12T19:57:13.7811720Z ##[group]Checking out the ref
-2025-10-12T19:57:13.7814072Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-2025-10-12T19:57:13.8452440Z Switched to a new branch 'main'
-2025-10-12T19:57:13.8458580Z branch 'main' set up to track 'origin/main'.
-2025-10-12T19:57:13.8474906Z ##[endgroup]
-2025-10-12T19:57:13.8525639Z [command]/usr/bin/git log -1 --format=%H
-2025-10-12T19:57:13.8564000Z 888e0beae63d64c5034d57f94570c2a37232146b
+﻿2025-10-12T20:12:49.0795193Z ##[group]Run actions/checkout@v4
+2025-10-12T20:12:49.0796150Z with:
+2025-10-12T20:12:49.0796565Z   repository: harshil753/my_closet
+2025-10-12T20:12:49.0797220Z   token: ***
+2025-10-12T20:12:49.0797622Z   ssh-strict: true
+2025-10-12T20:12:49.0798024Z   ssh-user: git
+2025-10-12T20:12:49.0798415Z   persist-credentials: true
+2025-10-12T20:12:49.0798864Z   clean: true
+2025-10-12T20:12:49.0799250Z   sparse-checkout-cone-mode: true
+2025-10-12T20:12:49.0799725Z   fetch-depth: 1
+2025-10-12T20:12:49.0800101Z   fetch-tags: false
+2025-10-12T20:12:49.0800494Z   show-progress: true
+2025-10-12T20:12:49.0800893Z   lfs: false
+2025-10-12T20:12:49.0801255Z   submodules: false
+2025-10-12T20:12:49.0801646Z   set-safe-directory: true
+2025-10-12T20:12:49.0802468Z ##[endgroup]
+2025-10-12T20:12:49.2280281Z Syncing repository: harshil753/my_closet
+2025-10-12T20:12:49.2282402Z ##[group]Getting Git version info
+2025-10-12T20:12:49.2283575Z Working directory is '/home/runner/work/my_closet/my_closet'
+2025-10-12T20:12:49.2305235Z [command]/usr/bin/git version
+2025-10-12T20:12:49.2327348Z git version 2.51.0
+2025-10-12T20:12:49.2356037Z ##[endgroup]
+2025-10-12T20:12:49.2372939Z Temporarily overriding HOME='/home/runner/work/_temp/1d2af5bb-9468-44a8-b0a3-749bd434504b' before making global git config changes
+2025-10-12T20:12:49.2376407Z Adding repository directory to the temporary git global config as a safe directory
+2025-10-12T20:12:49.2390999Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my_closet/my_closet
+2025-10-12T20:12:49.2431135Z Deleting the contents of '/home/runner/work/my_closet/my_closet'
+2025-10-12T20:12:49.2435080Z ##[group]Initializing the repository
+2025-10-12T20:12:49.2440043Z [command]/usr/bin/git init /home/runner/work/my_closet/my_closet
+2025-10-12T20:12:49.2546867Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-10-12T20:12:49.2549659Z hint: is subject to change. To configure the initial branch name to use in all
+2025-10-12T20:12:49.2551195Z hint: of your new repositories, which will suppress this warning, call:
+2025-10-12T20:12:49.2552647Z hint:
+2025-10-12T20:12:49.2553408Z hint: 	git config --global init.defaultBranch <name>
+2025-10-12T20:12:49.2555283Z hint:
+2025-10-12T20:12:49.2556282Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-10-12T20:12:49.2557896Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-10-12T20:12:49.2559165Z hint:
+2025-10-12T20:12:49.2559871Z hint: 	git branch -m <name>
+2025-10-12T20:12:49.2560677Z hint:
+2025-10-12T20:12:49.2561664Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-10-12T20:12:49.2564360Z Initialized empty Git repository in /home/runner/work/my_closet/my_closet/.git/
+2025-10-12T20:12:49.2567667Z [command]/usr/bin/git remote add origin https://github.com/harshil753/my_closet
+2025-10-12T20:12:49.2609237Z ##[endgroup]
+2025-10-12T20:12:49.2610457Z ##[group]Disabling automatic garbage collection
+2025-10-12T20:12:49.2613391Z [command]/usr/bin/git config --local gc.auto 0
+2025-10-12T20:12:49.2645956Z ##[endgroup]
+2025-10-12T20:12:49.2647153Z ##[group]Setting up auth
+2025-10-12T20:12:49.2653004Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-10-12T20:12:49.2686275Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-10-12T20:12:49.3024398Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-10-12T20:12:49.3073503Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-10-12T20:12:49.3296990Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-10-12T20:12:49.3346251Z ##[endgroup]
+2025-10-12T20:12:49.3349577Z ##[group]Fetching the repository
+2025-10-12T20:12:49.3357539Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +68502338c1fef4f101d8de2872b7d840292bd3d5:refs/remotes/origin/main
+2025-10-12T20:12:50.2362853Z From https://github.com/harshil753/my_closet
+2025-10-12T20:12:50.2370084Z  * [new ref]         68502338c1fef4f101d8de2872b7d840292bd3d5 -> origin/main
+2025-10-12T20:12:50.2402895Z ##[endgroup]
+2025-10-12T20:12:50.2404878Z ##[group]Determining the checkout info
+2025-10-12T20:12:50.2407402Z ##[endgroup]
+2025-10-12T20:12:50.2412670Z [command]/usr/bin/git sparse-checkout disable
+2025-10-12T20:12:50.2451874Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-10-12T20:12:50.2484830Z ##[group]Checking out the ref
+2025-10-12T20:12:50.2489029Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-10-12T20:12:50.3038789Z Switched to a new branch 'main'
+2025-10-12T20:12:50.3044055Z branch 'main' set up to track 'origin/main'.
+2025-10-12T20:12:50.3053686Z ##[endgroup]
+2025-10-12T20:12:50.3093207Z [command]/usr/bin/git log -1 --format=%H
+2025-10-12T20:12:50.3117534Z 68502338c1fef4f101d8de2872b7d840292bd3d5
