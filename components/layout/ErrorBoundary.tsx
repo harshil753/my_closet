@@ -7,8 +7,7 @@
 
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
-import { AlertTriangle, RefreshCw, Home, Bug, Mail } from 'lucide-react';
-import { useAnalytics } from '@/lib/hooks/useAnalytics';
+import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 /**
  * Error boundary state

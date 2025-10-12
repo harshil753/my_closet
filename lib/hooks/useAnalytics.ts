@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect } from 'react';
 import { useAuth } from '@/lib/auth/auth-context';
-import { AnalyticsService } from '@/lib/services/analytics';
+import { AnalyticsService, AnalyticsEvent, PerformanceMetric } from '@/lib/services/analytics';
 
 export interface UseAnalyticsReturn {
   trackEvent: (event: string, properties?: Record<string, any>) => void;
@@ -25,11 +25,10 @@ export function useAnalytics(): UseAnalyticsReturn {
 
   const trackEvent = useCallback(
     (event: string, properties?: Record<string, any>) => {
-      AnalyticsService.trackEvent({
-        event,
-        userId: user?.id,
-        properties,
-      });
+      const eventData: AnalyticsEvent = { event };
+      if (user?.id) eventData.userId = user.id;
+      if (properties) eventData.properties = properties;
+      AnalyticsService.trackEvent(eventData);
     },
     [user?.id]
   );
@@ -70,12 +69,9 @@ export function useAnalytics(): UseAnalyticsReturn {
 
   const trackPerformance = useCallback(
     (metric: string, value: number, unit: string) => {
-      AnalyticsService.trackPerformance({
-        metric,
-        value,
-        unit,
-        userId: user?.id,
-      });
+      const perfData: PerformanceMetric = { metric, value, unit };
+      if (user?.id) perfData.userId = user.id;
+      AnalyticsService.trackPerformance(perfData);
     },
     [user?.id]
   );

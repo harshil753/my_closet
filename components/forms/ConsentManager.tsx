@@ -22,7 +22,6 @@ import { Badge } from '@/components/ui/badge';
 import {
   Shield,
   CheckCircle,
-  AlertTriangle,
   Info,
   Eye,
   EyeOff,
@@ -224,7 +223,7 @@ export default function ConsentManager({
             <Switch
               id="analytics"
               checked={consent.analytics}
-              onCheckedChange={(checked) =>
+              onCheckedChange={(checked: boolean) =>
                 updateConsent({ analytics: checked })
               }
               disabled={loading}
@@ -246,7 +245,7 @@ export default function ConsentManager({
             <Switch
               id="marketing"
               checked={consent.marketing}
-              onCheckedChange={(checked) =>
+              onCheckedChange={(checked: boolean) =>
                 updateConsent({ marketing: checked })
               }
               disabled={loading}
@@ -268,7 +267,7 @@ export default function ConsentManager({
             <Switch
               id="ai-processing"
               checked={consent.aiProcessing}
-              onCheckedChange={(checked) =>
+              onCheckedChange={(checked: boolean) =>
                 updateConsent({ aiProcessing: checked })
               }
               disabled={loading}
@@ -290,7 +289,7 @@ export default function ConsentManager({
             <Switch
               id="data-retention"
               checked={consent.dataRetention}
-              onCheckedChange={(checked) =>
+              onCheckedChange={(checked: boolean) =>
                 updateConsent({ dataRetention: checked })
               }
               disabled={loading}

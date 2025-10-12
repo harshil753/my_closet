@@ -3,6 +3,7 @@
  * Image lazy loading, code splitting, and performance monitoring
  */
 
+import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 /**
@@ -59,8 +60,7 @@ export function useLazyImage(src: string, options?: IntersectionObserverInit) {
  * Dynamic import utility for code splitting
  */
 export function createLazyComponent<T extends React.ComponentType<any>>(
-  importFunc: () => Promise<{ default: T }>,
-  fallback?: React.ComponentType
+  importFunc: () => Promise<{ default: T }>
 ) {
   return React.lazy(importFunc);
 }

@@ -280,7 +280,7 @@ export default function PrivacyPage() {
               <Switch
                 id="data-collection"
                 checked={settings.dataCollection}
-                onCheckedChange={(checked) =>
+                onCheckedChange={(checked: boolean) =>
                   updatePrivacySettings({ dataCollection: checked })
                 }
                 disabled={loading}
@@ -299,7 +299,7 @@ export default function PrivacyPage() {
               <Switch
                 id="analytics"
                 checked={settings.analytics}
-                onCheckedChange={(checked) =>
+                onCheckedChange={(checked: boolean) =>
                   updatePrivacySettings({ analytics: checked })
                 }
                 disabled={loading}
@@ -318,7 +318,7 @@ export default function PrivacyPage() {
               <Switch
                 id="marketing"
                 checked={settings.marketing}
-                onCheckedChange={(checked) =>
+                onCheckedChange={(checked: boolean) =>
                   updatePrivacySettings({ marketing: checked })
                 }
                 disabled={loading}
@@ -337,7 +337,7 @@ export default function PrivacyPage() {
               <Switch
                 id="ai-processing"
                 checked={settings.aiProcessing}
-                onCheckedChange={(checked) =>
+                onCheckedChange={(checked: boolean) =>
                   updatePrivacySettings({ aiProcessing: checked })
                 }
                 disabled={loading}
