@@ -40,14 +40,14 @@ const buildQueryable = () => {
     order: jest.fn().mockReturnThis(),
     range: jest.fn().mockReturnThis(),
     // Allow directly awaiting the chain
-    then: undefined as any,
-    mockResolvedValue: undefined as any,
-  } as any;
+    then: undefined,
+    mockResolvedValue: undefined,
+  };
   // Implement promise-like behavior used in some tests
-  query.mockResolvedValue = (value: unknown) => {
-    query.then = (onFulfilled: (v: unknown) => unknown) => {
+  query.mockResolvedValue = (value) => {
+    query.then = (onFulfilled) => {
       onFulfilled(value);
-      return Promise.resolve(value) as any;
+      return Promise.resolve(value);
     };
     return query;
   };
@@ -65,11 +65,20 @@ jest.mock('@supabase/supabase-js', () => ({
     from: jest.fn(() => buildQueryable()),
     storage: {
       from: jest.fn(() => ({
-        upload: jest.fn().mockResolvedValue({ data: { path: 'path' }, error: null }),
+        upload: jest
+          .fn()
+          .mockResolvedValue({ data: { path: 'path' }, error: null }),
         download: jest.fn(),
         remove: jest.fn(),
-        getPublicUrl: jest.fn(() => ({ data: { publicUrl: 'https://example.com' } })),
-        createSignedUrl: jest.fn().mockResolvedValue({ data: { signedUrl: 'https://example.com/signed' }, error: null }),
+        getPublicUrl: jest.fn(() => ({
+          data: { publicUrl: 'https://example.com' },
+        })),
+        createSignedUrl: jest
+          .fn()
+          .mockResolvedValue({
+            data: { signedUrl: 'https://example.com/signed' },
+            error: null,
+          }),
       })),
     },
   })),

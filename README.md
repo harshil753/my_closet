@@ -23,7 +23,7 @@ An AI-powered virtual try-on application that allows users to upload clothing ph
 
 ### Prerequisites
 
-- Bun 1.0+
+- Node.js 18+
 - Python 3.11+
 - Supabase account
 - Google AI API key
@@ -40,7 +40,7 @@ cd my-closet
 2. Install dependencies:
 
 ```bash
-bun install
+npm install
 pip install -r requirements.txt
 ```
 
@@ -60,7 +60,7 @@ cp env.example .env.local
 5. Start the development server:
 
 ```bash
-bun run dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
@@ -86,23 +86,23 @@ my-closet/
 
 ```bash
 # Unit tests
-bun run test
+npm run test
 
 # E2E tests
-bun run test:e2e
+npm run test:e2e
 
 # Type checking
-bun run type-check
+npm run type-check
 ```
 
 ### Code Quality
 
 ```bash
 # Linting
-bun run lint
+npm run lint
 
 # Formatting
-bunx prettier --write .
+npx prettier --write .
 ```
 
 ## Deployment

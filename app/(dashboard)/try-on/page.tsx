@@ -27,7 +27,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -54,9 +54,9 @@ interface SelectionState {
 }
 
 /**
- * Main try-on selection page component
+ * Main try-on selection page component (wrapped with Suspense)
  */
-export default function TryOnSelectionPage() {
+function TryOnSelectionPageContent() {
   // Authentication and navigation
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
@@ -733,5 +733,22 @@ export default function TryOnSelectionPage() {
         </Alert>
       )}
     </div>
+  );
+}
+
+/**
+ * Page wrapper with Suspense boundary for useSearchParams
+ */
+export default function TryOnSelectionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <LoadingSpinner size="lg" />
+        </div>
+      }
+    >
+      <TryOnSelectionPageContent />
+    </Suspense>
   );
 }
