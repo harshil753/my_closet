@@ -48,6 +48,33 @@ jest.mock('next/navigation', () => ({
   },
 }));
 
+// Mock Auth Context
+const React = require('react');
+const mockAuthContextValue = {
+  user: { id: 'test-user-id', email: 'test@example.com' },
+  loading: false,
+  signIn: jest.fn(),
+  signOut: jest.fn(),
+  signUp: jest.fn(),
+};
+
+jest.mock('@/lib/auth/auth-context', () => {
+  const React = require('react');
+  const AuthContext = React.createContext(mockAuthContextValue);
+
+  return {
+    AuthContext,
+    AuthProvider: ({ children }) => {
+      return React.createElement(
+        AuthContext.Provider,
+        { value: mockAuthContextValue },
+        children
+      );
+    },
+    useAuth: () => mockAuthContextValue,
+  };
+});
+
 // Helper to build a chainable query mock that supports awaiting and mockResolvedValue
 const buildQueryable = () => {
   const query = {

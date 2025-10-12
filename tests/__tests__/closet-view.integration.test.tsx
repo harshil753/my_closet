@@ -5,6 +5,7 @@
  * API endpoints, and data flow for clothing item management.
  */
 
+import React from 'react';
 import {
   render,
   screen,
@@ -15,17 +16,15 @@ import {
 import { jest } from '@jest/globals';
 import ClosetView from '@/components/features/closet/ClosetView';
 import { ClothingItemCard } from '@/components/features/closet/ClothingItemCard';
-
-// Mock the auth context
-jest.mock('@/lib/auth/auth-context', () => ({
-  useAuth: () => ({
-    user: { id: 'test-user-id', email: 'test@example.com' },
-    loading: false,
-  }),
-}));
+import { AuthProvider } from '@/lib/auth/auth-context';
 
 // Mock fetch for API calls
 global.fetch = jest.fn();
+
+// Helper to render with AuthProvider
+const renderWithAuth = (component: React.ReactElement) => {
+  return render(<AuthProvider>{component}</AuthProvider>);
+};
 
 // Mock clothing items data with proper structure
 const mockClothingItems = [
@@ -90,7 +89,7 @@ describe('ClosetView Integration', () => {
 
   describe('Data Loading Integration', () => {
     it('loads clothing items on component mount', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledWith('/api/clothing-items', {
@@ -120,7 +119,7 @@ describe('ClosetView Integration', () => {
           )
       );
 
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       expect(screen.getByText(/loading/i)).toBeInTheDocument();
     });
@@ -131,7 +130,7 @@ describe('ClosetView Integration', () => {
         json: async () => ({ success: false, error: 'Failed to load items' }),
       });
 
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText(/failed to load items/i)).toBeInTheDocument();
@@ -141,7 +140,7 @@ describe('ClosetView Integration', () => {
 
   describe('Filtering Integration', () => {
     it('filters items by category', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -160,7 +159,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('filters items by color', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -179,7 +178,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('searches items by name', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -198,7 +197,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('combines multiple filters', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -224,7 +223,7 @@ describe('ClosetView Integration', () => {
 
   describe('Sorting Integration', () => {
     it('sorts items by name', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -242,7 +241,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('sorts items by date', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -275,7 +274,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('displays pagination controls for many items', async () => {
-      render(<ClosetView itemsPerPage={10} />);
+      renderWithAuth(<ClosetView itemsPerPage={10} />);
 
       await waitFor(() => {
         expect(screen.getByText(/page 1 of 3/i)).toBeInTheDocument();
@@ -286,7 +285,7 @@ describe('ClosetView Integration', () => {
     });
 
     it('navigates between pages', async () => {
-      render(<ClosetView itemsPerPage={10} />);
+      renderWithAuth(<ClosetView itemsPerPage={10} />);
 
       await waitFor(() => {
         expect(screen.getByText('Item 1')).toBeInTheDocument();
@@ -306,7 +305,7 @@ describe('ClosetView Integration', () => {
   describe('Item Selection Integration', () => {
     it('selects and deselects items', async () => {
       const onSelectionChange = jest.fn();
-      render(
+      renderWithAuth(
         <ClosetView selectable={true} onSelectionChange={onSelectionChange} />
       );
 
@@ -325,7 +324,7 @@ describe('ClosetView Integration', () => {
 
     it('selects multiple items', async () => {
       const onSelectionChange = jest.fn();
-      render(
+      renderWithAuth(
         <ClosetView selectable={true} onSelectionChange={onSelectionChange} />
       );
 
@@ -344,7 +343,7 @@ describe('ClosetView Integration', () => {
   describe('Item Actions Integration', () => {
     it('handles item edit action', async () => {
       const onItemEdit = jest.fn();
-      render(<ClosetView onItemEdit={onItemEdit} />);
+      renderWithAuth(<ClosetView onItemEdit={onItemEdit} />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -358,7 +357,7 @@ describe('ClosetView Integration', () => {
 
     it('handles item delete action', async () => {
       const onItemDelete = jest.fn();
-      render(<ClosetView onItemDelete={onItemDelete} />);
+      renderWithAuth(<ClosetView onItemDelete={onItemDelete} />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -382,7 +381,7 @@ describe('ClosetView Integration', () => {
 
     it('handles item view action', async () => {
       const onItemView = jest.fn();
-      render(<ClosetView onItemView={onItemView} />);
+      renderWithAuth(<ClosetView onItemView={onItemView} />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -397,7 +396,7 @@ describe('ClosetView Integration', () => {
 
   describe('View Mode Integration', () => {
     it('switches between grid and list view', async () => {
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText('Blue T-Shirt')).toBeInTheDocument();
@@ -424,7 +423,7 @@ describe('ClosetView Integration', () => {
           json: async () => ({ success: true, data: mockClothingItems }),
         });
 
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(fetch).toHaveBeenCalledTimes(2);
@@ -435,7 +434,7 @@ describe('ClosetView Integration', () => {
     it('shows error message for persistent failures', async () => {
       (fetch as jest.Mock).mockRejectedValue(new Error('Network error'));
 
-      render(<ClosetView />);
+      renderWithAuth(<ClosetView />);
 
       await waitFor(() => {
         expect(screen.getByText(/unable to load items/i)).toBeInTheDocument();
