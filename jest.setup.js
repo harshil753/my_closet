@@ -1,7 +1,12 @@
 import '@testing-library/jest-dom';
 
-// Use whatwg-fetch to provide Request/Response/Headers compatible with Next
-import 'whatwg-fetch';
+// Polyfill fetch for Jest test environment
+if (typeof global.fetch === 'undefined') {
+  global.fetch = jest.fn();
+  global.Request = class Request {};
+  global.Response = class Response {};
+  global.Headers = class Headers {};
+}
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
