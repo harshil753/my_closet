@@ -297,6 +297,11 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
       // Download and convert images to base64
       console.log('📥 Downloading images from URLs...');
       const basePhotoBase64 = await this.downloadImageAsBase64(basePhoto);
+      
+      // Get base photo dimensions for logging
+      const basePhotoBuffer = Buffer.from(basePhotoBase64, 'base64');
+      console.log('📐 Base photo size:', basePhotoBuffer.length, 'bytes');
+      
       const clothingItemsBase64 = await Promise.all(
         clothingItems.map((item) => this.downloadImageAsBase64(item.imageUrl))
       );
@@ -312,7 +317,7 @@ CRITICAL: Only edit the specified regions for each clothing type. All other part
         .join('\n');
 
       // Final attempt: Frame as editing task with strict reference preservation and region targeting
-      const prompt = `TASK: Photo editing - REGION-SPECIFIC clothing replacement.
+      const prompt = `TASK: Photo editing - REGION-SPECIFIC clothing replacement with FULL FRAME PRESERVATION.
 
 INPUT IMAGES (${1 + clothingItemsBase64.length} total):
 1. Reference photo (first image below): A person standing in front of a white door
@@ -323,6 +328,9 @@ CRITICAL CONSTRAINTS:
 - ONLY modify specific regions based on the clothing type - everything else must remain IDENTICAL
 - The person's face, skin tone, body type, and hair must be EXACTLY as shown in the first photo
 - The background (white door, floor) must be EXACTLY as shown in the first photo
+- PRESERVE THE COMPLETE IMAGE FRAME: Generate the ENTIRE image from head to toe, including all visible body parts in the original
+- DO NOT CROP: The output must show the complete person from top to bottom, just like the reference photo
+- MAINTAIN EXACT ASPECT RATIO: The output image dimensions must match the reference photo exactly
 
 ${regionConstraints}
 
@@ -336,6 +344,8 @@ What to preserve from the first photo:
 - Exact same floor (beige/tan tile)
 - Exact same lighting and shadows
 - Exact same image framing and composition
+- COMPLETE BODY VISIBILITY: Show the entire person from head to toe, do not crop any part
+- FULL IMAGE BOUNDS: Include all edges of the original photo - top, bottom, left, and right
 - All body regions NOT specified in the region rules above
 
 What to change from the first photo:
@@ -344,7 +354,13 @@ What to change from the first photo:
 - If editing tops: ONLY the upper body area (shoulders to waist)
 - If editing pants: ONLY the middle section (waist to ankles)
 
-Output: A photo-realistic image that looks like the person from the first photo changed specific clothing items. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else identical to the original.`;
+CRITICAL OUTPUT REQUIREMENTS:
+- Generate a COMPLETE image showing the ENTIRE person from head to toe
+- DO NOT crop or cut off any body parts (head, feet, arms, etc.)
+- The output must have the SAME dimensions and framing as the reference photo
+- Every pixel from the original frame should be represented in the output
+
+Output: A photo-realistic FULL-FRAME image that looks like the person from the first photo changed specific clothing items. The image must show the complete person and scene without any cropping. The edit should be seamless and region-specific - an observer should see ONLY the targeted clothing changed, with everything else (including full frame composition) identical to the original.`;
 
       // Build the parts array with text prompt and images
       interface GeminiPart {
@@ -386,9 +402,13 @@ Output: A photo-realistic image that looks like the person from the first photo 
         prompt.substring(0, 200) + '...'
       );
 
-      // Configuration (same as AI Studio)
+      // Configuration (same as AI Studio) with additional parameters
       const config = {
         responseModalities: ['IMAGE', 'TEXT'],
+        // Temperature 0 for more consistent, less creative outputs
+        temperature: 0.1,
+        // Request high quality output
+        topP: 0.9,
       };
 
       const model = 'gemini-2.5-flash-image';
@@ -430,8 +450,13 @@ Output: A photo-realistic image that looks like the person from the first photo 
           const mimeType = inlineData.mimeType || 'image/png';
 
           console.log(
-            `Image data length: ${imageData.length} characters, type: ${mimeType}`
+            `📊 Generated image data length: ${imageData.length} characters, type: ${mimeType}`
           );
+          
+          // Log image size for debugging aspect ratio issues
+          const generatedBuffer = Buffer.from(imageData, 'base64');
+          console.log('📐 Generated image size:', generatedBuffer.length, 'bytes');
+          console.log('📊 Size ratio (generated/original):', (generatedBuffer.length / basePhotoBuffer.length).toFixed(2));
 
           const imageUrl = await this.uploadGeneratedImage(
             imageData,
