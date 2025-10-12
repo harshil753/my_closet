@@ -61,7 +61,7 @@ interface CategorySelectorProps {
 export function CategorySelector({
   onCategoryChange,
   selectedCategories = [],
-  maxSelections = 3,
+  maxSelections = 2, // Default to 2 for optimal AI results
   minSelections = 1,
   allowMultiple = true,
   onContinue,

@@ -4,7 +4,8 @@ import path from 'path';
 const nextConfig: NextConfig = {
   // Turbopack configuration (simplified)
   turbopack: {
-    // Resolve fallbacks for client-side
+    // Resolve fallbacks for client-side only
+    // Note: These are applied globally in Turbopack, but serverExternalPackages helps
     resolveAlias: {
       '@': '.',
       '@/components': './components',
@@ -13,14 +14,19 @@ const nextConfig: NextConfig = {
       '@/types': './lib/types',
       '@/utils': './lib/utils',
       '@/services': './lib/services',
-      fs: 'false',
-      net: 'false',
-      tls: 'false',
+      // Removed fs, net, tls aliases to allow server-side usage
     },
   },
 
   // Server external packages (moved from experimental)
-  serverExternalPackages: ['pillow'],
+  // These packages will use Node.js runtime and won't be bundled
+  serverExternalPackages: [
+    'pillow',
+    '@google/genai',
+    'google-auth-library',
+    'mime',
+    'ws',
+  ],
 
   // Image optimization settings
   images: {

@@ -9,6 +9,9 @@ import {
 } from '@/lib/utils/errors';
 import { logger } from '@/lib/utils/logger';
 
+// Force Node.js runtime for fs, stream, and other Node.js modules
+export const runtime = 'nodejs';
+
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createSupabaseServerClient();

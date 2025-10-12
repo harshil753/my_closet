@@ -7,6 +7,8 @@ import {
   createSupabaseServerClient,
   createSupabaseAdminClient,
 } from '@/lib/config/supabase';
+import { GoogleGenAI } from '@google/genai';
+import mime from 'mime';
 
 export interface TryOnRequest {
   sessionId: string;
@@ -211,7 +213,7 @@ export class TryOnProcessor {
 
   /**
    * Real AI integration with Gemini API for virtual try-on
-   * Based on the Python script provided
+   * Using Google Generative AI SDK from AI Studio (streaming approach)
    */
   private static async callGeminiAPI(
     basePhoto: string,
@@ -219,17 +221,17 @@ export class TryOnProcessor {
     userId: string
   ): Promise<string> {
     try {
-      // Rate limiting checks removed for development
-
-      console.log('=== Gemini API Call Starting ===');
+      console.log('=== Gemini API Call Starting (Google AI Studio SDK) ===');
       console.log('Timestamp:', new Date().toISOString());
       console.log('Model: gemini-2.5-flash-image');
       console.log('Base photo:', basePhoto);
       console.log('Clothing items:', clothingItems);
-      console.log(
-        'NOTE: Free tier image generation is limited to ~1-2 requests per minute'
-      );
       console.log('==============================');
+
+      // Initialize Google AI client (like AI Studio)
+      const ai = new GoogleGenAI({
+        apiKey: this.GEMINI_API_KEY!,
+      });
 
       // Download and convert images to base64
       console.log('📥 Downloading images from URLs...');
@@ -239,21 +241,34 @@ export class TryOnProcessor {
       );
       console.log('✅ All images downloaded and converted');
 
-      // Create a detailed prompt that references the actual images
-      const prompt = `You are a professional virtual try-on AI. I am providing you with:
-1. A base photo of a person (first image)
-2. ${clothingItemsBase64.length} clothing item(s) they want to try on (subsequent images)
+      // Final attempt: Frame as editing task with strict reference preservation
+      const prompt = `TASK: Photo editing - clothing replacement only.
 
-Please create a realistic virtual try-on image showing the SAME PERSON from the base photo wearing the clothing items provided. 
+INPUT IMAGES (${1 + clothingItemsBase64.length} total):
+1. Reference photo (first image below): A person standing in front of a white door
+2. Clothing items (next ${clothingItemsBase64.length} images): Individual garments to apply to the person
 
-Requirements:
-- Maintain the person's face, body shape, skin tone, and features from the base photo
-- Naturally place the clothing items from the clothing images onto the person
-- Ensure proper fit, draping, and realistic fabric behavior
-- Match lighting and shadows to create a seamless, photorealistic result
-- The person should look natural and comfortable in the clothing
+CRITICAL CONSTRAINTS:
+- You must use the EXACT person, pose, background, and lighting from the first reference photo
+- ONLY the clothing should change - everything else must remain IDENTICAL
+- The person's face, skin tone, body type, and hair must be EXACTLY as shown in the first photo
+- The background (white door, floor) must be EXACTLY as shown in the first photo
 
-Generate a high-quality virtual try-on result.`;
+INSTRUCTIONS:
+Take the first reference photo and digitally replace ONLY the person's clothing with the items shown in images 2-${1 + clothingItemsBase64.length}. Think of this as Photoshop clothing swap - the base photo stays the same, only the outfit changes.
+
+What to preserve from the first photo:
+- Exact same person (face, features, skin tone, hair, body proportions)
+- Exact same pose and position
+- Exact same background (white door with panels)
+- Exact same floor (beige/tan tile)
+- Exact same lighting and shadows
+- Exact same image framing and composition
+
+What to change from the first photo:
+- ONLY the clothing/outfit - replace with items from images 2-${1 + clothingItemsBase64.length}
+
+Output: A photo-realistic image that looks like the person from the first photo changed their clothes. An observer should recognize this as the same person, same location, same everything - except the outfit.`;
 
       // Build the parts array with text prompt and images
       const parts: any[] = [
@@ -281,106 +296,83 @@ Generate a high-quality virtual try-on result.`;
         `📤 Sending ${parts.length} parts to Gemini (1 prompt + ${parts.length - 1} images)`
       );
 
-      // Use Gemini's native image generation capabilities
-      // Based on: https://ai.google.dev/gemini-api/docs/image-generation#limitations
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${this.GEMINI_API_KEY}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: 'user',
-                parts: parts,
-              },
-            ],
-            generationConfig: {
-              responseModalities: ['IMAGE'],
-              temperature: 0.4, // Lower temperature for more consistent results
-              topK: 32,
-              topP: 0.9,
-              maxOutputTokens: 2048,
-              imageConfig: {
-                aspectRatio: '3:4', // Portrait orientation for try-on results
-              },
-            },
-          }),
-        }
+      // Log the actual prompt being sent
+      console.log(
+        '📝 PROMPT PREVIEW (first 200 chars):',
+        prompt.substring(0, 200) + '...'
       );
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Gemini API error response:', errorText);
+      // Configuration (same as AI Studio)
+      const config = {
+        responseModalities: ['IMAGE', 'TEXT'],
+      };
 
-        // Handle rate limiting (429) specifically
-        if (response.status === 429) {
-          console.warn('Gemini 429 rate limit received.');
-          console.warn('Rate limit cooldowns disabled for development.');
-          console.warn('Using fallback composite image.');
-          return await this.createCompositeImage(basePhoto, clothingItems);
+      const model = 'gemini-2.5-flash-image';
+      const contents = [
+        {
+          role: 'user' as const,
+          parts: parts,
+        },
+      ];
+
+      console.log('📤 Calling Gemini API with streaming...');
+      console.log('🔧 Model:', model);
+      console.log('🔧 Config:', JSON.stringify(config));
+
+      // Use streaming API (like AI Studio)
+      const response = await ai.models.generateContentStream({
+        model,
+        config,
+        contents,
+      });
+
+      console.log('✅ Streaming started, processing chunks...');
+
+      // Process streaming response
+      let fileIndex = 0;
+      for await (const chunk of response) {
+        if (
+          !chunk.candidates ||
+          !chunk.candidates[0].content ||
+          !chunk.candidates[0].content.parts
+        ) {
+          continue;
         }
 
-        throw new Error(
-          `Gemini API error: ${response.status} ${response.statusText} - ${errorText}`
-        );
-      }
+        // Check for image in chunk
+        if (chunk.candidates?.[0]?.content?.parts?.[0]?.inlineData) {
+          console.log('✅ Generated image found in stream!');
+          const inlineData = chunk.candidates[0].content.parts[0].inlineData;
+          const imageData = inlineData.data || '';
+          const mimeType = inlineData.mimeType || 'image/png';
 
-      const data = await response.json();
-      console.log('Gemini API response:', data);
-      console.log('Full response structure:', JSON.stringify(data, null, 2));
+          console.log(
+            `Image data length: ${imageData.length} characters, type: ${mimeType}`
+          );
 
-      // Extract the generated image from the response
-      if (
-        data.candidates &&
-        data.candidates[0] &&
-        data.candidates[0].content &&
-        data.candidates[0].content.parts
-      ) {
-        const parts = data.candidates[0].content.parts;
-        console.log('Response parts:', parts);
-
-        // Look for inline data (generated image)
-        for (const part of parts) {
-          console.log('Checking part:', part);
-          if (part.inline_data && part.inline_data.data) {
-            console.log('Gemini generated image found!');
-            // Convert base64 to image URL
-            const imageData = part.inline_data.data;
-            const mimeType = part.inline_data.mime_type || 'image/jpeg';
-
-            // Upload to Supabase Storage and return URL
-            const imageUrl = await this.uploadGeneratedImage(
-              imageData,
-              mimeType,
-              userId
-            );
-            console.log('Generated image uploaded to:', imageUrl);
-            return imageUrl;
-          } else if (part.inlineData && part.inlineData.data) {
-            // Alternative field name
-            console.log('Gemini generated image found (alternative field)!');
-            const imageData = part.inlineData.data;
-            const mimeType = part.inlineData.mimeType || 'image/jpeg';
-
-            const imageUrl = await this.uploadGeneratedImage(
-              imageData,
-              mimeType,
-              userId
-            );
-            console.log('Generated image uploaded to:', imageUrl);
-            return imageUrl;
-          }
+          const imageUrl = await this.uploadGeneratedImage(
+            imageData,
+            mimeType,
+            userId
+          );
+          console.log('✅ Image uploaded successfully');
+          return imageUrl;
+        } else if (chunk.text) {
+          console.log('📝 Text chunk:', chunk.text);
         }
       }
 
-      // If no image found, fall back to composite
-      console.log('No generated image found, using composite approach');
+      // No image found in stream
+      console.log('⚠️  No image found in stream, using fallback');
       return await this.createCompositeImage(basePhoto, clothingItems);
-    } catch (error) {
-      console.error('Gemini API error:', error);
+    } catch (error: any) {
+      console.error('❌ Gemini API error:', error);
+
+      // Handle rate limiting
+      if (error?.status === 429 || error?.message?.includes('429')) {
+        console.warn('⚠️  Rate limit hit, using composite image');
+      }
+
       // Fall back to composite image on error
       return await this.createCompositeImage(basePhoto, clothingItems);
     }

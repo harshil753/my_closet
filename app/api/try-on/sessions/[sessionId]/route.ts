@@ -38,10 +38,17 @@ export async function GET(
       );
     }
 
+    // Get count of selected items for this session
+    const { count: itemCount } = await supabase
+      .from('try_on_session_items')
+      .select('*', { count: 'exact', head: true })
+      .eq('session_id', sessionId);
+
     // Map database fields to frontend expected fields
     const mappedSession = {
       ...session,
       result_url: session.result_image_url, // Map result_image_url to result_url for frontend
+      selected_items: Array(itemCount || 0).fill({}), // Create array with correct length for display
     };
 
     return NextResponse.json({

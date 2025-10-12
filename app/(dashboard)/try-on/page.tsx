@@ -28,7 +28,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
@@ -60,13 +60,14 @@ export default function TryOnSelectionPage() {
   // Authentication and navigation
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   // State management
   const [selectionState, setSelectionState] = useState<SelectionState>({
     selectedCategories: [],
     selectedItems: [],
     currentStep: 'category',
-    maxSelections: 5,
+    maxSelections: 2, // Limit to 2 categories for optimal AI results
     minSelections: 1,
     currentCategoryIndex: 0,
     itemsByCategory: {},
@@ -74,6 +75,8 @@ export default function TryOnSelectionPage() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [preSelectedItemsLoaded, setPreSelectedItemsLoaded] = useState(false);
+  const [itemDetails, setItemDetails] = useState<any[]>([]);
 
   // Redirect if not authenticated
   useEffect(() => {
@@ -81,6 +84,80 @@ export default function TryOnSelectionPage() {
       router.push('/login');
     }
   }, [user, authLoading, router]);
+
+  // Check for pre-selected items from closet page
+  useEffect(() => {
+    const itemsParam = searchParams.get('items');
+    if (itemsParam && user?.id && !preSelectedItemsLoaded) {
+      console.log('Pre-selected items from closet:', itemsParam);
+      loadPreSelectedItems(itemsParam);
+    }
+  }, [searchParams, user?.id, preSelectedItemsLoaded]);
+
+  // Load pre-selected items from closet
+  const loadPreSelectedItems = async (itemsParam: string) => {
+    try {
+      setLoading(true);
+      const itemIds = itemsParam.split(',').filter(Boolean);
+
+      // Fetch items to get their categories
+      const response = await fetch(
+        `/api/clothing-items?user_id=${user?.id}&_t=${Date.now()}`
+      );
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error('Failed to load clothing items');
+      }
+
+      const allItems = result.data?.items || result.data || [];
+      const selectedItemsData = allItems.filter((item: any) =>
+        itemIds.includes(item.id)
+      );
+
+      // Group items by category
+      const itemsByCategory: Record<string, string[]> = {};
+      const categories: ClothingCategory[] = [];
+
+      selectedItemsData.forEach((item: any) => {
+        if (!categories.includes(item.category)) {
+          categories.push(item.category);
+        }
+        if (!itemsByCategory[item.category]) {
+          itemsByCategory[item.category] = [];
+        }
+        itemsByCategory[item.category].push(item.id);
+      });
+
+      // Update state to go directly to confirmation with pre-selected items
+      setSelectionState({
+        selectedCategories: categories,
+        selectedItems: itemIds,
+        currentStep: 'confirmation',
+        maxSelections: 2, // Limit to 2 categories for optimal AI results
+        minSelections: 1,
+        currentCategoryIndex: categories.length - 1,
+        itemsByCategory,
+      });
+
+      // Store item details for display
+      setItemDetails(selectedItemsData);
+
+      setPreSelectedItemsLoaded(true);
+      console.log('Pre-selected items loaded:', {
+        categories,
+        itemIds,
+        itemsByCategory,
+      });
+    } catch (err) {
+      console.error('Error loading pre-selected items:', err);
+      setError(
+        err instanceof Error ? err.message : 'Failed to load pre-selected items'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // No client-side cleanup here; backend endpoint performs cleanup idempotently
 
@@ -125,7 +202,26 @@ export default function TryOnSelectionPage() {
   /**
    * Handle step navigation
    */
-  const handleStepNavigation = (step: SelectionStep) => {
+  const handleStepNavigation = async (step: SelectionStep) => {
+    // If navigating to confirmation and we have items selected, fetch details
+    if (
+      step === 'confirmation' &&
+      selectionState.selectedItems.length > 0 &&
+      !preSelectedItemsLoaded &&
+      itemDetails.length === 0
+    ) {
+      await fetchItemDetailsForConfirmation(selectionState.selectedItems);
+    }
+
+    // If navigating away from confirmation (going back), clear item details if not pre-loaded
+    if (
+      selectionState.currentStep === 'confirmation' &&
+      step !== 'confirmation' &&
+      !preSelectedItemsLoaded
+    ) {
+      setItemDetails([]);
+    }
+
     setSelectionState((prev) => ({
       ...prev,
       currentStep: step,
@@ -133,13 +229,44 @@ export default function TryOnSelectionPage() {
   };
 
   /**
+   * Fetch item details for confirmation display
+   */
+  const fetchItemDetailsForConfirmation = async (itemIds: string[]) => {
+    try {
+      const response = await fetch(
+        `/api/clothing-items?user_id=${user?.id}&_t=${Date.now()}`
+      );
+      const result = await response.json();
+
+      if (!result.success) {
+        console.error('Failed to fetch item details');
+        return;
+      }
+
+      const allItems = result.data?.items || result.data || [];
+      const selectedItemsData = allItems.filter((item: any) =>
+        itemIds.includes(item.id)
+      );
+
+      setItemDetails(selectedItemsData);
+      console.log('Fetched item details for confirmation:', selectedItemsData);
+    } catch (err) {
+      console.error('Error fetching item details:', err);
+    }
+  };
+
+  /**
    * Move to next category or confirmation
    */
-  const handleNextCategory = () => {
+  const handleNextCategory = async () => {
     const nextIndex = selectionState.currentCategoryIndex + 1;
 
     if (nextIndex >= selectionState.selectedCategories.length) {
-      // All categories done, move to confirmation
+      // All categories done, fetch item details and move to confirmation
+      if (selectionState.selectedItems.length > 0 && !preSelectedItemsLoaded) {
+        await fetchItemDetailsForConfirmation(selectionState.selectedItems);
+      }
+
       setSelectionState((prev) => ({
         ...prev,
         currentStep: 'confirmation',
@@ -298,7 +425,7 @@ export default function TryOnSelectionPage() {
               Virtual Try-On
             </h1>
             <p className="text-gray-600">
-              Select clothing items to create your virtual try-on session
+              Select up to 2 categories with 1 item each for optimal AI results
             </p>
           </div>
         </div>
@@ -379,9 +506,18 @@ export default function TryOnSelectionPage() {
                 <>
                   <Button
                     variant="outline"
-                    onClick={() => handleStepNavigation('items')}
+                    onClick={async () => {
+                      // If items were pre-selected from closet, go back to closet
+                      if (preSelectedItemsLoaded) {
+                        router.push('/closet');
+                      } else {
+                        await handleStepNavigation('items');
+                      }
+                    }}
                   >
-                    Back to Items
+                    {preSelectedItemsLoaded
+                      ? 'Back to Closet'
+                      : 'Back to Items'}
                   </Button>
                   <Button
                     onClick={handleCreateTryOnSession}
@@ -403,8 +539,8 @@ export default function TryOnSelectionPage() {
         <CategorySelector
           onCategoryChange={handleCategorySelection}
           selectedCategories={selectionState.selectedCategories}
-          maxSelections={3}
-          minSelections={1}
+          maxSelections={selectionState.maxSelections}
+          minSelections={selectionState.minSelections}
           allowMultiple={true}
           onContinue={() => handleStepNavigation('items')}
         />
@@ -484,6 +620,11 @@ export default function TryOnSelectionPage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Confirm Your Selection</CardTitle>
+            {preSelectedItemsLoaded && (
+              <p className="text-sm text-gray-600">
+                Review your selected items from closet
+              </p>
+            )}
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -503,32 +644,71 @@ export default function TryOnSelectionPage() {
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-sm font-medium text-gray-600">
-                  Selected Items by Category
-                </h3>
-                <div className="mt-2 space-y-2">
-                  {selectionState.selectedCategories.map((category) => {
-                    const categoryItems =
-                      selectionState.itemsByCategory[category] || [];
-                    return (
+              {/* Show item details if available */}
+              {itemDetails.length > 0 && (
+                <div>
+                  <h3 className="mb-3 text-sm font-medium text-gray-600">
+                    Selected Items
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                    {itemDetails.map((item) => (
                       <div
-                        key={category}
-                        className="flex items-center space-x-2"
+                        key={item.id}
+                        className="overflow-hidden rounded-lg border bg-white shadow-sm"
                       >
-                        <span className="text-sm font-medium text-gray-700">
-                          {category.replace('_', ' ').toUpperCase()}:
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {categoryItems.length > 0
-                            ? '1 item selected'
-                            : 'No item selected'}
-                        </span>
+                        <div className="relative aspect-square">
+                          <img
+                            src={item.thumbnail_url || item.image_url}
+                            alt={item.name}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                        <div className="p-2">
+                          <p className="truncate text-sm font-medium">
+                            {item.name}
+                          </p>
+                          <p className="text-xs text-gray-500 capitalize">
+                            {item.category.replace('_', ' ')}
+                          </p>
+                        </div>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-                <p className="mt-2 text-sm text-gray-500">
+              )}
+
+              {/* Fallback for no item details */}
+              {itemDetails.length === 0 && (
+                <div>
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Selected Items by Category
+                  </h3>
+                  <div className="mt-2 space-y-2">
+                    {selectionState.selectedCategories.map((category) => {
+                      const categoryItems =
+                        selectionState.itemsByCategory[category] || [];
+                      return (
+                        <div
+                          key={category}
+                          className="flex items-center space-x-2"
+                        >
+                          <span className="text-sm font-medium text-gray-700">
+                            {category.replace('_', ' ').toUpperCase()}:
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            {categoryItems.length > 0
+                              ? '1 item selected'
+                              : 'No item selected'}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              <div className="border-t pt-2">
+                <p className="text-sm text-gray-500">
                   Total: {selectionState.selectedItems.length} item
                   {selectionState.selectedItems.length !== 1 ? 's' : ''}{' '}
                   selected

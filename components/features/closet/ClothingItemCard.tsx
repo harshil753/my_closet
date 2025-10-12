@@ -181,15 +181,15 @@ export function ClothingItemCard({
         {selectable && (
           <div className="absolute top-2 left-2 z-10">
             <div
-              className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${
+              className={`flex h-6 w-6 items-center justify-center rounded-full border-[3px] shadow-lg ${
                 selected
-                  ? 'bg-primary border-primary text-white'
-                  : 'border-gray-300 bg-white'
+                  ? 'border-blue-600 bg-blue-600 text-white'
+                  : 'border-gray-600 bg-white/90 backdrop-blur-sm'
               }`}
             >
               {selected && (
                 <svg
-                  className="h-3 w-3"
+                  className="h-4 w-4"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -358,15 +358,15 @@ export function ClothingItemCard({
           {/* Selection indicator */}
           {selectable && (
             <div
-              className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 ${
+              className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-[3px] shadow-lg ${
                 selected
-                  ? 'bg-primary border-primary text-white'
-                  : 'border-gray-300 bg-white'
+                  ? 'border-blue-600 bg-blue-600 text-white'
+                  : 'border-gray-600 bg-white/90 backdrop-blur-sm'
               }`}
             >
               {selected && (
                 <svg
-                  className="h-3 w-3"
+                  className="h-4 w-4"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >

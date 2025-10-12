@@ -12,8 +12,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
+import { Modal } from '@/components/ui/modal';
 import { ClosetView } from '@/components/features/closet/ClosetView';
 import { useAuth } from '@/lib/auth/auth-context';
 import { ClothingCategory } from '@/lib/types/common';
@@ -58,6 +58,7 @@ export default function ClosetPage() {
   const [closetStats, setClosetStats] = useState<ClosetStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
   const [showQuickActions, setShowQuickActions] = useState(false);
 
@@ -81,6 +82,7 @@ export default function ClosetPage() {
       setError(
         err instanceof Error ? err.message : 'Failed to load closet data'
       );
+      setShowErrorModal(true);
     } finally {
       setLoading(false);
     }
@@ -146,9 +148,62 @@ export default function ClosetPage() {
   };
 
   /**
+   * Validate selected items for try-on (max 2 categories, max 1 item per category)
+   */
+  const validateTryOnSelection = async () => {
+    if (selectedItems.length === 0) {
+      setError('Please select at least one item to try on');
+      return false;
+    }
+
+    // Fetch the selected items' details to check categories
+    const response = await fetch(
+      `/api/clothing-items?user_id=${user?.id}&_t=${Date.now()}`
+    );
+    const result = await response.json();
+
+    if (!result.success) {
+      setError('Failed to validate selection');
+      return false;
+    }
+
+    const allItems = result.data?.items || result.data || [];
+    const selected = allItems.filter((item: ClothingItem) =>
+      selectedItems.includes(item.id)
+    );
+
+    // Check category counts
+    const categoryCounts: Record<string, number> = {};
+    selected.forEach((item: ClothingItem) => {
+      categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
+    });
+
+    // Check if more than 2 categories are selected
+    const uniqueCategories = Object.keys(categoryCounts);
+    if (uniqueCategories.length > 2) {
+      setError(
+        'Please select items from a maximum of 2 categories for optimal results'
+      );
+      return false;
+    }
+
+    // Check if any category has more than 1 item
+    const overloadedCategories = Object.entries(categoryCounts)
+      .filter(([, count]) => count > 1)
+      .map(([category]) => category);
+
+    if (overloadedCategories.length > 0) {
+      setError('Please select only 1 item per category for optimal results');
+      return false;
+    }
+
+    return true;
+  };
+
+  /**
    * Handle bulk actions
    */
-  const handleBulkAction = (action: string) => {
+  const handleBulkAction = async (action: string) => {
     if (selectedItems.length === 0) return;
 
     switch (action) {
@@ -161,8 +216,28 @@ export default function ClosetPage() {
         }
         break;
       case 'try-on':
-        // Navigate to try-on with selected items
-        router.push(`/try-on?items=${selectedItems.join(',')}`);
+        try {
+          // Validate selection
+          const isValid = await validateTryOnSelection();
+          if (!isValid) {
+            // Error message is already set by validateTryOnSelection
+            setShowErrorModal(true);
+            return;
+          }
+
+          // Clear any previous errors
+          setError(null);
+          setShowErrorModal(false);
+
+          // Navigate to try-on page with selected items as URL params
+          const itemsParam = selectedItems.join(',');
+          router.push(`/try-on?items=${itemsParam}`);
+        } catch (err) {
+          setError(
+            err instanceof Error ? err.message : 'Failed to start try-on'
+          );
+          setShowErrorModal(true);
+        }
         break;
       case 'export':
         // Export selected items
@@ -210,16 +285,59 @@ export default function ClosetPage() {
         </div>
       </div>
 
-      {/* Error State */}
-      {error && (
-        <Alert variant="destructive" className="mb-6">
-          <strong>Error Loading Closet</strong>
-          <p>{error}</p>
-          <Button onClick={loadClosetData} className="mt-2">
-            Try Again
-          </Button>
-        </Alert>
-      )}
+      {/* Error Modal */}
+      <Modal
+        isOpen={showErrorModal}
+        onClose={() => {
+          setShowErrorModal(false);
+          setError(null);
+        }}
+        size="md"
+      >
+        <div className="p-6">
+          <div className="mb-4 flex items-center justify-center">
+            <div className="rounded-full bg-red-100 p-3">
+              <svg
+                className="h-6 w-6 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+            </div>
+          </div>
+          <h3 className="mb-2 text-center text-lg font-semibold text-gray-900">
+            Selection Error
+          </h3>
+          <p className="mb-6 text-center text-sm text-gray-600">{error}</p>
+          <div className="flex justify-center space-x-3">
+            <Button
+              onClick={() => {
+                setShowErrorModal(false);
+                setError(null);
+              }}
+              variant="outline"
+            >
+              Close
+            </Button>
+            <Button
+              onClick={() => {
+                setShowErrorModal(false);
+                setError(null);
+                clearSelection();
+              }}
+            >
+              Clear Selection
+            </Button>
+          </div>
+        </div>
+      </Modal>
 
       {/* Quick Stats */}
       {closetStats && (
@@ -365,7 +483,15 @@ export default function ClosetPage() {
               <Button
                 variant="outline"
                 className="flex h-20 flex-col items-center justify-center space-y-2"
-                onClick={() => router.push('/try-on')}
+                onClick={() => {
+                  if (selectedItems.length > 0) {
+                    // If items are selected, go to try-on with them
+                    handleBulkAction('try-on');
+                  } else {
+                    // If no items selected, start fresh
+                    router.push('/try-on');
+                  }
+                }}
               >
                 <svg
                   className="h-6 w-6"
