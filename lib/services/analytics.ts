@@ -69,7 +69,8 @@ export class AnalyticsService {
    */
   static async trackPerformance(metric: PerformanceMetric): Promise<void> {
     try {
-      const { error } = await this.supabase.from('performance_metrics').insert({
+      const supabase = await createSupabaseServerClient();
+      const { error } = await supabase.from('performance_metrics').insert({
         metric: metric.metric,
         value: metric.value,
         unit: metric.unit,
@@ -96,7 +97,8 @@ export class AnalyticsService {
    */
   static async trackEngagement(engagement: UserEngagement): Promise<void> {
     try {
-      const { error } = await this.supabase.from('user_engagement').upsert({
+      const supabase = await createSupabaseServerClient();
+      const { error} = await supabase.from('user_engagement').upsert({
         user_id: engagement.userId,
         session_count: engagement.sessionCount,
         total_time_spent: engagement.totalTimeSpent,
@@ -195,13 +197,15 @@ export class AnalyticsService {
     conversionRate: number;
   }> {
     try {
+      const supabase = await createSupabaseServerClient();
+      
       // Get total users
-      const { count: totalUsers } = await this.supabase
+      const { count: totalUsers } = await supabase
         .from('users')
         .select('*', { count: 'exact', head: true });
 
       // Get active users in date range
-      const { count: activeUsers } = await this.supabase
+      const { count: activeUsers } = await supabase
         .from('analytics_events')
         .select('user_id', { count: 'exact', head: true })
         .gte('timestamp', startDate.toISOString())
@@ -209,14 +213,14 @@ export class AnalyticsService {
         .not('user_id', 'is', null);
 
       // Get total sessions
-      const { count: totalSessions } = await this.supabase
+      const { count: totalSessions } = await supabase
         .from('try_on_sessions')
         .select('*', { count: 'exact', head: true })
         .gte('created_at', startDate.toISOString())
         .lte('created_at', endDate.toISOString());
 
       // Get average session duration
-      const { data: sessions } = await this.supabase
+      const { data: sessions } = await supabase
         .from('try_on_sessions')
         .select('processing_time')
         .gte('created_at', startDate.toISOString())
@@ -225,13 +229,13 @@ export class AnalyticsService {
 
       const averageSessionDuration = sessions?.length
         ? sessions.reduce(
-            (sum, session) => sum + (session.processing_time || 0),
+            (sum: number, session: any) => sum + (session.processing_time || 0),
             0
           ) / sessions.length
         : 0;
 
       // Get top features
-      const { data: features } = await this.supabase
+      const { data: features } = await supabase
         .from('analytics_events')
         .select('properties')
         .eq('event', 'feature_usage')
@@ -239,7 +243,7 @@ export class AnalyticsService {
         .lte('timestamp', endDate.toISOString());
 
       const featureCounts: Record<string, number> = {};
-      features?.forEach((event) => {
+      features?.forEach((event: any) => {
         const feature = event.properties?.feature;
         if (feature) {
           featureCounts[feature] = (featureCounts[feature] || 0) + 1;
@@ -252,7 +256,7 @@ export class AnalyticsService {
         .slice(0, 10);
 
       // Get conversion rate
-      const { count: conversions } = await this.supabase
+      const { count: conversions } = await supabase
         .from('analytics_events')
         .select('*', { count: 'exact', head: true })
         .eq('event', 'conversion')
