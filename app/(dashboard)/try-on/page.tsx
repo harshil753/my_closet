@@ -37,6 +37,7 @@ import { ClothingSelector } from '@/components/features/try-on/ClothingSelector'
 import { CategorySelector } from '@/components/features/try-on/CategorySelector';
 import { ClothingCategory } from '@/lib/types/common';
 import { useAuth } from '@/lib/auth/auth-context';
+import { getErrorMessage } from '@/lib/utils/api-helpers';
 // Removed client-side cleanup to avoid duplicate calls; cleanup is server-driven
 
 // Selection step type
@@ -338,7 +339,7 @@ function TryOnSelectionPageContent() {
         // Navigate to try-on processing page
         router.push(`/try-on/process/${result.data.id}`);
       } else {
-        throw new Error(result.error || 'Failed to create try-on session');
+        throw new Error(getErrorMessage(result.error, 'Failed to create try-on session'));
       }
     } catch (err) {
       setError(

@@ -18,6 +18,7 @@ import { Alert } from '@/components/ui/alert';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { ClothingCategory } from '@/lib/types/common';
 import { useAuth } from '@/lib/auth/auth-context';
+import { getErrorMessage } from '@/lib/utils/api-helpers';
 
 // Form data interface
 interface ClothingUploadData {
@@ -414,7 +415,7 @@ export function ClothingUploadForm({
         // Reload tier status
         await loadTierStatus();
       } else {
-        throw new Error(result.error || 'Upload failed');
+        throw new Error(getErrorMessage(result.error, 'Upload failed'));
       }
     } catch (error) {
       setUploadStatus({

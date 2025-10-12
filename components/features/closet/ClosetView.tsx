@@ -18,6 +18,7 @@ import { ClothingItemCard } from './ClothingItemCard';
 import { ClothingItemDetailModal } from './ClothingItemDetailModal';
 import { ClothingCategory } from '@/lib/types/common';
 import { useAuth } from '@/lib/auth/auth-context';
+import { getErrorMessage } from '@/lib/utils/api-helpers';
 
 // Clothing item interface
 interface ClothingItem {
@@ -116,7 +117,7 @@ export function ClosetView({
         setItems(Array.isArray(itemsData) ? itemsData : []);
         setError(null); // Clear any previous errors
       } else {
-        throw new Error(result.error || 'Failed to load items');
+        throw new Error(getErrorMessage(result.error, 'Failed to load items'));
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load items');

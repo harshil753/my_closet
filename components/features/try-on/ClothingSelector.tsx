@@ -41,6 +41,7 @@ import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { ClothingItemCard } from '../closet/ClothingItemCard';
 import { ClothingCategory } from '@/lib/types/common';
 import { useAuth } from '@/lib/auth/auth-context';
+import { getErrorMessage } from '@/lib/utils/api-helpers';
 
 // Clothing item interface
 interface ClothingItem {
@@ -143,7 +144,7 @@ export function ClothingSelector({
           clothing = Array.isArray(itemsData) ? itemsData : [];
           if (cacheKey) cacheRoot.clothingByUser[cacheKey] = clothing;
         } else {
-          throw new Error(result.error || 'Failed to load items');
+          throw new Error(getErrorMessage(result.error, 'Failed to load items'));
         }
       }
 

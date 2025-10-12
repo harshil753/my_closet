@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/layout/LoadingSpinner';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { getErrorMessage } from '@/lib/utils/api-helpers';
 
 interface TryOnSession {
   id: string;
@@ -226,7 +227,7 @@ export default function TryOnProcessPage() {
 
       if (!response.ok) {
         console.error('AI processing failed:', result);
-        throw new Error(result.error || 'AI processing failed');
+        throw new Error(getErrorMessage(result.error, 'AI processing failed'));
       }
 
       console.log('AI processing completed:', result);
