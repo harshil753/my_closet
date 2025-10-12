@@ -1,4 +1,15 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
+
+// Polyfill for Request and Response (needed for Next.js server components)
+if (typeof global.Request === 'undefined') {
+  global.Request = class Request {};
+}
+if (typeof global.Response === 'undefined') {
+  global.Response = class Response {};
+}
+if (typeof global.Headers === 'undefined') {
+  global.Headers = class Headers {};
+}
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
@@ -10,15 +21,15 @@ jest.mock('next/navigation', () => ({
       back: jest.fn(),
       forward: jest.fn(),
       refresh: jest.fn(),
-    }
+    };
   },
   useSearchParams() {
-    return new URLSearchParams()
+    return new URLSearchParams();
   },
   usePathname() {
-    return ''
+    return '';
   },
-}))
+}));
 
 // Mock Supabase client
 jest.mock('@supabase/supabase-js', () => ({
@@ -42,7 +53,7 @@ jest.mock('@supabase/supabase-js', () => ({
       })),
     },
   })),
-}))
+}));
 
 // Mock Supabase SSR
 jest.mock('@supabase/ssr', () => ({
@@ -86,9 +97,9 @@ jest.mock('@supabase/ssr', () => ({
       })),
     },
   })),
-}))
+}));
 
 // Mock environment variables
-process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co'
-process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key'
-process.env.GEMINI_API_KEY = 'test-gemini-key'
+process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co';
+process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
+process.env.GEMINI_API_KEY = 'test-gemini-key';

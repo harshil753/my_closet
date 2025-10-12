@@ -68,7 +68,7 @@ export function validateItemSelection(
   const inactiveItems = selectedItems.filter((item) => !item.isActive);
   if (inactiveItems.length > 0) {
     errors.push(
-      `${inactiveItems.length} selected item${inactiveItems.length !== 1 ? 's' : ''} are inactive`
+      `${inactiveItems.length} selected item${inactiveItems.length !== 1 ? 's' : ''} ${inactiveItems.length !== 1 ? 'are' : 'is'} inactive`
     );
   }
 

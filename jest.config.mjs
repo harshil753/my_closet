@@ -51,10 +51,8 @@ const customJestConfig = {
     '<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}',
     '<rootDir>/**/*.{test,spec}.{js,jsx,ts,tsx}',
   ],
-  // Avoid deprecated packages by using modern alternatives
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
-  },
+  // Use Next.js built-in transformer instead of babel-jest
+  // transform is handled by next/jest automatically
   // Use modern file system operations
   watchPathIgnorePatterns: [
     '<rootDir>/node_modules/',
