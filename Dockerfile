@@ -1,6 +1,6 @@
 # Multi-stage Docker build for My Closet Virtual Try-On
-# Stage 1: Base image with Node.js and Python
-FROM node:18-alpine AS base
+# Stage 1: Base image with Bun and Python
+FROM oven/bun:1-alpine AS base
 
 # Install Python and build tools for AI processing
 RUN apk add --no-cache python3 py3-pip build-base python3-dev
@@ -9,11 +9,11 @@ RUN apk add --no-cache python3 py3-pip build-base python3-dev
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY package.json bun.lock ./
 COPY requirements.txt ./
 
-# Install Node.js dependencies
-RUN npm ci --only=production
+# Install Node.js dependencies with Bun
+RUN bun install --frozen-lockfile --production
 
 # Install Python dependencies
 RUN pip3 install --no-cache-dir -r requirements.txt
@@ -25,10 +25,10 @@ FROM base AS builder
 COPY . .
 
 # Install all dependencies (including dev dependencies)
-RUN npm ci
+RUN bun install --frozen-lockfile
 
 # Build the Next.js application
-RUN npm run build
+RUN bun run build
 
 # Stage 3: Production runtime
 FROM base AS runner

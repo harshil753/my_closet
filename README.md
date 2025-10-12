@@ -23,7 +23,7 @@ An AI-powered virtual try-on application that allows users to upload clothing ph
 
 ### Prerequisites
 
-- Node.js 18+
+- Bun 1.0+
 - Python 3.11+
 - Supabase account
 - Google AI API key
@@ -31,31 +31,36 @@ An AI-powered virtual try-on application that allows users to upload clothing ph
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd my-closet
 ```
 
 2. Install dependencies:
+
 ```bash
-npm install
+bun install
 pip install -r requirements.txt
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp env.example .env.local
 # Edit .env.local with your actual values
 ```
 
 4. Set up Supabase:
+
 - Create a new Supabase project
 - Run the database migrations from `specs/001-we-will-be/data-model.md`
 - Configure storage buckets
 
 5. Start the development server:
+
 ```bash
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
@@ -81,23 +86,23 @@ my-closet/
 
 ```bash
 # Unit tests
-npm run test
+bun run test
 
 # E2E tests
-npm run test:e2e
+bun run test:e2e
 
 # Type checking
-npm run type-check
+bun run type-check
 ```
 
 ### Code Quality
 
 ```bash
 # Linting
-npm run lint
+bun run lint
 
 # Formatting
-npx prettier --write .
+bunx prettier --write .
 ```
 
 ## Deployment

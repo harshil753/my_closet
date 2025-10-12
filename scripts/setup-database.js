@@ -65,8 +65,15 @@ async function setupDatabase() {
 
     // Read migration file
     log('📋 Reading database schema...', 'blue');
-    const migrationPath = path.join(__dirname, '..', 'lib', 'database', 'migrations', '001_initial_schema.sql');
-    
+    const migrationPath = path.join(
+      __dirname,
+      '..',
+      'lib',
+      'database',
+      'migrations',
+      '001_initial_schema.sql'
+    );
+
     if (!fs.existsSync(migrationPath)) {
       log('❌ Migration file not found:', 'red');
       log(`   ${migrationPath}`, 'red');
@@ -99,11 +106,16 @@ async function setupDatabase() {
     log('1. Go to your Supabase Dashboard > Storage', 'bright');
     log('2. Create a new bucket named "closet-images"', 'bright');
     log('3. Set it as public bucket', 'bright');
-    log('4. Configure the storage policies as shown in setup-supabase.md', 'bright');
+    log(
+      '4. Configure the storage policies as shown in setup-supabase.md',
+      'bright'
+    );
 
     log('🎉 Database setup completed successfully!', 'green');
-    log('   You can now start the development server with: npm run dev', 'bright');
-
+    log(
+      '   You can now start the development server with: bun run dev',
+      'bright'
+    );
   } catch (error) {
     log('❌ Database setup failed:', 'red');
     log(`   ${error.message}`, 'red');
