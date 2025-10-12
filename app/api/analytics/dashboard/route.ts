@@ -117,7 +117,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    logger.error('Analytics dashboard error', error);
+    logger.error('Analytics dashboard error', error instanceof Error ? error : undefined);
     return NextResponse.json(
       { success: false, error: 'Failed to fetch analytics data' },
       { status: 500 }

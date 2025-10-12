@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    logger.error('Feedback submission error', error);
+    logger.error('Feedback submission error', error instanceof Error ? error : undefined);
     return GlobalErrorHandler.createErrorResponse(error, {
       endpoint: '/api/feedback',
       method: 'POST',
@@ -215,7 +215,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
-    logger.error('Feedback fetch error', error);
+    logger.error('Feedback fetch error', error instanceof Error ? error : undefined);
     return GlobalErrorHandler.createErrorResponse(error, {
       endpoint: '/api/feedback',
       method: 'GET',

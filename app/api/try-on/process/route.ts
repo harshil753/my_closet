@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       error: authError,
     } = await supabase.auth.getUser();
     if (authError || !user) {
-      logger.error('Authentication failed in try-on process', authError, {
+      logger.error('Authentication failed in try-on process', authError || undefined, {
         endpoint: '/api/try-on/process',
       });
       return NextResponse.json(
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (sessionError || !session) {
-      logger.error('Session not found or access denied', sessionError, {
+      logger.error('Session not found or access denied', sessionError || undefined, {
         userId: user.id,
         sessionId,
       });
@@ -173,7 +173,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!basePhotoUrl) {
-      logger.error('No base photo found for user', { userId: user.id });
+      logger.error('No base photo found for user', undefined, { userId: user.id });
       throw new ValidationError(
         'No base photo found. Please upload a base photo in your profile settings first.'
       );
@@ -194,7 +194,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!sessionItems || sessionItems.length === 0) {
-      logger.error('No clothing items found for session', {
+      logger.error('No clothing items found for session', undefined, {
         userId: user.id,
         sessionId,
       });
@@ -225,7 +225,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!clothingItems || clothingItems.length === 0) {
-      logger.error('No clothing items found in database', {
+      logger.error('No clothing items found in database', undefined, {
         userId: user.id,
         sessionId,
       });
@@ -294,10 +294,9 @@ export async function POST(request: NextRequest) {
     console.log('TryOnProcessor returned:', result);
 
     if (!result.success) {
-      logger.error('AI processing failed', {
+      logger.error('AI processing failed', undefined, {
         userId: user.id,
         sessionId,
-        error: result.error,
       });
 
       // Update session to failed
@@ -390,7 +389,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    logger.error('Try-on processing error', error, {
+    logger.error('Try-on processing error', error instanceof Error ? error : undefined, {
       endpoint: '/api/try-on/process',
     });
 
