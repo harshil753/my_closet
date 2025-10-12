@@ -248,7 +248,7 @@ export function withLogging(
       method: req.method,
       url: req.url,
       ip: req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown',
-      userAgent: req.headers.get('user-agent'),
+      userAgent: req.headers.get('user-agent') || undefined,
     });
 
     try {

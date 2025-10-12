@@ -28,6 +28,8 @@ export interface LogContext {
   duration?: number;
   requestCount?: number;
   attemptCount?: number;
+  maxRequests?: number;
+  windowMs?: number;
   metadata?: Record<string, any>;
 }
 
