@@ -25,7 +25,7 @@ export class GlobalErrorHandler {
     context?: ErrorContext
   ): { statusCode: number; response: any } {
     // Log the error
-    logger.error('API Error', error, context);
+    logger.error('API Error', error instanceof Error ? error : undefined, context);
 
     // Track error in analytics
     if (error instanceof Error) {

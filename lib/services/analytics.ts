@@ -58,7 +58,7 @@ export class AnalyticsService {
         });
       }
     } catch (error) {
-      logger.error('Analytics tracking error', error, {
+      logger.error('Analytics tracking error', error instanceof Error ? error : undefined, {
         event: event.event,
       });
     }
@@ -86,7 +86,7 @@ export class AnalyticsService {
         });
       }
     } catch (error) {
-      logger.error('Performance tracking error', error, {
+      logger.error('Performance tracking error', error instanceof Error ? error : undefined, {
         metric: metric.metric,
       });
     }
@@ -113,7 +113,7 @@ export class AnalyticsService {
         });
       }
     } catch (error) {
-      logger.error('Engagement tracking error', error, {
+      logger.error('Engagement tracking error', error instanceof Error ? error : undefined, {
         userId: engagement.userId,
       });
     }
@@ -276,7 +276,7 @@ export class AnalyticsService {
         conversionRate,
       };
     } catch (error) {
-      logger.error('Failed to get dashboard data', error);
+      logger.error('Failed to get dashboard data', error instanceof Error ? error : undefined);
       throw error;
     }
   }

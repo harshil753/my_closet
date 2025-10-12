@@ -18,6 +18,11 @@ export interface LogContext {
   component?: string;
   action?: string;
   ip?: string;
+  url?: string;
+  method?: string;
+  error?: any;
+  key?: string;
+  reason?: string;
   metadata?: Record<string, any>;
 }
 

@@ -103,7 +103,7 @@ export class RateLimiter {
     }
 
     // Default: IP address
-    const ip = req.ip || req.headers.get('x-forwarded-for') || 'unknown';
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
     return ip;
   }
 

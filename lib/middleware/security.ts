@@ -29,9 +29,10 @@ export function withSecurity(
   const { rateLimiter } = createRateLimitMiddleware(defaultRateLimitConfig);
 
   return async (req: NextRequest): Promise<NextResponse> => {
+    // Get client IP
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+    
     try {
-      // Get client IP
-      const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
 
       // Check if IP is blocked
       if (ipBlocker.isBlocked(ip)) {
@@ -121,7 +122,8 @@ export function withAuth(handler: (req: NextRequest) => Promise<NextResponse>) {
       }
 
       // Validate token (implement your token validation logic)
-      const isValid = await validateToken(authHeader || sessionToken);
+      const token = (authHeader || sessionToken) as string;
+      const isValid = await validateToken(token);
 
       if (!isValid) {
         return NextResponse.json(
@@ -131,7 +133,7 @@ export function withAuth(handler: (req: NextRequest) => Promise<NextResponse>) {
       }
 
       // Add user info to request headers for downstream handlers
-      const userInfo = await getUserFromToken(authHeader || sessionToken);
+      const userInfo = await getUserFromToken(token);
       req.headers.set('x-user-id', userInfo.id);
       req.headers.set('x-user-email', userInfo.email);
 
