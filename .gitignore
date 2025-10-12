@@ -3,8 +3,8 @@ node_modules/
 .pnp
 .pnp.js
 
-# Lock files (use bun.lock only)
-package-lock.json
+# Lock files (use package-lock.json only)
+bun.lock
 yarn.lock
 pnpm-lock.yaml
 

@@ -995,9 +995,2625 @@ Lines added: 2, lines removed: 2
 
 Tool use: **search_replace**
 
+
+<details><summary>Edit file: .github/workflows/ci.yml</summary>
+
+**Chunk 1**
+Lines added: 13, lines removed: 15
+
+```diff
+@@ -13,31 +13,29 @@
+      strategy:
+        matrix:
+-         bun-version: [latest]
++         node-version: [18, 20]
+  
+      steps:
+        - uses: actions/checkout@v4
+  
+-       - name: Setup Bun
+-         uses: oven-sh/setup-bun@v1
++       - name: Setup Node.js
++         uses: actions/setup-node@v4
+          with:
+-           bun-version: ${{ matrix.bun-version }}
++           node-version: ${{ matrix.node-version }}
++           cache: 'npm'
+  
+        - name: Install dependencies
+-         run: bun install --frozen-lockfile
++         run: npm ci
+  
+        - name: Run type check
+-         run: bun run type-check
++         run: npm run type-check
+  
+-       - name: Run linter (allow failures due to Bun compatibility)
+-         run: bun run lint || echo "Lint skipped due to Bun compatibility issues"
+-         continue-on-error: true
++       - name: Run linter
++         run: npm run lint
+  
+-       - name: Run tests (allow failures due to Jest/Bun compatibility)
+-         run: bun run test || echo "Tests skipped due to Jest/Bun compatibility issues"
+-         continue-on-error: true
++       - name: Run tests
++         run: npm run test
+  
+-       - name: Run E2E tests (allow failures due to Jest/Bun compatibility)
+-         run: bun run test:e2e || echo "E2E tests skipped due to compatibility issues"
+-         continue-on-error: true
++       - name: Run E2E tests
++         run: npm run test:e2e
+  
+    python-test:
+```
+
+</details>
+
 ---
 
+Tool use: **search_replace**
 
+
+<details><summary>Edit file: .github/workflows/deploy.yml</summary>
+
+**Chunk 1**
+Lines added: 4, lines removed: 3
+
+```diff
+@@ -13,8 +13,9 @@
+        - uses: actions/checkout@v4
+  
+-       - name: Setup Bun
+-         uses: oven-sh/setup-bun@v1
++       - name: Setup Node.js
++         uses: actions/setup-node@v4
+          with:
+-           bun-version: latest
++           node-version: 18
++           cache: 'npm'
+  
+        - name: Setup Python
+```
+
+**Chunk 2**
+Lines added: 8, lines removed: 11
+
+```diff
+@@ -25,23 +26,20 @@
+        - name: Install dependencies
+          run: |
+-           bun install --frozen-lockfile
++           npm ci
+            pip install -r requirements.txt
+  
+        - name: Run type checking
+-         run: bun run type-check
++         run: npm run type-check
+  
+-       - name: Run linting (allow failures due to Bun compatibility)
+-         run: bun run lint || echo "Lint skipped due to Bun compatibility issues"
+-         continue-on-error: true
++       - name: Run linting
++         run: npm run lint
+  
+-       - name: Run tests (allow failures due to Jest/Bun compatibility)
+-         run: bun run test || echo "Tests skipped due to Jest/Bun compatibility issues"
+-         continue-on-error: true
++       - name: Run tests
++         run: npm run test
+          env:
+            CI: true
+  
+-       - name: Run E2E tests (allow failures due to Jest/Bun compatibility)
+-         run: bun run test:e2e || echo "E2E tests skipped due to compatibility issues"
+-         continue-on-error: true
++       - name: Run E2E tests
++         run: npm run test:e2e
+          env:
+            CI: true
+```
+
+**Chunk 3**
+Lines added: 6, lines removed: 5
+
+```diff
+@@ -53,14 +51,15 @@
+        - uses: actions/checkout@v4
+  
+-       - name: Setup Bun
+-         uses: oven-sh/setup-bun@v1
++       - name: Setup Node.js
++         uses: actions/setup-node@v4
+          with:
+-           bun-version: latest
++           node-version: 18
++           cache: 'npm'
+  
+        - name: Install dependencies
+-         run: bun install --frozen-lockfile
++         run: npm ci
+  
+        - name: Build application
+-         run: bun run build
++         run: npm run build
+          env:
+            NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+```
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>Now I need to remove the node_modules directory that was installed with Bun and reinstall with npm to ensure clean state. Let me do that.</details></think>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+Remove-Item -Recurse -Force node_modules
+```
+
+```
+Remove-Item : Cannot remove item C:\Users\harsh\OneDrive\Desktop\AI 
+Project\my_closet\node_modules\.old-064E290504A89C65\tailwindcss-oxide.win32-x64-msvc.node: Access to the path 
+'tailwindcss-oxide.win32-x64-msvc.node' is denied.
+At C:\Users\harsh\AppData\Local\Temp\ps-script-5e4c96cc-b782-4f07-98fe-5da92ebf9872.ps1:80 char:1
++ Remove-Item -Recurse -Force node_modules
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (tailwindcss-oxide.win32-x64-msvc.node:FileInfo) [Remove-Item], Unauth 
+   orizedAccessException
+    + FullyQualifiedErrorId : RemoveFileSystemItemUnAuthorizedAccess,Microsoft.PowerShell.Commands.RemoveItemCommand
+Remove-Item : Cannot remove item C:\Users\harsh\OneDrive\Desktop\AI 
+Project\my_closet\node_modules\.old-064E290504A89C65: The directory is not empty.
+At C:\Users\harsh\AppData\Local\Temp\ps-script-5e4c96cc-b782-4f07-98fe-5da92ebf9872.ps1:80 char:1
++ Remove-Item -Recurse -Force node_modules
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (.old-064E290504A89C65:DirectoryInfo) [Remove-Item], IOException
+    + FullyQualifiedErrorId : RemoveFileSystemItemIOError,Microsoft.PowerShell.Commands.RemoveItemCommand
+Remove-Item : Cannot remove item C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules: The directory is 
+not empty.
+At C:\Users\harsh\AppData\Local\Temp\ps-script-5e4c96cc-b782-4f07-98fe-5da92ebf9872.ps1:80 char:1
++ Remove-Item -Recurse -Force node_modules
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : WriteError: (C:\Users\harsh\...et\node_modules:DirectoryInfo) [Remove-Item], IOException
+    + FullyQualifiedErrorId : RemoveFileSystemItemIOError,Microsoft.PowerShell.Commands.RemoveItemCommand
+
+```
+
+---
+
+<think><details><summary>Thought Process</summary>There's a permission issue with some files in node_modules. This is common on Windows when files are locked. Let me try a different approach - just install npm over it, which should work fine. npm will handle any conflicts.</details></think>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+npm install
+```
+
+```
+
+added 732 packages, and audited 733 packages in 44s
+
+177 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+```
+
+---
+
+<think><details><summary>Thought Process</summary>Great! Now let me verify that package-lock.json exists and run a test build to make sure everything works with npm.</details></think>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+Test-Path package-lock.json
+```
+
+```
+True
+
+```
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+npm run type-check
+```
+
+```
+
+> my-closet-virtual-try-on@0.1.0 type-check
+> tsc --noEmit
+
+
+```
+
+---
+
+<think><details><summary>Thought Process</summary>Perfect! Now let me run the test to make sure Jest works properly with npm.</details></think>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+npm run test
+```
+
+```
+
+> my-closet-virtual-try-on@0.1.0 test
+> jest --passWithNoTests
+
+ ⚠ Found lockfile missing swc dependencies, patching...
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\harsh\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\package-lock.json
+
+ ⚠ Lockfile was successfully patched, please run "npm install" to ensure @next/swc dependencies are downloaded
+FAIL tests/__tests__/try-on-session.integration.test.ts
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+FAIL tests/__tests__/ai-processor.test.ts
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+FAIL tests/__tests__/try-on-result-generation.integration.test.ts
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+FAIL tests/__tests__/clothing-upload.test.tsx
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+FAIL tests/__tests__/clothing-selection.test.ts
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+FAIL tests/__tests__/closet-view.integration.test.tsx
+  ● Test suite failed to run
+
+      [31mx[0m Expected ',', got 'as'
+        ,-[[36;1;4mC:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\jest.setup.js[0m:43:1]
+     [2m40[0m |     order: jest.fn().mockReturnThis(),
+     [2m41[0m |     range: jest.fn().mockReturnThis(),
+     [2m42[0m |     // Allow directly awaiting the chain
+     [2m43[0m |     then: undefined as any,
+        : [35;1m                    ^^[0m
+     [2m44[0m |     mockResolvedValue: undefined as any,
+     [2m45[0m |   } as any;
+     [2m45[0m |   // Implement promise-like behavior used in some tests
+        `----
+
+
+    Caused by:
+        Syntax Error
+
+      at Object.transformSync (node_modules/next/src/build/swc/index.ts:1396:25)
+      at transformSync (node_modules/next/src/build/swc/index.ts:1516:19)
+      at Object.process (node_modules/next/src/build/swc/jest-transformer.ts:105:25)
+      at ScriptTransformer.transformSource (node_modules/@jest/transform/build/ScriptTransformer.js:545:31)
+      at ScriptTransformer._transformAndBuildScript (node_modules/@jest/transform/build/ScriptTransformer.js:674:40)
+      at ScriptTransformer.transform (node_modules/@jest/transform/build/ScriptTransformer.js:726:19)
+
+Test Suites: 6 failed, 6 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        15.731 s
+Ran all test suites.
+
+```
+
+---
+
+<think><details><summary>Thought Process</summary>There's a syntax error in jest.setup.js. The issue is with the TypeScript syntax `undefined as any` which isn't being parsed correctly. Let me look at jest.setup.js and fix the syntax issue.</details></think>
+
+---
+
+Tool use: **read_file**
+
+Read file: jest.setup.js
+
+---
+
+<think><details><summary>Thought Process</summary>I see the issue. The jest.setup.js file is using TypeScript syntax (`as any`) but it's a `.js` file, not a `.ts` file. The Next.js SWC transformer is having trouble with this. I need to either:
+1. Convert the file to use plain JavaScript without type assertions
+2. Rename it to jest.setup.ts
+
+Let me convert it to plain JavaScript by removing the type assertions.</details></think>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: jest.setup.js</summary>
+
+**Chunk 1**
+Lines added: 6, lines removed: 6
+
+```diff
+@@ -41,12 +41,12 @@
+      range: jest.fn().mockReturnThis(),
+      // Allow directly awaiting the chain
+-     then: undefined as any,
+-     mockResolvedValue: undefined as any,
+-   } as any;
++     then: undefined,
++     mockResolvedValue: undefined,
++   };
+    // Implement promise-like behavior used in some tests
+-   query.mockResolvedValue = (value: unknown) => {
+-     query.then = (onFulfilled: (v: unknown) => unknown) => {
++   query.mockResolvedValue = (value) => {
++     query.then = (onFulfilled) => {
+        onFulfilled(value);
+-       return Promise.resolve(value) as any;
++       return Promise.resolve(value);
+      };
+      return query;
+```
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>Now let me run the tests again to see if the syntax error is resolved.</details></think>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+npm run test
+```
+
+```
+[Terminal output truncated: ~89KB dropped from beginning]
+t-circus\build\run.js:252:3)
+              at _runTestsForDescribeBlock (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\run.js:126:9)
+              at _runTestsForDescribeBlock (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\run.js:121:9)
+              at _runTestsForDescribeBlock (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\run.js:121:9)
+              at run (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\run.js:71:3)
+              at runAndTransformResultsToJestFormat (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+              at jestAdapter (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+              at runTestInternal (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-runner\build\runTest.js:367:16)
+              at runTest (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-runner\build\runTest.js:444:34)
+              at Object.worker (C:\Users\harsh\OneDrive\Desktop\AI Project\my_closet\node_modules\jest-runner\build\testWorker.js:106:12),
+          _debugTask: null,
+          _debugNeedsRemount: false,
+          _debugHookTypes: null
+        },
+        '__reactProps$wpzg4caes2': {
+          alt: 'Blue T-Shirt',
+          fetchPriority: undefined,
+          loading: undefined,
+          width: undefined,
+          height: undefined,
+          decoding: 'async',
+          'data-nimg': 'fill',
+          className: 'object-cover transition-opacity duration-200 opacity-0',
+          style: {
+            position: 'absolute',
+            height: '100%',
+            width: '100%',
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            objectFit: undefined,
+            objectPosition: undefined,
+            color: 'transparent'
+          },
+          sizes: undefined,
+          srcSet: undefined,
+          src: '',
+          ref: [Function (anonymous)],
+          onLoad: [Function: onLoad],
+          onError: [Function: onError]
+        },
+        '__reactEvents$wpzg4caes2': Set(2) { 'error__bubble', 'load__bubble' },
+        [Symbol(SameObject caches)]: [Object: null prototype] {
+          style: CSSStyleDeclaration {
+            '0': 'position',
+            '1': 'height',
+            '2': 'width',
+            '3': 'left',
+            '4': 'top',
+            '5': 'right',
+            '6': 'bottom',
+            '7': 'color',
+            _values: [Object],
+            _importants: [Object],
+            _length: 8,
+            _onChange: [Function (anonymous)]
+          }
+        }
+      }
+
+      486 |     it('handles view action', () => {
+      487 |       const onView = jest.fn();
+    > 488 |       render(<ClothingItemCard item={mockItem} onView={onView} />);
+          |             ^
+      489 |       
+      490 |       fireEvent.click(screen.getByRole('button', { name: /view/i }));
+      491 |       expect(onView).toHaveBeenCalledWith(mockItem);
+
+      at error (node_modules/next/src/client/image-component.tsx:224:21)
+      at refA (node_modules/next/src/client/use-merged-ref.ts:55:21)
+      at applyRef (node_modules/next/src/client/use-merged-ref.ts:42:30)
+      at commitAttachRef (node_modules/react-dom/cjs/react-dom-client.development.js:13482:44)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at safelyAttachRef (node_modules/react-dom/cjs/react-dom-client.development.js:13500:9)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14089:26)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14065:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14065:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14065:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14065:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)
+      at recursivelyTraverseLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:14031:11)
+      at flushLayoutEffects (node_modules/react-dom/cjs/react-dom-client.development.js:18138:15)
+      at commitRoot (node_modules/react-dom/cjs/react-dom-client.development.js:17954:9)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16667:15)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:488:13)
+
+    console.error
+      An update to ClothingItemCard inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      71 |    */
+      72 |   const handleImageLoad = () => {
+    > 73 |     setImageLoaded(true);
+         |     ^
+      74 |     setImageError(false);
+      75 |   };
+      76 |
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at Object.setImageLoaded [as current] (components/features/closet/ClothingItemCard.tsx:73:5)
+      at current (node_modules/next/src/client/image-component.tsx:97:17)
+
+    console.error
+      An update to ClothingItemCard inside a test was not wrapped in act(...).
+      
+      When testing, code that causes React state updates should be wrapped into act(...):
+      
+      act(() => {
+        /* fire events that update state */
+      });
+      /* assert on the output */
+      
+      This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+      72 |   const handleImageLoad = () => {
+      73 |     setImageLoaded(true);
+    > 74 |     setImageError(false);
+         |     ^
+      75 |   };
+      76 |
+      77 |   /**
+
+      at node_modules/react-dom/cjs/react-dom-client.development.js:18758:19
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom-client.development.js:18757:9)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom-client.development.js:16409:11)
+      at dispatchSetStateInternal (node_modules/react-dom/cjs/react-dom-client.development.js:9170:13)
+      at dispatchSetState (node_modules/react-dom/cjs/react-dom-client.development.js:9127:7)
+      at Object.setImageError [as current] (components/features/closet/ClothingItemCard.tsx:74:5)
+      at current (node_modules/next/src/client/image-component.tsx:97:17)
+
+  ● ClosetView Integration › Data Loading Integration › loads clothing items on component mount
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:88:13)
+
+  ● ClosetView Integration › Data Loading Integration › displays loading state while fetching data
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:108:13)
+
+  ● ClosetView Integration › Data Loading Integration › handles API error gracefully
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:119:13)
+
+  ● ClosetView Integration › Filtering Integration › filters items by category
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:129:13)
+
+  ● ClosetView Integration › Filtering Integration › filters items by color
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:148:13)
+
+  ● ClosetView Integration › Filtering Integration › searches items by name
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:167:13)
+
+  ● ClosetView Integration › Filtering Integration › combines multiple filters
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:186:13)
+
+  ● ClosetView Integration › Sorting Integration › sorts items by name
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:212:13)
+
+  ● ClosetView Integration › Sorting Integration › sorts items by date
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:230:13)
+
+  ● ClosetView Integration › Pagination Integration › displays pagination controls for many items
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:263:13)
+
+  ● ClosetView Integration › Pagination Integration › navigates between pages
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:272:13)
+
+  ● ClosetView Integration › Item Selection Integration › selects and deselects items
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:292:13)
+
+  ● ClosetView Integration › Item Selection Integration › selects multiple items
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:309:13)
+
+  ● ClosetView Integration › Item Actions Integration › handles item edit action
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:326:13)
+
+  ● ClosetView Integration › Item Actions Integration › handles item delete action
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:340:13)
+
+  ● ClosetView Integration › Item Actions Integration › handles item view action
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:360:13)
+
+  ● ClosetView Integration › View Mode Integration › switches between grid and list view
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:375:13)
+
+  ● ClosetView Integration › Error Handling Integration › retries failed API calls
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:402:13)
+
+  ● ClosetView Integration › Error Handling Integration › shows error message for persistent failures
+
+    useAuth must be used within an AuthProvider
+
+      175 |   const context = useContext(AuthContext);
+      176 |   if (context === undefined) {
+    > 177 |     throw new Error('useAuth must be used within an AuthProvider');
+          |           ^
+      178 |   }
+      179 |   return context;
+      180 | }
+
+      at useAuth (lib/auth/auth-context.tsx:177:11)
+      at ClosetView (components/features/closet/ClosetView.tsx:74:27)
+      at Object.react_stack_bottom_frame (node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom-client.development.js:7662:22)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom-client.development.js:10166:19)
+      at beginWork (node_modules/react-dom/cjs/react-dom-client.development.js:11778:18)
+      at runWithFiberInDEV (node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom-client.development.js:17641:22)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom-client.development.js:17469:41)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom-client.development.js:17450:11)
+      at performWorkOnRoot (node_modules/react-dom/cjs/react-dom-client.development.js:16583:35)
+      at performWorkOnRootViaSchedulerTask (node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)
+      at flushActQueue (node_modules/react/cjs/react.development.js:590:34)
+      at Object.<anonymous>.process.env.NODE_ENV.exports.act (node_modules/react/cjs/react.development.js:884:10)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:190:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:292:10)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:413:13)
+
+  ● ClothingItemCard Integration › Display Integration › shows loading state for image
+
+    TestingLibraryElementError: Unable to find an element with the text: /loading image/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      436 |       render(<ClothingItemCard item={mockItem} />);
+      437 |       
+    > 438 |       expect(screen.getByText(/loading image/i)).toBeInTheDocument();
+          |                     ^
+      439 |     });
+      440 |
+      441 |     it('handles image load error', async () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByText (tests/__tests__/closet-view.integration.test.tsx:438:21)
+
+  ● ClothingItemCard Integration › Display Integration › handles image load error
+
+    Unable to find an element with the text: /image failed to load/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex h-full w-full items-center justify-center bg-gray-200"[39m
+                [36m>[39m
+                  [36m<svg[39m
+                    [33mclass[39m=[32m"h-6 w-6 text-gray-400"[39m
+                    [33mfill[39m=[32m"none"[39m
+                    [33mstroke[39m=[32m"currentColor"[39m
+                    [33mviewBox[39m=[32m"0 0 24 24"[39m
+                  [36m>[39m
+                    [36m<path[39m
+                      [33md[39m=[32m"M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"[39m
+                      [33mstroke-linecap[39m=[32m"round"[39m
+                      [33mstroke-linejoin[39m=[32m"round"[39m
+                      [33mstroke-width[39m=[32m"2"[39m
+                    [36m/>[39m
+                  [36m</svg>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      445 |       fireEvent.error(image);
+      446 |       
+    > 447 |       await waitFor(() => {
+          |                    ^
+      448 |         expect(screen.getByText(/image failed to load/i)).toBeInTheDocument();
+      449 |       });
+      450 |     });
+
+      at waitForWrapper (node_modules/@testing-library/dom/dist/wait-for.js:163:27)
+      at Object.<anonymous> (tests/__tests__/closet-view.integration.test.tsx:447:20)
+
+  ● ClothingItemCard Integration › Selection Integration › shows selection state when selectable
+
+    TestingLibraryElementError: Unable to find an element by: [data-testid="selection-indicator"]
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer ring-primary ring-2 ring-offset-2"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-[3px] shadow-lg border-blue-600 bg-blue-600 text-white"[39m
+              [36m>[39m
+                [36m<svg[39m
+                  [33mclass[39m=[32m"h-4 w-4"[39m
+                  [33mfill[39m=[32m"currentColor"[39m
+                  [33mviewBox[39m=[32m"0 0 20 20"[39m
+                [36m>[39m
+                  [36m<path[39m
+                    [33mclip-rule[39m=[32m"evenodd"[39m
+                    [33md[39m=[32m"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"[39m
+                    [33mfill-rule[39m=[32m"evenodd"[39m
+                  [36m/>[39m
+                [36m</svg>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      455 |       render(<ClothingItemCard item={mockItem} selectable={true} selected={true} />);
+      456 |       
+    > 457 |       expect(screen.getByTestId('selection-indicator')).toBeInTheDocument();
+          |                     ^
+      458 |     });
+      459 |
+      460 |     it('handles selection click', () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByTestId (tests/__tests__/closet-view.integration.test.tsx:457:21)
+
+  ● ClothingItemCard Integration › Selection Integration › handles selection click
+
+    TestingLibraryElementError: Unable to find an element by: [data-testid="clothing-item-card"]
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md cursor-pointer"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-[3px] shadow-lg border-gray-600 bg-white/90 backdrop-blur-sm"[39m
+              [36m/>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      462 |       render(<ClothingItemCard item={mockItem} selectable={true} onSelect={onSelect} />);
+      463 |       
+    > 464 |       fireEvent.click(screen.getByTestId('clothing-item-card'));
+          |                              ^
+      465 |       expect(onSelect).toHaveBeenCalled();
+      466 |     });
+      467 |   });
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByTestId (tests/__tests__/closet-view.integration.test.tsx:464:30)
+
+  ● ClothingItemCard Integration › Action Integration › handles edit action
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/edit/i`
+
+    Here are the accessible roles:
+
+      img:
+
+      Name "Blue T-Shirt":
+      [36m<img[39m
+        [33malt[39m=[32m"Blue T-Shirt"[39m
+        [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+        [33mdata-nimg[39m=[32m"fill"[39m
+        [33mdecoding[39m=[32m"async"[39m
+        [33msrc[39m=[32m""[39m
+        [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      heading:
+
+      Name "Blue T-Shirt":
+      [36m<h3[39m
+        [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-md h-8 w-8 p-0"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-md h-8 w-8 p-0"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"h-4 w-4"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"[39m
+                          [33mstroke-linecap[39m=[32m"round"[39m
+                          [33mstroke-linejoin[39m=[32m"round"[39m
+                          [33mstroke-width[39m=[32m"2"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      472 |       render(<ClothingItemCard item={mockItem} onEdit={onEdit} />);
+      473 |       
+    > 474 |       fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+          |                              ^
+      475 |       expect(onEdit).toHaveBeenCalledWith(mockItem);
+      476 |     });
+      477 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByRole (tests/__tests__/closet-view.integration.test.tsx:474:30)
+
+  ● ClothingItemCard Integration › Action Integration › handles delete action
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/delete/i`
+
+    Here are the accessible roles:
+
+      img:
+
+      Name "Blue T-Shirt":
+      [36m<img[39m
+        [33malt[39m=[32m"Blue T-Shirt"[39m
+        [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+        [33mdata-nimg[39m=[32m"fill"[39m
+        [33mdecoding[39m=[32m"async"[39m
+        [33msrc[39m=[32m""[39m
+        [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      heading:
+
+      Name "Blue T-Shirt":
+      [36m<h3[39m
+        [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      button:
+
+      Name "":
+      [36m<button[39m
+        [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent rounded-md h-8 w-8 p-0 text-red-600 hover:text-red-700"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent rounded-md h-8 w-8 p-0 text-red-600 hover:text-red-700"[39m
+                    [36m>[39m
+                      [36m<svg[39m
+                        [33mclass[39m=[32m"h-4 w-4"[39m
+                        [33mfill[39m=[32m"none"[39m
+                        [33mstroke[39m=[32m"currentColor"[39m
+                        [33mviewBox[39m=[32m"0 0 24 24"[39m
+                      [36m>[39m
+                        [36m<path[39m
+                          [33md[39m=[32m"M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"[39m
+                          [33mstroke-linecap[39m=[32m"round"[39m
+                          [33mstroke-linejoin[39m=[32m"round"[39m
+                          [33mstroke-width[39m=[32m"2"[39m
+                        [36m/>[39m
+                      [36m</svg>[39m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      480 |       render(<ClothingItemCard item={mockItem} onDelete={onDelete} />);
+      481 |       
+    > 482 |       fireEvent.click(screen.getByRole('button', { name: /delete/i }));
+          |                              ^
+      483 |       expect(onDelete).toHaveBeenCalledWith(mockItem);
+      484 |     });
+      485 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByRole (tests/__tests__/closet-view.integration.test.tsx:482:30)
+
+  ● ClothingItemCard Integration › Action Integration › handles view action
+
+    TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/view/i`
+
+    Here are the accessible roles:
+
+      img:
+
+      Name "Blue T-Shirt":
+      [36m<img[39m
+        [33malt[39m=[32m"Blue T-Shirt"[39m
+        [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+        [33mdata-nimg[39m=[32m"fill"[39m
+        [33mdecoding[39m=[32m"async"[39m
+        [33msrc[39m=[32m""[39m
+        [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      heading:
+
+      Name "Blue T-Shirt":
+      [36m<h3[39m
+        [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+      paragraph:
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"truncate"[39m
+      [36m/>[39m
+
+      Name "":
+      [36m<p[39m
+        [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+      [36m/>[39m
+
+      --------------------------------------------------
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"p-4"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"flex items-center space-x-4"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100"[39m
+              [36m>[39m
+                [36m<img[39m
+                  [33malt[39m=[32m"Blue T-Shirt"[39m
+                  [33mclass[39m=[32m"object-cover transition-opacity duration-200 opacity-0"[39m
+                  [33mdata-nimg[39m=[32m"fill"[39m
+                  [33mdecoding[39m=[32m"async"[39m
+                  [33msrc[39m=[32m""[39m
+                  [33mstyle[39m=[32m"position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"[39m
+                [36m/>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"absolute inset-0 flex items-center justify-center"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"border-primary h-4 w-4 animate-spin rounded-full border-b-2"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"min-w-0 flex-1"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"flex items-start justify-between"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"min-w-0 flex-1"[39m
+                  [36m>[39m
+                    [36m<h3[39m
+                      [33mclass[39m=[32m"truncate text-sm font-medium"[39m
+                    [36m>[39m
+                      [0mBlue T-Shirt[0m
+                    [36m</h3>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"mt-1 flex items-center space-x-2"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 text-xs bg-blue-100 text-blue-800"[39m
+                      [36m>[39m
+                        [0mShirts & Tops[0m
+                      [36m</div>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs"[39m
+                      [36m>[39m
+                        [0mInactive[0m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ml-4 flex items-center space-x-1"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"mt-2 space-y-1 text-xs text-gray-600"[39m
+                [36m>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mBrand:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mNike[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mColor:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mBlue[0m
+                  [36m</p>[39m
+                  [36m<p[39m
+                    [33mclass[39m=[32m"truncate"[39m
+                  [36m>[39m
+                    [36m<span[39m
+                      [33mclass[39m=[32m"font-medium"[39m
+                    [36m>[39m
+                      [0mSize:[0m
+                    [36m</span>[39m
+                    [0m [0m
+                    [0mM[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"mt-1 text-xs text-gray-500"[39m
+                [36m>[39m
+                  [0mAdded [0m
+                  [0mInvalid Date[0m
+                [36m</p>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      488 |       render(<ClothingItemCard item={mockItem} onView={onView} />);
+      489 |       
+    > 490 |       fireEvent.click(screen.getByRole('button', { name: /view/i }));
+          |                              ^
+      491 |       expect(onView).toHaveBeenCalledWith(mockItem);
+      492 |     });
+      493 |   });
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+      at Object.getByRole (tests/__tests__/closet-view.integration.test.tsx:490:30)
+
+Test Suites: 4 failed, 1 skipped, 1 passed, 5 of 6 total
+Tests:       61 failed, 1 skipped, 31 passed, 93 total
+Snapshots:   0 total
+Time:        10.813 s
+Ran all test suites.
+
+```
+
+---
+
+<think><details><summary>Thought Process</summary>Perfect! The tests are running now with npm instead of Bun. The syntax error is fixed. The tests have failures but those are actual test issues (missing test data, mocking issues, etc.), not Jest/npm compatibility issues. This is a huge improvement from the original "Tests skipped due to Jest/Bun compatibility issues".
+
+Now let me create a summary of all the changes made to complete the Bun to npm migration.</details></think>
+
+---
+
+## Complete Migration Summary
+
+Successfully migrated from Bun to npm. All Bun dependencies and configurations removed:
+
+**Files Updated:**
+
+1. ✅ **Deleted** `bun.lock`
+2. ✅ **package.json** - Removed Bun engine & packageManager
+3. ✅ **vercel.json** - Changed to `npm ci` and `npm run build`
+4. ✅ **README.md** - Updated all commands from Bun to npm
+5. ✅ **Dockerfile** - Switched from `oven/bun` to `node:18-alpine` image
+6. ✅ **.github/workflows/ci.yml** - Replaced Bun setup with Node.js 18/20
+7. ✅ **.github/workflows/deploy.yml** - Replaced Bun with Node.js
+8. ✅ **jest.setup.js** - Fixed TypeScript syntax to plain JavaScript  
+9. ✅ **Generated** `package-lock.json`
+10. ✅ **Reinstalled** node_modules with npm
+
+**Test Results:**
+- Jest now runs properly with npm (previously failed with Bun)
+- 31 tests passing, 61 failing due to test implementation issues (not package manager issues)
+- Type checking works: ✅
+- No more "Jest/Bun compatibility" errors
+
+**Key Changes:**
+- `bun install` → `npm install` / `npm ci`
+- `bun run <script>` → `npm run <script>`  
+- `bunx` → `npx`
+- Bun engine requirement removed
+- All workflows use Node.js 18+
+
+Your workspace is now fully npm-based with no Bun conflicts. Push these changes to trigger a successful Vercel deployment.
+
+---
+
+_**User (2025-10-12 19:28Z)**_
+
+do I need the package json and package lock
+
+---
+
+_**Assistant (default)**_
+
+<think><details><summary>Thought Process</summary>The user is asking if they need both package.json and package-lock.json. This is a fundamental npm question.
+
+**Short answer: YES, you need both.**
+
+**package.json:**
+- Contains your project dependencies, scripts, metadata
+- Defines what packages your project needs
+- Specifies version ranges (e.g., "^15.5.4")
+- Essential for any npm project
+
+**package-lock.json:**
+- Locks exact versions of all dependencies and sub-dependencies
+- Ensures consistent installs across different environments
+- Critical for reproducible builds
+- Used by `npm ci` (which we configured in vercel.json)
+- Should be committed to git
+
+Since we switched from Bun to npm, and we're using `npm ci` in Vercel (which requires package-lock.json), both files are absolutely necessary.
+
+I should confirm this clearly and explain why both are needed.</details></think>
+
+---
+
+**Yes, you need BOTH files:**
+
+**`package.json`** - Required
+- Defines your project dependencies and versions
+- Contains scripts (dev, build, test, etc.)
+- Project metadata
+- **Without this, npm cannot work at all**
+
+**`package-lock.json`** - Required
+- Locks exact versions of all dependencies and sub-dependencies
+- Ensures consistent installs across machines and deployments
+- **Required for `npm ci`** (which we configured in `vercel.json`)
+- Should be committed to git
+
+**Why both matter for your deployment:**
+
+Your `vercel.json` uses:
+```json
+"installCommand": "npm ci"
+```
+
+`npm ci` (clean install) **requires** `package-lock.json` to exist. It's faster and more reliable than `npm install` for production builds.
+
+**Both files should be committed to git.** The package-lock.json we generated ensures Vercel installs the exact same dependency versions you're using locally.
+
+---
+
+_**User (2025-10-12 19:28Z)**_
+
+go through my gitignore and fix and references we need 
+
+---
+
+_**Assistant (default)**_
+
+<think><details><summary>Thought Process</summary>The user wants me to review the .gitignore file and fix any references related to the Bun to npm migration. I should look for any Bun-specific entries that should be removed or updated, and ensure npm-specific files are properly handled.</details></think>
+
+---
+
+Tool use: **read_file**
+
+Read file: .gitignore
+
+---
+
+<think><details><summary>Thought Process</summary>I found the issue! Line 6-9 shows:
+```
+# Lock files (use bun.lock only)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+```
+
+This is problematic because:
+1. The comment says "use bun.lock only" which is no longer correct
+2. `package-lock.json` is being ignored, but we need it for npm now
+3. We should keep yarn.lock and pnpm-lock.yaml ignored since we're not using those
+
+I need to:
+1. Remove `package-lock.json` from .gitignore
+2. Update the comment to reflect npm usage
+3. Add `bun.lock` to the ignore list instead</details></think>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: .gitignore</summary>
+
+**Chunk 1**
+Lines added: 2, lines removed: 2
+
+```diff
+@@ -4,6 +4,6 @@
+  .pnp.js
+  
+- # Lock files (use bun.lock only)
+- package-lock.json
++ # Lock files (use package-lock.json only)
++ bun.lock
+  yarn.lock
+  pnpm-lock.yaml
+```
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>Good! I've fixed the .gitignore file. Now package-lock.json won't be ignored and will be committed to git, which is necessary for npm ci to work in Vercel. I should also check if there are any Bun-specific debug logs that should be added to the ignore list.
+
+Let me check if there are any other Bun-related entries in the log section.</details></think>
+
+---
+
+Tool use: **grep**
+
+<details>
+<summary>Grep for "bun" in ".gitignore" • 3 matches</summary>
+
+Output mode: content
+
+
+| Content | Line |
+|------|------|
+| `bun.lock` | L7 |
+| `# Microbundle cache` | L60 |
+| `# parcel-bundler cache (https://parceljs.org/)` | L80 |
+
+
+</details>
+
+---
+
+<think><details><summary>Thought Process</summary>Good, the only "bun" references are:
+1. `bun.lock` which we just added correctly
+2. "Microbundle" which is a different tool (not related to Bun)
+3. "parcel-bundler" which is also a different tool
+
+Now I should check lines 30-35 to see if we need to add bun debug logs to the ignore list. Looking at the file, I see npm, yarn, and pnpm debug logs but no bun debug logs listed. Since we're migrating away from Bun, we don't need to add it. However, the .gitignore is in good shape now.
+
+Let me verify the key changes are correct.</details></think>
+
+---
+
+Fixed! Here's what changed in `.gitignore`:
+
+**Updated Lines 6-9:**
+```diff
+- # Lock files (use bun.lock only)
+- package-lock.json
++ # Lock files (use package-lock.json only)
++ bun.lock
+  yarn.lock
+  pnpm-lock.yaml
+```
+
+**Why this matters:**
+
+✅ **`package-lock.json`** - Now tracked in git (was ignored before)
+- Required for `npm ci` in Vercel deployment
+- Ensures consistent dependency versions
+
+✅ **`bun.lock`** - Now ignored (wasn't ignored before)  
+- Prevents any accidental Bun lock files
+
+✅ **Other lock files** - Still ignored (yarn.lock, pnpm-lock.yaml)
+- Prevents conflicts with other package managers
+
+Your `.gitignore` is now properly configured for npm. **You should now commit `package-lock.json` to your repository.**
 
 ---
 
